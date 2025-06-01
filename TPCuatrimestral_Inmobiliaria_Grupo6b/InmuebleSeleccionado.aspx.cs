@@ -13,5 +13,9 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
         {
 
         }
+        protected void btnContactar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
