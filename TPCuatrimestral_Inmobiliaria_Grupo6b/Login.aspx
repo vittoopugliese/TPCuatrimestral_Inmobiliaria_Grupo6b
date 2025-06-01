@@ -6,7 +6,7 @@
 <head runat="server">
     <title></title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="customizar.css" <%-- linkea a la clase para el formato borde sombreado del contenedor del form  --%>
+    <link rel="stylesheet" href="customize.css" <%-- linkea a la clase para el formato borde sombreado del contenedor del form  --%>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -17,6 +17,7 @@
                     <div class="card-header-pills bg-dark text-white rounded-top d-flex align-items-center justify-content-center">
                         <h2>Login</h2>
                     </div>
+                    <br />
                     <div class="form-group" style="width:80%">
                         <label class="text-dark" for="emailLabel">Correo Electronico</label>
                         <div class="input-group mb-2">
