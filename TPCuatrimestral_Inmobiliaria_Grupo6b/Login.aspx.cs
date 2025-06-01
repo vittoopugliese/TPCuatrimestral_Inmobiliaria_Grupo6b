@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace TPCuatrimestral_Inmobiliaria_Grupo6b
 {
-    public partial class Loguin : System.Web.UI.Page
+    public partial class Login : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
