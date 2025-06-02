@@ -8,6 +8,7 @@ namespace Dominio
         public int IdUsuario { get; set; }
         public string Titulo { get; set; }
         public string Direccion { get; set; }
+        public string Ubicacion { get; set; }
         public string Precio { get; set; }
         public decimal PrecioNumerico { get; set; }
         public string Descripcion { get; set; }
@@ -28,8 +29,10 @@ namespace Dominio
         public Propiedad()
         {
             Id = 0;
+            IdUsuario = 0;
             Titulo = string.Empty;
             Direccion = string.Empty;
+            Ubicacion = string.Empty;
             Precio = string.Empty;
             PrecioNumerico = 0;
             Descripcion = string.Empty;
@@ -44,7 +47,6 @@ namespace Dominio
             Visitas = 0;
             Visible = true;
             FechaPublicacion = DateTime.Now;
-            IdUsuario = 0;
             FechaModificacion = DateTime.Now;
         }
 

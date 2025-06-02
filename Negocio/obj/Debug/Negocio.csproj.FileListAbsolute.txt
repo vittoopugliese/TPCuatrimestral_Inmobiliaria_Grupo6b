@@ -1,0 +1,9 @@
+D:\Escritorio\Program\FACULTAD\TPCuatrimestral_Inmobiliaria_Grupo6b\Negocio\bin\Debug\Negocio.dll
+D:\Escritorio\Program\FACULTAD\TPCuatrimestral_Inmobiliaria_Grupo6b\Negocio\bin\Debug\Negocio.pdb
+D:\Escritorio\Program\FACULTAD\TPCuatrimestral_Inmobiliaria_Grupo6b\Negocio\bin\Debug\Dominio.dll
+D:\Escritorio\Program\FACULTAD\TPCuatrimestral_Inmobiliaria_Grupo6b\Negocio\bin\Debug\Dominio.pdb
+D:\Escritorio\Program\FACULTAD\TPCuatrimestral_Inmobiliaria_Grupo6b\Negocio\obj\Debug\Negocio.csproj.AssemblyReference.cache
+D:\Escritorio\Program\FACULTAD\TPCuatrimestral_Inmobiliaria_Grupo6b\Negocio\obj\Debug\Negocio.csproj.CoreCompileInputs.cache
+D:\Escritorio\Program\FACULTAD\TPCuatrimestral_Inmobiliaria_Grupo6b\Negocio\obj\Debug\Negocio.csproj.Up2Date
+D:\Escritorio\Program\FACULTAD\TPCuatrimestral_Inmobiliaria_Grupo6b\Negocio\obj\Debug\Negocio.dll
+D:\Escritorio\Program\FACULTAD\TPCuatrimestral_Inmobiliaria_Grupo6b\Negocio\obj\Debug\Negocio.pdb
