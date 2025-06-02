@@ -4,18 +4,17 @@ namespace Dominio
 {
     public class Propiedad
     {
-        public int Id { get; set; }
+        public int IdPropiedad { get; set; }
         public int IdUsuario { get; set; }
         public string Titulo { get; set; }
         public string Direccion { get; set; }
         public string Ubicacion { get; set; }
-        public string Precio { get; set; }
-        public decimal PrecioNumerico { get; set; }
+        public decimal Precio { get; set; }
+        public string Moneda { get; set; }
         public string Descripcion { get; set; }
         public string Tipo { get; set; }
         public string TipoOperacion { get; set; }
-        public string Superficie { get; set; }
-        public string ImagenUrl { get; set; }
+        public string ImagenUrl { get; set; } // ver el tema de la lista de imagenes
         public string Localidad { get; set; }
         public string TipoDueno { get; set; }
         public string Email { get; set; }
@@ -26,19 +25,28 @@ namespace Dominio
         public DateTime FechaPublicacion { get; set; }
         public DateTime FechaModificacion { get; set; }
 
+        public int Ambientes { get; set; }
+        public decimal Sup_m2_Total { get; set; }
+        public decimal Sup_m2_Cubierto { get; set; }
+        public int Dormitorios { get; set; }
+        public int Baños { get; set; }
+        public bool ConPatio { get; set; }
+        public bool ConBalcon { get; set; }
+        public int AnosAntiguedad { get; set; }
+        public bool AptoCredito { get; set; }
+        public bool Reservada { get; set; }
+        public int IdProvincia { get; set; }
+
         public Propiedad()
         {
-            Id = 0;
+            IdPropiedad = 0;
             IdUsuario = 0;
             Titulo = string.Empty;
             Direccion = string.Empty;
             Ubicacion = string.Empty;
-            Precio = string.Empty;
-            PrecioNumerico = 0;
             Descripcion = string.Empty;
             Tipo = string.Empty;
             TipoOperacion = string.Empty;
-            Superficie = string.Empty;
             ImagenUrl = string.Empty;
             Localidad = string.Empty;
             TipoDueno = string.Empty;

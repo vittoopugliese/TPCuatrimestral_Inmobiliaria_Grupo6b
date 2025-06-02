@@ -195,7 +195,7 @@
                                         <div class="row">
                                             <div class="col-md-6 mb-2">
                                                 <p class="mb-1 small"><strong>Tipo:</strong> <%# Eval("Tipo") %></p>
-                                                <p class="mb-1 small"><strong>Superficie:</strong> <%# Eval("Superficie") %> m²</p>
+                                                <%--<p class="mb-1 small"><strong>Superficie:</strong> <%# Eval("Superficie") %> m²</p>--%>
                                                 <p class="mb-0 small"><strong>Publicado:</strong> <%# Eval("FechaPublicacion", "{0:dd/MM/yyyy}") %></p>
                                             </div>
                                             <div class="col-md-6">
