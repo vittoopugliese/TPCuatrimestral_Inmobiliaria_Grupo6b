@@ -7,3 +7,12 @@ D:\Escritorio\Program\FACULTAD\TPCuatrimestral_Inmobiliaria_Grupo6b\Negocio\obj\
 D:\Escritorio\Program\FACULTAD\TPCuatrimestral_Inmobiliaria_Grupo6b\Negocio\obj\Debug\Negocio.csproj.Up2Date
 D:\Escritorio\Program\FACULTAD\TPCuatrimestral_Inmobiliaria_Grupo6b\Negocio\obj\Debug\Negocio.dll
 D:\Escritorio\Program\FACULTAD\TPCuatrimestral_Inmobiliaria_Grupo6b\Negocio\obj\Debug\Negocio.pdb
+F:\Alex\source\TrabajoPracticoIntegrador\V5\Negocio\bin\Debug\Negocio.dll
+F:\Alex\source\TrabajoPracticoIntegrador\V5\Negocio\bin\Debug\Negocio.pdb
+F:\Alex\source\TrabajoPracticoIntegrador\V5\Negocio\bin\Debug\Dominio.dll
+F:\Alex\source\TrabajoPracticoIntegrador\V5\Negocio\bin\Debug\Dominio.pdb
+F:\Alex\source\TrabajoPracticoIntegrador\V5\Negocio\obj\Debug\Negocio.csproj.AssemblyReference.cache
+F:\Alex\source\TrabajoPracticoIntegrador\V5\Negocio\obj\Debug\Negocio.csproj.CoreCompileInputs.cache
+F:\Alex\source\TrabajoPracticoIntegrador\V5\Negocio\obj\Debug\Negocio.csproj.Up2Date
+F:\Alex\source\TrabajoPracticoIntegrador\V5\Negocio\obj\Debug\Negocio.dll
+F:\Alex\source\TrabajoPracticoIntegrador\V5\Negocio\obj\Debug\Negocio.pdb

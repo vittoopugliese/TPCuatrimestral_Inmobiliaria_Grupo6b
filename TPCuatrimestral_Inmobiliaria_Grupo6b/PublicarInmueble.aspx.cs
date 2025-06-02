@@ -13,5 +13,10 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
         {
 
         }
+
+        protected void btnGuardarPublicacion_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

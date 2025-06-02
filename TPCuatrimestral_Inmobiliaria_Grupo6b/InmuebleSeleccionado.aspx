@@ -6,16 +6,41 @@
     <div class="container" style="margin-top: 5rem">
 
 
-        <div class="card">
+        <div class="card shadow-lg">
             <div class="card-body">
                 <h4 class="card-title">Casa en Venta en Avellaneda</h4>
                 <p class="card-text">25 de Mayo 1350, Avellaneda</p>
                 <div class="row">
                     <div class="col-8">
+                        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <asp:Image ID="Image4" runat="server"
+    ImageUrl="https://cdn.pixabay.com/photo/2017/03/22/17/39/kitchen-2165756_960_720.jpg"
+    Width="100%" CssClass="rounded" />
+    </div>
+    <div class="carousel-item">
+      <asp:Image ID="Image2" runat="server"
+    ImageUrl="https://cdn.pixabay.com/photo/2016/11/29/03/53/house-1867187_1280.jpg"
+    Width="100%" CssClass="rounded" />
+    </div>
+    <div class="carousel-item">
+      <asp:Image ID="Image3" runat="server"
+    ImageUrl="https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_1280.jpg"
+    Width="100%" CssClass="rounded" />
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
 
-                        <asp:Image ID="Image1" runat="server"
-                            ImageUrl="https://tse3.mm.bing.net/th/id/OIP.YecF78KPK1f4B3Cu6Qj3BAHaFF?rs=1&pid=ImgDetMain"
-                            Width="100%" CssClass="rounded" />
+
                     </div>
                     <div class="col-4">
 
