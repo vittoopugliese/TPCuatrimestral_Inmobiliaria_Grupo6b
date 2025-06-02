@@ -35,7 +35,7 @@
                         <asp:LinkButton ID="LinkButtonRecordarContra" runat="server" CssClass="btn btn-link" style="font-size: 12px;">¿Olvidó contraseña?</asp:LinkButton>
                     </div>
                     <div class="form-group" align="center">   
-                        <asp:LinkButton ID="LinkButtonSinCuenta" runat="server" CssClass="btn btn-link" style="font-size: 12px;">¿Registrarse?</asp:LinkButton>
+                        <asp:LinkButton ID="LinkButtonSinCuenta" runat="server" CssClass="btn btn-link" href="Registro.aspx" style="font-size: 12px;">¿Registrarse?</asp:LinkButton>
                     </div>
 
                     <br>

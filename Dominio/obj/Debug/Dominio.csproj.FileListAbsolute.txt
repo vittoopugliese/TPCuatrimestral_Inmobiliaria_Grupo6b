@@ -10,3 +10,9 @@ F:\Alex\source\TrabajoPracticoIntegrador\V5\Dominio\obj\Debug\Dominio.csproj.Ass
 F:\Alex\source\TrabajoPracticoIntegrador\V5\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
 F:\Alex\source\TrabajoPracticoIntegrador\V5\Dominio\obj\Debug\Dominio.dll
 F:\Alex\source\TrabajoPracticoIntegrador\V5\Dominio\obj\Debug\Dominio.pdb
+C:\Users\nahue\Desktop\Mi carpeta - Nahuel\NMV - Personal\TUP UTN\Programacion_3\repo_TPC\TPC_Inmobiliaria\Dominio\bin\Debug\Dominio.dll
+C:\Users\nahue\Desktop\Mi carpeta - Nahuel\NMV - Personal\TUP UTN\Programacion_3\repo_TPC\TPC_Inmobiliaria\Dominio\bin\Debug\Dominio.pdb
+C:\Users\nahue\Desktop\Mi carpeta - Nahuel\NMV - Personal\TUP UTN\Programacion_3\repo_TPC\TPC_Inmobiliaria\Dominio\obj\Debug\Dominio.csproj.AssemblyReference.cache
+C:\Users\nahue\Desktop\Mi carpeta - Nahuel\NMV - Personal\TUP UTN\Programacion_3\repo_TPC\TPC_Inmobiliaria\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
+C:\Users\nahue\Desktop\Mi carpeta - Nahuel\NMV - Personal\TUP UTN\Programacion_3\repo_TPC\TPC_Inmobiliaria\Dominio\obj\Debug\Dominio.dll
+C:\Users\nahue\Desktop\Mi carpeta - Nahuel\NMV - Personal\TUP UTN\Programacion_3\repo_TPC\TPC_Inmobiliaria\Dominio\obj\Debug\Dominio.pdb

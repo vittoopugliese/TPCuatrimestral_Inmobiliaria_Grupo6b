@@ -127,6 +127,7 @@
     <Content Include="pictures\fondoCasa.png" />
     <Content Include="PublicacionesUsuarios.aspx" />
     <Content Include="PublicarInmueble.aspx" />
+    <Content Include="Registro.aspx" />
     <Content Include="ResultadosBusqueda.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -244,6 +245,13 @@
     </Compile>
     <Compile Include="PublicarInmueble.aspx.designer.cs">
       <DependentUpon>PublicarInmueble.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Registro.aspx.cs">
+      <DependentUpon>Registro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Registro.aspx.designer.cs">
+      <DependentUpon>Registro.aspx</DependentUpon>
     </Compile>
     <Compile Include="ResultadosBusqueda.aspx.cs">
       <DependentUpon>ResultadosBusqueda.aspx</DependentUpon>

@@ -376,3 +376,7 @@ F:\Alex\source\TrabajoPracticoIntegrador\V5\TPCuatrimestral_Inmobiliaria_Grupo6b
 F:\Alex\source\TrabajoPracticoIntegrador\V5\TPCuatrimestral_Inmobiliaria_Grupo6b\obj\Debug\TPCuatri.CE811C44.Up2Date
 F:\Alex\source\TrabajoPracticoIntegrador\V5\TPCuatrimestral_Inmobiliaria_Grupo6b\obj\Debug\TPCuatrimestral_Inmobiliaria_Grupo6b.dll
 F:\Alex\source\TrabajoPracticoIntegrador\V5\TPCuatrimestral_Inmobiliaria_Grupo6b\obj\Debug\TPCuatrimestral_Inmobiliaria_Grupo6b.pdb
+C:\Users\nahue\Desktop\Mi carpeta - Nahuel\NMV - Personal\TUP UTN\Programacion_3\repo_TPC\TPC_Inmobiliaria\TPCuatrimestral_Inmobiliaria_Grupo6b\bin\Dominio.dll
+C:\Users\nahue\Desktop\Mi carpeta - Nahuel\NMV - Personal\TUP UTN\Programacion_3\repo_TPC\TPC_Inmobiliaria\TPCuatrimestral_Inmobiliaria_Grupo6b\bin\Negocio.dll
+C:\Users\nahue\Desktop\Mi carpeta - Nahuel\NMV - Personal\TUP UTN\Programacion_3\repo_TPC\TPC_Inmobiliaria\TPCuatrimestral_Inmobiliaria_Grupo6b\bin\Dominio.pdb
+C:\Users\nahue\Desktop\Mi carpeta - Nahuel\NMV - Personal\TUP UTN\Programacion_3\repo_TPC\TPC_Inmobiliaria\TPCuatrimestral_Inmobiliaria_Grupo6b\bin\Negocio.pdb
