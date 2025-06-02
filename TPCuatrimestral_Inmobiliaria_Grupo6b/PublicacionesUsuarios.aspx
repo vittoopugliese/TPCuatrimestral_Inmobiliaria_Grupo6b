@@ -3,40 +3,49 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     
     <style>
-        .property-card {
-            width: 100%;
-            max-width: 540px;
-            margin: 15px;
-            display: inline-block;
-            vertical-align: top;
-        }
-
         /* el container interno del repetidor de cards */
-        .propiedades-container {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: center;
-            gap: 30px; 
-        }
-
-        .property-card .row {
-            display: block;
-        }
+         .propiedades-container {
+             display: flex;
+             flex-wrap: wrap;
+             align-items: center;
+             justify-content: center;
+             gap: 45px; 
+         }
 
         .property-image {
             border-radius: 10px 10px 0 0 !important;
             width: 100%;
-            height: 200px;
+            height: 100%;
+            max-height: 300px;
         }
 
+         .property-card {
+             width: 100%;
+             max-width: 594px;
+             margin: 0px 15px 0px 15px;
+             display: inline-block;
+             vertical-align: top;
+             transition: 150ms all ease-in-out;
+             box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+             border-radius: 10px !important;
+         }
+         
+         .property-card:hover {
+             box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+             transform: translateY(-2px);
+         }
+
+         .property-card .col-md-8 {
+             width: 100%;
+         }
+ 
         .property-card .col-md-8 {
             width: 100%;
         }
         
         .property-card:hover {
             box-shadow: 0 4px 15px rgba(0,0,0,0.12);
-            scale: 1.02;
+            scale: 1.01;
         }
         
         .property-image {
@@ -70,7 +79,7 @@
             padding: 22px;
             text-align: center;
             box-shadow: 0 4px 15px rgba(238, 108, 77, 0.3);
-            transition: 200ms all ease-in-out;
+            transition: 150ms all ease-in-out;
             user-select: none;
         }
         
@@ -80,21 +89,21 @@
             border-radius: 15px;
             padding: 25px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            transition: 200ms all ease-in-out;
+            transition: 150ms all ease-in-out;
             user-select: none;
         }
                 
         .stats-card:hover {
-            scale: 0.98;
+            scale: 1.01;
         }
 
         
         .account-info-card:hover {
-            scale: 0.98;
+            scale: 1.01;
         }
     </style>
 
-    <div class="container" style="margin-top: 3rem; margin-bottom: 3rem;">
+    <div class="container mt-5 mb-5">
         
         <div class="row mb-4">
             <div class="col-12">

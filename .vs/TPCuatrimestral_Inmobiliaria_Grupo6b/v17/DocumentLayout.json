@@ -1,16 +1,7 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\nahue\\Desktop\\Mi carpeta - Nahuel\\NMV - Personal\\TUP UTN\\Programacion_3\\repo_TPC\\TPC_Inmobiliaria\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{0ED45408-E867-47E6-8057-BDFA44D9E1E5}|TPCuatrimestral_Inmobiliaria_Grupo6b\\TPCuatrimestral_Inmobiliaria_Grupo6b.csproj|c:\\users\\nahue\\desktop\\mi carpeta - nahuel\\nmv - personal\\tup utn\\programacion_3\\repo_tpc\\tpc_inmobiliaria\\tpcuatrimestral_inmobiliaria_grupo6b\\registro.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{0ED45408-E867-47E6-8057-BDFA44D9E1E5}|TPCuatrimestral_Inmobiliaria_Grupo6b\\TPCuatrimestral_Inmobiliaria_Grupo6b.csproj|solutionrelative:tpcuatrimestral_inmobiliaria_grupo6b\\registro.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0ED45408-E867-47E6-8057-BDFA44D9E1E5}|TPCuatrimestral_Inmobiliaria_Grupo6b\\TPCuatrimestral_Inmobiliaria_Grupo6b.csproj|c:\\users\\nahue\\desktop\\mi carpeta - nahuel\\nmv - personal\\tup utn\\programacion_3\\repo_tpc\\tpc_inmobiliaria\\tpcuatrimestral_inmobiliaria_grupo6b\\customize.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{0ED45408-E867-47E6-8057-BDFA44D9E1E5}|TPCuatrimestral_Inmobiliaria_Grupo6b\\TPCuatrimestral_Inmobiliaria_Grupo6b.csproj|solutionrelative:tpcuatrimestral_inmobiliaria_grupo6b\\customize.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    }
-  ],
+  "WorkspaceRootPath": "D:\\Escritorio\\Program\\FACULTAD\\TPCuatrimestral_Inmobiliaria_Grupo6b\\",
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -18,7 +9,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -27,32 +18,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Customize.css",
-              "DocumentMoniker": "C:\\Users\\nahue\\Desktop\\Mi carpeta - Nahuel\\NMV - Personal\\TUP UTN\\Programacion_3\\repo_TPC\\TPC_Inmobiliaria\\TPCuatrimestral_Inmobiliaria_Grupo6b\\Customize.css",
-              "RelativeDocumentMoniker": "TPCuatrimestral_Inmobiliaria_Grupo6b\\Customize.css",
-              "ToolTip": "C:\\Users\\nahue\\Desktop\\Mi carpeta - Nahuel\\NMV - Personal\\TUP UTN\\Programacion_3\\repo_TPC\\TPC_Inmobiliaria\\TPCuatrimestral_Inmobiliaria_Grupo6b\\Customize.css",
-              "RelativeToolTip": "TPCuatrimestral_Inmobiliaria_Grupo6b\\Customize.css",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-06-02T04:49:03.6Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Registro.aspx",
-              "DocumentMoniker": "C:\\Users\\nahue\\Desktop\\Mi carpeta - Nahuel\\NMV - Personal\\TUP UTN\\Programacion_3\\repo_TPC\\TPC_Inmobiliaria\\TPCuatrimestral_Inmobiliaria_Grupo6b\\Registro.aspx",
-              "RelativeDocumentMoniker": "TPCuatrimestral_Inmobiliaria_Grupo6b\\Registro.aspx",
-              "ToolTip": "C:\\Users\\nahue\\Desktop\\Mi carpeta - Nahuel\\NMV - Personal\\TUP UTN\\Programacion_3\\repo_TPC\\TPC_Inmobiliaria\\TPCuatrimestral_Inmobiliaria_Grupo6b\\Registro.aspx",
-              "RelativeToolTip": "TPCuatrimestral_Inmobiliaria_Grupo6b\\Registro.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-06-02T04:36:40.207Z",
-              "EditorCaption": ""
             }
           ]
         }

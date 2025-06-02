@@ -1,5 +1,5 @@
 USE Inmobiliaria_TPC
-GO;
+GO
 
 INSERT INTO Rol (Descripcion) VALUES 
 ('Inquilino'),
