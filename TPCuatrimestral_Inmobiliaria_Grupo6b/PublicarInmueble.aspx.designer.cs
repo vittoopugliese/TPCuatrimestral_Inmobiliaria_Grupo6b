@@ -15,6 +15,15 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
     {
 
         /// <summary>
+        /// Control agregarImagen.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload agregarImagen;
+
+        /// <summary>
         /// Control btnGuardarPublicacion.
         /// </summary>
         /// <remarks>

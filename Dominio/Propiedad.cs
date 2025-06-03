@@ -39,7 +39,7 @@ namespace Dominio
 
         public Propiedad()
         {
-            IdPropiedad = 0;
+            IdPropiedad = 1;
             IdUsuario = 0;
             Titulo = string.Empty;
             Direccion = string.Empty;

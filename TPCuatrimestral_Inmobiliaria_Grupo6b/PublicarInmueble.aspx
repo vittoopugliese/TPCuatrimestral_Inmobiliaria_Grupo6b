@@ -17,7 +17,7 @@
 
                 <label for="inputState" class="form-label" style="margin-top: 15px">Tipo de Operación</label>
 
-                <form>
+                <div>
                     <div>
 <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
   <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
@@ -65,13 +65,14 @@
                                 <label type="text" class="form-label" style="margin-top: 15px">Ingresá las Imágenes</label>
                             <div class="input-group">
 
-                                <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                               
+                                <asp:FileUpload ID="agregarImagen" cssClass="form-control" runat="server" AllowMultiple="true" />
                             </div>
  
                                 <asp:Button Text="Guardar y Publicar"  CssClass="btn btn-dark" ID="btnGuardarPublicacion" runat="server" OnClick="btnGuardarPublicacion_Click" style="margin-top: 35px; width:500px"/>
                                 
                         </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
