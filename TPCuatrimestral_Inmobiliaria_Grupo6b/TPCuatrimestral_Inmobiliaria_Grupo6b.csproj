@@ -125,6 +125,7 @@
     <Content Include="InmuebleSeleccionado.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="pictures\fondoCasa.png" />
+    <Content Include="pictures\fondoDefault.png" />
     <Content Include="PublicacionesUsuarios.aspx" />
     <Content Include="PublicarInmueble.aspx" />
     <Content Include="Registro.aspx" />
