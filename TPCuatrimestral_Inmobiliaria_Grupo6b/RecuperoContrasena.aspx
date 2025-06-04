@@ -35,40 +35,21 @@
             <div align="center" class="container bg-light boxshadow col-12 col-sm-8 col-md-6 col-lg-4 col-xl-3" style="border-radius: 15px; padding: 0; max-width: 400px;">
                 <div>
                         <div class="text-white rounded-top d-flex align-items-center justify-content-center" style="padding: 15px; background-color: #121212;">
-                            <h2 class="mb-0">Login</h2>
+                            <h2 class="mb-0">Recuperar contraseña</h2>
                         </div>
                     
                     <div class="px-4 py-4">
                         <div class="form-group mb-3">
-                            <label class="text-dark form-label" for="emailLabel">Correo Electronico</label>
+                            <label class="text-dark form-label" for="emailLabel">Si esta registrado le eviaremos su contraseña al E-Mail</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">@</div>
                                 </div>
-                                <asp:TextBox ID="TextBoxCorreo" runat="server" CssClass="form-control" placeholder="Ingrese su correo"></asp:TextBox>
+                                <asp:TextBox ID="TextBoxCorreo" runat="server" CssClass="form-control" placeholder="Ingrese su E-Mail"></asp:TextBox>
                             </div>
-                        </div>
+                        </div>                 
                         
-                        <div class="form-group mb-4">
-                            <label class="text-dark form-label" for="contraLabel">Contraseña</label>
-                            <asp:TextBox ID="TextBoxContra" runat="server" CssClass="form-control" placeholder="Ingrese su contraseña" TextMode="Password"></asp:TextBox>
-                        </div>
-
-                        <div class="text-center mb-2">   
-                            <asp:LinkButton ID="LinkButtonRecordarContra" runat="server" CssClass="btn btn-link p-0" href="RecuperoContrasena.aspx" style="font-size: 12px; text-decoration: none;">¿Olvidó contraseña?</asp:LinkButton>
-                        </div>
-                        
-                        <div class="text-center mb-4">   
-                            <asp:LinkButton ID="LinkButtonSinCuenta" runat="server" CssClass="btn btn-link p-0" href="Registro.aspx" style="font-size: 12px; text-decoration: none;">¿Registrarse?</asp:LinkButton>
-                        </div>
-
-<%--   Boton de recordarme (pendiente, si llego lo agrego)    
-                        <div class="form-group form-check mb-3">
-                            <asp:CheckBox ID="CheckBoxRecordar" runat="server" CssClass="form-check-input" />
-                            <label class="form-check-label" for="passLabel">Recordarme?</label>
-                        </div>--%>
-                        
-                             <asp:Button ID="ButtonIngresar" runat="server" Text="Ingresar" CssClass="btn btn-primary w-100" BackColor="#121212" />
+                             <asp:Button ID="ButtonEnviar" runat="server" Text="Enviar" CssClass="btn btn-primary w-100" BackColor="#121212" />
                     </div>
                 </div>
             </div>
@@ -78,7 +59,7 @@
         <script>
             document.addEventListener("keydown", function (event) {
                 if (event.key === "Escape") {
-                    location.replace("Default.aspx"); // Ajusta la ruta según corresponda
+                    location.replace("Login.aspx"); // Ajusta la ruta según corresponda
                 }
             });
         </script>

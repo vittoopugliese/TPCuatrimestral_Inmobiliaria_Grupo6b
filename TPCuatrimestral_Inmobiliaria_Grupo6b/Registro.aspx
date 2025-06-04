@@ -31,11 +31,13 @@
 </head>
 <body>
     <form id="form1" runat="server">
+
+
         <div class="d-flex justify-content-center align-items-center" style="min-height: 100vh; padding: 10px;">
             <div align="center" class="container bg-light boxshadow col-12 col-md-10 col-lg-8 col-xl-6" style="border-radius: 15px; padding: 0; max-width: 800px;">
                 
                 <div>
-                    <div class="text-white d-flex align-items-center justify-content-center" style="border-top-left-radius: 15px; border-top-right-radius: 15px; padding: 10px; margin: 0; background-color: #ee6c4d;">
+                    <div class="text-white d-flex align-items-center justify-content-center" style="border-top-left-radius: 15px; border-top-right-radius: 15px; padding: 10px; margin: 0; background-color: #121212;">
                         <h5 class="mb-0">Registro de usuario</h5>
                     </div>
                     
@@ -96,7 +98,7 @@
                                 <asp:DropDownList ID="DropDownListRol" runat="server" CssClass="form-control"></asp:DropDownList>
                             </div>
                             <div class="col-12 col-md-6 d-flex align-items-end">
-                                <asp:Button ID="ButtonRegistrar" runat="server" Text="Registrar" CssClass="btn btn-primary w-100" BackColor="#ee6c4d" />
+                                <asp:Button ID="ButtonRegistrar" runat="server" Text="Registrar" CssClass="btn btn-primary w-100" BackColor="#121212" />
                             </div>
                         </div>
                     </div>
@@ -104,5 +106,14 @@
             </div>
         </div>
     </form>
+
+        <script>
+            document.addEventListener("keydown", function (event) {
+                if (event.key === "Escape") {
+                    location.replace("Login.aspx");
+                }
+            });
+        </script>
+
 </body>
 </html>

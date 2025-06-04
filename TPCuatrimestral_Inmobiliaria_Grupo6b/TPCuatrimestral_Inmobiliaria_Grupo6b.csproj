@@ -128,6 +128,7 @@
     <Content Include="pictures\fondoDefault.png" />
     <Content Include="PublicacionesUsuarios.aspx" />
     <Content Include="PublicarInmueble.aspx" />
+    <Content Include="RecuperoContrasena.aspx" />
     <Content Include="Registro.aspx" />
     <Content Include="ResultadosBusqueda.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -246,6 +247,13 @@
     </Compile>
     <Compile Include="PublicarInmueble.aspx.designer.cs">
       <DependentUpon>PublicarInmueble.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RecuperoContrasena.aspx.cs">
+      <DependentUpon>RecuperoContrasena.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RecuperoContrasena.aspx.designer.cs">
+      <DependentUpon>RecuperoContrasena.aspx</DependentUpon>
     </Compile>
     <Compile Include="Registro.aspx.cs">
       <DependentUpon>Registro.aspx</DependentUpon>
