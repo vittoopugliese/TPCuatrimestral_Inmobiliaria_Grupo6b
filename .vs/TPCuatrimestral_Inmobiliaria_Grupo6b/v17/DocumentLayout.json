@@ -3,20 +3,8 @@
   "WorkspaceRootPath": "D:\\Escritorio\\Program\\FACULTAD\\TPCuatrimestral_Inmobiliaria_Grupo6b\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1FBF181A-B49D-422F-A2D2-DEB96C163865}|Negocio\\Negocio.csproj|d:\\escritorio\\program\\facultad\\tpcuatrimestral_inmobiliaria_grupo6b\\negocio\\propiedadnegocio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1FBF181A-B49D-422F-A2D2-DEB96C163865}|Negocio\\Negocio.csproj|solutionrelative:negocio\\propiedadnegocio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0ED45408-E867-47E6-8057-BDFA44D9E1E5}|TPCuatrimestral_Inmobiliaria_Grupo6b\\TPCuatrimestral_Inmobiliaria_Grupo6b.csproj|d:\\escritorio\\program\\facultad\\tpcuatrimestral_inmobiliaria_grupo6b\\tpcuatrimestral_inmobiliaria_grupo6b\\default.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0ED45408-E867-47E6-8057-BDFA44D9E1E5}|TPCuatrimestral_Inmobiliaria_Grupo6b\\TPCuatrimestral_Inmobiliaria_Grupo6b.csproj|solutionrelative:tpcuatrimestral_inmobiliaria_grupo6b\\default.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{0ED45408-E867-47E6-8057-BDFA44D9E1E5}|TPCuatrimestral_Inmobiliaria_Grupo6b\\TPCuatrimestral_Inmobiliaria_Grupo6b.csproj|d:\\escritorio\\program\\facultad\\tpcuatrimestral_inmobiliaria_grupo6b\\tpcuatrimestral_inmobiliaria_grupo6b\\default.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{0ED45408-E867-47E6-8057-BDFA44D9E1E5}|TPCuatrimestral_Inmobiliaria_Grupo6b\\TPCuatrimestral_Inmobiliaria_Grupo6b.csproj|solutionrelative:tpcuatrimestral_inmobiliaria_grupo6b\\default.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0ED45408-E867-47E6-8057-BDFA44D9E1E5}|TPCuatrimestral_Inmobiliaria_Grupo6b\\TPCuatrimestral_Inmobiliaria_Grupo6b.csproj|D:\\Escritorio\\Program\\FACULTAD\\TPCuatrimestral_Inmobiliaria_Grupo6b\\tpcuatrimestral_inmobiliaria_grupo6b\\site.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
-      "RelativeMoniker": "D:0:0:{0ED45408-E867-47E6-8057-BDFA44D9E1E5}|TPCuatrimestral_Inmobiliaria_Grupo6b\\TPCuatrimestral_Inmobiliaria_Grupo6b.csproj|solutionrelative:tpcuatrimestral_inmobiliaria_grupo6b\\site.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +14,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,33 +26,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Default.aspx.cs",
-              "DocumentMoniker": "D:\\Escritorio\\Program\\FACULTAD\\TPCuatrimestral_Inmobiliaria_Grupo6b\\TPCuatrimestral_Inmobiliaria_Grupo6b\\Default.aspx.cs",
-              "RelativeDocumentMoniker": "TPCuatrimestral_Inmobiliaria_Grupo6b\\Default.aspx.cs",
-              "ToolTip": "D:\\Escritorio\\Program\\FACULTAD\\TPCuatrimestral_Inmobiliaria_Grupo6b\\TPCuatrimestral_Inmobiliaria_Grupo6b\\Default.aspx.cs",
-              "RelativeToolTip": "TPCuatrimestral_Inmobiliaria_Grupo6b\\Default.aspx.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-04T01:49:16.847Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "PropiedadNegocio.cs",
-              "DocumentMoniker": "D:\\Escritorio\\Program\\FACULTAD\\TPCuatrimestral_Inmobiliaria_Grupo6b\\Negocio\\PropiedadNegocio.cs",
-              "RelativeDocumentMoniker": "Negocio\\PropiedadNegocio.cs",
-              "ToolTip": "D:\\Escritorio\\Program\\FACULTAD\\TPCuatrimestral_Inmobiliaria_Grupo6b\\Negocio\\PropiedadNegocio.cs",
-              "RelativeToolTip": "Negocio\\PropiedadNegocio.cs",
-              "ViewState": "AgIAAEUAAAAAAAAAAAAowF4AAABKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-04T01:48:20.662Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
               "Title": "Default.aspx",
               "DocumentMoniker": "D:\\Escritorio\\Program\\FACULTAD\\TPCuatrimestral_Inmobiliaria_Grupo6b\\TPCuatrimestral_Inmobiliaria_Grupo6b\\Default.aspx",
               "RelativeDocumentMoniker": "TPCuatrimestral_Inmobiliaria_Grupo6b\\Default.aspx",
@@ -72,20 +34,7 @@
               "RelativeToolTip": "TPCuatrimestral_Inmobiliaria_Grupo6b\\Default.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-06-04T01:25:15.487Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Site.Master",
-              "DocumentMoniker": "D:\\Escritorio\\Program\\FACULTAD\\TPCuatrimestral_Inmobiliaria_Grupo6b\\TPCuatrimestral_Inmobiliaria_Grupo6b\\Site.Master",
-              "RelativeDocumentMoniker": "TPCuatrimestral_Inmobiliaria_Grupo6b\\Site.Master",
-              "ToolTip": "D:\\Escritorio\\Program\\FACULTAD\\TPCuatrimestral_Inmobiliaria_Grupo6b\\TPCuatrimestral_Inmobiliaria_Grupo6b\\Site.Master",
-              "RelativeToolTip": "TPCuatrimestral_Inmobiliaria_Grupo6b\\Site.Master",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-06-04T01:18:07.798Z",
+              "WhenOpened": "2025-06-04T02:16:50.216Z",
               "EditorCaption": ""
             }
           ]
