@@ -23,19 +23,19 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
 
             try
             {
-             
+
                 string ruta = Server.MapPath("./pictures/");
                 List<Imagenes> imagenesSubidas = new List<Imagenes>(); // Lista para guardar los nombres
                 Propiedad propiedad = new Propiedad();
                 foreach (HttpPostedFile archivo in agregarImagen.PostedFiles)
                 {
-                
+
                     if (archivo.ContentLength > 0) // Verifica que el archivo no esté vacío
                     {
                         // Genera un nombre único para evitar sobreescrituras (ej: GUID + ID de propiedad)
-                        
+
                         string nombreArchivo = $"{propiedad.IdPropiedad}-{Guid.NewGuid()}.jpeg";
-                        
+
                         string rutaCompleta = Path.Combine(ruta, nombreArchivo);
 
                         archivo.SaveAs(rutaCompleta); // Guarda el archivo

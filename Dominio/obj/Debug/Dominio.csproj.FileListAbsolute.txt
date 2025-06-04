@@ -22,3 +22,9 @@ D:\Escritorio\Program\FACULTAD\TPCuatrimestral_Inmobiliaria_Grupo6b\Dominio\obj\
 D:\Escritorio\Program\FACULTAD\TPCuatrimestral_Inmobiliaria_Grupo6b\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
 D:\Escritorio\Program\FACULTAD\TPCuatrimestral_Inmobiliaria_Grupo6b\Dominio\obj\Debug\Dominio.dll
 D:\Escritorio\Program\FACULTAD\TPCuatrimestral_Inmobiliaria_Grupo6b\Dominio\obj\Debug\Dominio.pdb
+F:\Alex\source\TrabajoPracticoIntegrador\V8\Dominio\bin\Debug\Dominio.dll
+F:\Alex\source\TrabajoPracticoIntegrador\V8\Dominio\bin\Debug\Dominio.pdb
+F:\Alex\source\TrabajoPracticoIntegrador\V8\Dominio\obj\Debug\Dominio.csproj.AssemblyReference.cache
+F:\Alex\source\TrabajoPracticoIntegrador\V8\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
+F:\Alex\source\TrabajoPracticoIntegrador\V8\Dominio\obj\Debug\Dominio.dll
+F:\Alex\source\TrabajoPracticoIntegrador\V8\Dominio\obj\Debug\Dominio.pdb

@@ -9,6 +9,8 @@ namespace Dominio
     public class Imagenes
     {
         public string nombreImagen { get; set; }
+        public int idImagen { get; set; }
+        public int idPropiedadImagen { get; set; }
 
     }
 }
