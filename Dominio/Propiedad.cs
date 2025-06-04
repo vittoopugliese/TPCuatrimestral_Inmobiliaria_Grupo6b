@@ -12,7 +12,7 @@ namespace Dominio
         public decimal Precio { get; set; }
         public string Moneda { get; set; }
         public string Descripcion { get; set; }
-        public string Tipo { get; set; }
+        public int IdTipo { get; set; }
         public string TipoOperacion { get; set; }
         public string ImagenUrl { get; set; } // ver el tema de la lista de imagenes
         public string Localidad { get; set; }
@@ -36,27 +36,6 @@ namespace Dominio
         public bool AptoCredito { get; set; }
         public bool Reservada { get; set; }
         public int IdProvincia { get; set; }
-
-        public Propiedad()
-        {
-            IdPropiedad = 1;
-            IdUsuario = 0;
-            Titulo = string.Empty;
-            Direccion = string.Empty;
-            Ubicacion = string.Empty;
-            Descripcion = string.Empty;
-            Tipo = string.Empty;
-            TipoOperacion = string.Empty;
-            ImagenUrl = string.Empty;
-            Localidad = string.Empty;
-            TipoDueno = string.Empty;
-            Email = string.Empty;
-            WhatsApp = string.Empty;
-            Visitas = 0;
-            Visible = true;
-            FechaPublicacion = DateTime.Now;
-            FechaModificacion = DateTime.Now;
-        }
 
     }
 }

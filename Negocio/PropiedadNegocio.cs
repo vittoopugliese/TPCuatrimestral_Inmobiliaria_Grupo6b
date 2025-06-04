@@ -7,109 +7,133 @@ namespace Negocio
 {
     public class PropiedadNegocio
     {
-        private BaseDeDatos BaseDeDatos;
+        private BaseDeDatos db;
 
         public PropiedadNegocio()
         {
-            BaseDeDatos = new BaseDeDatos();
+            db = new BaseDeDatos();
         }
 
         public List<Propiedad> listar()
         {
-            return GenerarDatosDePrueba();
+            List<Propiedad> propiedades = new List<Propiedad>();
+
+            try
+            {
+                db.setearConsulta("SELECT * FROM PROPIEDAD");
+                db.ejecutarLectura();
+
+                while (db.Lector.Read())
+                {
+                    Propiedad propiedad = new Propiedad();
+
+                    propiedad.IdPropiedad = (int)db.Lector["IdPropiedad"];
+                    propiedad.Descripcion = db.Lector["Descripcion"].ToString();
+                    propiedad.Ambientes = (int)db.Lector["Ambientes"];
+                    propiedad.Sup_m2_Total = Convert.ToDecimal(db.Lector["Sup_m2_Total"]);
+                    propiedad.Sup_m2_Cubierto = Convert.ToDecimal(db.Lector["Sup_m2_Cubierto"]);
+                    propiedad.Dormitorios = (int)db.Lector["Dormitorios"];
+                    propiedad.Baños = (int)db.Lector["Baños"];
+                    propiedad.ConPatio = Convert.ToBoolean(db.Lector["ConPatio"]);
+                    propiedad.ConBalcon = Convert.ToBoolean(db.Lector["ConBalcon"]);
+                    propiedad.IdTipo = (int)db.Lector["IdTipo"];
+                    propiedad.Direccion = db.Lector["Direccion"].ToString();
+                    propiedad.Localidad = db.Lector["Localidad"].ToString();
+                    propiedad.IdProvincia = (int)db.Lector["IdProvincia"];
+                    propiedad.AnosAntiguedad = (int)db.Lector["AnosAntiguedad"];
+                    propiedad.AptoCredito = Convert.ToBoolean(db.Lector["AptoCredito"]);
+                    propiedad.Reservada = Convert.ToBoolean(db.Lector["Reservada"]);
+                    propiedad.IdUsuario = (int)db.Lector["IdUsuario"];
+                    propiedad.Titulo = db.Lector["Titulo"].ToString();
+                    propiedad.Ubicacion = db.Lector["Ubicacion"].ToString();
+                    propiedad.Precio = Convert.ToDecimal(db.Lector["Precio"]);
+                    propiedad.Moneda = db.Lector["Moneda"].ToString();
+                    propiedad.TipoOperacion = db.Lector["TipoOperacion"].ToString();
+                    propiedad.ImagenUrl = db.Lector["ImagenUrl"].ToString();
+                    propiedad.TipoDueno = db.Lector["TipoDueno"].ToString();
+                    propiedad.Email = db.Lector["Email"].ToString();
+                    propiedad.WhatsApp = db.Lector["WhatsApp"].ToString();
+                    propiedad.Visitas = (int)db.Lector["Visitas"];
+                    propiedad.Visible = Convert.ToBoolean(db.Lector["Visible"]);
+                    propiedad.Eliminada = Convert.ToBoolean(db.Lector["Eliminada"]);
+                    propiedad.FechaPublicacion = Convert.ToDateTime(db.Lector["FechaPublicacion"]);
+                    propiedad.FechaModificacion = Convert.ToDateTime(db.Lector["FechaModificacion"]);
+
+                    propiedades.Add(propiedad);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al listar propiedades: " + ex.Message);
+            }
+            finally
+            {
+                db.cerrarConexion();
+            }
+
+            return propiedades;
         }
 
-        private List<Propiedad> GenerarDatosDePrueba()
+        public List<Propiedad> listarDestacadas()
         {
-            return new List<Propiedad>
+            List<Propiedad> propiedades = new List<Propiedad>();
+
+            try
             {
-                new Propiedad
+                db.setearConsulta("SELECT * FROM PROPIEDAD");
+                db.ejecutarLectura();
+
+                while (db.Lector.Read())
                 {
-                    IdPropiedad = 1,
-                    Titulo = "Departamento 2 ambientes moderno",
-                    Direccion = "Av. Corrales 3983",
-                    Ubicacion = "Devoto, CABA",
-                    Precio = 150000,
-                    Descripcion = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                    Tipo = "Departamento",
-                    TipoOperacion = "Venta",
-                    ImagenUrl = "https://img.jamesedition.com/listing_images/2025/04/11/16/11/58/c994a270-0cd5-49f5-a35a-d7bfbbc0b03f/je/1900xxs.jpg",
-                    Localidad = "CABA",
-                    TipoDueno = "Dueño directo",
-                    Email = "propietario1@email.com",
-                    WhatsApp = "5491123456789",
-                    Visitas = 245,
-                    Visible = true,
-                    Eliminada = false,
-                    FechaPublicacion = DateTime.Now.AddDays(-15),
-                    IdUsuario = 1
-                },
-                new Propiedad
-                {
-                    IdPropiedad = 2,
-                    Titulo = "Casa familiar en zona residencial",
-                    Direccion = "Belgrano 852",
-                    Ubicacion = "San Isidro, CABA",
-                    Precio = 280000,
-                    Descripcion = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                    Tipo = "Casa",
-                    TipoOperacion = "Venta",
-                    ImagenUrl = "https://img.jamesedition.com/listing_images/2025/04/11/16/11/59/0cc904d5-448a-438e-811f-e6ce6961ddab/je/1900xxs.jpg",
-                    Localidad = "Buenos Aires",
-                    TipoDueno = "Inmobiliaria",
-                    Email = "inmobiliaria@email.com",
-                    WhatsApp = "5491187654321",
-                    Visitas = 89,
-                    Visible = true,
-                    Eliminada = false,
-                    FechaPublicacion = DateTime.Now.AddDays(-8),
-                    IdUsuario = 1
-                },
-                new Propiedad
-                {
-                    IdPropiedad = 3,
-                    Titulo = "Loft moderno estilo industrial",
-                    Direccion = "Av. Corrientes 3500",
-                    Ubicacion = " Villa Crespo, CABA",
-                    Precio = 1200,
-                    Descripcion = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                    Tipo = "Loft",
-                    TipoOperacion = "Alquiler",
-                    ImagenUrl = "https://img-v2.gtsstatic.net/reno/imagereader.aspx?url=https%3A%2F%2Fm.sothebysrealty.com%2F1103i215%2Ff8c4r2phgf03m0tqmh51txasm6i215&w=640&q=75&option=N&permitphotoenlargement=false&fallbackimageurl=https%3A%2F%2Fwww.sothebysrealty.com%2Fassets%2Fimages%2Fcommon%2Fnophoto%2Flisting.jpg",
-                    Localidad = "CABA",
-                    TipoDueno = "Dueño directo",
-                    Email = "propietario3@email.com",
-                    WhatsApp = "5491156789012",
-                    Visitas = 156,
-                    Visible = false,
-                    Eliminada = false,
-                    FechaPublicacion = DateTime.Now.AddDays(-22),
-                    IdUsuario = 2
-                },
-                new Propiedad
-                {
-                    IdPropiedad = 1,
-                    Titulo = "Departamento 2 ambientes moderno",
-                    Direccion = "Av. Corrales 3983",
-                    Ubicacion = "Devoto, CABA",
-                    Precio = 150000,
-                    Descripcion = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                    Tipo = "Departamento",
-                    TipoOperacion = "Venta",
-                    ImagenUrl = "https://img.jamesedition.com/listing_images/2025/04/11/16/11/58/c994a270-0cd5-49f5-a35a-d7bfbbc0b03f/je/1900xxs.jpg",
-                    Localidad = "CABA",
-                    TipoDueno = "Dueño directo",
-                    Email = "propietario1@email.com",
-                    WhatsApp = "5491123456789",
-                    Visitas = 245,
-                    Visible = true,
-                    Eliminada = false,
-                    FechaPublicacion = DateTime.Now.AddDays(-15),
-                    IdUsuario = 1
-                },
-            };
+                    Propiedad propiedad = new Propiedad();
+
+                    propiedad.IdPropiedad = (int)db.Lector["IdPropiedad"];
+                    propiedad.Descripcion = db.Lector["Descripcion"].ToString();
+                    propiedad.Ambientes = (int)db.Lector["Ambientes"];
+                    propiedad.Sup_m2_Total = Convert.ToDecimal(db.Lector["Sup_m2_Total"]);
+                    propiedad.Sup_m2_Cubierto = Convert.ToDecimal(db.Lector["Sup_m2_Cubierto"]);
+                    propiedad.Dormitorios = (int)db.Lector["Dormitorios"];
+                    propiedad.Baños = (int)db.Lector["Baños"];
+                    propiedad.ConPatio = Convert.ToBoolean(db.Lector["ConPatio"]);
+                    propiedad.ConBalcon = Convert.ToBoolean(db.Lector["ConBalcon"]);
+                    propiedad.IdTipo = (int)db.Lector["IdTipo"];
+                    propiedad.Direccion = db.Lector["Direccion"].ToString();
+                    propiedad.Localidad = db.Lector["Localidad"].ToString();
+                    propiedad.IdProvincia = (int)db.Lector["IdProvincia"];
+                    propiedad.AnosAntiguedad = (int)db.Lector["AnosAntiguedad"];
+                    propiedad.AptoCredito = Convert.ToBoolean(db.Lector["AptoCredito"]);
+                    propiedad.Reservada = Convert.ToBoolean(db.Lector["Reservada"]);
+                    propiedad.IdUsuario = (int)db.Lector["IdUsuario"];
+                    propiedad.Titulo = db.Lector["Titulo"].ToString();
+                    propiedad.Ubicacion = db.Lector["Ubicacion"].ToString();
+                    propiedad.Precio = Convert.ToDecimal(db.Lector["Precio"]);
+                    propiedad.Moneda = db.Lector["Moneda"].ToString();
+                    propiedad.TipoOperacion = db.Lector["TipoOperacion"].ToString();
+                    propiedad.ImagenUrl = db.Lector["ImagenUrl"].ToString();
+                    propiedad.TipoDueno = db.Lector["TipoDueno"].ToString();
+                    propiedad.Email = db.Lector["Email"].ToString();
+                    propiedad.WhatsApp = db.Lector["WhatsApp"].ToString();
+                    propiedad.Visitas = (int)db.Lector["Visitas"];
+                    propiedad.Visible = Convert.ToBoolean(db.Lector["Visible"]);
+                    propiedad.Eliminada = Convert.ToBoolean(db.Lector["Eliminada"]);
+                    propiedad.FechaPublicacion = Convert.ToDateTime(db.Lector["FechaPublicacion"]);
+                    propiedad.FechaModificacion = Convert.ToDateTime(db.Lector["FechaModificacion"]);
+
+                    propiedades.Add(propiedad);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al listar propiedades: " + ex.Message);
+            }
+            finally
+            {
+                db.cerrarConexion();
+            }
+
+            return propiedades;
         }
+
 
     }
-
 }

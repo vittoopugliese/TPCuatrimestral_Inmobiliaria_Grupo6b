@@ -1,4 +1,4 @@
-<%@ Page Title="Mis Publicaciones" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="PublicacionesUsuario.aspx.cs" Inherits="TPCuatrimestral_Inmobiliaria_Grupo6b.PublicacionesUsuarios" %>
+<%@ Page Title="Mis Publicaciones" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="PublicacionesUsuarios.aspx.cs" Inherits="TPCuatrimestral_Inmobiliaria_Grupo6b.PublicacionesUsuarios" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     
@@ -156,14 +156,13 @@
                                             </div>
                                         </div>
                                         
-                                        <p class="fs-4 mb-2"><%# Eval("Precio") %></p>
+                                        <b class="fs-4 mb-2">$<%# Eval("Precio") %></b>
                                         
                                         <p class="card-text text-muted mb-3"><%# Eval("Descripcion") %></p>
                                         
                                         <div class="row">
                                             <div class="col-md-6 mb-2">
-                                                <p class="mb-1 small"><strong>Tipo:</strong> <%# Eval("Tipo") %></p>
-                                                <p class="mb-1 small"><strong>Superficie:</strong> <%# Eval("Superficie") %> m²</p>
+                                                <p class="mb-1 small"><strong>Dormitorios:</strong> <%# Eval("Dormitorios") %></p>
                                                 <p class="mb-0 small"><strong>Publicado:</strong> <%# Eval("FechaPublicacion", "{0:dd/MM/yyyy}") %></p>
                                             </div>
                                             <div class="col-md-6">
@@ -181,15 +180,12 @@
                 
                 <asp:Panel ID="pnlSinPropiedades" runat="server" Visible="false" CssClass="text-center py-5">
                     <div class="alert alert-info">
-                        <h4>No tienes publicaciones activas</h4>
-                        <p>¡Publica tu primera propiedad y comienza a recibir consultas!</p>
+                        <h4>No tenés publicaciones activas</h4>
+                        <p>¡Publicá tu primera propiedad y comenzá a recibir consultas!</p>
                     </div>
                 </asp:Panel>
             </div>
         </div>
         
     </div>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
 </asp:Content> 

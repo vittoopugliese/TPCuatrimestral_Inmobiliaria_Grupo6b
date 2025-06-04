@@ -39,7 +39,7 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                 pnlSinResultados.Visible = true;
                 rptPropiedades.DataSource = null;
                 rptPropiedades.DataBind();
-                lblResultadosCount.Text = "20";
+                lblResultadosCount.Text = "0";
             }
         }
 
@@ -49,12 +49,11 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
             RegistroNegocio registroNegocio = new RegistroNegocio();
             List<KeyValuePair<int, string>> provincias = registroNegocio.ObtenerProvincias();
 
-            DropDownListProvincia.Items.Clear();
-            DropDownListProvincia.Items.Add(new ListItem("Selecciona una provincia", ""));
+            ddlProvincia.Items.Clear();
 
             foreach (var provincia in provincias)
             {
-                DropDownListProvincia.Items.Add(new ListItem(provincia.Value, provincia.Key.ToString()));
+                ddlProvincia.Items.Add(new ListItem(provincia.Value, provincia.Key.ToString()));
             }
         }
 
@@ -63,13 +62,6 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
         {
         }
 
-        protected void btnLimpiarFiltros_Click(object sender, EventArgs e)
-        {
-            DropDownListProvincia.SelectedIndex = 0;
-            ddlOperacion.SelectedIndex = 0;
-            ddlTipoInmueble.SelectedIndex = 0;
-            ddlPrecio.SelectedIndex = 0;
-        }
 
     }
 }

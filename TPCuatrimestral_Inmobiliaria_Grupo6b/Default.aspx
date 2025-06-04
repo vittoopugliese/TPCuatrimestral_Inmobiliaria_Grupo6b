@@ -1,24 +1,23 @@
 ﻿<%@ Page Title="Inmobiliaria" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="TPCuatrimestral_Inmobiliaria_Grupo6b._Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-
     <!-- Zona central donde tenemos el buscador, imagen, etc -->
-    <div class="backing py-5 text-center">
+    <div class="backing py-5 text-center d-flex flex-column justify-content-center align-items-center">
             
             <style>
                 .backing {
-                    background-image: url('pictures/fondoCasa.png');
+                    background-image: url("./pictures/fondoCasaModerna.png");
                     background-size: cover;
                     background-position: center;
                     background-repeat: no-repeat;
-                    height: 400px;
+                    height: 754px;
                     position: relative;
                 }
             </style>
 
         <div class="container">
-            <h1 class="display-5" style="color: black; font-weight: bold;">Encontrá el hogar de tus sueños</h1>
-            <p class="lead" style="color: black; font-weight: bold;">Las mejores ofertas inmobiliarias de Argentina</p>
+            <h1 class="display-5 text-light fw-bold fs-1">Encontrá el hogar de tus sueños</h1>
+            <p class="lead text-light fs-3">Las mejores ofertas inmobiliarias de la Argentina</p>
 
             <!-- codigo para boton BUSCAR, aca empieza el div -->
 
@@ -36,11 +35,12 @@
                     <asp:Button ID="btnBuscar" runat="server" Text="Buscar" CssClass="btn btn-seteado w-100" />
                 </div>
             </div>
+
         </div>
     </div>
 
     <!-- Propiedades destacadas: abajo podemos agregar las cards con el comando foreach como hizo Maxi en su video -->
-    <div class="container py-5">
+    <div class="container py-3">
         <h2 class="mb-4">Propiedades destacadas</h2>
         <div class="row g-4">
 
@@ -55,7 +55,6 @@
                     </div>
                 </div>
             </div>
-
 
         </div>
     </div>

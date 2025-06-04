@@ -115,7 +115,7 @@
                 <div class="col-md-3 filter-section">
                     <label class="form-label filter-title">Provincia</label>
                     <div class="form-group">
-                        <asp:DropDownList ID="DropDownListProvincia" runat="server" CssClass="form-control" Width="80%"></asp:DropDownList>
+                        <asp:DropDownList ID="ddlProvincia" runat="server" CssClass="form-control"></asp:DropDownList>
                     </div>
                 </div>
                 
@@ -152,11 +152,8 @@
                 </div>
             </div>
             
-            <div class="row mt-4">
-                <div class="col-12 text-center">
-                    <asp:Button ID="btnFiltrar" runat="server" Text="Aplicar Filtros" CssClass="btn btn-filter btn-lg me-3" OnClick="btnFiltrar_Click" />
-                    <asp:Button ID="btnLimpiarFiltros" runat="server" Text="Limpiar Filtros" CssClass="btn btn-clear btn-lg" OnClick="btnLimpiarFiltros_Click" />
-                </div>
+            <div class="mt-2 d-flex justify-content-center align-items-center">
+                <asp:Button ID="btnFiltrar" runat="server" Text="Aplicar Filtros" CssClass="btn btn-light btn-filter btn-lg me-3" OnClick="btnFiltrar_Click" />
             </div>
         </div>
 
@@ -188,14 +185,13 @@
                                             </div>
                                         </div>
                                         
-                                        <p class="fs-4 mb-2"><%# Eval("Precio") %></p>
+                                        <b class="fs-4 mb-2">$<%# Eval("Precio") %></b>
                                         
                                         <p class="card-text text-muted mb-3"><%# Eval("Descripcion") %></p>
                                         
                                         <div class="row">
                                             <div class="col-md-6 mb-2">
-                                                <p class="mb-1 small"><strong>Tipo:</strong> <%# Eval("Tipo") %></p>
-                                                <%--<p class="mb-1 small"><strong>Superficie:</strong> <%# Eval("Superficie") %> m²</p>--%>
+                                                <p class="mb-1 small"><strong>Dormitorios:</strong> <%# Eval("Dormitorios") %></p>
                                                 <p class="mb-0 small"><strong>Publicado:</strong> <%# Eval("FechaPublicacion", "{0:dd/MM/yyyy}") %></p>
                                             </div>
                                             <div class="col-md-6">
@@ -212,13 +208,9 @@
                 </asp:Repeater>
                 
                 <asp:Panel ID="pnlSinResultados" runat="server" Visible="false" CssClass="text-center py-5">
-                    <div class="alert alert-warning">
-                        <h4>No se encontraron propiedades</h4>
-                        <p>Intenta modificar los filtros de búsqueda para encontrar más resultados.</p>
-                        <asp:Button ID="btnVolverBuscar" runat="server" 
-                            Text="Limpiar Filtros" 
-                            CssClass="btn btn-seteado" 
-                            OnClick="btnLimpiarFiltros_Click" />
+                    <div class="alert alert-warning px-5">
+                        <h3>No se encontraron propiedades</h3>
+                        <p class="fs-5">Modificá los filtros de búsqueda para encontrar más resultados.</p>
                     </div>
                 </asp:Panel>
             </div>
@@ -227,5 +219,4 @@
         </div>
     </div>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </asp:Content>

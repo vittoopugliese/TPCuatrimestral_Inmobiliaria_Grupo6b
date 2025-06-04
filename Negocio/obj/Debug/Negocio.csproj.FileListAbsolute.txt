@@ -1,12 +1,3 @@
-D:\Escritorio\Program\FACULTAD\TPCuatrimestral_Inmobiliaria_Grupo6b\Negocio\bin\Debug\Negocio.dll
-D:\Escritorio\Program\FACULTAD\TPCuatrimestral_Inmobiliaria_Grupo6b\Negocio\bin\Debug\Negocio.pdb
-D:\Escritorio\Program\FACULTAD\TPCuatrimestral_Inmobiliaria_Grupo6b\Negocio\bin\Debug\Dominio.dll
-D:\Escritorio\Program\FACULTAD\TPCuatrimestral_Inmobiliaria_Grupo6b\Negocio\bin\Debug\Dominio.pdb
-D:\Escritorio\Program\FACULTAD\TPCuatrimestral_Inmobiliaria_Grupo6b\Negocio\obj\Debug\Negocio.csproj.AssemblyReference.cache
-D:\Escritorio\Program\FACULTAD\TPCuatrimestral_Inmobiliaria_Grupo6b\Negocio\obj\Debug\Negocio.csproj.CoreCompileInputs.cache
-D:\Escritorio\Program\FACULTAD\TPCuatrimestral_Inmobiliaria_Grupo6b\Negocio\obj\Debug\Negocio.csproj.Up2Date
-D:\Escritorio\Program\FACULTAD\TPCuatrimestral_Inmobiliaria_Grupo6b\Negocio\obj\Debug\Negocio.dll
-D:\Escritorio\Program\FACULTAD\TPCuatrimestral_Inmobiliaria_Grupo6b\Negocio\obj\Debug\Negocio.pdb
 F:\Alex\source\TrabajoPracticoIntegrador\V5\Negocio\bin\Debug\Negocio.dll
 F:\Alex\source\TrabajoPracticoIntegrador\V5\Negocio\bin\Debug\Negocio.pdb
 F:\Alex\source\TrabajoPracticoIntegrador\V5\Negocio\bin\Debug\Dominio.dll
@@ -34,3 +25,12 @@ C:\Users\nahue\Desktop\Mi carpeta - Nahuel\NMV - Personal\TUP UTN\Programacion_3
 C:\Users\nahue\Desktop\Mi carpeta - Nahuel\NMV - Personal\TUP UTN\Programacion_3\repo_TPC\TPC_Inmobiliaria\Negocio\obj\Debug\Negocio.csproj.Up2Date
 C:\Users\nahue\Desktop\Mi carpeta - Nahuel\NMV - Personal\TUP UTN\Programacion_3\repo_TPC\TPC_Inmobiliaria\Negocio\obj\Debug\Negocio.dll
 C:\Users\nahue\Desktop\Mi carpeta - Nahuel\NMV - Personal\TUP UTN\Programacion_3\repo_TPC\TPC_Inmobiliaria\Negocio\obj\Debug\Negocio.pdb
+D:\Escritorio\Program\FACULTAD\TPCuatrimestral_Inmobiliaria_Grupo6b\Negocio\bin\Debug\Negocio.dll
+D:\Escritorio\Program\FACULTAD\TPCuatrimestral_Inmobiliaria_Grupo6b\Negocio\bin\Debug\Negocio.pdb
+D:\Escritorio\Program\FACULTAD\TPCuatrimestral_Inmobiliaria_Grupo6b\Negocio\bin\Debug\Dominio.dll
+D:\Escritorio\Program\FACULTAD\TPCuatrimestral_Inmobiliaria_Grupo6b\Negocio\bin\Debug\Dominio.pdb
+D:\Escritorio\Program\FACULTAD\TPCuatrimestral_Inmobiliaria_Grupo6b\Negocio\obj\Debug\Negocio.csproj.AssemblyReference.cache
+D:\Escritorio\Program\FACULTAD\TPCuatrimestral_Inmobiliaria_Grupo6b\Negocio\obj\Debug\Negocio.csproj.CoreCompileInputs.cache
+D:\Escritorio\Program\FACULTAD\TPCuatrimestral_Inmobiliaria_Grupo6b\Negocio\obj\Debug\Negocio.csproj.Up2Date
+D:\Escritorio\Program\FACULTAD\TPCuatrimestral_Inmobiliaria_Grupo6b\Negocio\obj\Debug\Negocio.dll
+D:\Escritorio\Program\FACULTAD\TPCuatrimestral_Inmobiliaria_Grupo6b\Negocio\obj\Debug\Negocio.pdb
