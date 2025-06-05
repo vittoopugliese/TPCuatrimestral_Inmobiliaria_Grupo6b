@@ -1,113 +1,95 @@
---CREATE DATABASE Inmobiliaria_TPC
---GO
 
---USE Inmobiliaria_TPC
---GO
+CREATE DATABASE Inmobiliaria_TPC
+GO
 
---/*Tabala aun sin definir
---TipoPropiedad
---Provincia
---Rol
---TipoOperacion
---Servicio
---Propietario
---Inmobiliaria
---Propiedad
---Contactos
---...
---*/
+USE Inmobiliaria_TPC
+GO
 
---CREATE TABLE TipoPropiedad (
---    IdTipo INT IDENTITY(1,1) PRIMARY KEY,
---    Descripcion NVARCHAR(100) NOT NULL
---);
+CREATE TABLE TipoPropiedad (
+    IdTipo INT IDENTITY(1,1) PRIMARY KEY,
+    Descripcion NVARCHAR(100) NOT NULL
+);
 
---CREATE TABLE Provincia (
---    IdProvincia INT IDENTITY(1,1) PRIMARY KEY,
---    Nombre NVARCHAR(100) NOT NULL
---);
+CREATE TABLE Provincia (
+    IdProvincia INT IDENTITY(1,1) PRIMARY KEY,
+    Nombre NVARCHAR(100) NOT NULL
+);
 
---CREATE TABLE Rol (
---    IdRol INT IDENTITY(1,1) PRIMARY KEY,
---    Descripcion NVARCHAR(100) NOT NULL
---);
-
---CREATE TABLE TipoOperacion (
---    IdTipoOperacion INT IDENTITY(1,1) PRIMARY KEY,
---    Descripcion NVARCHAR(100) NOT NULL
---);
-
---CREATE TABLE Servicio (
---    IdServicio INT IDENTITY(1,1) PRIMARY KEY,
---    Descripcion NVARCHAR(255) NOT NULL,
---    IdPropiedad INT NOT NULL,
---    FOREIGN KEY (IdPropiedad) REFERENCES TipoPropiedad(IdTipo)
---);
-
---CREATE TABLE Propietario (
---    IdPropietario INT PRIMARY KEY IDENTITY(1,1),
---    Nombre VARCHAR(50),
---    Apellido VARCHAR(50),
---    Documento VARCHAR(20),
---    Email VARCHAR(100),
---    Telefono VARCHAR(20),
---    Direccion VARCHAR(100),
---    Localidad VARCHAR(50),
---    IdProvincia INT,
---	FOREIGN KEY (IdProvincia) REFERENCES Provincia(IdProvincia)
---);
-
---CREATE TABLE Inmobiliaria (
---    IdInmobiliaria INT PRIMARY KEY IDENTITY(1,1),
---    Nombre VARCHAR(100),
---    Email VARCHAR(100),
---    Telefono VARCHAR(20),
---    Direccion VARCHAR(100),
---    Localidad VARCHAR(50),
---    IdProvincia INT,
---    FOREIGN KEY (IdProvincia) REFERENCES Provincia(IdProvincia)
---);
-
---CREATE TABLE Propiedad (
---    IdPropiedad INT PRIMARY KEY IDENTITY(1,1),
---    Descripcion VARCHAR(255),
---    Ambientes INT,
---    Sup_m2_Total DECIMAL(10,2),
---    Sup_m2_Cubierto DECIMAL(10,2),
---    Dormitorios INT,
---    Baños INT,
---    ConPatio BIT,
---	ConBalcón BIT,
---    IdTipo INT,
---    Direccion VARCHAR(100),
---    Localidad VARCHAR(50),
---    IdProvincia INT,
---    AnosAntiguedad INT,
---    AptoCredito BIT,
---    Reservada BIT,
---    IdPropietario INT,
-
---    FOREIGN KEY (IdTipo) REFERENCES TipoPropiedad(IdTipo),
---    FOREIGN KEY (IdProvincia) REFERENCES Provincia(IdProvincia),
---    FOREIGN KEY (IdPropietario) REFERENCES Propietario(IdPropietario)
---);
+CREATE TABLE Rol (
+    IdRol INT IDENTITY(1,1) PRIMARY KEY,
+    Descripcion NVARCHAR(100) NOT NULL
+);
 
 
---CREATE TABLE Contactos (
---    IdContacto INT PRIMARY KEY IDENTITY(1,1),
---    Nombre VARCHAR(50),
---    Apellido VARCHAR(50),
---    Email VARCHAR(100),
---    Telefono VARCHAR(20),
---    IdPropiedad INT,
---    IdTipoOperacion INT,
---    FOREIGN KEY (IdPropiedad) REFERENCES Propiedad(IdPropiedad),
---    FOREIGN KEY (IdTipoOperacion) REFERENCES TipoOperacion(IdTipoOperacion)
---);
+CREATE TABLE TipoOperacion (
+    IdTipoOperacion INT IDENTITY(1,1) PRIMARY KEY,
+    Descripcion NVARCHAR(100) NOT NULL
+);
 
---CREATE TABLE Imagenes (
---    IdImagen INT PRIMARY KEY IDENTITY(1,1),
---    IdPropiedad INT,Add commentMore actions
---    UrlImagen NVARCHAR(255)
---    FOREIGN KEY (IdImagen) REFERENCES Propiedad(IdPropiedad),
---);
+DROP TABLE Usuarios
+
+CREATE TABLE Usuario (
+    IdUsuario INT PRIMARY KEY IDENTITY(1,1),
+    Nombre VARCHAR(255) NOT NULL,
+    Apellido VARCHAR(255) NOT NULL,
+    Email VARCHAR(255) UNIQUE NOT NULL,
+    Contrasena VARCHAR(255) NOT NULL,
+    Telefono VARCHAR(20),
+    Direccion VARCHAR(255),
+    Localidad VARCHAR(255),
+    IdProvincia INT,
+    IdRol INT,
+    FOREIGN KEY (IdProvincia) REFERENCES Provincia(IdProvincia),
+    FOREIGN KEY (IdRol) REFERENCES Rol(IdRol)
+);
+
+
+CREATE TABLE Propiedad (
+    IdPropiedad INT PRIMARY KEY IDENTITY(1,1),
+    IdUsuario INT,
+    Titulo VARCHAR(200),
+    Direccion VARCHAR(100),
+    Ubicacion VARCHAR(100),
+    Precio VARCHAR(50),
+	Moneda VARCHAR(50),
+    Descripcion VARCHAR(MAX),
+    Tipo VARCHAR(50),
+    TipoOperacion VARCHAR(50),
+    ImagenUrl VARCHAR(500),
+    Localidad VARCHAR(50),
+    TipoDueno VARCHAR(50),
+    Email VARCHAR(100),
+    WhatsApp VARCHAR(20),
+    Visitas INT DEFAULT 0,
+    Visible BIT DEFAULT 1,
+    Eliminada BIT DEFAULT 0,
+    FechaPublicacion DATETIME2 DEFAULT GETDATE(),
+    FechaModificacion DATETIME2 DEFAULT GETDATE(),
+    Ambientes INT,
+    Sup_m2_Total DECIMAL(10,2),
+    Sup_m2_Cubierto DECIMAL(10,2),
+    Dormitorios INT,
+    Ba�os INT,
+    ConPatio BIT DEFAULT 0,
+    ConBalcon BIT DEFAULT 0,
+    AnosAntiguedad INT,
+    AptoCredito BIT DEFAULT 0,
+    Reservada BIT DEFAULT 0,
+    IdProvincia INT,
+    
+    FOREIGN KEY (IdUsuario) REFERENCES Usuario(IdUsuario),
+    FOREIGN KEY (IdProvincia) REFERENCES Provincia(IdProvincia)
+);
+
+CREATE TABLE Imagen (
+    IdImagen INT PRIMARY KEY,
+    IdPropiedad INT,
+    UrlImagen NVARCHAR(255),
+    FOREIGN KEY (IdImagen) REFERENCES Propiedad(IdPropiedad)
+    );
+
+CREATE TABLE Favorito (
+	IdFavorito INT PRIMARY KEY IDENTITY(1,1),
+	IdPropiedad INT,
+	IdUsuario INT
+	);

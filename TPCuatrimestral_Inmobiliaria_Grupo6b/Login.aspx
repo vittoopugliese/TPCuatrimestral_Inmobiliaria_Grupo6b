@@ -78,7 +78,7 @@
         <script>
             document.addEventListener("keydown", function (event) {
                 if (event.key === "Escape") {
-                    location.replace("Default.aspx"); // Ajusta la ruta según corresponda
+                    location.replace("Default.aspx"); 
                 }
             });
         </script>
