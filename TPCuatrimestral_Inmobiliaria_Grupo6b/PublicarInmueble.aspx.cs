@@ -19,11 +19,9 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
 
         protected void btnGuardarPublicacion_Click(object sender, EventArgs e)
         {
-
-
             try
             {
-
+                Response.Redirect("InmuebleSeleccionado.aspx");
                 string ruta = Server.MapPath("./pictures/");
                 List<Imagenes> imagenesSubidas = new List<Imagenes>(); // Lista para guardar los nombres
                 Propiedad propiedad = new Propiedad();

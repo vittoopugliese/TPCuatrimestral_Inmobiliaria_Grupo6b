@@ -2,15 +2,11 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-
-
     <div class="container" style="margin-top: 4rem">
-
 
         <div class="text-center">
             <h1>Crear Publicación</h1>
         </div>
-
 
         <div class="card shadow-lg mx-auto w-75" style="margin-top: 25px; padding: 20px">
             <div class="card-body">
@@ -39,7 +35,7 @@
                         </div>
 
                         <div>
-                            <label for="inputDireccion" class="form-label" style="margin-top: 15px">Calle y Altura</label>
+                            <label for="inputDireccion" class="form-label" style="margin-top: 15px">Dirección</label>
                             <input type="text" class="form-control" id="direccionSeleccionada" placeholder="Ingresá una dirección...">
                         </div>
                         <div>
@@ -58,10 +54,15 @@
                         </div>
 
                         <div>
-                            <label type="text" class="form-label" style="margin-top: 15px">Adjuntar Imágenes</label>
-                            <div class="input-group">
-                                <asp:FileUpload ID="agregarImagen" CssClass="form-control" runat="server" AllowMultiple="true" />
-                            </div>
+                            <label for="inputAmbientes" class="form-label" style="margin-top: 15px">Ambientes</label>
+                            <asp:TextBox ID="cantAmbientes" runat="server" CssClass="form-control"
+                                placeholder="Cantidad de ambientes..." TextMode="Number" step="1"></asp:TextBox>
+                        </div>
+
+                        <div>
+                            <label for="inputanosAntiguedad" class="form-label" style="margin-top: 15px">Años de antiguedad</label>
+                            <asp:TextBox ID="anosAntiguedad" runat="server" CssClass="form-control"
+                                placeholder="Años de antiguedad de la propiedad..." TextMode="Number" step="1"></asp:TextBox>
                         </div>
 
                     </div>
@@ -96,17 +97,73 @@
                             <input type="tel" class="form-control" id="whatsapp" placeholder="Ingrese su Whatsapp...">
                         </div>
 
+                        <div>
+                            <label for="inputBanos" class="form-label" style="margin-top: 15px">Baños</label>
+                            <asp:TextBox ID="cantBanos" runat="server" CssClass="form-control"
+                                placeholder="Cantidad de baños..." TextMode="Number" step="1"></asp:TextBox>
+                        </div>
+
+                        <div>
+                            <label for="inputDormitorios" class="form-label" style="margin-top: 15px">Dormitorios</label>
+                            <asp:TextBox ID="cantDormitorios" runat="server" CssClass="form-control"
+                                placeholder="Cantidad de Dormitorios..." TextMode="Number" step="1"></asp:TextBox>
+                        </div>
+
                     </div>
 
-                    <div class="row align-items-start" style="margin-top: 25px">
+                    <div class="row" style="margin-top: 35px">
+                        <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="balcon">
+                                <label class="form-check-label" for="balc">
+                                    Posee Balcón?
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="patio">
+                                <label class="form-check-label" for="patioo">
+                                    Posee Patio?
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="cochera">
+                                <label class="form-check-label" for="coche">
+                                    Posee Cochera?
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="credito">
+                                <label class="form-check-label" for="credito">
+                                    Apto Crédito?
+                                </label>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row align-items-start">
                         <div class="col-1"></div>
                         <div class="col-10">
+                            <div>
+                                <label type="text" class="form-label" style="margin-top: 15px">Adjuntar Imágenes</label>
+                                <div class="input-group">
+                                    <asp:FileUpload ID="agregarImagen" CssClass="form-control" runat="server" AllowMultiple="true" />
+                                </div>
+                            </div>
+
                             <label for="inputDescripcion" class="form-label">Descripción</label>
                             <textarea class="form-control" id="descripcion" runat="server" placeholder="Ingrese la descripción..." rows="4"></textarea>
+
                         </div>
                         <div class="col-1"></div>
                     </div>
-
 
                     <div class="row align-items-start">
                         <div class="col"></div>

@@ -3,43 +3,73 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
 
-    <div class="container" style="margin-top: 5rem">
+    <div class="container" style="margin-top: 15px">
 
-
-        <div class="card shadow-lg">
+        <h1 class="card-title">Casa en Venta en Avellaneda,Gba.</h1>
+        <div class="card shadow-lg" style="margin-top: 15px; font-size: 20px">
             <div class="card-body">
-                <h4 class="card-title">Casa en Venta en Avellaneda</h4>
-                <p class="card-text">25 de Mayo 1350, Avellaneda</p>
+
+                <p class="card-text"><span class="fa-solid fa-location-dot" style="margin-right: 10px"></span>25 de Mayo 1350, Avellaneda</p>
                 <div class="row">
                     <div class="col-8">
                         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <asp:Image ID="Image4" runat="server"
-    ImageUrl="https://cdn.pixabay.com/photo/2017/03/22/17/39/kitchen-2165756_960_720.jpg"
-    Width="100%" CssClass="rounded" />
-    </div>
-    <div class="carousel-item">
-      <asp:Image ID="Image2" runat="server"
-    ImageUrl="https://cdn.pixabay.com/photo/2016/11/29/03/53/house-1867187_1280.jpg"
-    Width="100%" CssClass="rounded" />
-    </div>
-    <div class="carousel-item">
-      <asp:Image ID="Image3" runat="server"
-    ImageUrl="https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_1280.jpg"
-    Width="100%" CssClass="rounded" />
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <asp:Image ID="Image4" runat="server"
+                                        ImageUrl="https://cdn.pixabay.com/photo/2017/03/22/17/39/kitchen-2165756_960_720.jpg"
+                                        Width="100%" CssClass="rounded" />
+                                </div>
+                                <div class="carousel-item">
+                                    <asp:Image ID="Image2" runat="server"
+                                        ImageUrl="https://cdn.pixabay.com/photo/2016/11/29/03/53/house-1867187_1280.jpg"
+                                        Width="100%" CssClass="rounded" />
+                                </div>
+                                <div class="carousel-item">
+                                    <asp:Image ID="Image3" runat="server"
+                                        ImageUrl="https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_1280.jpg"
+                                        Width="100%" CssClass="rounded" />
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
 
+                        <div class="row" style="margin-top: 25px; display: flex; justify-content: center; align-items: center; font-size: 15px">
+
+                            <div class="col">
+                                <div>
+                                    <i class="fa-solid fa-sink"></i>
+                                    <p>Baño</p>
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                <div>
+                                    <i class="fa-solid fa-car-side"></i>
+                                    <p>Cochera</p>
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                <div>
+                                    <i class="fa-solid fa-bed"></i>
+                                    <p>Dormitorios</p>
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                <div>
+                                    <i class="fa-solid fa-house-user"></i>
+                                    <p>Balcón</p>
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
                     <div class="col-4">
@@ -56,7 +86,7 @@
                                     <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" runat="server" style="margin-top: 15px">
                                     <label class="form-check-label" for="flexSwitchCheckDefault" style="margin-top: 10px">Recibir copia por email</label>
                                 </div>
-                                <asp:Button Text="Contactar" CssClass="btn btn-dark" ID="btnContactar" runat="server" Style="width: 100%; margin-top: 10px" OnClick="btnContactar_Click"/>
+                                <asp:Button Text="Contactar" CssClass="btn btn-dark" ID="btnContactar" runat="server" Style="width: 100%; margin-top: 10px" OnClick="btnContactar_Click" />
                                 <asp:Button Text="Enviar Whastapp" CssClass="btn btn-success" ID="Button1" runat="server" Style="width: 100%; margin-top: 10px" />
                             </div>
                         </div>
@@ -71,10 +101,68 @@
                     </div>
                 </div>
             </div>
+
         </div>
-        <h2 style="margin-top: 15px">U$D 110.000</h2>
-        <p>$40.000 de expensas</p>
-        <p>Publicado el 01/06/2025</p>
+
+        <div class="row">
+            <div class="col-4">
+                <h2 style="margin-top: 15px">U$D 110.000</h2>
+                <p>$40.000 de expensas</p>
+            </div>
+
+            <div class="col-4" style="margin-top:20px; font-size:20px">
+                <div>
+                    <i class="fa-solid fa-credit-card"></i>
+                    <p>Apto Crédito!</p>
+                </div>
+            </div>
+
+            <div class="col-4">
+                <p style="margin-top: 35px; font-size:25px">Publicado el 01/06/2025</p>
+
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="row">
+
+            <div class="col">
+                <div>
+                    <i class="fa-solid fa-pen-ruler"></i>
+                    <p>Ambientes</p>
+                </div>
+            </div>
+            <div class="col">
+                <div>
+                    <i class="fa-solid fa-ruler-combined"></i>
+                    <p>Sup. Total</p>
+                </div>
+            </div>
+
+            <div class="col">
+                <div>
+                    <i class="fa-solid fa-pen-ruler"></i>
+                    <p>Sup. Cubierta</p>
+                </div>
+            </div>
+
+            <div class="col">
+                <div>
+                    <i class="fa-solid fa-tree"></i>
+                    <p>Patio</p>
+                </div>
+            </div>
+
+            <div class="col">
+                <div>
+                    <i class="fa-solid fa-pen-ruler"></i>
+                    <p>Antiguedad</p>
+                </div>
+            </div>
+
+        </div>
+
         <hr />
 
         <h2 style="margin-top: 15px">VENTA DE CASA EN AVELLANEDA, excelente !</h2>
