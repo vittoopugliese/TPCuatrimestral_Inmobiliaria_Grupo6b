@@ -52,3 +52,12 @@ F:\Alex\source\TrabajoPracticoIntegrador\V9\Negocio\obj\Debug\Negocio.csproj.Cor
 F:\Alex\source\TrabajoPracticoIntegrador\V9\Negocio\obj\Debug\Negocio.csproj.Up2Date
 F:\Alex\source\TrabajoPracticoIntegrador\V9\Negocio\obj\Debug\Negocio.dll
 F:\Alex\source\TrabajoPracticoIntegrador\V9\Negocio\obj\Debug\Negocio.pdb
+F:\Alex\source\TrabajoPracticoIntegrador\V10\Negocio\bin\Debug\Negocio.dll
+F:\Alex\source\TrabajoPracticoIntegrador\V10\Negocio\bin\Debug\Negocio.pdb
+F:\Alex\source\TrabajoPracticoIntegrador\V10\Negocio\bin\Debug\Dominio.dll
+F:\Alex\source\TrabajoPracticoIntegrador\V10\Negocio\bin\Debug\Dominio.pdb
+F:\Alex\source\TrabajoPracticoIntegrador\V10\Negocio\obj\Debug\Negocio.csproj.AssemblyReference.cache
+F:\Alex\source\TrabajoPracticoIntegrador\V10\Negocio\obj\Debug\Negocio.csproj.CoreCompileInputs.cache
+F:\Alex\source\TrabajoPracticoIntegrador\V10\Negocio\obj\Debug\Negocio.csproj.Up2Date
+F:\Alex\source\TrabajoPracticoIntegrador\V10\Negocio\obj\Debug\Negocio.dll
+F:\Alex\source\TrabajoPracticoIntegrador\V10\Negocio\obj\Debug\Negocio.pdb

@@ -40,31 +40,31 @@
                             </button>
                         </div>
 
-                        <div class="row" style="margin-top: 25px; display: flex; justify-content: center; align-items: center; font-size: 15px">
+                        <div class="row" style="margin-top: 25px; display: flex; justify-content: center; align-items: center; font-size: 20px">
 
                             <div class="col">
-                                <div>
+                                <div style="position: absolute; bottom: 0; width: calc(100% - 30px); margin-left: 40px">
                                     <i class="fa-solid fa-sink"></i>
                                     <p>Baño</p>
                                 </div>
                             </div>
 
                             <div class="col">
-                                <div>
+                                <div style="position: absolute; bottom: 0; width: calc(100% - 30px); margin-left: 40px">
                                     <i class="fa-solid fa-car-side"></i>
                                     <p>Cochera</p>
                                 </div>
                             </div>
 
                             <div class="col">
-                                <div>
+                                <div style="position: absolute; bottom: 0; width: calc(100% - 30px); margin-left: 40px">
                                     <i class="fa-solid fa-bed"></i>
                                     <p>Dormitorios</p>
                                 </div>
                             </div>
 
                             <div class="col">
-                                <div>
+                                <div style="position: absolute; bottom: 0; width: calc(100% - 30px); margin-left: 40px">
                                     <i class="fa-solid fa-house-user"></i>
                                     <p>Balcón</p>
                                 </div>
@@ -79,22 +79,31 @@
 
                                 <label for="inputEmail4" class="form-label">CONTACTAR AL PROPIETARIO</label>
                                 <input type="text" class="form-control" id="nombreyapellido" placeholder="Nombre y Apellido" style="margin-top: 10px">
-                                <input type="email" class="form-control" id="email" placeholder="Email" runat="server" style="margin-top: 10px">
                                 <input type="tel" class="form-control" id="telefono" runat="server" placeholder="Teléfono" style="margin-top: 10px">
-                                <textarea class="form-control" id="exampleFormControlTextarea1" runat="server" placeholder="Mensaje..." rows="3" style="margin-top: 10px"></textarea>
+                                <input type="text" class="form-control" id="asunto" placeholder="Asunto" style="margin-top: 10px">
+                                <input type="email" class="form-control" id="email" placeholder="Email" runat="server" style="margin-top: 10px">
+                                <textarea class="form-control" id="mensajeContactar" runat="server" placeholder="Mensaje..." rows="3" style="margin-top: 10px"></textarea>
                                 <div class="form-check form-switch">
                                     <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" runat="server" style="margin-top: 15px">
                                     <label class="form-check-label" for="flexSwitchCheckDefault" style="margin-top: 10px">Recibir copia por email</label>
                                 </div>
                                 <asp:Button Text="Contactar" CssClass="btn btn-dark" ID="btnContactar" runat="server" Style="width: 100%; margin-top: 10px" OnClick="btnContactar_Click" />
-                                <asp:Button Text="Enviar Whastapp" CssClass="btn btn-success" ID="Button1" runat="server" Style="width: 100%; margin-top: 10px" />
+
+                                <asp:Button Text="Enviar Whastapp" CssClass="btn btn-success" ID="botonWp" runat="server" Style="width: 100%; margin-top: 10px" OnClick="botonWp_Click" />
+
+
                             </div>
                         </div>
 
                         <div class="card" style="margin-top: 17px">
                             <div class="card-body">
                                 <p>Nombre del Propietario</p>
-                                <p>Teléfono (011) 4263-5632</p>
+                                <p><i class="fa-brands fa-whatsapp" style="margin-right: 10px"></i>(011) 4263-5632</p>
+                                <a href="mailto:ale_tama77@hotmail.com" style="text-decoration: none; color: inherit;">
+                                    <p style="margin: 0; display: inline-block;">
+                                        <i class="fa-solid fa-envelope" style="margin-right: 10px"></i>Enviar e-mail
+                                    </p>
+                                </a>
 
                             </div>
                         </div>
@@ -110,7 +119,7 @@
                 <p>$40.000 de expensas</p>
             </div>
 
-            <div class="col-4" style="margin-top:20px; font-size:20px">
+            <div class="col-4" style="margin-top: 20px; font-size: 20px">
                 <div>
                     <i class="fa-solid fa-credit-card"></i>
                     <p>Apto Crédito!</p>
@@ -118,7 +127,7 @@
             </div>
 
             <div class="col-4">
-                <p style="margin-top: 35px; font-size:25px">Publicado el 01/06/2025</p>
+                <p style="margin-top: 35px; font-size: 25px">Publicado el 01/06/2025</p>
 
             </div>
         </div>

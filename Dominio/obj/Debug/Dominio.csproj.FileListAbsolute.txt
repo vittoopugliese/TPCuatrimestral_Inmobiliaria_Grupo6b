@@ -34,3 +34,9 @@ F:\Alex\source\TrabajoPracticoIntegrador\V9\Dominio\obj\Debug\Dominio.csproj.Ass
 F:\Alex\source\TrabajoPracticoIntegrador\V9\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
 F:\Alex\source\TrabajoPracticoIntegrador\V9\Dominio\obj\Debug\Dominio.dll
 F:\Alex\source\TrabajoPracticoIntegrador\V9\Dominio\obj\Debug\Dominio.pdb
+F:\Alex\source\TrabajoPracticoIntegrador\V10\Dominio\bin\Debug\Dominio.dll
+F:\Alex\source\TrabajoPracticoIntegrador\V10\Dominio\bin\Debug\Dominio.pdb
+F:\Alex\source\TrabajoPracticoIntegrador\V10\Dominio\obj\Debug\Dominio.csproj.AssemblyReference.cache
+F:\Alex\source\TrabajoPracticoIntegrador\V10\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
+F:\Alex\source\TrabajoPracticoIntegrador\V10\Dominio\obj\Debug\Dominio.dll
+F:\Alex\source\TrabajoPracticoIntegrador\V10\Dominio\obj\Debug\Dominio.pdb
