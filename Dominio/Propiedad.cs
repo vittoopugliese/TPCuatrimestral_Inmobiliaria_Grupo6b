@@ -14,6 +14,7 @@ namespace Dominio
         public string Descripcion { get; set; }
         public int IdTipo { get; set; }
         public string TipoOperacion { get; set; }
+        public string TipoPropiedad { get; set; }
         public string ImagenUrl { get; set; } // ver el tema de la lista de imagenes
         public string Localidad { get; set; }
         public string TipoDueno { get; set; }

@@ -1,7 +1,36 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\nahue\\Desktop\\Mi carpeta - Nahuel\\NMV - Personal\\TUP UTN\\Programacion_3\\repo_TPC\\TPC_Inmobiliaria\\",
-  "Documents": [],
+  "WorkspaceRootPath": "F:\\Alex\\source\\TrabajoPracticoIntegrador\\V10\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{0ED45408-E867-47E6-8057-BDFA44D9E1E5}|TPCuatrimestral_Inmobiliaria_Grupo6b\\TPCuatrimestral_Inmobiliaria_Grupo6b.csproj|f:\\alex\\source\\trabajopracticointegrador\\v10\\tpcuatrimestral_inmobiliaria_grupo6b\\publicarinmueble.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0ED45408-E867-47E6-8057-BDFA44D9E1E5}|TPCuatrimestral_Inmobiliaria_Grupo6b\\TPCuatrimestral_Inmobiliaria_Grupo6b.csproj|solutionrelative:tpcuatrimestral_inmobiliaria_grupo6b\\publicarinmueble.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0ED45408-E867-47E6-8057-BDFA44D9E1E5}|TPCuatrimestral_Inmobiliaria_Grupo6b\\TPCuatrimestral_Inmobiliaria_Grupo6b.csproj|F:\\Alex\\source\\TrabajoPracticoIntegrador\\V10\\tpcuatrimestral_inmobiliaria_grupo6b\\publicarinmueble.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{0ED45408-E867-47E6-8057-BDFA44D9E1E5}|TPCuatrimestral_Inmobiliaria_Grupo6b\\TPCuatrimestral_Inmobiliaria_Grupo6b.csproj|solutionrelative:tpcuatrimestral_inmobiliaria_grupo6b\\publicarinmueble.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D3EE3D0-FE91-4F98-BE75-D2FD1BF52192}|Dominio\\Dominio.csproj|F:\\Alex\\source\\TrabajoPracticoIntegrador\\V10\\dominio\\imagenes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D3EE3D0-FE91-4F98-BE75-D2FD1BF52192}|Dominio\\Dominio.csproj|solutionrelative:dominio\\imagenes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D3EE3D0-FE91-4F98-BE75-D2FD1BF52192}|Dominio\\Dominio.csproj|F:\\Alex\\source\\TrabajoPracticoIntegrador\\V10\\dominio\\propiedad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D3EE3D0-FE91-4F98-BE75-D2FD1BF52192}|Dominio\\Dominio.csproj|solutionrelative:dominio\\propiedad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1FBF181A-B49D-422F-A2D2-DEB96C163865}|Negocio\\Negocio.csproj|f:\\alex\\source\\trabajopracticointegrador\\v10\\negocio\\propiedadnegocio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1FBF181A-B49D-422F-A2D2-DEB96C163865}|Negocio\\Negocio.csproj|solutionrelative:negocio\\propiedadnegocio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0ED45408-E867-47E6-8057-BDFA44D9E1E5}|TPCuatrimestral_Inmobiliaria_Grupo6b\\TPCuatrimestral_Inmobiliaria_Grupo6b.csproj|F:\\Alex\\source\\TrabajoPracticoIntegrador\\V10\\tpcuatrimestral_inmobiliaria_grupo6b\\inmuebleseleccionado.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{0ED45408-E867-47E6-8057-BDFA44D9E1E5}|TPCuatrimestral_Inmobiliaria_Grupo6b\\TPCuatrimestral_Inmobiliaria_Grupo6b.csproj|solutionrelative:tpcuatrimestral_inmobiliaria_grupo6b\\inmuebleseleccionado.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D3EE3D0-FE91-4F98-BE75-D2FD1BF52192}|Dominio\\Dominio.csproj|F:\\Alex\\source\\TrabajoPracticoIntegrador\\V10\\dominio\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D3EE3D0-FE91-4F98-BE75-D2FD1BF52192}|Dominio\\Dominio.csproj|solutionrelative:dominio\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -18,6 +47,95 @@
             {
               "$type": "Bookmark",
               "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PropiedadNegocio.cs",
+              "DocumentMoniker": "F:\\Alex\\source\\TrabajoPracticoIntegrador\\V10\\Negocio\\PropiedadNegocio.cs",
+              "RelativeDocumentMoniker": "Negocio\\PropiedadNegocio.cs",
+              "ToolTip": "F:\\Alex\\source\\TrabajoPracticoIntegrador\\V10\\Negocio\\PropiedadNegocio.cs",
+              "RelativeToolTip": "Negocio\\PropiedadNegocio.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAAAYwDMAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-06T21:55:21.993Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Imagenes.cs",
+              "DocumentMoniker": "F:\\Alex\\source\\TrabajoPracticoIntegrador\\V10\\Dominio\\Imagenes.cs",
+              "RelativeDocumentMoniker": "Dominio\\Imagenes.cs",
+              "ToolTip": "F:\\Alex\\source\\TrabajoPracticoIntegrador\\V10\\Dominio\\Imagenes.cs",
+              "RelativeToolTip": "Dominio\\Imagenes.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-06T19:04:51.836Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Propiedad.cs",
+              "DocumentMoniker": "F:\\Alex\\source\\TrabajoPracticoIntegrador\\V10\\Dominio\\Propiedad.cs",
+              "RelativeDocumentMoniker": "Dominio\\Propiedad.cs",
+              "ToolTip": "F:\\Alex\\source\\TrabajoPracticoIntegrador\\V10\\Dominio\\Propiedad.cs",
+              "RelativeToolTip": "Dominio\\Propiedad.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAA5wAsAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-06T19:02:28.047Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PublicarInmueble.aspx",
+              "DocumentMoniker": "F:\\Alex\\source\\TrabajoPracticoIntegrador\\V10\\TPCuatrimestral_Inmobiliaria_Grupo6b\\PublicarInmueble.aspx",
+              "RelativeDocumentMoniker": "TPCuatrimestral_Inmobiliaria_Grupo6b\\PublicarInmueble.aspx",
+              "ToolTip": "F:\\Alex\\source\\TrabajoPracticoIntegrador\\V10\\TPCuatrimestral_Inmobiliaria_Grupo6b\\PublicarInmueble.aspx",
+              "RelativeToolTip": "TPCuatrimestral_Inmobiliaria_Grupo6b\\PublicarInmueble.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-06-06T18:13:09.793Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PublicarInmueble.aspx.cs",
+              "DocumentMoniker": "F:\\Alex\\source\\TrabajoPracticoIntegrador\\V10\\TPCuatrimestral_Inmobiliaria_Grupo6b\\PublicarInmueble.aspx.cs",
+              "RelativeDocumentMoniker": "TPCuatrimestral_Inmobiliaria_Grupo6b\\PublicarInmueble.aspx.cs",
+              "ToolTip": "F:\\Alex\\source\\TrabajoPracticoIntegrador\\V10\\TPCuatrimestral_Inmobiliaria_Grupo6b\\PublicarInmueble.aspx.cs",
+              "RelativeToolTip": "TPCuatrimestral_Inmobiliaria_Grupo6b\\PublicarInmueble.aspx.cs",
+              "ViewState": "AgIAAF0AAAAAAAAAAAAowGoAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-05T22:02:17.597Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "InmuebleSeleccionado.aspx",
+              "DocumentMoniker": "F:\\Alex\\source\\TrabajoPracticoIntegrador\\V10\\TPCuatrimestral_Inmobiliaria_Grupo6b\\InmuebleSeleccionado.aspx",
+              "RelativeDocumentMoniker": "TPCuatrimestral_Inmobiliaria_Grupo6b\\InmuebleSeleccionado.aspx",
+              "ToolTip": "F:\\Alex\\source\\TrabajoPracticoIntegrador\\V10\\TPCuatrimestral_Inmobiliaria_Grupo6b\\InmuebleSeleccionado.aspx",
+              "RelativeToolTip": "TPCuatrimestral_Inmobiliaria_Grupo6b\\InmuebleSeleccionado.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-06-06T18:17:34.413Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Usuario.cs",
+              "DocumentMoniker": "F:\\Alex\\source\\TrabajoPracticoIntegrador\\V10\\Dominio\\Usuario.cs",
+              "RelativeDocumentMoniker": "Dominio\\Usuario.cs",
+              "ToolTip": "F:\\Alex\\source\\TrabajoPracticoIntegrador\\V10\\Dominio\\Usuario.cs",
+              "RelativeToolTip": "Dominio\\Usuario.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAgAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-06T18:32:47.009Z"
             }
           ]
         }
