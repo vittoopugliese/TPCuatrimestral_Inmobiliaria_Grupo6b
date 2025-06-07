@@ -3,14 +3,14 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="container" style="margin-top: 4rem">
-
-        <div class="text-center">
-            <h1>Crear Publicación</h1>
-        </div>
-
-        <div class="card shadow-lg mx-auto w-75" style="margin-top: 25px; padding: 20px">
-            <div class="card-body">
-
+        <div class="card shadow-lg mx-auto w-75" style="margin-top: 25px; background-color: #f0f0f0">
+            <!-- Nuevo card-header con fondo oscuro y texto blanco -->
+            <div class="card-header bg-dark text-white py-3">
+                <h5 class="card-title mb-0">Crear Publicación</h5>
+            </div>
+             
+            <div class="card-body" style="padding: 20px">
+                <!-- Resto de tu formulario (se mantiene igual) -->
                 <div class="row align-items-start">
                     <div class="col">
                         <div>
@@ -172,7 +172,7 @@
                     <div class="row align-items-start">
                         <div class="col"></div>
                         <div class="col">
-                            <asp:Button Text="Guardar y Publicar" CssClass="btn btn-dark" ID="btnGuardarPublicacion" runat="server" OnClick="btnGuardarPublicacion_Click" Style="margin-top: 35px; width: 500px" />
+                            <asp:Button Text="Guardar y Publicar" CssClass="btn btn-dark" ID="btnGuardarPublicacion" runat="server" OnClick="btnGuardarPublicacion_Click" Style="margin-top: 35px; width: 500px; " />
                         </div>
                         <div class="col"></div>
                     </div>
