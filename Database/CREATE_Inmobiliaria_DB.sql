@@ -2,6 +2,8 @@
 CREATE DATABASE Inmobiliaria_TPC
 GO
 
+DROP DATABASE Inmobiliaria_TPC;
+
 USE Inmobiliaria_TPC
 GO
 
@@ -30,18 +32,21 @@ DROP TABLE Usuarios
 
 CREATE TABLE Usuario (
     IdUsuario INT PRIMARY KEY IDENTITY(1,1),
-    Nombre VARCHAR(255) NOT NULL,
-    Apellido VARCHAR(255) NOT NULL,
+    Nombre VARCHAR(255),
+    Apellido VARCHAR(255),
     Email VARCHAR(255) UNIQUE NOT NULL,
     Contrasena VARCHAR(255) NOT NULL,
     Telefono VARCHAR(20),
     Direccion VARCHAR(255),
     Localidad VARCHAR(255),
     IdProvincia INT,
-    IdRol INT,
+    IdRol INT NOT NULL,
     FOREIGN KEY (IdProvincia) REFERENCES Provincia(IdProvincia),
     FOREIGN KEY (IdRol) REFERENCES Rol(IdRol)
 );
+
+DROP TABLE Usuario;
+
 
 
 CREATE TABLE Propiedad (

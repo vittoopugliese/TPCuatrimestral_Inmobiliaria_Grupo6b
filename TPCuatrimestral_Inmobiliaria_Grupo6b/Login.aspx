@@ -68,7 +68,7 @@
                             <label class="form-check-label" for="passLabel">Recordarme?</label>
                         </div>--%>
                         
-                             <asp:Button ID="ButtonIngresar" runat="server" Text="Ingresar" CssClass="btn btn-primary w-100" BackColor="#121212" />
+                             <asp:Button ID="ButtonIngresar" runat="server" Text="Ingresar" CssClass="btn btn-primary w-100" BackColor="#121212" OnClick="ButtonIngresar_Click" />
                     </div>
                 </div>
             </div>

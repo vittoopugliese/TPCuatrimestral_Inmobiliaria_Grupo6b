@@ -16,6 +16,15 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            // verificacion si se logueo el usuario, si no redirigir a login
+
+            //if (Session["usuario"] == null)
+            //{
+            //    ScriptManager.RegisterStartupScript(this, GetType(), "showerror",
+            //        "alert('Debes loguearte primero para ingresar'); window.location.href='Login.aspx';", true);
+            //}
+
+
             if (!IsPostBack)
             {
                 propiedadesNegocio = new PropiedadNegocio();

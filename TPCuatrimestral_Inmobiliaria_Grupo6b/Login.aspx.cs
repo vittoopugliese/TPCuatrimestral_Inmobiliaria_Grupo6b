@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Dominio;
+using Negocio;
 
 namespace TPCuatrimestral_Inmobiliaria_Grupo6b
 {
@@ -11,6 +13,46 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
+        }
+
+        protected void ButtonIngresar_Click(object sender, EventArgs e)
+        {
+            Usuario usuario = new Usuario();
+            LoginNegocio loginNegocio = new LoginNegocio();
+
+            try
+            {
+                usuario = new Usuario(TextBoxCorreo.Text, TextBoxContra.Text);
+                if (loginNegocio.Loguear(usuario))
+                {
+                    Session.Add("usuario", usuario);
+                    switch (usuario.IdRol)
+                    {
+                        case 1:
+                            Response.Redirect("PublicarInmueble.aspx", false); // modificar luego
+                            break;
+                        case 2:
+                            Response.Redirect("Default.aspx", false); // modificar luego
+                            break;
+                        case 3:
+                            Response.Redirect("Default.aspx", false); // modificar luego
+                            break;
+                    }
+                }
+                else
+                {
+                    Session.Add("Error", "Correo o contraseña incorrectos.");
+                    Response.Redirect("Error.aspx", false);
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                Session.Add("Error", ex.ToString());
+                Response.Redirect("Error.aspx", false);
+            }
 
         }
     }
