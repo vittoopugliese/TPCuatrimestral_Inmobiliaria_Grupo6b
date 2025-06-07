@@ -42,12 +42,21 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
         protected global::System.Web.UI.WebControls.Button btnBuscar;
 
         /// <summary>
-        /// Control rptPropiedades.
+        /// Control rptPropiedadesDestacadas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptPropiedades;
+        protected global::System.Web.UI.WebControls.Repeater rptPropiedadesDestacadas;
+
+        /// <summary>
+        /// Control rptPropiedadesMasVistas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rptPropiedadesMasVistas;
     }
 }

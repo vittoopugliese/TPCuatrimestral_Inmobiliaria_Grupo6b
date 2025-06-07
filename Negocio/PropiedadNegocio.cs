@@ -79,18 +79,30 @@ namespace Negocio
 
         public List<Propiedad> listar()
         {
-            return ObtenerPropiedadesSegunConsultasYMapearlas("SELECT * FROM PROPIEDAD");
+            return ObtenerPropiedadesSegunConsultasYMapearlas("SELECT * FROM PROPIEDAD WHERE Visible = 1");
         }
 
         public List<Propiedad> listarDestacadas()
         {
             // las destacadas son las caras je
-            return ObtenerPropiedadesSegunConsultasYMapearlas("SELECT * FROM PROPIEDAD WHERE Precio > 150000");
+            return ObtenerPropiedadesSegunConsultasYMapearlas("SELECT * FROM PROPIEDAD WHERE Precio > 150000 AND Visible = 1");
+        }
+
+        public List<Propiedad> listarMasVistas()
+        {
+            // remplazar luego cuando tengan vistas de verdad
+            //return ObtenerPropiedadesSegunConsultasYMapearlas("SELECT * FROM PROPIEDAD WHERE Visitas > 10 AND Visible = 1");
+            return ObtenerPropiedadesSegunConsultasYMapearlas("SELECT * FROM PROPIEDAD WHERE Precio > 150000 AND Visible = 1");
         }
 
         // listarPorTipo: return ObtenerPropiedadesSegunConsultasYMapearlas($"SELECT * FROM PROPIEDAD WHERE IdTipo = {idTipo}");
         // listarPorProvincia: return ObtenerPropiedadesSegunConsultasYMapearlas($"SELECT * FROM PROPIEDAD WHERE IdProvincia = {idProvincia}");
         // listarVisibles: return ObtenerPropiedadesSegunConsultasYMapearlas("SELECT * FROM PROPIEDAD WHERE Visible = 1 AND Eliminada = 0");
 
+
+        public bool alternarVisibilidadDePropiedadExistente(int IdPropiedad)
+        {
+            return true;
+        }
     }
 }

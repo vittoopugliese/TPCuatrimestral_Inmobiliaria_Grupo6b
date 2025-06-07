@@ -28,6 +28,7 @@
             transition: 150ms all ease-in-out;
             box-shadow: 0 2px 6px rgba(0,0,0,0.1);
             border-radius: 10px !important;
+            cursor: pointer;
         }
                 
         .property-card:hover {
@@ -94,6 +95,22 @@
         
         .btn-clear:hover {
             scale: 1.01;
+        }
+
+        .heart-icon{
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            color: white;
+            text-shadow: 0 0 5px rgba(0,0,0,0.5);
+            cursor: pointer;
+            transition: all 200ms ease-in-out;
+        }
+
+        .heart-icon:hover {
+            color: #ff0000 !important;
+            transform: scale(1.1);
         }
     </style>
 
@@ -169,10 +186,12 @@
         <div class="propiedades-container">
             <asp:Repeater ID="rptPropiedades" runat="server">
                     <ItemTemplate>
-                        <div class="property-card">
+                        <div class="property-card" onclick="window.location.href='InmuebleSeleccionado.aspx?id=<%# Eval("IdPropiedad") %>';">
                             <div class="row g-0">
-
-                                <img src='<%# Eval("ImagenUrl") %>' class="property-image" alt="Propiedad" />
+                                <div style="position: relative;">
+                                  <img src='<%# Eval("ImagenUrl") %>' class="property-image" alt="Propiedad" />
+                                  <i class="fas fa-heart heart-icon"></i>
+                                </div>
                                 
                                 <div class="col-md-8">
                                     <div class="card-body p-4">
@@ -189,15 +208,16 @@
                                         
                                         <p class="card-text text-muted mb-3"><%# Eval("Descripcion") %></p>
                                         
-                                        <div class="row">
-                                            <div class="col-md-6 mb-2">
-                                                <p class="mb-1 small"><strong>Dormitorios:</strong> <%# Eval("Dormitorios") %></p>
-                                                <p class="mb-0 small"><strong>Publicado:</strong> <%# Eval("FechaPublicacion", "{0:dd/MM/yyyy}") %></p>
+                                        <div class="d-flex gap-2 align-items-center row">
+                                            <div class="d-flex flex-row gap-3 align-items-center">
+                                                <i class="fas fa-door-open"></i> <%# Eval("Ambientes") %> Amb.</p>
+                                                <i class="fas fa-bed"></i> <%# Eval("Dormitorios") %> Dorm. </p>
+                                                <i class="fas fa-bath"></i> <%# Eval("Baños") %> Bañ. </p>
                                             </div>
-                                            <div class="col-md-6">
-                                                <div class="d-flex flex-column gap-2">
-                                                <!-- BOTONES -->
-                                                </div>
+                                            <div class="d-flex flex-row gap-3 align-items-center">
+                                                <i class="fas fa-ruler-combined"></i> <%# Eval("Sup_m2_Total") %> m²
+                                                <%# Eval("ConPatio").ToString() == "True" ? "<i class='fas fa-tree'></i> Con Patio" : "<i class='fas fa-tree'></i> Sin Patio"%>
+                                                <%# Eval("ConBalcon").ToString() == "True" ? "<i class='fas fa-umbrella-beach'></i> Con Balcón" : "<i class='fas fa-umbrella-beach'></i> Sin Balcón"%>
                                             </div>
                                         </div>
                                     </div>

@@ -35,18 +35,19 @@
                     flex-wrap: wrap;
                     align-items: center;
                     justify-content: center;
-                    gap: 45px; 
+                    gap: 30px; 
                 }
 
                 .property-card {
                     width: 100%;
-                    max-width: 454px;
+                    max-width: 354px;
                     margin: 0px 15px 0px 15px;
                     display: inline-block;
                     vertical-align: top;
                     transition: 150ms all ease-in-out;
                     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
                     border-radius: 10px !important;
+                    cursor: pointer;
                 }
 
                 .property-image {
@@ -69,6 +70,22 @@
                     color: #ee6c4d;
                     font-size: 1.5rem;
                     font-weight: bold;
+                }
+
+                .heart-icon{
+                    position: absolute;
+                    top: 10px;
+                    right: 10px;
+                    font-size: 24px;
+                    color: white;
+                    text-shadow: 0 0 5px rgba(0,0,0,0.5);
+                    cursor: pointer;
+                    transition: all 200ms ease-in-out;
+                }
+
+                .heart-icon:hover {
+                    color: #ff0000 !important;
+                    transform: scale(1.1);
                 }
         </style>
 
@@ -97,46 +114,108 @@
             </div>
 
         </div>
-        </div>
+       </div>
   </div>
 
-    <!-- Propiedades destacadas: abajo podemos agregar las cards con el comando foreach como hizo Maxi en su video -->
-    <div class="container py-3">
-        <h2 class="mb-4">Propiedades destacadas</h2>
-        <div class="row g-4">
-        <%-- Repeater de cards de propiedades --%>
-        <div class="propiedades-container">
-            <asp:Repeater ID="rptPropiedades" runat="server">
-                    <ItemTemplate>
-                        <div class="property-card">
-                            <div class="row g-0">
+  <div class="py-3">
+        <h2 class="mb-5 mt-2 text-center">✨ Propiedades Destacadas 🏠</h2>
 
-                                <img src='<%# Eval("ImagenUrl") %>' class="property-image" alt="Propiedad" />
+        <div class="row g-2">
+            <div class="propiedades-container">
+                <asp:Repeater ID="rptPropiedadesDestacadas" runat="server">
+                        <ItemTemplate>
+                            <div class="property-card" onclick="window.location.href='InmuebleSeleccionado.aspx?id=<%# Eval("IdPropiedad") %>';">
+                                <div class="row g-0">
+                                    <div style="position: relative;">
+                                        <img src='<%# Eval("ImagenUrl") %>' class="property-image" alt="Propiedad" />
+                                        <i class="fas fa-heart heart-icon"></i>
+                                    </div>
                                 
-                                <div class="col-md-8">
-                                    <div class="card-body p-4">
-                                        <div class="d-flex justify-content-between align-items-start mb-2">
-                                            <div>
-                                                <h5 class="card-title text-dark mb-1"><%# Eval("Titulo") %></h5>
-                                                <p class="text-muted mb-0">
-                                                    <i class="fas fa-map-marker-alt"></i> <%# Eval("Ubicacion") %>
-                                                </p>
+                                    <div class="col-md-8">
+                                        <div class="card-body p-3">
+                                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                                <div>
+                                                    <h5 class="card-title text-dark mb-1"><%# Eval("Titulo") %></h5>
+                                                    <p class="text-muted mb-0">
+                                                        <i class="fas fa-map-marker-alt"></i> <%# Eval("Ubicacion") %>
+                                                    </p>
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <div class="d-flex flex-row justify-content-between w-100 align-items-center">
-                                            <b class="fs-4 mb-2">$<%# Eval("Precio") %></b>
-                                            <a class="d-flex gap-2 align-items-center text-secondary text-decoration-none fst-italic" href="InmuebleSeleccionado.aspx"><i class="fas fa-eye"></i>Ver Propiedad</a>
-                                        </div>
+                                            <b class="fs-4">$<%# Eval("Precio") %></b>
                                         
+                                        
+                                            <div class="d-flex gap-2 align-items-center row mt-2">
+                                                <div class="d-flex flex-row gap-2 align-items-center">
+                                                    <i class="fas fa-door-open"></i><%# Eval("Ambientes") %> Amb.</p>
+                                                    <i class="fas fa-bed"></i><%# Eval("Dormitorios") %> Dorm. </p>
+                                                    <i class="fas fa-bath"></i><%# Eval("Baños") %> Bañ. </p>
+                                                </div>
+                                                <div class="d-flex flex-row gap-2 align-items-center">
+                                                    <i class="fas fa-ruler-combined"></i><%# Eval("Sup_m2_Total") %> m²
+                                                    <%# Eval("ConPatio").ToString() == "True" ? "<i class='fas fa-tree'></i> Con Patio" : "<i class='fas fa-tree'></i> Sin Patio"%>
+                                                    <%# Eval("ConBalcon").ToString() == "True" ? "<i class='fas fa-umbrella-beach'></i> Con Balcón" : "<i class='fas fa-umbrella-beach'></i> Sin Balcón"%>
+                                                </div>
+                                            </div>
+                                        
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </ItemTemplate>
+                        </ItemTemplate>
                 </asp:Repeater>
             </div>
-
         </div>
     </div>
+
+    <div class="py-3">
+      <h2 class="mb-5 mt-2 text-center">🎖 Propiedades Más Vistas 🏡</h2>
+
+      <div class="row g-2">
+          <div class="propiedades-container">
+              <asp:Repeater ID="rptPropiedadesMasVistas" runat="server">
+                      <ItemTemplate>
+                          <div class="property-card" onclick="window.location.href='InmuebleSeleccionado.aspx?id=<%# Eval("IdPropiedad") %>';">
+                              <div class="row g-0">
+                                <div style="position: relative;">
+                                    <img src='<%# Eval("ImagenUrl") %>' class="property-image" alt="Propiedad" />
+                                    <i class="fas fa-heart heart-icon"></i>
+                                </div>
+                              
+                                  <div class="col-md-8">
+                                      <div class="card-body p-3">
+                                          <div class="d-flex justify-content-between align-items-start mb-2">
+                                              <div>
+                                                  <h5 class="card-title text-dark mb-1"><%# Eval("Titulo") %></h5>
+                                                  <p class="text-muted mb-0">
+                                                      <i class="fas fa-map-marker-alt"></i> <%# Eval("Ubicacion") %>
+                                                  </p>
+                                              </div>
+                                          </div>
+
+                                          <b class="fs-4">$<%# Eval("Precio") %></b>
+                                      
+                                      
+                                          <div class="d-flex gap-2 align-items-center row mt-2">
+                                              <div class="d-flex flex-row gap-2 align-items-center">
+                                                  <i class="fas fa-door-open"></i><%# Eval("Ambientes") %> Amb.</p>
+                                                  <i class="fas fa-bed"></i><%# Eval("Dormitorios") %> Dorm. </p>
+                                                  <i class="fas fa-bath"></i><%# Eval("Baños") %> Bañ. </p>
+                                              </div>
+                                              <div class="d-flex flex-row gap-2 align-items-center">
+                                                  <i class="fas fa-ruler-combined"></i><%# Eval("Sup_m2_Total") %> m²
+                                                  <%# Eval("ConPatio").ToString() == "True" ? "<i class='fas fa-tree'></i> Con Patio" : "<i class='fas fa-tree'></i> Sin Patio"%>
+                                                  <%# Eval("ConBalcon").ToString() == "True" ? "<i class='fas fa-umbrella-beach'></i> Con Balcón" : "<i class='fas fa-umbrella-beach'></i> Sin Balcón"%>
+                                              </div>
+                                          </div>
+                                      
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </ItemTemplate>
+              </asp:Repeater>
+          </div>
+      </div>
+  </div>
 </asp:Content>

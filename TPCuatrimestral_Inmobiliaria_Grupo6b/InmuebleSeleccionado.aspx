@@ -17,17 +17,17 @@
                                 <div class="carousel-item active">
                                     <asp:Image ID="Image4" runat="server"
                                         ImageUrl="https://cdn.pixabay.com/photo/2017/03/22/17/39/kitchen-2165756_960_720.jpg"
-                                        Width="100%" CssClass="rounded img-fluid mb-3" />
+                                        Width="100%" CssClass="rounded" />
                                 </div>
                                 <div class="carousel-item">
                                     <asp:Image ID="Image2" runat="server"
                                         ImageUrl="https://cdn.pixabay.com/photo/2016/11/29/03/53/house-1867187_1280.jpg"
-                                        Width="100%" CssClass="rounded img-fluid mb-3" />
+                                        Width="100%" CssClass="rounded" />
                                 </div>
                                 <div class="carousel-item">
                                     <asp:Image ID="Image3" runat="server"
                                         ImageUrl="https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_1280.jpg"
-                                        Width="100%" CssClass="rounded img-fluid mb-3" />
+                                        Width="100%" CssClass="rounded" />
                                 </div>
                             </div>
                             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">

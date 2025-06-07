@@ -11,26 +11,24 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
 {
     public partial class _Default : Page
     {
-        private List<Propiedad> propiedades;
         private PropiedadNegocio propiedadesNegocio;
+
+        private List<Propiedad> propiedadesDestacadas;
+        private List<Propiedad> propiedadesMasVistas;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 propiedadesNegocio = new PropiedadNegocio();
-                propiedades = propiedadesNegocio.listarDestacadas();
 
-                if (propiedades != null && propiedades.Count > 0)
-                {
-                    rptPropiedades.DataSource = propiedades;
-                    rptPropiedades.DataBind();
-                }
-                else
-                {
-                    rptPropiedades.DataSource = null;
-                    rptPropiedades.DataBind();
-                }
+                propiedadesDestacadas = propiedadesNegocio.listarDestacadas();
+                rptPropiedadesDestacadas.DataSource = (propiedadesDestacadas?.Count > 0) ? propiedadesDestacadas : null;
+                rptPropiedadesDestacadas.DataBind();
+
+                propiedadesMasVistas = propiedadesNegocio.listarMasVistas();
+                rptPropiedadesMasVistas.DataSource = (propiedadesMasVistas?.Count > 0) ? propiedadesMasVistas : null;
+                rptPropiedadesMasVistas.DataBind();
             }
 
         }

@@ -30,6 +30,12 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
             lblEmailUsuario.Text = "buenusuario@gmail.com";
             lblFechaRegistro.Text = DateTime.Now.ToString("dd/MM/yyyy");
 
+            if (propiedadesNegocio == null)
+            {
+                propiedadesNegocio = new PropiedadNegocio();
+                propiedades = propiedadesNegocio.listar();
+            }
+
             if (propiedades != null && propiedades.Count > 0)
             {
                 rptPropiedades.DataSource = propiedades;
@@ -46,6 +52,25 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
             }
         }
 
-
+        protected void lnkAlternarVisibilidad_Command(object sender, CommandEventArgs e)
+        {
+            try
+            {
+                if (e.CommandName == "alternarVisibilidad")
+                {
+                    int propiedadId = Convert.ToInt32(e.CommandArgument);
+                    PropiedadNegocio propiedadNegocio = new PropiedadNegocio();
+                    bool resultado = propiedadNegocio.alternarVisibilidadDePropiedadExistente(propiedadId); // falta implementacion
+                    // recargar estados y propiedades, luego hacer metodo de .listarPublicacionesDeUsuario(IdUsuario)
+                    propiedades = propiedadNegocio.listar();
+                    CargarDatos();
+                }
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "showerror",
+                    $"alert('Error al cambiar la visibilidad: {ex.Message}');", true);
+            }
+        }
     }
 }

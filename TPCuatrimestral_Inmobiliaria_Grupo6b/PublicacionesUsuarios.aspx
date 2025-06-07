@@ -101,6 +101,15 @@
         .account-info-card:hover {
             scale: 1.01;
         }
+
+        .hide-icon{
+            cursor: pointer;
+            background: none !important;
+            border: none !important;
+            text-decoration: none !important;
+            outline: none !important;
+            color: black;
+        }
     </style>
 
     <div class="container mt-5 mb-5">
@@ -137,11 +146,10 @@
                     <ItemTemplate>
                         <div class="property-card">
                             <div class="row g-0">
-
                                 <img src='<%# Eval("ImagenUrl") %>' class="property-image" alt="Propiedad" />
                                 
                                 <div class="col-md-8">
-                                    <div class="card-body p-4">
+                                    <div class="card-body p-3">
                                         <div class="d-flex justify-content-between align-items-start mb-2">
                                             <div>
                                                 <h5 class="card-title text-dark mb-1"><%# Eval("Titulo") %></h5>
@@ -157,19 +165,21 @@
                                         </div>
                                         
                                         <b class="fs-4 mb-2">$<%# Eval("Precio") %></b>
-                                        
                                         <p class="card-text text-muted mb-3"><%# Eval("Descripcion") %></p>
-                                        
-                                        <div class="row">
-                                            <div class="col-md-6 mb-2">
-                                                <p class="mb-1 small"><strong>Dormitorios:</strong> <%# Eval("Dormitorios") %></p>
-                                                <p class="mb-0 small"><strong>Publicado:</strong> <%# Eval("FechaPublicacion", "{0:dd/MM/yyyy}") %></p>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="d-flex flex-column gap-2">
-                                                <!-- BOTONES -->
-                                                </div>
-                                            </div>
+                                        <p class="mb-0 small"><strong>Publicado:</strong> <%# Eval("FechaPublicacion", "{0:dd/MM/yyyy}") %></p>
+
+                                        <div class="d-flex flex-row align-items-center gap-4 mt-3">
+                                            <p style="cursor:pointer;"><i class="fas fa-house"></i> Ver Publicacion</p>
+                                            <p style="cursor:pointer;"><i class="fas fa-pencil"></i> Editar Publicacion</p>
+
+                                            <asp:LinkButton CssClass="hide-icon" 
+                                                ID="lnkAlternarVisibilidad" runat="server" 
+                                                OnCommand="lnkAlternarVisibilidad_Command"
+                                                CommandName="alternarVisibilidad" 
+                                                CommandArgument='<%# Eval("IdPropiedad") %>'
+                                                ToolTip='<%# Eval("Visible").ToString() == "True" ? "Ocultar propiedad" : "Mostrar propiedad" %>'>
+                                                <p style="cursor:pointer;"><i class='fas mr-1 <%# Eval("Visible").ToString() == "True" ? "fa-eye" : "fa-eye-slash" %>'></i>Alternar Visibilidad</p>
+                                            </asp:LinkButton>
                                         </div>
                                     </div>
                                 </div>
