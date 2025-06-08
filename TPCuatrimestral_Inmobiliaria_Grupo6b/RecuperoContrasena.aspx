@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="TPCuatrimestral_Inmobiliaria_Grupo6b.Login" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="RecuperoContrasena.aspx.cs" Inherits="TPCuatrimestral_Inmobiliaria_Grupo6b.RecuperoContrasena" %>
 
 <!DOCTYPE html>
 
@@ -33,6 +33,9 @@
     <form id="form1" runat="server">
         <div class="d-flex justify-content-center align-items-center" style="min-height: 100vh; padding: 15px;">
             <div align="center" class="container bg-light boxshadow col-12 col-sm-8 col-md-6 col-lg-4 col-xl-3" style="border-radius: 15px; padding: 0; max-width: 400px;">
+
+                <asp:Label ID="LabelMensaje" runat="server" Text="" Visible="false" CssClass="alert"></asp:Label>
+
                 <div>
                         <div class="text-white rounded-top d-flex align-items-center justify-content-center" style="padding: 15px; background-color: #121212;">
                             <h2 class="mb-0">Recuperar contraseña</h2>
@@ -49,7 +52,7 @@
                             </div>
                         </div>                 
                         
-                             <asp:Button ID="ButtonEnviar" runat="server" Text="Enviar" CssClass="btn btn-primary w-100" BackColor="#121212" />
+                             <asp:Button ID="ButtonEnviar" runat="server" Text="Enviar" CssClass="btn btn-primary w-100" BackColor="#121212" OnClick="ButtonEnviar_Click" />
                     </div>
                 </div>
             </div>

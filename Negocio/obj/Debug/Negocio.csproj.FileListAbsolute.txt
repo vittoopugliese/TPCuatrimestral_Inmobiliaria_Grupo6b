@@ -34,15 +34,6 @@ F:\Alex\source\TrabajoPracticoIntegrador\V8\Negocio\obj\Debug\Negocio.csproj.Cor
 F:\Alex\source\TrabajoPracticoIntegrador\V8\Negocio\obj\Debug\Negocio.csproj.Up2Date
 F:\Alex\source\TrabajoPracticoIntegrador\V8\Negocio\obj\Debug\Negocio.dll
 F:\Alex\source\TrabajoPracticoIntegrador\V8\Negocio\obj\Debug\Negocio.pdb
-C:\Users\nahue\Desktop\Mi carpeta - Nahuel\NMV - Personal\TUP UTN\Programacion_3\repo_TPC\TPC_Inmobiliaria\Negocio\bin\Debug\Negocio.dll
-C:\Users\nahue\Desktop\Mi carpeta - Nahuel\NMV - Personal\TUP UTN\Programacion_3\repo_TPC\TPC_Inmobiliaria\Negocio\bin\Debug\Negocio.pdb
-C:\Users\nahue\Desktop\Mi carpeta - Nahuel\NMV - Personal\TUP UTN\Programacion_3\repo_TPC\TPC_Inmobiliaria\Negocio\bin\Debug\Dominio.dll
-C:\Users\nahue\Desktop\Mi carpeta - Nahuel\NMV - Personal\TUP UTN\Programacion_3\repo_TPC\TPC_Inmobiliaria\Negocio\bin\Debug\Dominio.pdb
-C:\Users\nahue\Desktop\Mi carpeta - Nahuel\NMV - Personal\TUP UTN\Programacion_3\repo_TPC\TPC_Inmobiliaria\Negocio\obj\Debug\Negocio.csproj.AssemblyReference.cache
-C:\Users\nahue\Desktop\Mi carpeta - Nahuel\NMV - Personal\TUP UTN\Programacion_3\repo_TPC\TPC_Inmobiliaria\Negocio\obj\Debug\Negocio.csproj.CoreCompileInputs.cache
-C:\Users\nahue\Desktop\Mi carpeta - Nahuel\NMV - Personal\TUP UTN\Programacion_3\repo_TPC\TPC_Inmobiliaria\Negocio\obj\Debug\Negocio.csproj.Up2Date
-C:\Users\nahue\Desktop\Mi carpeta - Nahuel\NMV - Personal\TUP UTN\Programacion_3\repo_TPC\TPC_Inmobiliaria\Negocio\obj\Debug\Negocio.dll
-C:\Users\nahue\Desktop\Mi carpeta - Nahuel\NMV - Personal\TUP UTN\Programacion_3\repo_TPC\TPC_Inmobiliaria\Negocio\obj\Debug\Negocio.pdb
 F:\Alex\source\TrabajoPracticoIntegrador\V9\Negocio\bin\Debug\Negocio.dll
 F:\Alex\source\TrabajoPracticoIntegrador\V9\Negocio\bin\Debug\Negocio.pdb
 F:\Alex\source\TrabajoPracticoIntegrador\V9\Negocio\bin\Debug\Dominio.dll
@@ -61,3 +52,12 @@ F:\Alex\source\TrabajoPracticoIntegrador\V10\Negocio\obj\Debug\Negocio.csproj.Co
 F:\Alex\source\TrabajoPracticoIntegrador\V10\Negocio\obj\Debug\Negocio.csproj.Up2Date
 F:\Alex\source\TrabajoPracticoIntegrador\V10\Negocio\obj\Debug\Negocio.dll
 F:\Alex\source\TrabajoPracticoIntegrador\V10\Negocio\obj\Debug\Negocio.pdb
+C:\Users\nahue\Desktop\Mi carpeta - Nahuel\NMV - Personal\TUP UTN\Programacion_3\repo_TPC\TPC_Inmobiliaria\Negocio\bin\Debug\Negocio.dll
+C:\Users\nahue\Desktop\Mi carpeta - Nahuel\NMV - Personal\TUP UTN\Programacion_3\repo_TPC\TPC_Inmobiliaria\Negocio\bin\Debug\Negocio.pdb
+C:\Users\nahue\Desktop\Mi carpeta - Nahuel\NMV - Personal\TUP UTN\Programacion_3\repo_TPC\TPC_Inmobiliaria\Negocio\bin\Debug\Dominio.dll
+C:\Users\nahue\Desktop\Mi carpeta - Nahuel\NMV - Personal\TUP UTN\Programacion_3\repo_TPC\TPC_Inmobiliaria\Negocio\bin\Debug\Dominio.pdb
+C:\Users\nahue\Desktop\Mi carpeta - Nahuel\NMV - Personal\TUP UTN\Programacion_3\repo_TPC\TPC_Inmobiliaria\Negocio\obj\Debug\Negocio.csproj.AssemblyReference.cache
+C:\Users\nahue\Desktop\Mi carpeta - Nahuel\NMV - Personal\TUP UTN\Programacion_3\repo_TPC\TPC_Inmobiliaria\Negocio\obj\Debug\Negocio.csproj.CoreCompileInputs.cache
+C:\Users\nahue\Desktop\Mi carpeta - Nahuel\NMV - Personal\TUP UTN\Programacion_3\repo_TPC\TPC_Inmobiliaria\Negocio\obj\Debug\Negocio.csproj.Up2Date
+C:\Users\nahue\Desktop\Mi carpeta - Nahuel\NMV - Personal\TUP UTN\Programacion_3\repo_TPC\TPC_Inmobiliaria\Negocio\obj\Debug\Negocio.dll
+C:\Users\nahue\Desktop\Mi carpeta - Nahuel\NMV - Personal\TUP UTN\Programacion_3\repo_TPC\TPC_Inmobiliaria\Negocio\obj\Debug\Negocio.pdb

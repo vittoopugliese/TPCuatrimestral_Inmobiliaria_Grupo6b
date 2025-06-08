@@ -42,30 +42,12 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
         protected global::System.Web.UI.WebControls.TextBox TextBoxContra;
 
         /// <summary>
-        /// LinkButtonRecordarContra control.
+        /// ButtonEnviar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButtonRecordarContra;
-
-        /// <summary>
-        /// LinkButtonSinCuenta control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButtonSinCuenta;
-
-        /// <summary>
-        /// ButtonIngresar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonIngresar;
+        protected global::System.Web.UI.WebControls.Button ButtonEnviar;
     }
 }

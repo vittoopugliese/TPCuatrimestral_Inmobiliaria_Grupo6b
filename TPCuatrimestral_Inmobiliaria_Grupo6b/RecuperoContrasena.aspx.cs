@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Dominio;
+using Negocio;
 
 namespace TPCuatrimestral_Inmobiliaria_Grupo6b
 {
@@ -13,5 +15,30 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
         {
 
         }
+
+        protected void ButtonEnviar_Click(object sender, EventArgs e)
+        {
+            LoginNegocio loginNegocio = new LoginNegocio();
+            Usuario usuario = loginNegocio.BuscarPorEmail(TextBoxCorreo.Text);
+
+            if (usuario != null)
+            {
+                EmailService emailService = new EmailService();
+                emailService.armarCorreo(TextBoxCorreo.Text, usuario.Contrasena);
+                emailService.enviarCorreo();
+
+                LabelMensaje.Text = "Se envió la contraseña a tu correo";
+                LabelMensaje.CssClass = "alert alert-success";
+                LabelMensaje.Visible = true;
+            }
+            else
+            {
+                LabelMensaje.Text = "El correo no existe en nuestros registros";
+                LabelMensaje.CssClass = "alert alert-danger";
+                LabelMensaje.Visible = true;
+            }
+        }
     }
+
+
 }
