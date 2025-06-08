@@ -14,7 +14,22 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            // este cambio lo comento para que no genere problemas a mis compañeos, es basicamente
+            // un cambio que implica un permiso para ingresar basado en el rol de usuario
 
+            //if (Session["usuario"] == null)
+            //{
+            //    Session["urlGuardada"] = "PublicarInmueble.aspx"; // Guardar la URL actual para redirigir después del login
+            //    Session.Add("Error", "Debe iniciar sesión para acceder a esta página.");
+            //    Response.Redirect("Login.aspx", false);
+
+               
+            //}
+            //else if (Session["IdRol"] == null || (int)Session["IdRol"] != 1)
+            //{
+            //    Session.Add("Error", "No tiene permisos para acceder a esta página.");
+            //    Response.Redirect("Error.aspx", false);
+            //}
         }
 
         protected void btnGuardarPublicacion_Click(object sender, EventArgs e)

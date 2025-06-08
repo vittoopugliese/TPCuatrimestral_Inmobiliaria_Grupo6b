@@ -27,17 +27,31 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                 if (loginNegocio.Loguear(usuario))
                 {
                     Session.Add("usuario", usuario);
-                    switch (usuario.IdRol)
+
+                    Session["usuario"] = usuario.Email; // Guardar el email del usuario en la sesión
+                    Session["IdRol"] = usuario.IdRol; // Guardar el IdRol del usuario en la sesión
+                    Session["contrasena"] = usuario.Contrasena; // Guardar la contraseña del usuario en la sesión   
+
+                    if (Session["urlGuardada"] != null)
                     {
-                        case 1:
-                            Response.Redirect("PublicarInmueble.aspx", false); // modificar luego
-                            break;
-                        case 2:
-                            Response.Redirect("Default.aspx", false); // modificar luego
-                            break;
-                        case 3:
-                            Response.Redirect("Default.aspx", false); // modificar luego
-                            break;
+                        string urlGuardada = Session["urlGuardada"].ToString();
+                        Session.Remove("urlGuardada"); // Limpiar la URL guardada
+                        Response.Redirect(urlGuardada, false); // Redirigir a la URL guardada
+                    }
+                    else
+                    {
+                        switch (usuario.IdRol)
+                        {
+                            case 1:
+                                Response.Redirect("PublicarInmueble.aspx", false); // modificar luego
+                                break;
+                            case 2:
+                                Response.Redirect("Default.aspx", false); // modificar luego
+                                break;
+                            case 3:
+                                Response.Redirect("Default.aspx", false); // modificar luego
+                                break;
+                        }
                     }
                 }
                 else
