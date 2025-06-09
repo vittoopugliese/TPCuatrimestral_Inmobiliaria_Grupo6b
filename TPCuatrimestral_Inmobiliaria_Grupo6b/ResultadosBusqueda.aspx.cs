@@ -12,7 +12,8 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
     public partial class ResultadosBusqueda : System.Web.UI.Page
     {
         private List<Propiedad> propiedades;
-        private PropiedadNegocio propiedadNegocio;
+        private PropiedadNegocio propiedadesNegocio;
+        private List<int> idsPropiedadesFavoritas;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -24,8 +25,10 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
         }
         private void CargarPropiedades()
         {
-            propiedadNegocio = new PropiedadNegocio();
-            propiedades = propiedadNegocio.listar();
+            propiedadesNegocio = new PropiedadNegocio();
+            propiedades = propiedadesNegocio.listar();
+
+            idsPropiedadesFavoritas = propiedadesNegocio.obtenerIdPropiedadesEnFavoritos();
 
             if (propiedades != null && propiedades.Count > 0)
             {
@@ -62,6 +65,43 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
         {
         }
 
+        protected void rptPropiedades_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            if (e.CommandName == "AlternarFavorito")
+            {
+                try
+                {
+                    int idPropiedad = Convert.ToInt32(e.CommandArgument);
+                    PropiedadNegocio negocio = new PropiedadNegocio();
+                    negocio.alternarPropiedadDeFavoritos(idPropiedad);
+                    // sin la recarga, no se actualiza el marcado de corazon de favorito...
+                    Response.Redirect(Request.RawUrl);
+                }
+                catch (Exception ex)
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "error",
+                        "alert('Error: " + ex.Message + "');", true);
+                }
+            }
+        }
 
+        public bool EsFavorito(object idPropiedad)
+        {
+            if (idPropiedad == null) return false;
+
+            int id;
+            if (int.TryParse(idPropiedad.ToString(), out id))
+            {
+                if (idsPropiedadesFavoritas == null)
+                {
+                    propiedadesNegocio = propiedadesNegocio ?? new PropiedadNegocio();
+                    idsPropiedadesFavoritas = propiedadesNegocio.obtenerIdPropiedadesEnFavoritos();
+                }
+
+                return idsPropiedadesFavoritas != null && idsPropiedadesFavoritas.Contains(id);
+            }
+
+            return false;
+        }
     }
 }

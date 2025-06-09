@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Inmobiliaria" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="TPCuatrimestral_Inmobiliaria_Grupo6b._Default" %>
+﻿<%@ Page Title="Inmobiliaria" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="TPCuatrimestral_Inmobiliaria_Grupo6b._Default" MaintainScrollPositionOnPostback="true" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <!-- Zona central donde tenemos el buscador, imagen, etc -->
@@ -80,12 +80,26 @@
                     color: white;
                     text-shadow: 0 0 5px rgba(0,0,0,0.5);
                     cursor: pointer;
+                    opacity: 0;
                     transition: all 200ms ease-in-out;
                 }
 
                 .heart-icon:hover {
                     color: #ff0000 !important;
                     transform: scale(1.1);
+                }
+
+                .property-card:hover .heart-icon {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+                
+                .heart-icon.favorito {
+                    color: #ff0000 !important;
+                }
+
+                .heart-icon.no-favorito {
+                    color: white;
                 }
         </style>
 
@@ -122,13 +136,17 @@
 
         <div class="row g-2">
             <div class="propiedades-container">
-                <asp:Repeater ID="rptPropiedadesDestacadas" runat="server">
+                <asp:Repeater ID="rptPropiedadesDestacadas" runat="server" OnItemCommand="ItemCommand">
                         <ItemTemplate>
                             <div class="property-card" onclick="window.location.href='InmuebleSeleccionado.aspx?id=<%# Eval("IdPropiedad") %>';">
                                 <div class="row g-0">
                                     <div style="position: relative;">
                                         <img src='<%# Eval("ImagenUrl") %>' class="property-image" alt="Propiedad" />
-                                        <i class="fas fa-heart heart-icon"></i>
+                                        <asp:LinkButton ID="btnFavorito" runat="server" CommandName="AlternarFavorito" CommandArgument='<%# Eval("IdPropiedad") %>' 
+                                            CssClass='<%# "heart-icon " + (EsFavorito(Eval("IdPropiedad")) ? "favorito" : "no-favorito") %>'
+                                            OnClientClick="event.stopPropagation(); return true;">
+                                            <i class="fas fa-heart"></i>
+                                        </asp:LinkButton>
                                     </div>
                                 
                                     <div class="col-md-8">
@@ -173,13 +191,19 @@
 
       <div class="row g-2">
           <div class="propiedades-container">
-              <asp:Repeater ID="rptPropiedadesMasVistas" runat="server">
+              <asp:Repeater ID="rptPropiedadesMasVistas" runat="server" OnItemCommand="ItemCommand">
                       <ItemTemplate>
                           <div class="property-card" onclick="window.location.href='InmuebleSeleccionado.aspx?id=<%# Eval("IdPropiedad") %>';">
                               <div class="row g-0">
                                 <div style="position: relative;">
                                     <img src='<%# Eval("ImagenUrl") %>' class="property-image" alt="Propiedad" />
-                                    <i class="fas fa-heart heart-icon"></i>
+                                        <asp:LinkButton ID="btnFavorito" runat="server" 
+                                            CommandName="AlternarFavorito" 
+                                            CommandArgument='<%# Eval("IdPropiedad") %>' 
+                                            CssClass='<%# "heart-icon " + (EsFavorito(Eval("IdPropiedad")) ? "favorito" : "no-favorito") %>'
+                                            OnClientClick="event.stopPropagation(); return true;">
+                                            <i class="fas fa-heart"></i>
+                                        </asp:LinkButton>
                                 </div>
                               
                                   <div class="col-md-8">

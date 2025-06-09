@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Resultados de Búsqueda" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ResultadosBusqueda.aspx.cs" Inherits="TPCuatrimestral_Inmobiliaria_Grupo6b.ResultadosBusqueda" %>
+﻿<%@ Page Title="Resultados de Búsqueda" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ResultadosBusqueda.aspx.cs" Inherits="TPCuatrimestral_Inmobiliaria_Grupo6b.ResultadosBusqueda" MaintainScrollPositionOnPostback="true" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     
@@ -106,11 +106,28 @@
             text-shadow: 0 0 5px rgba(0,0,0,0.5);
             cursor: pointer;
             transition: all 200ms ease-in-out;
+            opacity: 0;
+            transform: scale(0.8);
+        }
+
+        .property-card:hover .heart-icon {
+            opacity: 1;
+            transform: scale(1);
         }
 
         .heart-icon:hover {
             color: #ff0000 !important;
-            transform: scale(1.1);
+            transform: scale(1.2) !important;
+        }
+
+        .heart-icon.favorito {
+            color: #ff0000 !important;
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .heart-icon.no-favorito {
+            color: white;
         }
     </style>
 
@@ -184,13 +201,17 @@
         <div class="row">
             <div class="col-12">
         <div class="propiedades-container">
-            <asp:Repeater ID="rptPropiedades" runat="server">
+            <asp:Repeater ID="rptPropiedades" runat="server" OnItemCommand="rptPropiedades_ItemCommand">
                     <ItemTemplate>
-                        <div class="property-card" onclick="window.location.href='InmuebleSeleccionado.aspx?id=<%# Eval("IdPropiedad") %>';">
+                        <div class="property-card" onclick="navegarAPropiedad(<%# Eval("IdPropiedad") %>);">
                             <div class="row g-0">
                                 <div style="position: relative;">
                                   <img src='<%# Eval("ImagenUrl") %>' class="property-image" alt="Propiedad" />
-                                  <i class="fas fa-heart heart-icon"></i>
+                                       <asp:LinkButton ID="btnFavorito" runat="server" CommandName="AlternarFavorito" CommandArgument='<%# Eval("IdPropiedad") %>' 
+                                           CssClass='<%# "heart-icon " + (EsFavorito(Eval("IdPropiedad")) ? "favorito" : "no-favorito") %>'
+                                           OnClientClick="event.stopPropagation(); return true;">
+                                           <i class="fas fa-heart"></i>
+                                       </asp:LinkButton>
                                 </div>
                                 
                                 <div class="col-md-8">
@@ -238,5 +259,17 @@
         
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded',() => {
+            // func necesaria ya que sin ella, al tocar el corazon de favorito se redirigiria a InmuebleSeleccionado si o si, lo importante es el stopPropagation del evento
+            const favoritoButtons = document.querySelectorAll('.heart-icon');
+            favoritoButtons.forEach(button => button.addEventListener('click', e => e.stopPropagation()) );
+        });
+
+        function navegarAPropiedad(IdPropiedad) {
+            window.location.href = 'InmuebleSeleccionado.aspx?id=' + IdPropiedad;
+        }
+    </script>
 
 </asp:Content>

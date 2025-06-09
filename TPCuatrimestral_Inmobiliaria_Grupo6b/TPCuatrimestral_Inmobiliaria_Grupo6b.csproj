@@ -122,6 +122,7 @@
     <Content Include="Default.aspx" />
     <Content Include="Error.aspx" />
     <Content Include="favicon.ico" />
+    <Content Include="Favoritos.aspx" />
     <Content Include="Global.asax" />
     <Content Include="InmuebleSeleccionado.aspx" />
     <Content Include="Login.aspx" />
@@ -217,12 +218,21 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+<<<<<<< main
     <Compile Include="Error.aspx.cs">
       <DependentUpon>Error.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Error.aspx.designer.cs">
       <DependentUpon>Error.aspx</DependentUpon>
+=======
+    <Compile Include="Favoritos.aspx.cs">
+      <DependentUpon>Favoritos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Favoritos.aspx.designer.cs">
+      <DependentUpon>Favoritos.aspx</DependentUpon>
+>>>>>>> Pagina de Favoritos, boton de corazon queda marcado al favoritear una publicacion, commit en branch antes de hacer rebase
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

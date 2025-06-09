@@ -91,10 +91,10 @@ CREATE TABLE Imagen (
     IdPropiedad INT,
     UrlImagen NVARCHAR(255),
     FOREIGN KEY (IdImagen) REFERENCES Propiedad(IdPropiedad)
-    );
+);
 
 CREATE TABLE Favorito (
 	IdFavorito INT PRIMARY KEY IDENTITY(1,1),
 	IdPropiedad INT,
 	IdUsuario INT
-	);
+);

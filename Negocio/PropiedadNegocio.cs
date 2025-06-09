@@ -79,26 +79,102 @@ namespace Negocio
 
         public List<Propiedad> listar()
         {
-            return ObtenerPropiedadesSegunConsultasYMapearlas("SELECT * FROM PROPIEDAD WHERE Visible = 1");
+            return ObtenerPropiedadesSegunConsultasYMapearlas("SELECT * FROM PROPIEDAD WHERE Visible = 1 AND Eliminada = 0");
         }
+
+        // listarPorTipo: return ObtenerPropiedadesSegunConsultasYMapearlas($"SELECT * FROM PROPIEDAD WHERE IdTipo = {idTipo}");
+        // listarPorProvincia: return ObtenerPropiedadesSegunConsultasYMapearlas($"SELECT * FROM PROPIEDAD WHERE IdProvincia = {idProvincia}");
 
         public List<Propiedad> listarDestacadas()
         {
-            // las destacadas son las caras je
-            return ObtenerPropiedadesSegunConsultasYMapearlas("SELECT * FROM PROPIEDAD WHERE Precio > 150000 AND Visible = 1");
+            // las destacadas sera una opcion en la creacion de la propiedad, para que aca busque las que tengan esa prop en true
+            return ObtenerPropiedadesSegunConsultasYMapearlas("SELECT * FROM PROPIEDAD WHERE Precio > 150000 AND Visible = 1 AND Eliminada = 0");
         }
 
         public List<Propiedad> listarMasVistas()
         {
             // remplazar luego cuando tengan vistas de verdad
-            //return ObtenerPropiedadesSegunConsultasYMapearlas("SELECT * FROM PROPIEDAD WHERE Visitas > 10 AND Visible = 1");
-            return ObtenerPropiedadesSegunConsultasYMapearlas("SELECT * FROM PROPIEDAD WHERE Precio > 150000 AND Visible = 1");
+            // return ObtenerPropiedadesSegunConsultasYMapearlas("SELECT * FROM PROPIEDAD WHERE Visitas > 10 AND Visible = 1");
+            return ObtenerPropiedadesSegunConsultasYMapearlas("SELECT * FROM PROPIEDAD WHERE Precio > 150000 AND Visible = 1 AND Eliminada = 0");
         }
 
-        // listarPorTipo: return ObtenerPropiedadesSegunConsultasYMapearlas($"SELECT * FROM PROPIEDAD WHERE IdTipo = {idTipo}");
-        // listarPorProvincia: return ObtenerPropiedadesSegunConsultasYMapearlas($"SELECT * FROM PROPIEDAD WHERE IdProvincia = {idProvincia}");
-        // listarVisibles: return ObtenerPropiedadesSegunConsultasYMapearlas("SELECT * FROM PROPIEDAD WHERE Visible = 1 AND Eliminada = 0");
+        public List<int> obtenerIdPropiedadesEnFavoritos()
+        {
+            int IdUsuario = 1; // REMPLAZAR por clase helper,  metodo de obtener user
+            List<int> idsPropiedadesFavoritas = new List<int>();
 
+            string consultaFavoritos = "SELECT IdPropiedad FROM FAVORITO WHERE IdUsuario = " + IdUsuario;
+            db.setearConsulta(consultaFavoritos);
+
+            db.ejecutarLectura();
+            // quizas podriamos combinar estas dos request en una sola
+            while (db.Lector.Read()) idsPropiedadesFavoritas.Add((int)db.Lector["IdPropiedad"]);
+
+            db.cerrarConexion();
+
+            return idsPropiedadesFavoritas;
+        }
+
+        public List<Propiedad> listarFavoritas()
+        {
+            try
+            {
+                List<int> idsPropiedadesFavoritas = obtenerIdPropiedadesEnFavoritos();
+
+                if (idsPropiedadesFavoritas.Count == 0) return new List<Propiedad>();
+
+                string idsString = string.Join(",", idsPropiedadesFavoritas);
+                string consultaPropiedades = $"SELECT * FROM PROPIEDAD WHERE IdPropiedad IN ({idsString}) AND Visible = 1 AND Eliminada = 0";
+
+                return ObtenerPropiedadesSegunConsultasYMapearlas(consultaPropiedades);
+            }
+            catch (Exception)
+            {
+                db.cerrarConexion();
+                throw;
+            }
+        }
+
+        public bool alternarPropiedadDeFavoritos(int IdPropiedad)
+        {
+            int IdUsuario = 1; // REMPLAZAR por clase helper,  metodo de obtener user
+            try
+            {
+                string consulta = "SELECT COUNT(*) FROM FAVORITO WHERE IdPropiedad = @IdPropiedad AND IdUsuario = @IdUsuario";
+                db.setearConsulta(consulta);
+                db.setearParametro("@IdPropiedad", IdPropiedad);
+                db.setearParametro("@IdUsuario", IdUsuario);
+                db.ejecutarLectura();
+
+                bool existeEnFavoritos = false;
+                if (db.Lector.Read()) existeEnFavoritos = (int)db.Lector[0] > 0;
+
+                db.cerrarConexion();
+
+                BaseDeDatos dbEscritura = new BaseDeDatos();
+
+                if (existeEnFavoritos)
+                {
+                    string consultaEliminar = "DELETE FROM FAVORITO WHERE IdPropiedad = @IdPropiedad AND IdUsuario = @IdUsuario";
+                    dbEscritura.setearConsulta(consultaEliminar);
+                }
+                else
+                {
+                    string consultaAgregar = "INSERT INTO FAVORITO (IdPropiedad, IdUsuario) VALUES (@IdPropiedad, @IdUsuario)";
+                    dbEscritura.setearConsulta(consultaAgregar);
+                }
+
+                dbEscritura.setearParametro("@IdPropiedad", IdPropiedad);
+                dbEscritura.setearParametro("@IdUsuario", IdUsuario);
+                dbEscritura.ejecutarAccion();
+                db.cerrarConexion();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al alternar favorito: " + ex.Message);
+            }
+        }
 
         public bool alternarVisibilidadDePropiedadExistente(int IdPropiedad)
         {
