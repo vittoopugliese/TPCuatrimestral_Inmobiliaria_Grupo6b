@@ -33,6 +33,30 @@ namespace Negocio
             }
         }
 
+        public void agregarParametro(string nombre, object valor)
+        {
+            if (comando == null)
+                throw new Exception("Primero debe configurar la consulta con setearConsulta");
+
+            // Manejo de valores nulos
+            if (valor == null)
+            {
+                comando.Parameters.AddWithValue(nombre, DBNull.Value);
+            }
+            else
+            {
+                // Conversión especial para booleanos (bit en SQL)
+                if (valor is bool)
+                {
+                    comando.Parameters.AddWithValue(nombre, (bool)valor ? 1 : 0);
+                }
+                else
+                {
+                    comando.Parameters.AddWithValue(nombre, valor);
+                }
+            }
+        }
+
         public void setearConsulta(string consulta)
         {
             comando.Parameters.Clear();

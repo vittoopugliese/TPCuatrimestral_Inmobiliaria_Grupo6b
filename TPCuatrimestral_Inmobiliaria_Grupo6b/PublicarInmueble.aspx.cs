@@ -4,7 +4,6 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 using Dominio;
 using Negocio;
 
@@ -14,110 +13,161 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                // Cargar provincias si no están cargadas
+                if (selectProvincia.Items.Count <= 1)
+                {
+                    ProvinciaNegocio provinciaNegocio = new ProvinciaNegocio();
+                    selectProvincia.DataSource = provinciaNegocio.listar();
+                    selectProvincia.DataTextField = "Nombre";
+                    selectProvincia.DataValueField = "IdProvincia";
+                    selectProvincia.DataBind();
+                    selectProvincia.Items.Insert(0, new System.Web.UI.WebControls.ListItem("Seleccione Provincia...", ""));
+                }
+            }
         }
 
         protected void btnGuardarPublicacion_Click(object sender, EventArgs e)
         {
-            
             try
             {
+                System.Diagnostics.Debug.WriteLine("Iniciando guardado de publicación...");
 
-                string tipoOpe = selectTipoOperacion.Value;
-                string tipoProp = selectTipoPropiedad.Value;
-                string direccion = inputdireccion.Value;
-                string localidad = inputlocalidad.Value;
-                string provincia = selectProvincia.Value;
-                string titulo = texttitulo.Value;
-                string tipoDueno = txtTipoDueno.Value;
-                string email = inputEmail.Value;
-                string descripcion = txtDescripcion.Value;
-
-                bool balcon = inputBalcon.Checked;
-                bool patio = inputPatio.Checked;
-                bool cochera = inputCochera.Checked;
-
-                int whatsapp;
-                int.TryParse(txtWhatsapp.Text, out whatsapp);
-
-                int cantAmbientes;
-                int.TryParse(txtcantAmbientes.Text, out cantAmbientes);
-
-                int anosDeAntiguedad;
-                int.TryParse(textanosAntiguedad.Text, out anosDeAntiguedad);
-
-                int precio;
-                int.TryParse(txtPrecio.Text, out precio);
-
-                int banos;
-                int.TryParse(txtCantBanos.Text, out banos);
-
-                int dormitorios;
-                int.TryParse(inputCantDormitorios.Text, out dormitorios);
-
-                //alert para texto
-                if (!string.IsNullOrEmpty(descripcion))
+                if (string.IsNullOrEmpty(selectProvincia.SelectedValue))
                 {
-                    string script = $"alert('{descripcion.Replace("'", "\\'")}');";
-                    ClientScript.RegisterStartupScript(this.GetType(), "alert", script, true);
-                }
-                else
-                {
-                    string script = "alert('El valor es null');";
-                    ClientScript.RegisterStartupScript(this.GetType(), "alert", script, true);
-
+                    throw new Exception("Debe seleccionar una provincia");
                 }
 
-                //alert para bool
-                if (cochera)
+                // Crear la propiedad (tu código existente)
+                Propiedad nuevaPropiedad = new Propiedad
                 {
-                    string script = "alert('Tiene cochera');";
-                    ClientScript.RegisterStartupScript(this.GetType(), "alert", script, true);
-                }
-                else
+                    // ... (tu código para crear la propiedad) ...
+                };
+
+                System.Diagnostics.Debug.WriteLine("Agregando propiedad a la base de datos...");
+                PropiedadNegocio propiedadNegocio = new PropiedadNegocio();
+                propiedadNegocio.agregar(nuevaPropiedad);
+                System.Diagnostics.Debug.WriteLine($"Propiedad agregada con ID: {nuevaPropiedad.IdPropiedad}");
+
+                // Guardar imágenes
+                System.Diagnostics.Debug.WriteLine("Intentando guardar imágenes...");
+                List<string> rutasImagenes = GuardarImagenes(nuevaPropiedad.IdPropiedad);
+                System.Diagnostics.Debug.WriteLine($"Imágenes a guardar: {rutasImagenes.Count}");
+
+                if (rutasImagenes.Any())
                 {
-                    string script = "alert('No tiene cochera');";
-                    ClientScript.RegisterStartupScript(this.GetType(), "alert", script, true);
-                }
+                    System.Diagnostics.Debug.WriteLine("Actualizando imagen principal...");
+                    nuevaPropiedad.ImagenUrl = rutasImagenes[0].Replace("~/", "");
+                    propiedadNegocio.ActualizarImagenPrincipal(nuevaPropiedad.IdPropiedad, nuevaPropiedad.ImagenUrl);
 
-                //alert para int
-                string msj5 = $"alert('{whatsapp},{cantAmbientes},{anosDeAntiguedad},{precio},{banos},{dormitorios}');";
-                ClientScript.RegisterStartupScript(this.GetType(), "alertExito", msj5, true);
-
-                string ruta = Server.MapPath("./pictures/");
-                
-                List<Imagenes> imagenesSubidas = new List<Imagenes>(); // Lista para guardar los nombres
-                Propiedad propiedad = new Propiedad();
-                //propiedad.IdPropiedad = 5; //prueba del id de la propiedad para el nombre de la imagen
-                foreach (HttpPostedFile archivo in agregarImagen.PostedFiles)
-                {
-
-                    if (archivo.ContentLength > 0) // Verifica que el archivo no esté vacío
+                    System.Diagnostics.Debug.WriteLine("Guardando imágenes en base de datos...");
+                    ImagenNegocio imagenNegocio = new ImagenNegocio();
+                    for (int i = 0; i < rutasImagenes.Count; i++)
                     {
-                        // Genera un nombre único para evitar sobreescrituras (ej: GUID + ID de propiedad)
-
-                        string nombreArchivo = $"{propiedad.IdPropiedad}-{Guid.NewGuid()}.jpeg";
-
-                        string rutaCompleta = Path.Combine(ruta, nombreArchivo);
-
-                        archivo.SaveAs(rutaCompleta); // Guarda el archivo
-
-                        // Agrega la imagen a la lista
-                        imagenesSubidas.Add(new Imagenes
+                        Imagenes imagen = new Imagenes
                         {
-                            nombreImagen = nombreArchivo
-                        });
+                            IdPropiedad = nuevaPropiedad.IdPropiedad,
+                            UrlImagen = rutasImagenes[i].Replace("~/", ""),
+                            EsPortada = (i == 0)
+                        };
+                        imagenNegocio.Agregar(imagen);
+                        System.Diagnostics.Debug.WriteLine($"Imagen {i + 1} guardada en BD: {imagen.UrlImagen}");
                     }
-
-                    
                 }
-                //Response.Redirect("InmuebleSeleccionado.aspx");
+
+                System.Diagnostics.Debug.WriteLine("Redirigiendo a PublicacionesUsuarios...");
+                Response.Redirect("PublicacionesUsuarios.aspx", false);
             }
             catch (Exception ex)
             {
-
-                Session.Add("error", ex.ToString());
+                System.Diagnostics.Debug.WriteLine($"ERROR: {ex.ToString()}");
+                ScriptManager.RegisterStartupScript(this, GetType(), "error",
+                    $"alert('Error al publicar la propiedad: {ex.Message}');", true);
             }
+        }
+
+        // Métodos auxiliares para conversión segura
+        private int SafeConvertToInt(string value)
+        {
+            if (string.IsNullOrEmpty(value)) return 0;
+            if (int.TryParse(value, out int result))
+                return result;
+            return 0;
+        }
+
+        private decimal SafeConvertToDecimal(string value)
+        {
+            if (string.IsNullOrEmpty(value)) return 0;
+            value = value.Replace(",", ".");
+            if (decimal.TryParse(value, System.Globalization.NumberStyles.Any,
+                System.Globalization.CultureInfo.InvariantCulture, out decimal result))
+                return result;
+            return 0;
+        }
+
+        private string CleanPhoneNumber(string phone)
+        {
+            if (string.IsNullOrEmpty(phone)) return "";
+            return new string(phone.Where(char.IsDigit).ToArray());
+        }
+
+        private List<string> GuardarImagenes(int idPropiedad)
+        {
+            var rutasImagenes = new List<string>();
+
+            try
+            {
+                if (!agregarImagen.HasFiles)
+                {
+                    System.Diagnostics.Debug.WriteLine("No hay archivos adjuntos.");
+                    return rutasImagenes;
+                }
+
+                string rutaCarpeta = Server.MapPath("~/Images/");
+
+                // Verificar y crear directorio
+                if (!Directory.Exists(rutaCarpeta))
+                {
+                    Directory.CreateDirectory(rutaCarpeta);
+                    System.Diagnostics.Debug.WriteLine($"Directorio creado: {rutaCarpeta}");
+                }
+
+                System.Diagnostics.Debug.WriteLine($"Guardando imágenes para propiedad {idPropiedad}...");
+                System.Diagnostics.Debug.WriteLine($"Número de archivos: {agregarImagen.PostedFiles.Count}");
+
+                foreach (HttpPostedFile archivo in agregarImagen.PostedFiles)
+                {
+                    string extension = Path.GetExtension(archivo.FileName)?.ToLower();
+
+                    if (extension == null || !(extension == ".jpg" || extension == ".jpeg" || extension == ".png"))
+                    {
+                        System.Diagnostics.Debug.WriteLine($"Archivo {archivo.FileName} con extensión no permitida: {extension}");
+                        continue;
+                    }
+
+                    string nombreArchivo = $"{idPropiedad}-{Guid.NewGuid()}{extension}";
+                    string rutaCompleta = Path.Combine(rutaCarpeta, nombreArchivo);
+
+                    System.Diagnostics.Debug.WriteLine($"Guardando archivo: {rutaCompleta}");
+
+                    archivo.SaveAs(rutaCompleta);
+                    rutasImagenes.Add($"~/Images/{nombreArchivo}");
+                    System.Diagnostics.Debug.WriteLine($"Archivo guardado correctamente: {nombreArchivo}");
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error grave en GuardarImagenes: {ex.ToString()}");
+                throw; // Relanzar la excepción para que sea manejada por el método llamador
+            }
+
+            return rutasImagenes;
+        }
+
+        protected void btnVolver_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Default.aspx");
         }
     }
 }

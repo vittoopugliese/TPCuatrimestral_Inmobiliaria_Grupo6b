@@ -82,8 +82,8 @@
         }
         
         .btn-filter:hover {
-            scale: 1.01;
-        }
+/*            scale: 1.01;
+*/        }
         
         .btn-clear {
             background-color: #6c757d;
@@ -93,7 +93,7 @@
         }
         
         .btn-clear:hover {
-            scale: 1.01;
+            /*scale: 1.01;*/
         }
     </style>
 

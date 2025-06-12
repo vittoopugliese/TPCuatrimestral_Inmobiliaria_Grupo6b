@@ -9,8 +9,10 @@ namespace Dominio
     public class Imagenes
     {
         public string nombreImagen { get; set; }
-        public int idImagen { get; set; }
-        public int idPropiedadImagen { get; set; }
+        public int Id { get; set; }
+        public int IdPropiedad { get; set; }
+        public string UrlImagen { get; set; }
+        public bool EsPortada { get; set; } // Para identificar la imagen principal
 
     }
 }

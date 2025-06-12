@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="PublicarInmueble.aspx.cs" Inherits="TPCuatrimestral_Inmobiliaria_Grupo6b.PublicarInmueble" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="PublicarInmueble.aspx.cs" Inherits="TPCuatrimestral_Inmobiliaria_Grupo6b.PublicarInmueble" EnableEventValidation="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
@@ -8,13 +8,13 @@
             <div class="card-header bg-dark text-white py-3">
                 <h5 class="card-title mb-0">Crear Publicación</h5>
             </div>
-             
+
             <div class="card-body" style="padding: 20px">
                 <!-- Resto de tu formulario (se mantiene igual) -->
                 <div class="row align-items-start">
                     <div class="col">
                         <div>
-                            <label for="TipoOperacion" class="form-label" style="margin-top: 15px">Tipo de Operación</label>
+                            <label for="selectTipoOperacion" class="form-label" style="margin-top: 15px">Tipo de Operación</label>
                             <select id="selectTipoOperacion" class="form-select" runat="server">
                                 <option selected disabled value="">Seleccione el tipo Operación...</option>
                                 <option>Venta</option>
@@ -22,10 +22,10 @@
                                 <option>Temporada</option>
                             </select>
                         </div>
-                        
+
 
                         <div>
-                            <label for="TipoPropiedad" class="form-label" style="margin-top: 15px">Tipo de Propiedad</label>
+                            <label for="selectTipoPropiedad" class="form-label" style="margin-top: 15px">Tipo de Propiedad</label>
                             <select id="selectTipoPropiedad" class="form-select" runat="server">
                                 <option selected disabled value="">Seleccione el tipo Propiedad...</option>
                                 <option>Casa</option>
@@ -44,44 +44,63 @@
                             <input type="text" class="form-control" id="inputlocalidad" placeholder="Ingresá Localidad..." runat="server">
                         </div>
                         <div>
-                            <label for="inputProvincia" class="form-label" style="margin-top: 15px">Provincia</label>
-                            <select id="selectProvincia" class="form-select" runat="server">
+
+                            <div class="form-group">
+                            </div>
+
+                            <label for="selectProvincia" class="form-label" style="margin-top: 15px">Provincia</label>
+
+
+                            <asp:DropDownList ID="selectProvincia" runat="server" CssClass="form-control"></asp:DropDownList>
+
+                            <%--                            <select id="selectProvincia" class="form-select" runat="server">
                                 <option selected disabled value="">Seleccione Provincia...</option>
                                 <option>Córdoba</option>
                                 <option>Mendoza</option>
                                 <option>San Luis</option>
                                 <option>San Juan</option>
-                            </select>
+                            </select>--%>
                         </div>
 
                         <div>
-                            <label for="inputCantAmbientes" class="form-label" style="margin-top: 15px">Cantidad de Ambientes</label>
+                            <label for="txtcantAmbientes" class="form-label" style="margin-top: 15px">Cantidad de Ambientes</label>
                             <asp:TextBox ID="txtcantAmbientes" runat="server" CssClass="form-control"
                                 placeholder="Ingrese cantidad de ambientes..." TextMode="Number" step="1"></asp:TextBox>
                         </div>
 
                         <div>
-                            <label for="inputanosAntiguedad" class="form-label" style="margin-top: 15px">Años de antiguedad</label>
+                            <label for="textanosAntiguedad" class="form-label" style="margin-top: 15px">Años de antiguedad</label>
                             <asp:TextBox ID="textanosAntiguedad" runat="server" CssClass="form-control"
                                 placeholder="Ingrese cant. de años de antiguedad de la propiedad..." TextMode="Number" step="1"></asp:TextBox>
+                        </div>
+
+                        <div>
+                            <label for="SupTotal" class="form-label" style="margin-top: 15px">Superficie Total (Mts2)</label>
+                            <asp:TextBox ID="SupTotal" runat="server" CssClass="form-control"
+                                placeholder="Ingrese Mts2 totales de la Propiedad..." TextMode="Number" step="1"></asp:TextBox>
                         </div>
 
                     </div>
 
                     <div class="col">
                         <div>
-                            <label for="inputTitulo" class="form-label" style="margin-top: 15px">Título</label>
+                            <label for="texttitulo" class="form-label" style="margin-top: 15px">Título</label>
                             <input type="text" class="form-control" id="texttitulo" placeholder="Ingrese título su publicación..." runat="server">
                         </div>
 
                         <div>
+                            <label for="txtPrecio" class="form-label" style="margin-top: 15px">Precio</label>
+                            <input type="text" class="form-control" id="txtPrecio" placeholder="Ingrese Precio..." runat="server">
+                        </div>
+
+                        <%--                        <div>
                             <label for="inputPrecio" class="form-label" style="margin-top: 15px">Precio</label>
                             <asp:TextBox ID="txtPrecio" runat="server" CssClass="form-control"
                                 placeholder="Ingrese precio de la propiedad, ej: $250.000" TextMode="Number" step="1"></asp:TextBox>
-                        </div>
+                        </div>--%>
 
                         <div>
-                            <label for="inputTipoDueno" class="form-label" style="margin-top: 15px">Tipo de Propietario</label>
+                            <label for="txtTipoDueno" class="form-label" style="margin-top: 15px">Tipo de Propietario</label>
                             <select id="txtTipoDueno" class="form-select" runat="server">
                                 <option selected disabled value="">Seleccione el Tipo de Propietario...</option>
                                 <option>Inmobiliaria</option>
@@ -95,21 +114,32 @@
                             <input type="email" class="form-control" id="inputEmail" placeholder="Ingrese su e-mail..." runat="server">
                         </div>
 
-                        <div>
+<%--                        <div>
                             <label for="Whatsapp" class="form-label" style="margin-top: 15px">Whatsapp</label>
                             <asp:TextBox ID="txtWhatsapp" runat="server" CssClass="form-control" placeholder="Ingrese su número de whastapp..." TextMode="number" step="1"></asp:TextBox>
+                        </div>--%>
+
+                        <div>
+                            <label for="txtWhatsapp" class="form-label" style="margin-top: 15px">Whatsapp</label>
+                            <input type="text" class="form-control" id="txtWhatsapp" placeholder="Ingrese Whatsapp.." runat="server">
                         </div>
 
                         <div>
-                            <label for="inputBanos" class="form-label" style="margin-top: 15px">Baños</label>
+                            <label for="txtCantBanos" class="form-label" style="margin-top: 15px">Baños</label>
                             <asp:TextBox ID="txtCantBanos" runat="server" CssClass="form-control"
                                 placeholder="Ingrese la cantidad de baños..." TextMode="Number" step="1"></asp:TextBox>
                         </div>
 
                         <div>
-                            <label for="inputDormitorios" class="form-label" style="margin-top: 15px">Dormitorios</label>
+                            <label for="inputCantDormitorios" class="form-label" style="margin-top: 15px">Dormitorios</label>
                             <asp:TextBox ID="inputCantDormitorios" runat="server" CssClass="form-control"
                                 placeholder="Ingrese la cantidad de Dormitorios..." TextMode="Number" step="1"></asp:TextBox>
+                        </div>
+
+                        <div>
+                            <label for="SupCubierta" class="form-label" style="margin-top: 15px">Superficie Cubierta (Mts2)</label>
+                            <asp:TextBox ID="SupCubierta" runat="server" CssClass="form-control"
+                                placeholder="Ingrese Mts2 de la Superficie cubierta..." TextMode="Number" step="1"></asp:TextBox>
                         </div>
 
                     </div>
@@ -151,7 +181,7 @@
 
                     </div>
 
-                    <label for="inputDescripcion" class="form-label" style="margin-top: 20px">Descripción</label>
+                    <label for="txtDescripcion" class="form-label" style="margin-top: 20px">Descripción</label>
                     <textarea class="form-control" id="txtDescripcion" runat="server" placeholder="Ingrese la descripción de la propiedad..." rows="4"></textarea>
 
 
@@ -162,6 +192,7 @@
                                 <label type="text" class="form-label" style="margin-top: 15px">Adjuntar Imágenes</label>
                                 <div class="input-group">
                                     <asp:FileUpload ID="agregarImagen" CssClass="form-control btn btn-dark" runat="server" AllowMultiple="true" />
+                                    
                                 </div>
                             </div>
 
@@ -172,10 +203,22 @@
                     <div class="row align-items-start">
                         <div class="col"></div>
                         <div class="col">
-                            <asp:Button Text="Guardar y Publicar" CssClass="btn btn-dark" ID="btnGuardarPublicacion" runat="server" OnClick="btnGuardarPublicacion_Click" Style="margin-top: 35px; width: 500px; " />
+                            <asp:Button Text="Guardar y Publicar" CssClass="btn btn-dark" ID="btnGuardarPublicacion" runat="server" OnClick="btnGuardarPublicacion_Click" Style="margin-top: 35px; width: 500px;"/>
                         </div>
                         <div class="col"></div>
                     </div>
+
+                    <div class="row align-items-start">
+                        <div class="col"></div>
+
+                        <div class="col">
+                            <asp:Button Text="Volver" CssClass="btn btn-dark" ID="btnVolver" runat="server" OnClick="btnVolver_Click" Style="margin-top: 35px; width: 300px;" />
+                        </div>
+                        <div class="col"></div>
+
+
+                    </div>
+
                 </div>
             </div>
         </div>

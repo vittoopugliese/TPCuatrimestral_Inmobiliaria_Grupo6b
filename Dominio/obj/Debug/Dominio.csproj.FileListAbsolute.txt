@@ -40,3 +40,9 @@ F:\Alex\source\TrabajoPracticoIntegrador\V10\Dominio\obj\Debug\Dominio.csproj.As
 F:\Alex\source\TrabajoPracticoIntegrador\V10\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
 F:\Alex\source\TrabajoPracticoIntegrador\V10\Dominio\obj\Debug\Dominio.dll
 F:\Alex\source\TrabajoPracticoIntegrador\V10\Dominio\obj\Debug\Dominio.pdb
+F:\Alex\source\TrabajoPracticoIntegrador\V10 - copia\Dominio\bin\Debug\Dominio.dll
+F:\Alex\source\TrabajoPracticoIntegrador\V10 - copia\Dominio\bin\Debug\Dominio.pdb
+F:\Alex\source\TrabajoPracticoIntegrador\V10 - copia\Dominio\obj\Debug\Dominio.csproj.AssemblyReference.cache
+F:\Alex\source\TrabajoPracticoIntegrador\V10 - copia\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
+F:\Alex\source\TrabajoPracticoIntegrador\V10 - copia\Dominio\obj\Debug\Dominio.dll
+F:\Alex\source\TrabajoPracticoIntegrador\V10 - copia\Dominio\obj\Debug\Dominio.pdb
