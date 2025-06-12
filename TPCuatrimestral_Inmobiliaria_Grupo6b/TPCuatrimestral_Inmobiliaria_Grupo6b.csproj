@@ -218,21 +218,12 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-<<<<<<< main
     <Compile Include="Error.aspx.cs">
       <DependentUpon>Error.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Error.aspx.designer.cs">
       <DependentUpon>Error.aspx</DependentUpon>
-=======
-    <Compile Include="Favoritos.aspx.cs">
-      <DependentUpon>Favoritos.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Favoritos.aspx.designer.cs">
-      <DependentUpon>Favoritos.aspx</DependentUpon>
->>>>>>> Pagina de Favoritos, boton de corazon queda marcado al favoritear una publicacion, commit en branch antes de hacer rebase
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -286,6 +277,13 @@
     </Compile>
     <Compile Include="ResultadosBusqueda.aspx.designer.cs">
       <DependentUpon>ResultadosBusqueda.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Favoritos.aspx.cs">
+      <DependentUpon>Favoritos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Favoritos.aspx.designer.cs">
+      <DependentUpon>Favoritos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
