@@ -32,51 +32,57 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
         {
             try
             {
-                System.Diagnostics.Debug.WriteLine("Iniciando guardado de publicación...");
+                // Primero creamos y llenamos el objeto propiedad
+                Propiedad propiedad = new Propiedad();
 
-                if (string.IsNullOrEmpty(selectProvincia.SelectedValue))
-                {
-                    throw new Exception("Debe seleccionar una provincia");
-                }
+                // Mapeamos todos los campos del formulario
+                propiedad.Titulo = texttitulo.Value;
+                propiedad.Direccion = inputdireccion.Value;
+                propiedad.Localidad = inputlocalidad.Value;
+                propiedad.IdProvincia = Convert.ToInt32(selectProvincia.SelectedValue);
+                propiedad.Ambientes = SafeConvertToInt(txtcantAmbientes.Text);
+                propiedad.AnosAntiguedad = SafeConvertToInt(textanosAntiguedad.Text);
+                propiedad.Sup_m2_Total = SafeConvertToDecimal(SupTotal.Text);
+                propiedad.Tipo = selectTipoPropiedad.Value;
+                propiedad.TipoOperacion = selectTipoOperacion.Value;
+                propiedad.Precio = SafeConvertToDecimal(txtPrecio.Value);
+                propiedad.TipoDueno = txtTipoDueno.Value;
+                propiedad.Email = inputEmail.Value;
+                propiedad.WhatsApp = CleanPhoneNumber(txtWhatsapp.Value);
+                propiedad.Baños = SafeConvertToInt(txtCantBanos.Text);
+                propiedad.Dormitorios = SafeConvertToInt(inputCantDormitorios.Text);
+                propiedad.Sup_m2_Cubierto = SafeConvertToDecimal(SupCubierta.Text);
+                propiedad.Descripcion = txtDescripcion.Value;
+                propiedad.ConBalcon = inputBalcon.Checked;
+                propiedad.ConPatio = inputPatio.Checked;
+                propiedad.Cochera = inputCochera.Checked;
+                propiedad.AptoCredito = inputCredito.Checked;
 
-                // Crear la propiedad (tu código existente)
-                Propiedad nuevaPropiedad = new Propiedad
-                {
-                    // ... (tu código para crear la propiedad) ...
-                };
-
-                System.Diagnostics.Debug.WriteLine("Agregando propiedad a la base de datos...");
+                // Primero guardamos la propiedad para obtener su ID
                 PropiedadNegocio propiedadNegocio = new PropiedadNegocio();
-                propiedadNegocio.agregar(nuevaPropiedad);
-                System.Diagnostics.Debug.WriteLine($"Propiedad agregada con ID: {nuevaPropiedad.IdPropiedad}");
+                propiedadNegocio.agregar(propiedad);
 
-                // Guardar imágenes
-                System.Diagnostics.Debug.WriteLine("Intentando guardar imágenes...");
-                List<string> rutasImagenes = GuardarImagenes(nuevaPropiedad.IdPropiedad);
-                System.Diagnostics.Debug.WriteLine($"Imágenes a guardar: {rutasImagenes.Count}");
+                // Ahora procesamos las imágenes con el ID correcto
+                string ruta = Server.MapPath("./Images/");
+                List<string> nombresArchivos = new List<string>();
 
-                if (rutasImagenes.Any())
+                foreach (HttpPostedFile archivo in agregarImagen.PostedFiles)
                 {
-                    System.Diagnostics.Debug.WriteLine("Actualizando imagen principal...");
-                    nuevaPropiedad.ImagenUrl = rutasImagenes[0].Replace("~/", "");
-                    propiedadNegocio.ActualizarImagenPrincipal(nuevaPropiedad.IdPropiedad, nuevaPropiedad.ImagenUrl);
-
-                    System.Diagnostics.Debug.WriteLine("Guardando imágenes en base de datos...");
-                    ImagenNegocio imagenNegocio = new ImagenNegocio();
-                    for (int i = 0; i < rutasImagenes.Count; i++)
+                    if (archivo.ContentLength > 0)
                     {
-                        Imagenes imagen = new Imagenes
-                        {
-                            IdPropiedad = nuevaPropiedad.IdPropiedad,
-                            UrlImagen = rutasImagenes[i].Replace("~/", ""),
-                            EsPortada = (i == 0)
-                        };
-                        imagenNegocio.Agregar(imagen);
-                        System.Diagnostics.Debug.WriteLine($"Imagen {i + 1} guardada en BD: {imagen.UrlImagen}");
+                        string nombreArchivo = $"{propiedad.IdPropiedad}-{Guid.NewGuid()}.jpeg";
+                        string rutaCompleta = Path.Combine(ruta, nombreArchivo);
+                        archivo.SaveAs(rutaCompleta);
+                        nombresArchivos.Add(nombreArchivo);
                     }
                 }
 
-                System.Diagnostics.Debug.WriteLine("Redirigiendo a PublicacionesUsuarios...");
+                // Si hay imágenes, actualizamos la primera como imagen principal
+                if (nombresArchivos.Any())
+                {
+                    propiedadNegocio.ActualizarImagenPrincipal(propiedad.IdPropiedad, nombresArchivos.First());
+                }
+
                 Response.Redirect("PublicacionesUsuarios.aspx", false);
             }
             catch (Exception ex)
@@ -111,60 +117,6 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
             if (string.IsNullOrEmpty(phone)) return "";
             return new string(phone.Where(char.IsDigit).ToArray());
         }
-
-        private List<string> GuardarImagenes(int idPropiedad)
-        {
-            var rutasImagenes = new List<string>();
-
-            try
-            {
-                if (!agregarImagen.HasFiles)
-                {
-                    System.Diagnostics.Debug.WriteLine("No hay archivos adjuntos.");
-                    return rutasImagenes;
-                }
-
-                string rutaCarpeta = Server.MapPath("~/Images/");
-
-                // Verificar y crear directorio
-                if (!Directory.Exists(rutaCarpeta))
-                {
-                    Directory.CreateDirectory(rutaCarpeta);
-                    System.Diagnostics.Debug.WriteLine($"Directorio creado: {rutaCarpeta}");
-                }
-
-                System.Diagnostics.Debug.WriteLine($"Guardando imágenes para propiedad {idPropiedad}...");
-                System.Diagnostics.Debug.WriteLine($"Número de archivos: {agregarImagen.PostedFiles.Count}");
-
-                foreach (HttpPostedFile archivo in agregarImagen.PostedFiles)
-                {
-                    string extension = Path.GetExtension(archivo.FileName)?.ToLower();
-
-                    if (extension == null || !(extension == ".jpg" || extension == ".jpeg" || extension == ".png"))
-                    {
-                        System.Diagnostics.Debug.WriteLine($"Archivo {archivo.FileName} con extensión no permitida: {extension}");
-                        continue;
-                    }
-
-                    string nombreArchivo = $"{idPropiedad}-{Guid.NewGuid()}{extension}";
-                    string rutaCompleta = Path.Combine(rutaCarpeta, nombreArchivo);
-
-                    System.Diagnostics.Debug.WriteLine($"Guardando archivo: {rutaCompleta}");
-
-                    archivo.SaveAs(rutaCompleta);
-                    rutasImagenes.Add($"~/Images/{nombreArchivo}");
-                    System.Diagnostics.Debug.WriteLine($"Archivo guardado correctamente: {nombreArchivo}");
-                }
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine($"Error grave en GuardarImagenes: {ex.ToString()}");
-                throw; // Relanzar la excepción para que sea manejada por el método llamador
-            }
-
-            return rutasImagenes;
-        }
-
         protected void btnVolver_Click(object sender, EventArgs e)
         {
             Response.Redirect("Default.aspx");
