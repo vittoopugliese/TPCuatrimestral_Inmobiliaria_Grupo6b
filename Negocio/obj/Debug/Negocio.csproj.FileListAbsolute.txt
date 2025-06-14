@@ -61,3 +61,12 @@ C:\Users\nahue\Desktop\Mi carpeta - Nahuel\NMV - Personal\TUP UTN\Programacion_3
 C:\Users\nahue\Desktop\Mi carpeta - Nahuel\NMV - Personal\TUP UTN\Programacion_3\repo_TPC\TPC_Inmobiliaria\Negocio\obj\Debug\Negocio.csproj.Up2Date
 C:\Users\nahue\Desktop\Mi carpeta - Nahuel\NMV - Personal\TUP UTN\Programacion_3\repo_TPC\TPC_Inmobiliaria\Negocio\obj\Debug\Negocio.dll
 C:\Users\nahue\Desktop\Mi carpeta - Nahuel\NMV - Personal\TUP UTN\Programacion_3\repo_TPC\TPC_Inmobiliaria\Negocio\obj\Debug\Negocio.pdb
+F:\Alex\source\TrabajoPracticoIntegrador\VersionMain\Negocio\bin\Debug\Negocio.dll
+F:\Alex\source\TrabajoPracticoIntegrador\VersionMain\Negocio\bin\Debug\Negocio.pdb
+F:\Alex\source\TrabajoPracticoIntegrador\VersionMain\Negocio\bin\Debug\Dominio.dll
+F:\Alex\source\TrabajoPracticoIntegrador\VersionMain\Negocio\bin\Debug\Dominio.pdb
+F:\Alex\source\TrabajoPracticoIntegrador\VersionMain\Negocio\obj\Debug\Negocio.csproj.AssemblyReference.cache
+F:\Alex\source\TrabajoPracticoIntegrador\VersionMain\Negocio\obj\Debug\Negocio.csproj.CoreCompileInputs.cache
+F:\Alex\source\TrabajoPracticoIntegrador\VersionMain\Negocio\obj\Debug\Negocio.csproj.Up2Date
+F:\Alex\source\TrabajoPracticoIntegrador\VersionMain\Negocio\obj\Debug\Negocio.dll
+F:\Alex\source\TrabajoPracticoIntegrador\VersionMain\Negocio\obj\Debug\Negocio.pdb

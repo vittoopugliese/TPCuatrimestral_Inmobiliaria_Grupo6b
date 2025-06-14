@@ -7,7 +7,7 @@ namespace Dominio
         public int IdPropiedad { get; set; }
         public int IdUsuario { get; set; } // pasar a Usuario
         public int IdProvincia { get; set; }
-        public int IdTipo { get; set; }
+        public string Tipo { get; set; }
         public string Titulo { get; set; }
         public string Direccion { get; set; }
         public string Ubicacion { get; set; }
@@ -36,6 +36,7 @@ namespace Dominio
         public int AnosAntiguedad { get; set; }
         public bool AptoCredito { get; set; }
         public bool Reservada { get; set; }
+        public bool Cochera { get; set; }
 
     }
 }

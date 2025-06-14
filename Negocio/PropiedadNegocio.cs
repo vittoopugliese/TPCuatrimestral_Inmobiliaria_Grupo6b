@@ -14,6 +14,68 @@ namespace Negocio
             db = new BaseDeDatos();
         }
 
+        public void agregar(Propiedad nueva)
+        {
+            // Validación inicial
+            nueva.IdUsuario = 1;
+            try
+            {
+                db.setearConsulta(@"INSERT INTO PROPIEDAD 
+            (Titulo, IdUsuario, Direccion, Precio, Moneda, Descripcion, Tipo, TipoOperacion, 
+             ImagenUrl, Localidad, TipoDueno, Email, WhatsApp, Ambientes, 
+             Sup_m2_Cubierto, Sup_m2_Total, Dormitorios, [Baños], ConPatio, ConBalcon, AnosAntiguedad, 
+             AptoCredito, Cochera, IdProvincia, Ubicacion) 
+            VALUES 
+            (@Titulo, @IdUsuario, @Direccion, @Precio, @Moneda, @Descripcion, @Tipo, @TipoOperacion, 
+             @ImagenUrl, @Localidad, @TipoDueno, @Email, @WhatsApp, @Ambientes, 
+             @Sup_m2_Cubierto, @Sup_m2_Total, @Dormitorios, @Baños, @ConPatio, @ConBalcon, @AnosAntiguedad, 
+             @AptoCredito, @Cochera, @IdProvincia, @Ubicacion);
+            SELECT SCOPE_IDENTITY()"); // Esto devuelve el ID insertado
+
+                // Agregar todos los parámetros con manejo de nulos
+                db.agregarParametro("@Titulo", !string.IsNullOrEmpty(nueva.Titulo) ? nueva.Titulo : (object)DBNull.Value);
+                db.agregarParametro("@Direccion", !string.IsNullOrEmpty(nueva.Direccion) ? nueva.Direccion : (object)DBNull.Value);
+                db.agregarParametro("@Precio", nueva.Precio);
+                db.agregarParametro("@Moneda", !string.IsNullOrEmpty(nueva.Moneda) ? nueva.Moneda : "$");
+                db.agregarParametro("@Descripcion", !string.IsNullOrEmpty(nueva.Descripcion) ? nueva.Descripcion : (object)DBNull.Value);
+                db.agregarParametro("@Tipo", !string.IsNullOrEmpty(nueva.Tipo) ? nueva.Tipo : (object)DBNull.Value);
+                db.agregarParametro("@TipoOperacion", !string.IsNullOrEmpty(nueva.TipoOperacion) ? nueva.TipoOperacion : (object)DBNull.Value);
+                db.agregarParametro("@ImagenUrl", !string.IsNullOrEmpty(nueva.ImagenUrl) ? nueva.ImagenUrl : "default.jpg");
+                db.agregarParametro("@Localidad", !string.IsNullOrEmpty(nueva.Localidad) ? nueva.Localidad : (object)DBNull.Value);
+                db.agregarParametro("@TipoDueno", !string.IsNullOrEmpty(nueva.TipoDueno) ? nueva.TipoDueno : (object)DBNull.Value);
+                db.agregarParametro("@Email", !string.IsNullOrEmpty(nueva.Email) ? nueva.Email : (object)DBNull.Value);
+                db.agregarParametro("@WhatsApp", !string.IsNullOrEmpty(nueva.WhatsApp) ? nueva.WhatsApp : (object)DBNull.Value);
+                db.agregarParametro("@Ambientes", nueva.Ambientes > 0 ? (object)nueva.Ambientes : DBNull.Value);
+                db.agregarParametro("@Sup_m2_Cubierto", nueva.Sup_m2_Cubierto > 0 ? (object)nueva.Sup_m2_Cubierto : DBNull.Value);
+                db.agregarParametro("@Sup_m2_Total", nueva.Sup_m2_Total > 0 ? (object)nueva.Sup_m2_Total : DBNull.Value);
+                db.agregarParametro("@Dormitorios", nueva.Dormitorios > 0 ? (object)nueva.Dormitorios : DBNull.Value);
+                db.agregarParametro("@Baños", nueva.Baños > 0 ? (object)nueva.Baños : DBNull.Value);
+                db.agregarParametro("@ConPatio", nueva.ConPatio);
+                db.agregarParametro("@ConBalcon", nueva.ConBalcon);
+                db.agregarParametro("@AnosAntiguedad", nueva.AnosAntiguedad > 0 ? (object)nueva.AnosAntiguedad : DBNull.Value);
+                db.agregarParametro("@AptoCredito", nueva.AptoCredito);
+                db.agregarParametro("@Cochera", nueva.Cochera);
+                db.agregarParametro("@Reservada", nueva.Reservada);
+                db.agregarParametro("@IdProvincia", nueva.IdProvincia > 0 ? (object)nueva.IdProvincia : DBNull.Value);
+                db.agregarParametro("@IdUsuario", nueva.IdUsuario > 0 ? (object)nueva.IdUsuario : DBNull.Value);
+
+                db.ejecutarLectura(); // Ejecutamos lectura para obtener el ID
+
+                if (db.Lector.Read())
+                {
+                    nueva.IdPropiedad = Convert.ToInt32(db.Lector[0]);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al agregar propiedad: " + ex.Message, ex);
+            }
+            finally
+            {
+                db.cerrarConexion();
+            }
+        }
+
         private List<Propiedad> ObtenerPropiedadesSegunConsultasYMapearlas(string consulta)
         {
             // quizas no este tan bueno el metodo con la consulta desde un parametro
@@ -39,7 +101,7 @@ namespace Negocio
                     propiedad.Baños = (int)db.Lector["Baños"];
                     propiedad.ConPatio = Convert.ToBoolean(db.Lector["ConPatio"]);
                     propiedad.ConBalcon = Convert.ToBoolean(db.Lector["ConBalcon"]);
-                    propiedad.IdTipo = (int)db.Lector["IdTipo"];
+                    propiedad.Tipo = db.Lector["Tipo"].ToString();
                     propiedad.Direccion = db.Lector["Direccion"].ToString();
                     propiedad.Localidad = db.Lector["Localidad"].ToString();
                     propiedad.IdProvincia = (int)db.Lector["IdProvincia"];
@@ -77,12 +139,27 @@ namespace Negocio
             return propiedades;
         }
 
+        public void ActualizarImagenPrincipal(int idPropiedad, string imagenUrl)
+        {
+            try
+            {
+                db.setearConsulta("UPDATE Propiedad SET ImagenUrl = @ImagenUrl WHERE IdPropiedad = @IdPropiedad");
+                db.agregarParametro("@ImagenUrl", imagenUrl);
+                db.agregarParametro("@IdPropiedad", idPropiedad);
+                db.ejecutarAccion();
+            }
+            finally
+            {
+                db.cerrarConexion();
+            }
+        }
+
         public List<Propiedad> listar()
         {
             return ObtenerPropiedadesSegunConsultasYMapearlas("SELECT * FROM PROPIEDAD WHERE Visible = 1 AND Eliminada = 0");
         }
 
-        // listarPorTipo: return ObtenerPropiedadesSegunConsultasYMapearlas($"SELECT * FROM PROPIEDAD WHERE IdTipo = {idTipo}");
+        // listarPorTipo: return ObtenerPropiedadesSegunConsultasYMapearlas($"SELECT * FROM PROPIEDAD WHERE IdTipo = {Tipo}");
         // listarPorProvincia: return ObtenerPropiedadesSegunConsultasYMapearlas($"SELECT * FROM PROPIEDAD WHERE IdProvincia = {idProvincia}");
 
         public List<Propiedad> listarDestacadas()
