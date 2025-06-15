@@ -16,8 +16,7 @@ namespace Negocio
 
         public void agregar(Propiedad nueva)
         {
-            // Validación inicial
-            nueva.IdUsuario = 1;
+
             try
             {
                 db.setearConsulta(@"INSERT INTO PROPIEDAD 
@@ -42,6 +41,7 @@ namespace Negocio
                 db.agregarParametro("@TipoOperacion", !string.IsNullOrEmpty(nueva.TipoOperacion) ? nueva.TipoOperacion : (object)DBNull.Value);
                 db.agregarParametro("@ImagenUrl", !string.IsNullOrEmpty(nueva.ImagenUrl) ? nueva.ImagenUrl : "default.jpg");
                 db.agregarParametro("@Localidad", !string.IsNullOrEmpty(nueva.Localidad) ? nueva.Localidad : (object)DBNull.Value);
+                db.agregarParametro("@Ubicacion", !string.IsNullOrEmpty(nueva.Ubicacion) ? nueva.Ubicacion : (object)DBNull.Value);
                 db.agregarParametro("@TipoDueno", !string.IsNullOrEmpty(nueva.TipoDueno) ? nueva.TipoDueno : (object)DBNull.Value);
                 db.agregarParametro("@Email", !string.IsNullOrEmpty(nueva.Email) ? nueva.Email : (object)DBNull.Value);
                 db.agregarParametro("@WhatsApp", !string.IsNullOrEmpty(nueva.WhatsApp) ? nueva.WhatsApp : (object)DBNull.Value);
@@ -58,6 +58,7 @@ namespace Negocio
                 db.agregarParametro("@Reservada", nueva.Reservada);
                 db.agregarParametro("@IdProvincia", nueva.IdProvincia > 0 ? (object)nueva.IdProvincia : DBNull.Value);
                 db.agregarParametro("@IdUsuario", nueva.IdUsuario > 0 ? (object)nueva.IdUsuario : DBNull.Value);
+
 
                 db.ejecutarLectura(); // Ejecutamos lectura para obtener el ID
 
@@ -108,6 +109,7 @@ namespace Negocio
                     propiedad.AnosAntiguedad = (int)db.Lector["AnosAntiguedad"];
                     propiedad.AptoCredito = Convert.ToBoolean(db.Lector["AptoCredito"]);
                     propiedad.Reservada = Convert.ToBoolean(db.Lector["Reservada"]);
+                    propiedad.Cochera = Convert.ToBoolean(db.Lector["Cochera"]);
                     propiedad.IdUsuario = (int)db.Lector["IdUsuario"];
                     propiedad.Titulo = db.Lector["Titulo"].ToString();
                     propiedad.Ubicacion = db.Lector["Ubicacion"].ToString();

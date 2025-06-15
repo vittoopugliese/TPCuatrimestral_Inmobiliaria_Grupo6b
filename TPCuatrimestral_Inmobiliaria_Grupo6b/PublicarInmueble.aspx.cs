@@ -13,8 +13,15 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            
             if (!IsPostBack)
             {
+                // Verificar si el usuario está logueado
+                //if (Session["IdUsuario"] == null)
+                //{
+                //    Response.Redirect("Login.aspx");
+                //    return;
+                //}
                 // Cargar provincias si no están cargadas
                 if (selectProvincia.Items.Count <= 1)
                 {
@@ -30,16 +37,26 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
 
         protected void btnGuardarPublicacion_Click(object sender, EventArgs e)
         {
+
             try
             {
+
+                //if (Session["IdUsuario"] == null)
+                //{
+                //    Response.Redirect("Login.aspx"); // Redirigir al login si no hay sesión
+                //    return;
+                //}
                 // Primero creamos y llenamos el objeto propiedad
                 Propiedad propiedad = new Propiedad();
+
+                Session["IdUsuario"] = 2; // Simulamos un usuario logueado para pruebas, eliminar en producción
 
                 // Mapeamos todos los campos del formulario
                 propiedad.Titulo = texttitulo.Value;
                 propiedad.Direccion = inputdireccion.Value;
                 propiedad.Localidad = inputlocalidad.Value;
                 propiedad.IdProvincia = Convert.ToInt32(selectProvincia.SelectedValue);
+                propiedad.IdUsuario = 2;
                 propiedad.Ambientes = SafeConvertToInt(txtcantAmbientes.Text);
                 propiedad.AnosAntiguedad = SafeConvertToInt(textanosAntiguedad.Text);
                 propiedad.Sup_m2_Total = SafeConvertToDecimal(SupTotal.Text);
@@ -58,8 +75,17 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                 propiedad.Cochera = inputCochera.Checked;
                 propiedad.AptoCredito = inputCredito.Checked;
 
-                // Primero guardamos la propiedad para obtener su ID
+                //// Primero guardamos la propiedad para obtener su ID
                 PropiedadNegocio propiedadNegocio = new PropiedadNegocio();
+                //if (Session["IdUsuario"] != null)
+                //{
+                //    propiedad.IdUsuario = Convert.ToInt32(Session["IdUsuario"]);
+                //}
+                //else
+                //{
+                //    propiedad.IdUsuario = 2; // O lanzar una excepción si el usuario no está logueado
+                //    throw new Exception("Usuario no logueado.");
+                //}
                 propiedadNegocio.agregar(propiedad);
 
                 // Ahora procesamos las imágenes con el ID correcto

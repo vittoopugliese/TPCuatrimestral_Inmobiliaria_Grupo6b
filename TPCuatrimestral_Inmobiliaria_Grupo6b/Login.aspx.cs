@@ -31,6 +31,8 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                     Session["usuario"] = usuario.Email; // Guardar el email del usuario en la sesión
                     Session["IdRol"] = usuario.IdRol; // Guardar el IdRol del usuario en la sesión
                     Session["contrasena"] = usuario.Contrasena; // Guardar la contraseña del usuario en la sesión   
+                    Session["IdUsuario"] = usuario.IdUsuario; // Guardar el IdUsuario del usuario en la sesión
+
 
                     if (Session["urlGuardada"] != null)
                     {
