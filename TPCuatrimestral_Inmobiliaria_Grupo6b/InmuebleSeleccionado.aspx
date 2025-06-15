@@ -5,38 +5,25 @@
 
     <div class="container" style="margin-top: 15px">
 
-        <h1 class="card-title">Casa en Venta en Avellaneda,Gba.</h1>
+        <h1 class="card-title" id="tituloPropiedad" runat="server"></h1>
+
         <div class="card shadow-lg" style="margin-top: 15px; font-size: 20px">
             <div class="card-body">
 
-                <p class="card-text"><span class="fa-solid fa-location-dot" style="margin-right: 10px"></span>25 de Mayo 1350, Avellaneda</p>
+                <p class="card-text" id="direccionPropiedad" runat="server"><span class="fa-solid fa-location-dot" style="margin-right: 10px"></span></p>
                 <div class="row">
                     <div class="col-8">
-                        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <asp:Image ID="Image4" runat="server"
-                                        ImageUrl="https://cdn.pixabay.com/photo/2017/03/22/17/39/kitchen-2165756_960_720.jpg"
-                                        Width="100%" CssClass="rounded" />
-                                </div>
-                                <div class="carousel-item">
-                                    <asp:Image ID="Image2" runat="server"
-                                        ImageUrl="https://cdn.pixabay.com/photo/2016/11/29/03/53/house-1867187_1280.jpg"
-                                        Width="100%" CssClass="rounded" />
-                                </div>
-                                <div class="carousel-item">
-                                    <asp:Image ID="Image3" runat="server"
-                                        ImageUrl="https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_1280.jpg"
-                                        Width="100%" CssClass="rounded" />
-                                </div>
+                        <div id="propertyCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+                            <div class="carousel-inner" id="carouselInner" runat="server">
+                                <!-- Las imágenes se cargarán dinámicamente -->
                             </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                            <button class="carousel-control-prev" type="button" data-bs-target="#propertyCarousel" data-bs-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
+                                <span class="visually-hidden">Anterior</span>
                             </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                            <button class="carousel-control-next" type="button" data-bs-target="#propertyCarousel" data-bs-slide="next">
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
+                                <span class="visually-hidden">Siguiente</span>
                             </button>
                         </div>
 
@@ -97,9 +84,9 @@
 
                         <div class="card" style="margin-top: 17px">
                             <div class="card-body">
-                                <p>Nombre del Propietario</p>
-                                <p><i class="fa-brands fa-whatsapp" style="margin-right: 10px"></i>(011) 4263-5632</p>
-                                <a href="mailto:ale_tama77@hotmail.com" style="text-decoration: none; color: inherit;">
+                                <p id="nombrePropietario" runat="server">Nombre del Propietario</p>
+                                <p><i class="fa-brands fa-whatsapp" style="margin-right: 10px"></i><span id="whatsappPropietario" runat="server">(011) 4263-5632</span></p>
+                                <a href="mailto:ale_tama77@hotmail.com" id="emailPropietario" runat="server" style="text-decoration: none; color: inherit;">
                                     <p style="margin: 0; display: inline-block;">
                                         <i class="fa-solid fa-envelope" style="margin-right: 10px"></i>Enviar e-mail
                                     </p>
@@ -115,7 +102,7 @@
 
         <div class="row">
             <div class="col-4">
-                <h2 style="margin-top: 15px">U$D 110.000</h2>
+                <h2 id="precioPropiedad" runat="server" style="margin-top: 15px">U$D</h2>
                 <p>$40.000 de expensas</p>
             </div>
 
@@ -127,8 +114,7 @@
             </div>
 
             <div class="col-4">
-                <p style="margin-top: 35px; font-size: 25px">Publicado el 01/06/2025</p>
-
+                <p id="fechaPublicacionPropiedad" runat="server" style="margin-top: 35px; font-size: 25px">Publicado el 01/06/2025</p>
             </div>
         </div>
 

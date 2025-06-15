@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -16,21 +17,35 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            // verificacion si se logueo el usuario, si no redirigir a login
-
-            //if (Session["usuario"] == null)
-            //{
-            //    ScriptManager.RegisterStartupScript(this, GetType(), "showerror",
-            //        "alert('Debes loguearte primero para ingresar'); window.location.href='Login.aspx';", true);
-            //}
-
-
             if (!IsPostBack)
             {
                 propiedadesNegocio = new PropiedadNegocio();
                 propiedades = propiedadesNegocio.listar();
+
+                // Obtener la primera imagen para cada propiedad
+                foreach (var propiedad in propiedades)
+                {
+                    propiedad.ImagenUrl = ObtenerPrimeraImagen(propiedad.IdPropiedad);
+                }
+
                 CargarDatos();
             }
+        }
+
+        private string ObtenerPrimeraImagen(int idPropiedad)
+        {
+            string rutaImagenes = Server.MapPath("./Images/");
+            var primeraImagen = Directory.GetFiles(rutaImagenes, $"{idPropiedad}-*.jpeg")
+                                       .OrderBy(f => f)
+                                       .FirstOrDefault();
+
+            if (primeraImagen != null)
+            {
+                return "./Images/" + Path.GetFileName(primeraImagen);
+            }
+
+            // Imagen por defecto si no hay imágenes
+            return "./Images/default.jpg";
         }
 
         private void CargarDatos()

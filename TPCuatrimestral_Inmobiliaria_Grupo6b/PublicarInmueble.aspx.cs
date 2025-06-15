@@ -103,13 +103,19 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                     }
                 }
 
+                System.Diagnostics.Debug.WriteLine($"Imágenes guardadas para propiedad {propiedad.IdPropiedad}:");
+                foreach (string nombre in nombresArchivos)
+                {
+                    System.Diagnostics.Debug.WriteLine(nombre);
+                }
+
                 // Si hay imágenes, actualizamos la primera como imagen principal
                 if (nombresArchivos.Any())
                 {
                     propiedadNegocio.ActualizarImagenPrincipal(propiedad.IdPropiedad, nombresArchivos.First());
                 }
 
-                Response.Redirect("PublicacionesUsuarios.aspx", false);
+                Response.Redirect($"InmuebleSeleccionado.aspx?id={propiedad.IdPropiedad}", false);
             }
             catch (Exception ex)
             {
