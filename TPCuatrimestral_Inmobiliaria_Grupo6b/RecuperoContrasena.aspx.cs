@@ -27,14 +27,17 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                 emailService.armarCorreo(TextBoxCorreo.Text, usuario.Contrasena);
                 emailService.enviarCorreo();
 
-                LabelMensaje.Text = "Se envió la contraseña a tu correo";
+                LabelMensaje.Text = "Se envió la contraseña a tu correo.";
                 LabelMensaje.CssClass = "alert alert-success";
                 LabelMensaje.Visible = true;
+
+                Response.AddHeader("REFRESH", "3;URL=Login.aspx");
             }
             else
             {
-                LabelMensaje.Text = "El correo no existe en nuestros registros";
-                LabelMensaje.CssClass = "alert alert-danger";
+                // Usando JS para dar funcionalidad al pop up del mensaje, se puede cerrar
+                LabelMensaje.Text = "El correo no existe en nuestros registros <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>";
+                LabelMensaje.CssClass = "alert alert-success alert-dismissible";
                 LabelMensaje.Visible = true;
             }
         }

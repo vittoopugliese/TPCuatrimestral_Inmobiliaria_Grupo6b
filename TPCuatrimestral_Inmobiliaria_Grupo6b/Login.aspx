@@ -27,7 +27,7 @@
         }
 
     </style>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -40,6 +40,9 @@
                     
                     <div class="px-4 py-4">
                         <div class="form-group mb-3">
+
+                            <asp:Label ID="LabelMensaje" runat="server" Text="" Visible="false" CssClass="alert alert-dismissible"></asp:Label>
+
                             <label class="text-dark form-label" for="emailLabel">Correo Electronico</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">

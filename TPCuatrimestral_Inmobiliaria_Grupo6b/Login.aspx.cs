@@ -28,10 +28,10 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                 {
                     Session.Add("usuario", usuario);
 
-                    Session["usuario"] = usuario.Email; // Guardar el email del usuario en la sesión
-                    Session["IdRol"] = usuario.IdRol; // Guardar el IdRol del usuario en la sesión
-                    Session["contrasena"] = usuario.Contrasena; // Guardar la contraseña del usuario en la sesión   
-                    Session["IdUsuario"] = usuario.IdUsuario; // Guardar el IdUsuario del usuario en la sesión
+                    Session["usuario"] = usuario.Email; 
+                    Session["IdRol"] = usuario.IdRol; 
+                    Session["contrasena"] = usuario.Contrasena;  
+                    Session["IdUsuario"] = usuario.IdUsuario; 
 
 
                     if (Session["urlGuardada"] != null)
@@ -58,8 +58,12 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                 }
                 else
                 {
-                    Session.Add("Error", "Correo o contraseña incorrectos.");
-                    Response.Redirect("Error.aspx", false);
+                    LabelMensaje.Text = @"Usuario o contraseña incorrecto. <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>";
+                    LabelMensaje.CssClass = "alert alert-success alert-dismissible";
+                    LabelMensaje.Visible = true;
+
+                    //Session.Add("Error", "Correo o contraseña incorrectos.");
+                    //Response.Redirect("Error.aspx", false);
                 }
 
 
