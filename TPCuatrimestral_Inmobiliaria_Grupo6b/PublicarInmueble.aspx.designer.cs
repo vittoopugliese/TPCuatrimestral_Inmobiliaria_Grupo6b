@@ -15,6 +15,15 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
     {
 
         /// <summary>
+        /// Control texttitulo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText texttitulo;
+
+        /// <summary>
         /// Control selectTipoOperacion.
         /// </summary>
         /// <remarks>
@@ -87,13 +96,13 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
         protected global::System.Web.UI.WebControls.TextBox SupTotal;
 
         /// <summary>
-        /// Control texttitulo.
+        /// Control selectTipoMoneda.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText texttitulo;
+        protected global::System.Web.UI.HtmlControls.HtmlSelect selectTipoMoneda;
 
         /// <summary>
         /// Control txtPrecio.
@@ -103,6 +112,15 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtPrecio;
+
+        /// <summary>
+        /// Control txtExpensas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtExpensas;
 
         /// <summary>
         /// Control txtTipoDueno.

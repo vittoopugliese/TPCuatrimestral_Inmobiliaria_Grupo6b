@@ -12,6 +12,7 @@ namespace Dominio
         public string Direccion { get; set; }
         public string Ubicacion { get; set; }
         public decimal Precio { get; set; }
+        public decimal Expensas { get; set; }
         public string Moneda { get; set; }
         public string Descripcion { get; set; }
         public string TipoOperacion { get; set; } // pasar a enum

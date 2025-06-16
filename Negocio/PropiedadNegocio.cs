@@ -20,12 +20,12 @@ namespace Negocio
             try
             {
                 db.setearConsulta(@"INSERT INTO PROPIEDAD 
-            (Titulo, IdUsuario, Direccion, Precio, Moneda, Descripcion, Tipo, TipoOperacion, 
+            (Titulo, IdUsuario, Direccion, Precio, Moneda, Expensas, Descripcion, Tipo, TipoOperacion, 
              ImagenUrl, Localidad, TipoDueno, Email, WhatsApp, Ambientes, 
              Sup_m2_Cubierto, Sup_m2_Total, Dormitorios, [Baños], ConPatio, ConBalcon, AnosAntiguedad, 
              AptoCredito, Cochera, IdProvincia, Ubicacion) 
             VALUES 
-            (@Titulo, @IdUsuario, @Direccion, @Precio, @Moneda, @Descripcion, @Tipo, @TipoOperacion, 
+            (@Titulo, @IdUsuario, @Direccion, @Precio, @Moneda, @Expensas, @Descripcion, @Tipo, @TipoOperacion, 
              @ImagenUrl, @Localidad, @TipoDueno, @Email, @WhatsApp, @Ambientes, 
              @Sup_m2_Cubierto, @Sup_m2_Total, @Dormitorios, @Baños, @ConPatio, @ConBalcon, @AnosAntiguedad, 
              @AptoCredito, @Cochera, @IdProvincia, @Ubicacion);
@@ -35,6 +35,7 @@ namespace Negocio
                 db.agregarParametro("@Titulo", !string.IsNullOrEmpty(nueva.Titulo) ? nueva.Titulo : (object)DBNull.Value);
                 db.agregarParametro("@Direccion", !string.IsNullOrEmpty(nueva.Direccion) ? nueva.Direccion : (object)DBNull.Value);
                 db.agregarParametro("@Precio", nueva.Precio);
+                db.agregarParametro("@Expensas", nueva.Expensas);
                 db.agregarParametro("@Moneda", !string.IsNullOrEmpty(nueva.Moneda) ? nueva.Moneda : "$");
                 db.agregarParametro("@Descripcion", !string.IsNullOrEmpty(nueva.Descripcion) ? nueva.Descripcion : (object)DBNull.Value);
                 db.agregarParametro("@Tipo", !string.IsNullOrEmpty(nueva.Tipo) ? nueva.Tipo : (object)DBNull.Value);
@@ -119,6 +120,7 @@ namespace Negocio
                     propiedad.Titulo = db.Lector["Titulo"] != DBNull.Value ? db.Lector["Titulo"].ToString() : "";
                     propiedad.Ubicacion = db.Lector["Ubicacion"] != DBNull.Value ? db.Lector["Ubicacion"].ToString() : "";
                     propiedad.Precio = db.Lector["Precio"] != DBNull.Value ? Convert.ToDecimal(db.Lector["Precio"]) : 0;
+                    propiedad.Expensas = db.Lector["Expensas"] != DBNull.Value ? Convert.ToDecimal(db.Lector["Expensas"]) : 0;
                     propiedad.Moneda = db.Lector["Moneda"] != DBNull.Value ? db.Lector["Moneda"].ToString() : "$";
                     propiedad.TipoOperacion = db.Lector["TipoOperacion"] != DBNull.Value ? db.Lector["TipoOperacion"].ToString() : "";
                     propiedad.ImagenUrl = db.Lector["ImagenUrl"] != DBNull.Value ? db.Lector["ImagenUrl"].ToString() : "default.jpg";
@@ -290,6 +292,8 @@ namespace Negocio
                         Tipo = db.Lector["Tipo"] != DBNull.Value ? db.Lector["Tipo"].ToString() : "",
                         TipoOperacion = db.Lector["TipoOperacion"] != DBNull.Value ? db.Lector["TipoOperacion"].ToString() : "",
                         Precio = db.Lector["Precio"] != DBNull.Value ? Convert.ToDecimal(db.Lector["Precio"]) : 0,
+                        Expensas = db.Lector["Expensas"] != DBNull.Value ? Convert.ToDecimal(db.Lector["Expensas"]) : 0,
+                        Moneda = db.Lector["Moneda"] != DBNull.Value ? db.Lector["Moneda"].ToString() : "$",
                         TipoDueno = db.Lector["TipoDueno"] != DBNull.Value ? db.Lector["TipoDueno"].ToString() : "",
                         Email = db.Lector["Email"] != DBNull.Value ? db.Lector["Email"].ToString() : "",
                         WhatsApp = db.Lector["WhatsApp"] != DBNull.Value ? db.Lector["WhatsApp"].ToString() : "",

@@ -13,6 +13,12 @@
                 <!-- Resto de tu formulario (se mantiene igual) -->
                 <div class="row align-items-start">
                     <div class="col">
+
+                        <div>
+                            <label for="texttitulo" class="form-label" style="margin-top: 15px">Título</label>
+                            <input type="text" class="form-control" id="texttitulo" placeholder="Ingrese título su publicación..." runat="server">
+                        </div>
+
                         <div>
                             <label for="selectTipoOperacion" class="form-label" style="margin-top: 15px">Tipo de Operación</label>
                             <select id="selectTipoOperacion" class="form-select" runat="server">
@@ -84,13 +90,22 @@
 
                     <div class="col">
                         <div>
-                            <label for="texttitulo" class="form-label" style="margin-top: 15px">Título</label>
-                            <input type="text" class="form-control" id="texttitulo" placeholder="Ingrese título su publicación..." runat="server">
+                            <label for="selectTipoMoneda" class="form-label" style="margin-top: 15px">Tipo de Moneda</label>
+                            <select id="selectTipoMoneda" class="form-select" runat="server">
+                                <option selected disabled value="">Seleccione el tipo Moneda...</option>
+                                <option>US$</option>
+                                <option>$</option>
+                            </select>
                         </div>
 
                         <div>
                             <label for="txtPrecio" class="form-label" style="margin-top: 15px">Precio</label>
                             <input type="text" class="form-control" id="txtPrecio" placeholder="Ingrese Precio..." runat="server">
+                        </div>
+
+                        <div>
+                            <label for="txtExpensas" class="form-label" style="margin-top: 15px">Expensas</label>
+                            <input type="text" class="form-control" id="txtExpensas" placeholder="Ingrese Expensas..." runat="server">
                         </div>
 
                         <%--                        <div>
@@ -114,7 +129,7 @@
                             <input type="email" class="form-control" id="inputEmail" placeholder="Ingrese su e-mail..." runat="server">
                         </div>
 
-<%--                        <div>
+                        <%--                        <div>
                             <label for="Whatsapp" class="form-label" style="margin-top: 15px">Whatsapp</label>
                             <asp:TextBox ID="txtWhatsapp" runat="server" CssClass="form-control" placeholder="Ingrese su número de whastapp..." TextMode="number" step="1"></asp:TextBox>
                         </div>--%>
@@ -150,6 +165,7 @@
                                 <input class="form-check-input" type="checkbox" value="" id="inputBalcon" runat="server">
                                 <label class="form-check-label" for="balc">
                                     Posee Balcón?
+                               
                                 </label>
                             </div>
                         </div>
@@ -158,6 +174,7 @@
                                 <input class="form-check-input" type="checkbox" value="" id="inputPatio" runat="server">
                                 <label class="form-check-label" for="patioo">
                                     Posee Patio?
+                               
                                 </label>
                             </div>
                         </div>
@@ -166,6 +183,7 @@
                                 <input class="form-check-input" type="checkbox" value="" id="inputCochera" runat="server">
                                 <label class="form-check-label" for="coche">
                                     Posee Cochera?
+                               
                                 </label>
                             </div>
                         </div>
@@ -173,8 +191,9 @@
                         <div class="col">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="" id="inputCredito" runat="server">
-                                <label class="form-check-label" for="credito">
+                                <label class="form-check-label" for="inputCredito">
                                     Apto Crédito?
+                               
                                 </label>
                             </div>
                         </div>
@@ -192,7 +211,7 @@
                                 <label type="text" class="form-label" style="margin-top: 15px">Adjuntar Imágenes</label>
                                 <div class="input-group">
                                     <asp:FileUpload ID="agregarImagen" CssClass="form-control btn btn-dark" runat="server" AllowMultiple="true" />
-                                    
+
                                 </div>
                             </div>
 
@@ -203,7 +222,7 @@
                     <div class="row align-items-start">
                         <div class="col"></div>
                         <div class="col">
-                            <asp:Button Text="Guardar y Publicar" CssClass="btn btn-dark" ID="btnGuardarPublicacion" runat="server" OnClick="btnGuardarPublicacion_Click" Style="margin-top: 35px; width: 500px;"/>
+                            <asp:Button Text="Guardar y Publicar" CssClass="btn btn-dark" ID="btnGuardarPublicacion" runat="server" OnClick="btnGuardarPublicacion_Click" Style="margin-top: 35px; width: 500px;" />
                         </div>
                         <div class="col"></div>
                     </div>

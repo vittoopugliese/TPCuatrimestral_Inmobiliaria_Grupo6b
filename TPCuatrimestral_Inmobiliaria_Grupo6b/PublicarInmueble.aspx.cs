@@ -63,6 +63,7 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                 propiedad.Tipo = selectTipoPropiedad.Value;
                 propiedad.TipoOperacion = selectTipoOperacion.Value;
                 propiedad.Precio = SafeConvertToDecimal(txtPrecio.Value);
+                propiedad.Expensas = SafeConvertToDecimal(txtExpensas.Value);
                 propiedad.TipoDueno = txtTipoDueno.Value;
                 propiedad.Email = inputEmail.Value;
                 propiedad.WhatsApp = CleanPhoneNumber(txtWhatsapp.Value);
@@ -74,6 +75,7 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                 propiedad.ConPatio = inputPatio.Checked;
                 propiedad.Cochera = inputCochera.Checked;
                 propiedad.AptoCredito = inputCredito.Checked;
+                propiedad.Moneda = selectTipoMoneda.Value;
 
                 //// Primero guardamos la propiedad para obtener su ID
                 PropiedadNegocio propiedadNegocio = new PropiedadNegocio();

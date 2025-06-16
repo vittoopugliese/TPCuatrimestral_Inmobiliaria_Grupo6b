@@ -128,9 +128,15 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                 colBalcon.Visible = false;
             }
 
+            if (!propiedad.AptoCredito)
+            {
+                creditoPropiedad.Visible = false;
+            }
+
             // Precio
-            var precio = FindControl("precioPropiedad") as HtmlGenericControl;
-            if (precio != null) precio.InnerText = $"U$D {propiedad.Precio.ToString("N0")}";
+
+            precioCompleto.InnerText = $"{propiedad.Moneda} {propiedad.Precio}";
+            expensasPropiedad.InnerText = $"Expensas: {propiedad.Moneda} {propiedad.Expensas} ";
 
             // Fecha publicación
             var fechaPublicacion = FindControl("fechaPublicacionPropiedad") as HtmlGenericControl;

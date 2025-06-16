@@ -177,13 +177,31 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
         protected global::System.Web.UI.HtmlControls.HtmlAnchor emailPropietario;
 
         /// <summary>
-        /// Control precioPropiedad.
+        /// Control precioCompleto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl precioPropiedad;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl precioCompleto;
+
+        /// <summary>
+        /// Control expensasPropiedad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl expensasPropiedad;
+
+        /// <summary>
+        /// Control creditoPropiedad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl creditoPropiedad;
 
         /// <summary>
         /// Control fechaPublicacionPropiedad.

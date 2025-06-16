@@ -104,11 +104,11 @@
 
         <div class="row">
             <div class="col-4">
-                <h2 id="precioPropiedad" runat="server" style="margin-top: 15px">U$D</h2>
-                <p>$40.000 de expensas</p>
+                <h2 id="precioCompleto" runat="server" style="margin-top: 15px"></h2>
+                <p id="expensasPropiedad" runat="server"></p>      
             </div>
 
-            <div class="col-4" style="margin-top: 20px; font-size: 20px">
+            <div id="creditoPropiedad" class="col-4" style="margin-top: 20px; font-size: 20px" runat="server">
                 <div>
                     <i class="fa-solid fa-credit-card"></i>
                     <p>Apto Crédito!</p>
