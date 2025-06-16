@@ -117,9 +117,15 @@
         <div class="row mb-4">
             <div class="col-12">
                 <h1 class="fs-2 text-dark">Mis Publicaciones</h1>
-                <p class="fs-4 text-muted">Gestiona tus propiedades publicadas</p>
+                <div class="d-flex flex-row w-100 justify-content-between align-items-center">
+                    <p class="fs-4 text-muted">Gestiona tus propiedades publicadas</p>
+                    <button class="btn btn-danger">
+                        <a href="PublicacionesEliminadas.aspx" class="nav-link fs-5">Ver Eliminadas</a>
+                    </button>
+                </div>
             </div>
         </div>
+
 
         <div class="d-flex align-items-center row mb-4">
             <div class="col-md-6 mb-3">
@@ -168,7 +174,7 @@
                                         </div>
 
                                         <b class="fs-4 mb-2">$<%# Eval("Precio") %></b>
-                                        <p class="card-text text-muted mb-3"><%# Eval("Descripcion") %></p>
+                                        <p class="card-text text-muted"><%# Eval("Descripcion") %></p>
                                         <p class="mb-0 small"><strong>Publicado:</strong> <%# Eval("FechaPublicacion", "{0:dd/MM/yyyy}") %></p>
 
                                         <div class="d-flex flex-row align-items-center gap-4 mt-3">
@@ -179,11 +185,19 @@
 
                                             <asp:LinkButton CssClass="hide-icon"
                                                 ID="lnkAlternarVisibilidad" runat="server"
-                                                OnCommand="lnkAlternarVisibilidad_Command"
+                                                OnCommand="lnkOpcionesPublicacion_Command"
                                                 CommandName="alternarVisibilidad"
                                                 CommandArgument='<%# Eval("IdPropiedad") %>'
                                                 ToolTip='<%# Eval("Visible").ToString() == "True" ? "Ocultar propiedad" : "Mostrar propiedad" %>'>
-                                                <p style="cursor:pointer;"><i class='fas mr-1 <%# Eval("Visible").ToString() == "True" ? "fa-eye" : "fa-eye-slash" %>'></i>Alternar Visibilidad</p>
+                                                <p style="cursor:pointer;margin:0px;"><i class='fas <%# Eval("Visible").ToString() == "True" ? "fa-eye" : "fa-eye-slash" %>'></i>Alternar Visibilidad</p>
+                                            </asp:LinkButton>
+
+                                            <asp:LinkButton CssClass="hide-icon"
+                                                ID="lnkEliminar" runat="server"
+                                                OnCommand="lnkOpcionesPublicacion_Command"
+                                                CommandName="eliminar"
+                                                CommandArgument='<%# Eval("IdPropiedad") %>'>
+                                                <p style="cursor:pointer;margin:0px;color:red;"><i class='fas fa-trash'></i>Eliminar</p>
                                             </asp:LinkButton>
                                         </div>
                                     </div>
@@ -195,8 +209,8 @@
 
                 <asp:Panel ID="pnlSinPropiedades" runat="server" Visible="false" CssClass="text-center py-5">
                     <div class="alert alert-info">
-                        <h4>No tenés publicaciones activas</h4>
-                        <p>¡Publicá tu primera propiedad y comenzá a recibir consultas!</p>
+                        <h4>No tenes publicaciones activas</h4>
+                        <p>Publica tu primera propiedad y comenza a recibir consultas!</p>
                     </div>
                 </asp:Panel>
             </div>

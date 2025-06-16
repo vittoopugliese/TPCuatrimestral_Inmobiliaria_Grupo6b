@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -10,7 +9,7 @@ using Negocio;
 
 namespace TPCuatrimestral_Inmobiliaria_Grupo6b
 {
-    public partial class PublicacionesUsuarios : System.Web.UI.Page
+    public partial class PublicacionesEliminadas : System.Web.UI.Page
     {
         private List<Propiedad> propiedades;
         private PropiedadNegocio propiedadesNegocio;
@@ -20,7 +19,7 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
             if (!IsPostBack)
             {
                 propiedadesNegocio = new PropiedadNegocio();
-                propiedades = propiedadesNegocio.listarPublicacionesDelUsuario();
+                propiedades = propiedadesNegocio.listarEliminadas();
                 // no hace falta revisar las imagenes de la carpeta ya que solo se muestra la minatura
                 CargarDatos();
             }
@@ -28,21 +27,16 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
 
         private void CargarDatos()
         {
-            lblNombreUsuario.Text = "Usuario Registrado";
-            lblEmailUsuario.Text = "buenusuario@gmail.com";
-            lblFechaRegistro.Text = DateTime.Now.ToString("dd/MM/yyyy");
-
             if (propiedadesNegocio == null)
             {
                 propiedadesNegocio = new PropiedadNegocio();
-                propiedades = propiedadesNegocio.listarPublicacionesDelUsuario();
+                propiedades = propiedadesNegocio.listarEliminadas();
             }
 
             if (propiedades != null && propiedades.Count > 0)
             {
                 rptPropiedades.DataSource = propiedades;
                 rptPropiedades.DataBind();
-                lblPublicacionesActivas.Text = propiedades.Count.ToString();
                 pnlSinPropiedades.Visible = false;
             }
             else
@@ -50,7 +44,6 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                 pnlSinPropiedades.Visible = true;
                 rptPropiedades.DataSource = null;
                 rptPropiedades.DataBind();
-                lblPublicacionesActivas.Text = "0";
             }
         }
 
@@ -59,24 +52,18 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
             try
             {
                 PropiedadNegocio propiedadNegocio = new PropiedadNegocio();
-                
-                if (e.CommandName == "alternarVisibilidad")
+
+                if (e.CommandName == "deseliminar")
                 {
                     int idPropiedad = Convert.ToInt32(e.CommandArgument);
-                    bool resultado = propiedadNegocio.alternarVisibilidadDePropiedadExistente(idPropiedad);
-                    CargarDatos();
-                }
-                if (e.CommandName == "eliminar")
-                {
-                    int idPropiedad = Convert.ToInt32(e.CommandArgument);
-                    propiedadNegocio.eliminarPropiedadPorId(idPropiedad);
-                    CargarDatos();
+                    propiedadNegocio.reactivarPropiedadPorId(idPropiedad);
+                    CargarDatos();  
                 }
             }
             catch (Exception ex)
             {
                 ScriptManager.RegisterStartupScript(this, GetType(), "showerror",
-                    $"alert('Error al editar la propiedad de la propiedad: {ex.Message}');", true);
+                    $"alert('Error al cambiar la publicacion eliminada: {ex.Message}');", true);
             }
         }
     }

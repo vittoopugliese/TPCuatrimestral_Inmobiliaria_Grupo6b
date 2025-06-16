@@ -10,12 +10,6 @@ F:\Alex\source\TrabajoPracticoIntegrador\V6\Dominio\obj\Debug\Dominio.csproj.Ass
 F:\Alex\source\TrabajoPracticoIntegrador\V6\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
 F:\Alex\source\TrabajoPracticoIntegrador\V6\Dominio\obj\Debug\Dominio.dll
 F:\Alex\source\TrabajoPracticoIntegrador\V6\Dominio\obj\Debug\Dominio.pdb
-D:\Escritorio\Program\FACULTAD\TPCuatrimestral_Inmobiliaria_Grupo6b\Dominio\bin\Debug\Dominio.dll
-D:\Escritorio\Program\FACULTAD\TPCuatrimestral_Inmobiliaria_Grupo6b\Dominio\bin\Debug\Dominio.pdb
-D:\Escritorio\Program\FACULTAD\TPCuatrimestral_Inmobiliaria_Grupo6b\Dominio\obj\Debug\Dominio.csproj.AssemblyReference.cache
-D:\Escritorio\Program\FACULTAD\TPCuatrimestral_Inmobiliaria_Grupo6b\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
-D:\Escritorio\Program\FACULTAD\TPCuatrimestral_Inmobiliaria_Grupo6b\Dominio\obj\Debug\Dominio.dll
-D:\Escritorio\Program\FACULTAD\TPCuatrimestral_Inmobiliaria_Grupo6b\Dominio\obj\Debug\Dominio.pdb
 F:\Alex\source\TrabajoPracticoIntegrador\V8\Dominio\bin\Debug\Dominio.dll
 F:\Alex\source\TrabajoPracticoIntegrador\V8\Dominio\bin\Debug\Dominio.pdb
 F:\Alex\source\TrabajoPracticoIntegrador\V8\Dominio\obj\Debug\Dominio.csproj.AssemblyReference.cache
@@ -46,3 +40,9 @@ F:\Alex\source\TrabajoPracticoIntegrador\VersionMain\Dominio\obj\Debug\Dominio.c
 F:\Alex\source\TrabajoPracticoIntegrador\VersionMain\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
 F:\Alex\source\TrabajoPracticoIntegrador\VersionMain\Dominio\obj\Debug\Dominio.dll
 F:\Alex\source\TrabajoPracticoIntegrador\VersionMain\Dominio\obj\Debug\Dominio.pdb
+D:\Escritorio\Program\FACULTAD\TPCuatrimestral_Inmobiliaria_Grupo6b\Dominio\bin\Debug\Dominio.dll
+D:\Escritorio\Program\FACULTAD\TPCuatrimestral_Inmobiliaria_Grupo6b\Dominio\bin\Debug\Dominio.pdb
+D:\Escritorio\Program\FACULTAD\TPCuatrimestral_Inmobiliaria_Grupo6b\Dominio\obj\Debug\Dominio.csproj.AssemblyReference.cache
+D:\Escritorio\Program\FACULTAD\TPCuatrimestral_Inmobiliaria_Grupo6b\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
+D:\Escritorio\Program\FACULTAD\TPCuatrimestral_Inmobiliaria_Grupo6b\Dominio\obj\Debug\Dominio.dll
+D:\Escritorio\Program\FACULTAD\TPCuatrimestral_Inmobiliaria_Grupo6b\Dominio\obj\Debug\Dominio.pdb

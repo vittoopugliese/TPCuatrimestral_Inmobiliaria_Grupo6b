@@ -12,6 +12,7 @@ namespace Dominio
         public int IdPropiedad { get; set; }
         public int IdUsuario { get; set; } // pasar a Usuario
         public int IdProvincia { get; set; }
+        public Usuario Usuario { get; set; }
         public string Tipo { get; set; }
         public string Titulo { get; set; }
         public string Direccion { get; set; }
@@ -31,7 +32,6 @@ namespace Dominio
         public bool Eliminada { get; set; }
         public DateTime FechaPublicacion { get; set; }
         public DateTime FechaModificacion { get; set; }
-
         public int Ambientes { get; set; }
         public decimal Sup_m2_Total { get; set; }
         public decimal Sup_m2_Cubierto { get; set; }

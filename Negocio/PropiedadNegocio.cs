@@ -168,8 +168,15 @@ namespace Negocio
             return ObtenerPropiedadesSegunConsultasYMapearlas("SELECT * FROM PROPIEDAD WHERE Visible = 1 AND Eliminada = 0");
         }
 
-        // listarPorTipo: return ObtenerPropiedadesSegunConsultasYMapearlas($"SELECT * FROM PROPIEDAD WHERE IdTipo = {Tipo}");
-        // listarPorProvincia: return ObtenerPropiedadesSegunConsultasYMapearlas($"SELECT * FROM PROPIEDAD WHERE IdProvincia = {idProvincia}");
+        public List<Propiedad> listarPublicacionesDelUsuario()
+        {
+            return ObtenerPropiedadesSegunConsultasYMapearlas("SELECT * FROM PROPIEDAD WHERE Eliminada = 0"); // muestro las NO visibles y las ELIMINADAS del usuario. TODO: agregar parametro USERID en listados // espeando a que se termine de crear el login completo
+        }
+
+        public List<Propiedad> listarEliminadas()
+        {
+            return ObtenerPropiedadesSegunConsultasYMapearlas("SELECT * FROM PROPIEDAD WHERE Eliminada = 1"); // user id
+        }
 
         public List<Propiedad> listarDestacadas()
         {
@@ -264,7 +271,90 @@ namespace Negocio
 
         public bool alternarVisibilidadDePropiedadExistente(int IdPropiedad)
         {
-            return true;
+            try
+            {
+                db.setearConsulta("SELECT Visible FROM PROPIEDAD WHERE IdPropiedad = @Id");
+                db.agregarParametro("@Id", IdPropiedad);
+                db.ejecutarLectura();
+
+                if (db.Lector.Read())
+                {
+                    bool visibilidadActual = Convert.ToBoolean(db.Lector["Visible"]);
+
+                    db.cerrarConexion();
+
+                    db.setearConsulta("UPDATE PROPIEDAD SET Visible = @NuevoVisible WHERE IdPropiedad = @Id");
+                    db.agregarParametro("@NuevoVisible", !visibilidadActual);
+                    db.agregarParametro("@Id", IdPropiedad);
+                    db.ejecutarAccion();
+
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al modificar visibilidad por ID", ex);
+            }
+            finally
+            {
+                db.cerrarConexion();
+            }
+        }
+
+        public bool eliminarPropiedadPorId(int IdPropiedad)
+        {
+            try
+            { // si existe procedo a borrarla
+                db.setearConsulta("SELECT IdPropiedad FROM PROPIEDAD WHERE IdPropiedad = @Id");
+                db.agregarParametro("@Id", IdPropiedad);
+                db.ejecutarLectura();
+
+                if (db.Lector.Read())
+                {
+                    db.cerrarConexion();
+
+                    db.setearConsulta("UPDATE PROPIEDAD SET Eliminada = 1, Visible = 0 WHERE IdPropiedad = @Id");
+                    db.agregarParametro("@Id", IdPropiedad);
+                    db.ejecutarAccion();
+
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al marcar campo Eliminada de la propiedad", ex);
+            }
+            finally
+            {
+                db.cerrarConexion();
+            }
+        }
+        public bool reactivarPropiedadPorId(int IdPropiedad)
+        {
+            try
+            {
+                db.setearConsulta("UPDATE PROPIEDAD SET Eliminada = 0, Visible = 1 WHERE IdPropiedad = @Id");
+                db.agregarParametro("@Id", IdPropiedad);
+                db.ejecutarAccion();
+                db.cerrarConexion();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al reactivar propiedad", ex);
+            }
+            finally
+            {
+                db.cerrarConexion();
+            }
         }
 
         public Propiedad ObtenerPorId(int id)
