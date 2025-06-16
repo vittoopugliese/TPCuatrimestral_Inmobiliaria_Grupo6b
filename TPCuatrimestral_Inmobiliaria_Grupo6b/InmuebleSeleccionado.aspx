@@ -116,7 +116,7 @@
             </div>
 
             <div class="col-4">
-                <p id="fechaPublicacionPropiedad" runat="server" style="margin-top: 35px; font-size: 25px">Publicado el 01/06/2025</p>
+                <p id="fechaPublicacionPropiedad" runat="server" style="margin-top: 35px; font-size: 25px">Publicado ...</p>
             </div>
         </div>
 

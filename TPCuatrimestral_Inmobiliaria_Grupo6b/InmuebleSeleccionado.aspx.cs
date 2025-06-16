@@ -139,8 +139,7 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
             expensasPropiedad.InnerText = $"Expensas: {propiedad.Moneda} {propiedad.Expensas} ";
 
             // Fecha publicación
-            var fechaPublicacion = FindControl("fechaPublicacionPropiedad") as HtmlGenericControl;
-            if (fechaPublicacion != null) fechaPublicacion.InnerText = $"Publicado el {propiedad.FechaPublicacion.ToString("dd/MM/yyyy")}";
+            fechaPublicacionPropiedad.InnerText = $"Publicado el {propiedad.FechaPublicacion.ToString("dd/MM/yyyy")}";
 
             // Descripción
             var descripcion = FindControl("descripcionPropiedad") as HtmlGenericControl;

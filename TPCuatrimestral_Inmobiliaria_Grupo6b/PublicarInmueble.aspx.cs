@@ -76,7 +76,7 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                 propiedad.Cochera = inputCochera.Checked;
                 propiedad.AptoCredito = inputCredito.Checked;
                 propiedad.Moneda = selectTipoMoneda.Value;
-
+                propiedad.FechaPublicacion = DateTime.Now;
                 //// Primero guardamos la propiedad para obtener su ID
                 PropiedadNegocio propiedadNegocio = new PropiedadNegocio();
                 //if (Session["IdUsuario"] != null)
