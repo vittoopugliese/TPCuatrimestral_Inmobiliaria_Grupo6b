@@ -32,28 +32,30 @@
                             <div class="col">
                                 <div style="position: absolute; bottom: 0; width: calc(100% - 30px); margin-left: 40px">
                                     <i class="fa-solid fa-sink"></i>
-                                    <p>Baño</p>
+                                    <p id="banoPropiedad" runat="server"></p>
                                 </div>
                             </div>
 
-                            <div class="col">
+                            <div class="col" id="colCochera" runat="server">
                                 <div style="position: absolute; bottom: 0; width: calc(100% - 30px); margin-left: 40px">
-                                    <i class="fa-solid fa-car-side"></i>
-                                    <p>Cochera</p>
+                                    <i class="fa-solid fa-car"></i>
+                                    <p id="cocheraPropiedad" runat="server"></p>
                                 </div>
                             </div>
 
                             <div class="col">
                                 <div style="position: absolute; bottom: 0; width: calc(100% - 30px); margin-left: 40px">
                                     <i class="fa-solid fa-bed"></i>
-                                    <p>Dormitorios</p>
+                                    <p id="dormitoriosPropiedad" runat="server"></p>
                                 </div>
                             </div>
 
-                            <div class="col">
+
+
+                            <div class="col" id="colBalcon" runat="server">
                                 <div style="position: absolute; bottom: 0; width: calc(100% - 30px); margin-left: 40px">
                                     <i class="fa-solid fa-house-user"></i>
-                                    <p>Balcón</p>
+                                    <p id="balconPropiedad" runat="server"></p>
                                 </div>
                             </div>
                         </div>

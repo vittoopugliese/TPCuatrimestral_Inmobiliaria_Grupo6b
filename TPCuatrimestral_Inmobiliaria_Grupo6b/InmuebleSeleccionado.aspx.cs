@@ -73,15 +73,59 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
 
         private void CargarDatosPropiedad(Propiedad propiedad)
         {
-            // Título
-            var titulo = FindControl("tituloPropiedad") as HtmlGenericControl;
-            if (titulo != null) titulo.InnerText = $"{propiedad.Tipo} en {propiedad.TipoOperacion} en {propiedad.Localidad}";
+            //// Título
+            
+            tituloPropiedad.InnerText = $"{propiedad.Tipo} en {propiedad.TipoOperacion} en {propiedad.Localidad}";
 
-            // Dirección
-            var direccion = FindControl("direccionPropiedad") as HtmlGenericControl;
-            if (direccion != null)
+
+            direccionPropiedad.InnerHtml = $"<span class='fa-solid fa-location-dot' style='margin-right: 10px'></span>{propiedad.Direccion}, {propiedad.Localidad}";
+
+
+            if(propiedad.Baños == 0)
             {
-                direccion.InnerHtml = $"<span class='fa-solid fa-location-dot' style='margin-right: 10px'></span>{propiedad.Direccion}, {propiedad.Localidad}";
+                banoPropiedad.InnerText = " Sin baño";
+            } 
+            else if (propiedad.Baños > 1)
+            {
+                banoPropiedad.InnerText = $"{propiedad.Baños} baños";
+            }
+            else if (propiedad.Baños == 1)
+            {
+                banoPropiedad.InnerText = $"{propiedad.Baños} baño";
+
+            }
+
+            if (propiedad.Cochera)
+            {
+                cocheraPropiedad.InnerHtml = "Cochera";
+            }
+            else
+            {
+                colCochera.Visible = false;
+            }
+
+
+            if (propiedad.Dormitorios == 0)
+            {
+                dormitoriosPropiedad.InnerText = " Sin dormitorios";
+            }
+            else if (propiedad.Dormitorios > 1)
+            {
+                dormitoriosPropiedad.InnerText = $"{propiedad.Dormitorios} dormitorios";
+            }
+            else if (propiedad.Dormitorios == 1)
+            {
+                dormitoriosPropiedad.InnerText = $"{propiedad.Dormitorios} dormitorio";
+
+            }
+
+            if (propiedad.ConBalcon)
+            { 
+                balconPropiedad.InnerHtml = "Balcón";
+            }
+            else
+            {
+                colBalcon.Visible = false;
             }
 
             // Precio
