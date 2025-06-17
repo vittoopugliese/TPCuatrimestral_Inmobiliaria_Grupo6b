@@ -46,3 +46,9 @@ D:\Escritorio\Program\FACULTAD\TPCuatrimestral_Inmobiliaria_Grupo6b\Dominio\obj\
 D:\Escritorio\Program\FACULTAD\TPCuatrimestral_Inmobiliaria_Grupo6b\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
 D:\Escritorio\Program\FACULTAD\TPCuatrimestral_Inmobiliaria_Grupo6b\Dominio\obj\Debug\Dominio.dll
 D:\Escritorio\Program\FACULTAD\TPCuatrimestral_Inmobiliaria_Grupo6b\Dominio\obj\Debug\Dominio.pdb
+C:\Users\nahue\Desktop\Mi carpeta - Nahuel\NMV - Personal\TUP UTN\Programacion_3\repo_TPC\TPC_Inmobiliaria_V1\Dominio\bin\Debug\Dominio.dll
+C:\Users\nahue\Desktop\Mi carpeta - Nahuel\NMV - Personal\TUP UTN\Programacion_3\repo_TPC\TPC_Inmobiliaria_V1\Dominio\bin\Debug\Dominio.pdb
+C:\Users\nahue\Desktop\Mi carpeta - Nahuel\NMV - Personal\TUP UTN\Programacion_3\repo_TPC\TPC_Inmobiliaria_V1\Dominio\obj\Debug\Dominio.csproj.AssemblyReference.cache
+C:\Users\nahue\Desktop\Mi carpeta - Nahuel\NMV - Personal\TUP UTN\Programacion_3\repo_TPC\TPC_Inmobiliaria_V1\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
+C:\Users\nahue\Desktop\Mi carpeta - Nahuel\NMV - Personal\TUP UTN\Programacion_3\repo_TPC\TPC_Inmobiliaria_V1\Dominio\obj\Debug\Dominio.dll
+C:\Users\nahue\Desktop\Mi carpeta - Nahuel\NMV - Personal\TUP UTN\Programacion_3\repo_TPC\TPC_Inmobiliaria_V1\Dominio\obj\Debug\Dominio.pdb

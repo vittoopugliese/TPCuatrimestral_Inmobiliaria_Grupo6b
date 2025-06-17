@@ -52,8 +52,8 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
 
         private void CargarProvincias()
         {
-            RegistroNegocio registroNegocio = new RegistroNegocio();
-            List<KeyValuePair<int, string>> provincias = registroNegocio.ObtenerProvincias();
+            ProvinciaNegocio ProvinciaNegocio = new ProvinciaNegocio();
+            List<KeyValuePair<int, string>> provincias = ProvinciaNegocio.ObtenerProvincias();
             ddlProvincia.Items.Clear();
             ddlProvincia.Items.Add(new ListItem("Todas las provincias", "0"));
             foreach (var provincia in provincias)

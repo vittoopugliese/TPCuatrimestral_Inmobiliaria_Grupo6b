@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Negocio;
+using Dominio;
 
 namespace TPCuatrimestral_Inmobiliaria_Grupo6b
 {
@@ -12,40 +13,28 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                CargarProvincias();
-                CargarRoles();
-            }
+
         }
 
-        private void CargarProvincias()
+        protected void ButtonRegistrar_Click(object sender, EventArgs e)
         {
-            RegistroNegocio negocio = new RegistroNegocio();
-            List<KeyValuePair<int, string>> provincias = negocio.ObtenerProvincias();
-
-            DropDownListProvincia.Items.Clear();
-            DropDownListProvincia.Items.Add(new ListItem("Selecciona una provincia", ""));
-
-            foreach (var provincia in provincias)
+            try
             {
-                DropDownListProvincia.Items.Add(new ListItem(provincia.Value, provincia.Key.ToString()));
+                Usuario usuario = new Usuario();
+                UsuarioNegocio UsuarioNegocio = new UsuarioNegocio();
+                usuario.Email = TextBoxCorreo.Text;
+                usuario.Contrasena = TextBoxContra.Text;
+                int id = UsuarioNegocio.insertarNuevo(usuario);
             }
-        }
-
-        private void CargarRoles()
-        {
-            RegistroNegocio negocio = new RegistroNegocio();
-            List<KeyValuePair<int, string>> roles = negocio.ObtenerRoles();
-
-            DropDownListRol.Items.Clear();
-            DropDownListRol.Items.Add(new ListItem("Selecciona un rol", ""));
-
-            foreach (var rol in roles)
+            catch (Exception ex)
             {
-                DropDownListRol.Items.Add(new ListItem(rol.Value, rol.Key.ToString()));
-            }
-        }
 
+                Session.Add("error", ex.ToString());
+            }
+
+
+        }
     }
+
+
 }

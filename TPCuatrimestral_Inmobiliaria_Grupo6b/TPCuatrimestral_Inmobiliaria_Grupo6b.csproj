@@ -126,6 +126,7 @@
     <Content Include="Global.asax" />
     <Content Include="InmuebleSeleccionado.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="Perfiles.aspx" />
     <Content Include="pictures\fondoCasa.png" />
     <Content Include="pictures\fondoDefault.png" />
     <Content Include="PublicacionesEliminadas.aspx" />
@@ -242,6 +243,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Perfiles.aspx.cs">
+      <DependentUpon>Perfiles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Perfiles.aspx.designer.cs">
+      <DependentUpon>Perfiles.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PublicacionesEliminadas.aspx.cs">

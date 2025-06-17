@@ -44,5 +44,26 @@ namespace Negocio
             }
             return usuarios;
         }
+
+        public int insertarNuevo(Usuario nuevo)
+        {
+            BaseDeDatos db = new BaseDeDatos();
+            try
+            {
+                db.setearProcedimiento("SP_RegistrarUsuario");
+                db.setearParametro("@Email", nuevo.Email);
+                db.setearParametro("@Contrasena", nuevo.Contrasena);
+                return db.ejecutarAccionScalar();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                db.cerrarConexion();
+            }
+        }
     }
 }

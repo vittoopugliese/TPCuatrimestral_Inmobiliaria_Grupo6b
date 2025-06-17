@@ -28,10 +28,10 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                 {
                     Session.Add("usuario", usuario);
 
-                    Session["usuario"] = usuario.Email; 
-                    Session["IdRol"] = usuario.IdRol; 
-                    Session["contrasena"] = usuario.Contrasena;  
-                    Session["IdUsuario"] = usuario.IdUsuario; 
+                    Session["usuario"] = usuario.Email;
+                    Session["IdRol"] = usuario.IdRol;
+                    Session["contrasena"] = usuario.Contrasena;
+                    Session["IdUsuario"] = usuario.IdUsuario;
 
 
                     if (Session["urlGuardada"] != null)
