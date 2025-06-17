@@ -22,10 +22,10 @@ namespace Negocio
             server.Credentials = new NetworkCredential("inmolibre.2025@gmail.com", "fzsk xgnp abyo axxq");
         }
 
-        public void armarCorreo(string emailDestino, string contrasenaGuardada)
+        public void armarCorreoPass(string emailDestino, string contrasenaGuardada)
         {
             email = new MailMessage();
-            email.From = new MailAddress("inmolibre.2025@gmail.com");
+            email.From = new MailAddress("noresponder@inmolibre.com");
             email.To.Add(emailDestino);
             email.Subject = "Recuperación de contraseña";
             email.IsBodyHtml = true;
@@ -48,6 +48,21 @@ namespace Negocio
                 // Manejo de excepciones, por ejemplo, registrar el error o mostrar un mensaje al usuario
                 Console.WriteLine("Error al enviar el correo: " + ex.Message);
             }
+        }
+
+        public void armarCorreoRegistro(string emailDestino)
+        {
+            email = new MailMessage();
+            email.From = new MailAddress("noresponder@inmolibre.com");
+            email.To.Add(emailDestino);
+            email.Subject = "Inmolibre - Registro exitoso";
+            email.IsBodyHtml = true;
+            email.Body = "<h1>Registro exitoso</h1>" +
+                          "<p>Hola,</p>" +
+                          "<p>Tu registro en InmoLibre ha sido exitoso.</p>" +
+                          "<p>Gracias por unirte a nosotros.</p>" +
+                          "<p>Saludos,</p>" +
+                          "<p>Equipo de InmoLibre </p>";
         }
     }
 }

@@ -19,12 +19,12 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
         protected void ButtonIngresar_Click(object sender, EventArgs e)
         {
             Usuario usuario = new Usuario();
-            LoginNegocio loginNegocio = new LoginNegocio();
+            UsuarioNegocio UsuarioNegocio = new UsuarioNegocio();
 
             try
             {
                 usuario = new Usuario(TextBoxCorreo.Text, TextBoxContra.Text);
-                if (loginNegocio.Loguear(usuario))
+                if (UsuarioNegocio.Loguear(usuario))
                 {
                     Session.Add("usuario", usuario);
 

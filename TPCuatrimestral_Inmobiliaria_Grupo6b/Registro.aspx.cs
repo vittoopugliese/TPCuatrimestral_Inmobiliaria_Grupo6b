@@ -22,9 +22,15 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
             {
                 Usuario usuario = new Usuario();
                 UsuarioNegocio UsuarioNegocio = new UsuarioNegocio();
+                EmailService emailService = new EmailService();
+
                 usuario.Email = TextBoxCorreo.Text;
                 usuario.Contrasena = TextBoxContra.Text;
                 int id = UsuarioNegocio.insertarNuevo(usuario);
+
+                emailService.armarCorreoRegistro(usuario.Email);
+                emailService.enviarCorreo();
+                Response.Redirect("Default.aspx",false);
             }
             catch (Exception ex)
             {

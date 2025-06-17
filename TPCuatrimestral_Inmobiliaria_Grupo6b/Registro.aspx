@@ -67,7 +67,7 @@
         <script>
             document.addEventListener("keydown", function (event) {
                 if (event.key === "Escape") {
-                    location.replace("Default.aspx");
+                    location.replace("Login.aspx");
                 }
             });
         </script>

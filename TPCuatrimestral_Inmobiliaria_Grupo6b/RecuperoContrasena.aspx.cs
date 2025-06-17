@@ -18,13 +18,13 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
 
         protected void ButtonEnviar_Click(object sender, EventArgs e)
         {
-            LoginNegocio loginNegocio = new LoginNegocio();
-            Usuario usuario = loginNegocio.BuscarPorEmail(TextBoxCorreo.Text);
+            UsuarioNegocio UsuarioNegocio = new UsuarioNegocio();
+            Usuario usuario = UsuarioNegocio.BuscarPorEmail(TextBoxCorreo.Text);
 
             if (usuario != null)
             {
                 EmailService emailService = new EmailService();
-                emailService.armarCorreo(TextBoxCorreo.Text, usuario.Contrasena);
+                emailService.armarCorreoPass(TextBoxCorreo.Text, usuario.Contrasena);
                 emailService.enviarCorreo();
 
                 LabelMensaje.Text = "Se envió la contraseña a tu correo.";
