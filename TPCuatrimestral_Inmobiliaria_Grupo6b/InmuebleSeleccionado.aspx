@@ -5,9 +5,7 @@
 
     <div class="container" style="margin-top: 15px">
 
-        <h1 class="card-title" id="tituloPropiedad" runat="server"></h1>
-
-        <div class="card shadow-lg" style="margin-top: 15px; font-size: 20px">
+        <div class="card shadow-lg" style="margin-top: 25px; font-size: 20px">
             <div class="card-body">
 
                 <p class="card-text" id="direccionPropiedad" runat="server"><span class="fa-solid fa-location-dot" style="margin-right: 10px"></span></p>
@@ -86,9 +84,9 @@
 
                         <div class="card" style="margin-top: 17px">
                             <div class="card-body">
-                                <p id="nombrePropietario" runat="server">Nombre del Propietario</p>
-                                <p><i class="fa-brands fa-whatsapp" style="margin-right: 10px"></i><span id="whatsappPropietario" runat="server">(011) 4263-5632</span></p>
-                                <a href="mailto:ale_tama77@hotmail.com" id="emailPropietario" runat="server" style="text-decoration: none; color: inherit;">
+                                <p id="nombrePropietario" runat="server"></p>
+                                <p><i class="fa-brands fa-whatsapp" style="margin-right: 10px"></i><span id="whatsappPropietario" runat="server"></span></p>
+                                <a href="#" id="emailPropietario" runat="server" style="text-decoration: none; color: inherit;">
                                     <p style="margin: 0; display: inline-block;">
                                         <i class="fa-solid fa-envelope" style="margin-right: 10px"></i>Enviar e-mail
                                     </p>
@@ -126,25 +124,25 @@
 
             <div class="col">
                 <div>
-                    <i class="fa-solid fa-pen-ruler"></i>
-                    <p>Ambientes</p>
+                    <i class="fa-solid fa-house"></i>
+                    <p id="cantAmbientes" runat="server"></p>
                 </div>
             </div>
             <div class="col">
                 <div>
                     <i class="fa-solid fa-ruler-combined"></i>
-                    <p>Sup. Total</p>
+                    <p id="superficieTot" runat="server"></p>
                 </div>
             </div>
 
             <div class="col">
                 <div>
                     <i class="fa-solid fa-pen-ruler"></i>
-                    <p>Sup. Cubierta</p>
+                    <p id="superCub" runat="server"></p>
                 </div>
             </div>
 
-            <div class="col">
+            <div id="divPatio" class="col" runat="server">
                 <div>
                     <i class="fa-solid fa-tree"></i>
                     <p>Patio</p>
@@ -153,17 +151,16 @@
 
             <div class="col">
                 <div>
-                    <i class="fa-solid fa-pen-ruler"></i>
-                    <p>Antiguedad</p>
+                    <i class="fa-regular fa-clock"></i>
+                    <p id="antigue" runat="server">Antiguedad</p>
                 </div>
             </div>
 
         </div>
 
         <hr />
-
-        <h2 style="margin-top: 15px">VENTA DE CASA EN AVELLANEDA, excelente !</h2>
-        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <h2 id="tituloPropiedad" style="margin-top: 15px" runat="server"></h2>
+        <p id="descripcionPropiedad" class="card-text" runat="server"></p>
     </div>
 
 

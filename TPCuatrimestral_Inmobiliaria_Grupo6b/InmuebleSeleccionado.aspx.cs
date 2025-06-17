@@ -74,17 +74,14 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
         private void CargarDatosPropiedad(Propiedad propiedad)
         {
             //// Título
-            
-            tituloPropiedad.InnerText = $"{propiedad.Tipo} en {propiedad.TipoOperacion} en {propiedad.Localidad}";
 
 
             direccionPropiedad.InnerHtml = $"<span class='fa-solid fa-location-dot' style='margin-right: 10px'></span>{propiedad.Direccion}, {propiedad.Localidad}";
 
-
-            if(propiedad.Baños == 0)
+            if (propiedad.Baños == 0)
             {
                 banoPropiedad.InnerText = " Sin baño";
-            } 
+            }
             else if (propiedad.Baños > 1)
             {
                 banoPropiedad.InnerText = $"{propiedad.Baños} baños";
@@ -120,14 +117,14 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
             }
 
             if (propiedad.ConBalcon)
-            { 
+            {
                 balconPropiedad.InnerHtml = "Balcón";
             }
             else
             {
                 colBalcon.Visible = false;
             }
-
+            //bool credito
             if (!propiedad.AptoCredito)
             {
                 creditoPropiedad.Visible = false;
@@ -141,20 +138,43 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
             // Fecha publicación
             fechaPublicacionPropiedad.InnerText = $"Publicado el {propiedad.FechaPublicacion.ToString("dd/MM/yyyy")}";
 
+            //Cant. Ambientes
+            if (propiedad.Ambientes == 1)
+            {
+                cantAmbientes.InnerText = $"{propiedad.Ambientes} Ambiente";
+            }
+            else if (propiedad.Ambientes > 1)
+            {
+                cantAmbientes.InnerText = $"{propiedad.Ambientes} Ambientes";
+            }
+
+            //Superficie Total
+            superficieTot.InnerText = $"{propiedad.Sup_m2_Total} Mts2";
+
+            //Superficie Cubierta
+            superCub.InnerText = $"{propiedad.Sup_m2_Cubierto} Mts2";
+
+            //bool patio
+            if (!propiedad.ConPatio)
+            {
+                divPatio.Visible = false;
+            }
+
+            //Años de antiguedad
+            antigue.InnerText = $"{propiedad.AnosAntiguedad} Años de antiguedad";
+
             // Descripción
-            var descripcion = FindControl("descripcionPropiedad") as HtmlGenericControl;
-            if (descripcion != null) descripcion.InnerText = propiedad.Descripcion;
+            tituloPropiedad.InnerText = $"{propiedad.Tipo} en {propiedad.TipoOperacion} en {propiedad.Localidad}";
+            descripcionPropiedad.InnerText = $"{propiedad.Descripcion}";
 
-            // Características
-            var aptoCredito = FindControl("aptoCreditoPropiedad") as HtmlControl;
-            if (aptoCredito != null) aptoCredito.Visible = propiedad.AptoCredito;
+            whatsappPropietario.InnerText = $"{propiedad.WhatsApp}";
 
-            // Datos de contacto
-            var nombrePropietario = FindControl("nombrePropietario") as HtmlGenericControl;
-            if (nombrePropietario != null) nombrePropietario.InnerText = propiedad.TipoDueno;
-
-            var whatsappPropietario = FindControl("whatsappPropietario") as HtmlGenericControl;
-            if (whatsappPropietario != null) whatsappPropietario.InnerText = propiedad.WhatsApp;
+            // Configurar botón de WhatsApp
+            var botonWp = FindControl("botonWp") as Button;
+            if (botonWp != null)
+            {
+                botonWp.OnClientClick = $"window.open('https://wa.me/{propiedad.WhatsApp}', '_blank'); return false;";
+            }
 
             var emailPropietario = FindControl("emailPropietario") as HtmlAnchor;
             if (emailPropietario != null)
@@ -163,12 +183,8 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                 emailPropietario.InnerText = propiedad.Email;
             }
 
-            // Configurar botón de WhatsApp
-            var botonWp = FindControl("botonWp") as Button;
-            if (botonWp != null)
-            {
-                botonWp.OnClientClick = $"window.open('https://wa.me/{propiedad.WhatsApp}', '_blank'); return false;";
-            }
+            nombrePropietario.InnerText = $"{propiedad.TipoDueno}";
+
         }
 
         private void CargarImagenes(int idPropiedad)
