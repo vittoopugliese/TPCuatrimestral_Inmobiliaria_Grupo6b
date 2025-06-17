@@ -28,7 +28,7 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                 {
                     Session.Add("usuario", usuario);
 
-                    Session["usuario"] = usuario.Email;
+                    Session["Email"] = usuario.Email;
                     Session["IdRol"] = usuario.IdRol;
                     Session["contrasena"] = usuario.Contrasena;
                     Session["IdUsuario"] = usuario.IdUsuario;
@@ -45,7 +45,7 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                         switch (usuario.IdRol)
                         {
                             case 1:
-                                Response.Redirect("PublicarInmueble.aspx", false); // modificar luego
+                                Response.Redirect("Perfiles.aspx", false); // modificar luego
                                 break;
                             case 2:
                                 Response.Redirect("Default.aspx", false); // modificar luego

@@ -77,8 +77,9 @@ namespace Negocio
                 bd.setearParametro("@Contrasena", usuario.Contrasena);
                 bd.ejecutarLectura();
 
-                while (bd.Lector.Read())
+                if (bd.Lector.Read())
                 {
+                    usuario.IdUsuario = (int)bd.Lector["IdUsuario"];
                     usuario.Email = (string)bd.Lector["Email"];
                     usuario.IdRol = (int)bd.Lector["IdRol"];
                     usuario.Contrasena = (string)bd.Lector["Contrasena"];
@@ -90,6 +91,10 @@ namespace Negocio
             catch (Exception ex)
             {
                 throw new Exception("Error al intentar loguear al usuario", ex);
+            }
+            finally
+            {
+                bd.cerrarConexion();
             }
         }
 

@@ -38,7 +38,7 @@
                 
                 <div>
                     <div class="text-white d-flex align-items-center justify-content-center" style="border-top-left-radius: 15px; border-top-right-radius: 15px; padding: 10px; margin: 0; background-color: #121212;">
-                        <h5 class="mb-0">Registro de usuario</h5>
+                        <h5 class="mb-0">Mi Perfil</h5>
                     </div>
                     
                     <div class="px-3 px-md-4 py-2">

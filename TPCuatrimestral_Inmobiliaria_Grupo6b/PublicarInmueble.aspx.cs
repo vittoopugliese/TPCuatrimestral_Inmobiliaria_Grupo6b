@@ -19,6 +19,7 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                 // Verificar si el usuario está logueado
                 //if (Session["IdUsuario"] == null)
                 //{
+                //    Session["urlGuardada"] = Request.Url.PathAndQuery; // Guardar la URL actual
                 //    Response.Redirect("Login.aspx");
                 //    return;
                 //}

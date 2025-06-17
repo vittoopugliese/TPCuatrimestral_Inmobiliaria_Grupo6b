@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Dominio;
 using Negocio;
 
 
@@ -13,11 +14,29 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            Usuario usuario = Session["usuario"] != null ? (Usuario)Session["usuario"] : null;
+            if (!(usuario != null && usuario.IdUsuario != 0))
+            {
+                Session["urlGuardada"] = Request.Url.PathAndQuery; // Guardar la URL actual
+                Response.Redirect("Login.aspx");
+                return;
+            }
+
+
+
             if (!IsPostBack)
             {
                 CargarProvincias();
                 CargarRoles();
             }
+
+            if (Session["Email"] != null)
+            {
+                TextBoxCorreo.Text = Session["Email"].ToString();
+                TextBoxContra.Text = Session["Contrasena"].ToString();
+            }
+
 
         }
 
