@@ -27,9 +27,12 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
         {
             propiedadesNegocio = new PropiedadNegocio();
             propiedades = propiedadesNegocio.listar();
-
             idsPropiedadesFavoritas = propiedadesNegocio.obtenerIdPropiedadesEnFavoritos();
+            BindearPropiedades(propiedades);
+        }
 
+        private void BindearPropiedades(List<Propiedad> propiedades)
+        {
             if (propiedades != null && propiedades.Count > 0)
             {
                 rptPropiedades.DataSource = propiedades;
@@ -51,9 +54,8 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
         {
             RegistroNegocio registroNegocio = new RegistroNegocio();
             List<KeyValuePair<int, string>> provincias = registroNegocio.ObtenerProvincias();
-
             ddlProvincia.Items.Clear();
-
+            ddlProvincia.Items.Add(new ListItem("Todas las provincias", "0"));
             foreach (var provincia in provincias)
             {
                 ddlProvincia.Items.Add(new ListItem(provincia.Value, provincia.Key.ToString()));
@@ -63,6 +65,47 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
 
         protected void btnFiltrar_Click(object sender, EventArgs e)
         {
+            try
+            {
+                // primero agarro los valores de los filtros
+                int? idProvincia = null;
+                if (!string.IsNullOrEmpty(ddlProvincia.SelectedValue) && ddlProvincia.SelectedValue != "0") idProvincia = Convert.ToInt32(ddlProvincia.SelectedValue);
+
+                string tipoOperacion = ddlOperacion.SelectedValue;
+                string tipoInmueble = ddlTipoInmueble.SelectedValue;
+
+                decimal? precioMin = null;
+                decimal? precioMax = null;
+
+                if (!string.IsNullOrEmpty(ddlPrecio.SelectedValue))
+                {
+                    string[] rangoPrecio = ddlPrecio.SelectedValue.Split('-');
+                    if (rangoPrecio.Length == 2)
+                    {
+                        precioMin = Convert.ToDecimal(rangoPrecio[0]);
+                        precioMax = Convert.ToDecimal(rangoPrecio[1]);
+                    }
+                }
+
+                // realizo la busqueda y bindeo el array de propiedades
+                propiedadesNegocio = new PropiedadNegocio();
+                propiedades = propiedadesNegocio.buscarConFiltros(idProvincia, tipoOperacion, tipoInmueble, precioMin, precioMax);
+                idsPropiedadesFavoritas = propiedadesNegocio.obtenerIdPropiedadesEnFavoritos();
+                BindearPropiedades(propiedades);
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "error", "alert('Error al aplicar filtros: " + ex.Message + "');", true);
+            }
+        }
+
+        protected void btnLimpiarFiltros_Click(object sender, EventArgs e)
+        {
+            ddlProvincia.SelectedIndex = 0;
+            ddlOperacion.SelectedIndex = 0;
+            ddlTipoInmueble.SelectedIndex = 0;
+            ddlPrecio.SelectedIndex = 0;
+            CargarPropiedades();
         }
 
         protected void rptPropiedades_ItemCommand(object source, RepeaterCommandEventArgs e)
@@ -79,8 +122,7 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                 }
                 catch (Exception ex)
                 {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "error",
-                        "alert('Error: " + ex.Message + "');", true);
+                    ScriptManager.RegisterStartupScript(this, GetType(), "error", "alert('Error: " + ex.Message + "');", true);
                 }
             }
         }

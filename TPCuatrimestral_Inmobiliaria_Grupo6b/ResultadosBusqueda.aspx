@@ -188,6 +188,7 @@
             
             <div class="mt-2 d-flex justify-content-center align-items-center">
                 <asp:Button ID="btnFiltrar" runat="server" Text="Aplicar Filtros" CssClass="btn btn-light btn-filter btn-lg me-3" OnClick="btnFiltrar_Click" />
+                <asp:Button ID="btnLimpiarFiltros" runat="server" Text="Limpiar Filtros" CssClass="btn btn-light btn-clear btn-lg" OnClick="btnLimpiarFiltros_Click" />
             </div>
         </div>
 

@@ -85,6 +85,47 @@ namespace Negocio
             return imagenes;
         }
 
+        private Propiedad MapearPropiedad()
+        {
+            Propiedad propiedad = new Propiedad();
+
+            propiedad.IdPropiedad = db.Lector["IdPropiedad"] != DBNull.Value ? (int)db.Lector["IdPropiedad"] : 0;
+            propiedad.Descripcion = db.Lector["Descripcion"] != DBNull.Value ? db.Lector["Descripcion"].ToString() : "";
+            propiedad.Ambientes = db.Lector["Ambientes"] != DBNull.Value ? (int)db.Lector["Ambientes"] : 0;
+            propiedad.Sup_m2_Total = db.Lector["Sup_m2_Total"] != DBNull.Value ? Convert.ToDecimal(db.Lector["Sup_m2_Total"]) : 0;
+            propiedad.Sup_m2_Cubierto = db.Lector["Sup_m2_Cubierto"] != DBNull.Value ? Convert.ToDecimal(db.Lector["Sup_m2_Cubierto"]) : 0;
+            propiedad.Dormitorios = db.Lector["Dormitorios"] != DBNull.Value ? (int)db.Lector["Dormitorios"] : 0;
+            propiedad.Baños = db.Lector["Baños"] != DBNull.Value ? (int)db.Lector["Baños"] : 0;
+            propiedad.ConPatio = db.Lector["ConPatio"] != DBNull.Value ? Convert.ToBoolean(db.Lector["ConPatio"]) : false;
+            propiedad.ConBalcon = db.Lector["ConBalcon"] != DBNull.Value ? Convert.ToBoolean(db.Lector["ConBalcon"]) : false;
+            propiedad.Tipo = db.Lector["Tipo"] != DBNull.Value ? db.Lector["Tipo"].ToString() : "";
+            propiedad.Direccion = db.Lector["Direccion"] != DBNull.Value ? db.Lector["Direccion"].ToString() : "";
+            propiedad.Localidad = db.Lector["Localidad"] != DBNull.Value ? db.Lector["Localidad"].ToString() : "";
+            propiedad.IdProvincia = db.Lector["IdProvincia"] != DBNull.Value ? (int)db.Lector["IdProvincia"] : 0;
+            propiedad.AnosAntiguedad = db.Lector["AnosAntiguedad"] != DBNull.Value ? (int)db.Lector["AnosAntiguedad"] : 0;
+            propiedad.AptoCredito = db.Lector["AptoCredito"] != DBNull.Value ? Convert.ToBoolean(db.Lector["AptoCredito"]) : false;
+            propiedad.Reservada = db.Lector["Reservada"] != DBNull.Value ? Convert.ToBoolean(db.Lector["Reservada"]) : false;
+            propiedad.Cochera = db.Lector["Cochera"] != DBNull.Value ? Convert.ToBoolean(db.Lector["Cochera"]) : false;
+            propiedad.IdUsuario = db.Lector["IdUsuario"] != DBNull.Value ? (int)db.Lector["IdUsuario"] : 0;
+            propiedad.Titulo = db.Lector["Titulo"] != DBNull.Value ? db.Lector["Titulo"].ToString() : "";
+            propiedad.Ubicacion = db.Lector["Ubicacion"] != DBNull.Value ? db.Lector["Ubicacion"].ToString() : "";
+            propiedad.Precio = db.Lector["Precio"] != DBNull.Value ? Convert.ToDecimal(db.Lector["Precio"]) : 0;
+            propiedad.Expensas = db.Lector["Expensas"] != DBNull.Value ? Convert.ToDecimal(db.Lector["Expensas"]) : 0;
+            propiedad.Moneda = db.Lector["Moneda"] != DBNull.Value ? db.Lector["Moneda"].ToString() : "$";
+            propiedad.TipoOperacion = db.Lector["TipoOperacion"] != DBNull.Value ? db.Lector["TipoOperacion"].ToString() : "";
+            propiedad.ImagenUrl = db.Lector["ImagenUrl"] != DBNull.Value ? db.Lector["ImagenUrl"].ToString() : "default.jpg";
+            propiedad.TipoDueno = db.Lector["TipoDueno"] != DBNull.Value ? db.Lector["TipoDueno"].ToString() : "";
+            propiedad.Email = db.Lector["Email"] != DBNull.Value ? db.Lector["Email"].ToString() : "";
+            propiedad.WhatsApp = db.Lector["WhatsApp"] != DBNull.Value ? db.Lector["WhatsApp"].ToString() : "";
+            propiedad.Visitas = db.Lector["Visitas"] != DBNull.Value ? (int)db.Lector["Visitas"] : 0;
+            propiedad.Visible = db.Lector["Visible"] != DBNull.Value ? Convert.ToBoolean(db.Lector["Visible"]) : true;
+            propiedad.Eliminada = db.Lector["Eliminada"] != DBNull.Value ? Convert.ToBoolean(db.Lector["Eliminada"]) : false;
+            propiedad.FechaPublicacion = db.Lector["FechaPublicacion"] != DBNull.Value ? Convert.ToDateTime(db.Lector["FechaPublicacion"]) : DateTime.MinValue;
+            propiedad.FechaModificacion = db.Lector["FechaModificacion"] != DBNull.Value ? Convert.ToDateTime(db.Lector["FechaModificacion"]) : DateTime.MinValue;
+
+            return propiedad;
+        }
+
         private List<Propiedad> ObtenerPropiedadesSegunConsultasYMapearlas(string consulta)
         {
             List<Propiedad> propiedades = new List<Propiedad>();
@@ -93,48 +134,7 @@ namespace Negocio
             {
                 db.setearConsulta(consulta);
                 db.ejecutarLectura();
-
-                while (db.Lector.Read())
-
-                {
-                    Propiedad propiedad = new Propiedad();
-
-                    propiedad.IdPropiedad = db.Lector["IdPropiedad"] != DBNull.Value ? (int)db.Lector["IdPropiedad"] : 0;
-                    propiedad.Descripcion = db.Lector["Descripcion"] != DBNull.Value ? db.Lector["Descripcion"].ToString() : "";
-                    propiedad.Ambientes = db.Lector["Ambientes"] != DBNull.Value ? (int)db.Lector["Ambientes"] : 0;
-                    propiedad.Sup_m2_Total = db.Lector["Sup_m2_Total"] != DBNull.Value ? Convert.ToDecimal(db.Lector["Sup_m2_Total"]) : 0;
-                    propiedad.Sup_m2_Cubierto = db.Lector["Sup_m2_Cubierto"] != DBNull.Value ? Convert.ToDecimal(db.Lector["Sup_m2_Cubierto"]) : 0;
-                    propiedad.Dormitorios = db.Lector["Dormitorios"] != DBNull.Value ? (int)db.Lector["Dormitorios"] : 0;
-                    propiedad.Baños = db.Lector["Baños"] != DBNull.Value ? (int)db.Lector["Baños"] : 0;
-                    propiedad.ConPatio = db.Lector["ConPatio"] != DBNull.Value ? Convert.ToBoolean(db.Lector["ConPatio"]) : false;
-                    propiedad.ConBalcon = db.Lector["ConBalcon"] != DBNull.Value ? Convert.ToBoolean(db.Lector["ConBalcon"]) : false;
-                    propiedad.Tipo = db.Lector["Tipo"] != DBNull.Value ? db.Lector["Tipo"].ToString() : "";
-                    propiedad.Direccion = db.Lector["Direccion"] != DBNull.Value ? db.Lector["Direccion"].ToString() : "";
-                    propiedad.Localidad = db.Lector["Localidad"] != DBNull.Value ? db.Lector["Localidad"].ToString() : "";
-                    propiedad.IdProvincia = db.Lector["IdProvincia"] != DBNull.Value ? (int)db.Lector["IdProvincia"] : 0;
-                    propiedad.AnosAntiguedad = db.Lector["AnosAntiguedad"] != DBNull.Value ? (int)db.Lector["AnosAntiguedad"] : 0;
-                    propiedad.AptoCredito = db.Lector["AptoCredito"] != DBNull.Value ? Convert.ToBoolean(db.Lector["AptoCredito"]) : false;
-                    propiedad.Reservada = db.Lector["Reservada"] != DBNull.Value ? Convert.ToBoolean(db.Lector["Reservada"]) : false;
-                    propiedad.Cochera = db.Lector["Cochera"] != DBNull.Value ? Convert.ToBoolean(db.Lector["Cochera"]) : false;
-                    propiedad.IdUsuario = db.Lector["IdUsuario"] != DBNull.Value ? (int)db.Lector["IdUsuario"] : 0;
-                    propiedad.Titulo = db.Lector["Titulo"] != DBNull.Value ? db.Lector["Titulo"].ToString() : "";
-                    propiedad.Ubicacion = db.Lector["Ubicacion"] != DBNull.Value ? db.Lector["Ubicacion"].ToString() : "";
-                    propiedad.Precio = db.Lector["Precio"] != DBNull.Value ? Convert.ToDecimal(db.Lector["Precio"]) : 0;
-                    propiedad.Expensas = db.Lector["Expensas"] != DBNull.Value ? Convert.ToDecimal(db.Lector["Expensas"]) : 0;
-                    propiedad.Moneda = db.Lector["Moneda"] != DBNull.Value ? db.Lector["Moneda"].ToString() : "$";
-                    propiedad.TipoOperacion = db.Lector["TipoOperacion"] != DBNull.Value ? db.Lector["TipoOperacion"].ToString() : "";
-                    propiedad.ImagenUrl = db.Lector["ImagenUrl"] != DBNull.Value ? db.Lector["ImagenUrl"].ToString() : "default.jpg";
-                    propiedad.TipoDueno = db.Lector["TipoDueno"] != DBNull.Value ? db.Lector["TipoDueno"].ToString() : "";
-                    propiedad.Email = db.Lector["Email"] != DBNull.Value ? db.Lector["Email"].ToString() : "";
-                    propiedad.WhatsApp = db.Lector["WhatsApp"] != DBNull.Value ? db.Lector["WhatsApp"].ToString() : "";
-                    propiedad.Visitas = db.Lector["Visitas"] != DBNull.Value ? (int)db.Lector["Visitas"] : 0;
-                    propiedad.Visible = db.Lector["Visible"] != DBNull.Value ? Convert.ToBoolean(db.Lector["Visible"]) : true;
-                    propiedad.Eliminada = db.Lector["Eliminada"] != DBNull.Value ? Convert.ToBoolean(db.Lector["Eliminada"]) : false;
-                    propiedad.FechaPublicacion = db.Lector["FechaPublicacion"] != DBNull.Value ? Convert.ToDateTime(db.Lector["FechaPublicacion"]) : DateTime.MinValue;
-                    propiedad.FechaModificacion = db.Lector["FechaModificacion"] != DBNull.Value ? Convert.ToDateTime(db.Lector["FechaModificacion"]) : DateTime.MinValue;
-
-                    propiedades.Add(propiedad);
-                }
+                while (db.Lector.Read()) propiedades.Add(MapearPropiedad());
             }
             catch (Exception ex)
             {
@@ -357,6 +357,42 @@ namespace Negocio
             }
         }
 
+        public List<Propiedad> buscarConFiltros(int? idProvincia, string tipoOperacion, string tipoInmueble, decimal? precioMin, decimal? precioMax)
+        {
+            List<Propiedad> propiedades = new List<Propiedad>();
+            string consulta = "SELECT * FROM PROPIEDAD WHERE Visible = 1 AND Eliminada = 0";
+            // consulta inicial mas filtrado
+            if (idProvincia.HasValue && idProvincia.Value > 0) consulta += " AND IdProvincia = @IdProvincia";
+            if (!string.IsNullOrEmpty(tipoOperacion)) consulta += " AND TipoOperacion = @TipoOperacion";
+            if (!string.IsNullOrEmpty(tipoInmueble)) consulta += " AND Tipo = @TipoInmueble";
+            if (precioMin.HasValue) consulta += " AND Precio >= @PrecioMin";
+            if (precioMax.HasValue && precioMax.Value < 999999999) consulta += " AND Precio <= @PrecioMax";
+
+            try
+            {
+                db.setearConsulta(consulta);
+
+                if (idProvincia.HasValue && idProvincia.Value > 0) db.agregarParametro("@IdProvincia", idProvincia.Value);
+                if (!string.IsNullOrEmpty(tipoOperacion)) db.agregarParametro("@TipoOperacion", tipoOperacion);
+                if (!string.IsNullOrEmpty(tipoInmueble)) db.agregarParametro("@TipoInmueble", tipoInmueble);
+                if (precioMin.HasValue) db.agregarParametro("@PrecioMin", precioMin.Value);
+                if (precioMax.HasValue && precioMax.Value < 999999999) db.agregarParametro("@PrecioMax", precioMax.Value);
+                // ejecuto consulta y muestro resultados mapeados
+                db.ejecutarLectura();
+                while (db.Lector.Read()) propiedades.Add(MapearPropiedad());
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al buscar propiedades con filtros: " + ex.Message);
+            }
+            finally
+            {
+                db.cerrarConexion();
+            }
+
+            return propiedades;
+        }
+
         public Propiedad ObtenerPorId(int id)
         {
             Propiedad propiedad = new Propiedad();
@@ -366,39 +402,7 @@ namespace Negocio
                 db.setearConsulta("SELECT * FROM PROPIEDAD WHERE IdPropiedad = @Id");
                 db.agregarParametro("@Id", id);
                 db.ejecutarLectura();
-
-                if (db.Lector.Read())
-                {
-                    propiedad = new Propiedad
-                    {
-                        IdPropiedad = db.Lector["IdPropiedad"] != DBNull.Value ? (int)db.Lector["IdPropiedad"] : 0,
-                        Titulo = db.Lector["Titulo"] != DBNull.Value ? db.Lector["Titulo"].ToString() : "",
-                        Direccion = db.Lector["Direccion"] != DBNull.Value ? db.Lector["Direccion"].ToString() : "",
-                        Localidad = db.Lector["Localidad"] != DBNull.Value ? db.Lector["Localidad"].ToString() : "",
-                        IdProvincia = db.Lector["IdProvincia"] != DBNull.Value ? (int)db.Lector["IdProvincia"] : 0,
-                        Ambientes = db.Lector["Ambientes"] != DBNull.Value ? (int)db.Lector["Ambientes"] : 0,
-                        AnosAntiguedad = db.Lector["AnosAntiguedad"] != DBNull.Value ? (int)db.Lector["AnosAntiguedad"] : 0,
-                        Sup_m2_Total = db.Lector["Sup_m2_Total"] != DBNull.Value ? Convert.ToDecimal(db.Lector["Sup_m2_Total"]) : 0,
-                        Tipo = db.Lector["Tipo"] != DBNull.Value ? db.Lector["Tipo"].ToString() : "",
-                        TipoOperacion = db.Lector["TipoOperacion"] != DBNull.Value ? db.Lector["TipoOperacion"].ToString() : "",
-                        Precio = db.Lector["Precio"] != DBNull.Value ? Convert.ToDecimal(db.Lector["Precio"]) : 0,
-                        Expensas = db.Lector["Expensas"] != DBNull.Value ? Convert.ToDecimal(db.Lector["Expensas"]) : 0,
-                        Moneda = db.Lector["Moneda"] != DBNull.Value ? db.Lector["Moneda"].ToString() : "$",
-                        TipoDueno = db.Lector["TipoDueno"] != DBNull.Value ? db.Lector["TipoDueno"].ToString() : "",
-                        Email = db.Lector["Email"] != DBNull.Value ? db.Lector["Email"].ToString() : "",
-                        WhatsApp = db.Lector["WhatsApp"] != DBNull.Value ? db.Lector["WhatsApp"].ToString() : "",
-                        Baños = db.Lector["Baños"] != DBNull.Value ? (int)db.Lector["Baños"] : 0,
-                        Dormitorios = db.Lector["Dormitorios"] != DBNull.Value ? (int)db.Lector["Dormitorios"] : 0,
-                        Sup_m2_Cubierto = db.Lector["Sup_m2_Cubierto"] != DBNull.Value ? Convert.ToDecimal(db.Lector["Sup_m2_Cubierto"]) : 0,
-                        Descripcion = db.Lector["Descripcion"] != DBNull.Value ? db.Lector["Descripcion"].ToString() : "",
-                        ConBalcon = db.Lector["ConBalcon"] != DBNull.Value ? Convert.ToBoolean(db.Lector["ConBalcon"]) : false,
-                        ConPatio = db.Lector["ConPatio"] != DBNull.Value ? Convert.ToBoolean(db.Lector["ConPatio"]) : false,
-                        Cochera = db.Lector["Cochera"] != DBNull.Value ? Convert.ToBoolean(db.Lector["Cochera"]) : false,
-                        AptoCredito = db.Lector["AptoCredito"] != DBNull.Value ? Convert.ToBoolean(db.Lector["AptoCredito"]) : false,
-                        FechaPublicacion = db.Lector["FechaPublicacion"] != DBNull.Value ? Convert.ToDateTime(db.Lector["FechaPublicacion"]) : DateTime.Now,
-                        ImagenUrl = db.Lector["ImagenUrl"] != DBNull.Value ? db.Lector["ImagenUrl"].ToString() : "default.jpg"
-                    };
-                }
+                if (db.Lector.Read()) propiedad = MapearPropiedad();
             }
             catch (Exception ex)
             {
