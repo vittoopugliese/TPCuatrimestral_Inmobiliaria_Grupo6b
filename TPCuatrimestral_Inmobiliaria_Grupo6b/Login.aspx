@@ -41,7 +41,9 @@
                     <div class="px-4 py-4">
                         <div class="form-group mb-3">
 
-                            <asp:Label ID="LabelMensaje" runat="server" Text="" Visible="false" CssClass="alert alert-dismissible"></asp:Label>
+                             
+                                <asp:Label ID="LabelMensaje" runat="server" Text="" Visible="false" CssClass="alert alert-dismissible"></asp:Label>
+                           
 
                             <label class="text-dark form-label" for="emailLabel">Correo Electronico</label>
                             <div class="input-group">

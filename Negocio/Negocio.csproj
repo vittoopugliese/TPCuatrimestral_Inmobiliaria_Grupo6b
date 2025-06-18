@@ -52,6 +52,7 @@
     <Compile Include="ProvinciaNegocio.cs" />
     <Compile Include="RegistroNegocio.cs" />
     <Compile Include="RolNegocio.cs" />
+    <Compile Include="Seguridad.cs" />
     <Compile Include="UsuarioNegocio.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -30,7 +30,13 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
 
                 emailService.armarCorreoRegistro(usuario.Email);
                 emailService.enviarCorreo();
-                Response.Redirect("Default.aspx",false);
+                LabelMensaje.Text = @"
+                <div class='alert alert-success alert-dismissible fade show' role='alert'>
+                    ¡Registro exitoso! Por favor, revisá tu correo para confirmar tu registro.
+                    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close' onclick=""window.location.href='Default.aspx';""></button>
+                </div>";
+                LabelMensaje.Visible = true;
+
             }
             catch (Exception ex)
             {

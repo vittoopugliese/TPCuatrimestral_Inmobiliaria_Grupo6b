@@ -24,6 +24,15 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
+        /// LabelMensaje control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelMensaje;
+
+        /// <summary>
         /// TextBoxCorreo control.
         /// </summary>
         /// <remarks>
@@ -105,12 +114,12 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
         protected global::System.Web.UI.WebControls.DropDownList DropDownListRol;
 
         /// <summary>
-        /// ButtonRegistrar control.
+        /// ButtonActualizar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonRegistrar;
+        protected global::System.Web.UI.WebControls.Button ButtonActualizar;
     }
 }

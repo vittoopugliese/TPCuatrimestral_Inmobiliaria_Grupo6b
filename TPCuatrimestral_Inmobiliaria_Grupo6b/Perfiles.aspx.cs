@@ -15,12 +15,11 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            Usuario usuario = Session["usuario"] != null ? (Usuario)Session["usuario"] : null;
-            if (!(usuario != null && usuario.IdUsuario != 0))
+            
+            if (!Seguridad.sesionIniciada(Session["usuario"]))
             {
                 Session["urlGuardada"] = Request.Url.PathAndQuery; // Guardar la URL actual
                 Response.Redirect("Login.aspx");
-                return;
             }
 
 
@@ -68,5 +67,30 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
             }
         }
 
+        protected void ButtonActualizar_Click(object sender, EventArgs e)
+        {
+            Usuario usuario = new Usuario();
+            UsuarioNegocio negocio = new UsuarioNegocio();
+            try
+            {
+                usuario.IdUsuario = Convert.ToInt32(Session["IdUsuario"]);
+                usuario.Nombre = TextBoxNombre.Text;
+                usuario.Apellido = TextBoxApellido.Text;
+                usuario.Contrasena = TextBoxContra.Text;
+                usuario.Telefono = TextBoxTelefono.Text;
+                usuario.Direccion = TextBoxDireccion.Text;
+                usuario.Localidad = TextBoxLocalidad.Text;
+                usuario.IdProvincia = Convert.ToInt32(DropDownListProvincia.SelectedValue);
+                usuario.IdRol = Convert.ToInt32(DropDownListRol.SelectedValue);
+                negocio.ActualizarPerfil(usuario);
+                Response.Redirect("Default.aspx");
+            }
+            catch (Exception ex)
+            {
+                LabelMensaje.Text = "Error al actualizar el perfil: " + ex.Message;
+                LabelMensaje.CssClass = "alert alert-danger";
+                LabelMensaje.Visible = true;
+            }
+        }
     }
 }

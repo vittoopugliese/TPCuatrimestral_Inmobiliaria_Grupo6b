@@ -27,11 +27,12 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                 emailService.armarCorreoPass(TextBoxCorreo.Text, usuario.Contrasena);
                 emailService.enviarCorreo();
 
-                LabelMensaje.Text = "Se envió la contraseña a tu correo.";
-                LabelMensaje.CssClass = "alert alert-success";
+                LabelMensaje.Text = @"
+                <div class='alert alert-success alert-dismissible fade show' role='alert'>
+                    Contraseña enviada al correo electrónico. <br />
+                    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close' onclick=""window.location.href='Login.aspx';""></button>
+                </div>";
                 LabelMensaje.Visible = true;
-
-                Response.AddHeader("REFRESH", "3;URL=Login.aspx");
             }
             else
             {

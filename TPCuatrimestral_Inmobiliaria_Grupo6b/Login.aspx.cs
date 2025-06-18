@@ -42,29 +42,25 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                     }
                     else
                     {
-                        switch (usuario.IdRol)
-                        {
-                            case 1:
-                                Response.Redirect("Perfiles.aspx", false); // modificar luego
-                                break;
-                            case 2:
-                                Response.Redirect("Default.aspx", false); // modificar luego
-                                break;
-                            case 3:
-                                Response.Redirect("Default.aspx", false); // modificar luego
-                                break;
-                        }
+                        LabelMensaje.Text = @"
+                        <div class='alert alert-success alert-dismissible fade show' role='alert'>
+                            ¡Login exitoso!
+                            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close' onclick=""window.location.href='Default.aspx';""></button>
+                        </div>";
+                        LabelMensaje.Visible = true;
                     }
                 }
                 else
                 {
-                    LabelMensaje.Text = @"Usuario o contraseña incorrecto. <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>";
-                    LabelMensaje.CssClass = "alert alert-success alert-dismissible";
+                    // si el email es incorrecto lo manda al Login, ESC para volver
+                    LabelMensaje.Text = @"
+                    <div class='alert alert-danger alert-dismissible fade show' role='alert'>
+                        Usuario o contraseña incorrecto.
+                        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close' onclick=""window.location.href='Registro.aspx';""></button>
+                    </div>";
                     LabelMensaje.Visible = true;
-
-                    //Session.Add("Error", "Correo o contraseña incorrectos.");
-                    //Response.Redirect("Error.aspx", false);
                 }
+
 
 
             }

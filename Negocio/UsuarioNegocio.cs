@@ -129,5 +129,33 @@ namespace Negocio
 
             return usuario;
         }
+
+        public Usuario ActualizarPerfil(Usuario usuario)
+        {
+            BaseDeDatos db = new BaseDeDatos();
+            try
+            {
+                db.setearProcedimiento("SP_ActualizarPerfil");
+                db.setearParametro("@IdUsuario", usuario.IdUsuario);
+                db.setearParametro("@Nombre", usuario.Nombre);
+                db.setearParametro("@Apellido", usuario.Apellido);
+                db.setearParametro("@Contrasena", usuario.Contrasena);
+                db.setearParametro("@Telefono", usuario.Telefono);
+                db.setearParametro("@Direccion", usuario.Direccion);
+                db.setearParametro("@Localidad", usuario.Localidad);
+                db.setearParametro("@IdProvincia", usuario.IdProvincia);
+                db.setearParametro("@IdRol", usuario.IdRol);
+                db.ejecutarAccion();
+                return usuario;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                db.cerrarConexion();
+            }
+        }
     }
 }
