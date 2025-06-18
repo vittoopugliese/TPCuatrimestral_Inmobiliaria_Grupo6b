@@ -17,6 +17,7 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
 
         protected void Page_Load(object sender, EventArgs e)
         {
+
             if (!IsPostBack)
             {
                 propiedadesNegocio = new PropiedadNegocio();

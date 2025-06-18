@@ -14,16 +14,6 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            
-            if (!Seguridad.sesionIniciada(Session["usuario"]))
-            {
-                Session["urlGuardada"] = Request.Url.PathAndQuery; // Guardar la URL actual
-                Response.Redirect("Login.aspx");
-            }
-
-
-
             if (!IsPostBack)
             {
                 CargarProvincias();

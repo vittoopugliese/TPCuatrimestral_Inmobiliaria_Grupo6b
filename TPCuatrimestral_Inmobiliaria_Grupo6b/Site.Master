@@ -72,12 +72,23 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarContent">
                     <ul class="navbar-nav ms-auto">
+                         <% if (Session["usuario"] == null) { %>
+
+                        <li class="nav-item mx-2"><a class="nav-link fs-5 d-flex gap-2 align-items-center" href="ResultadosBusqueda.aspx"><i class="fas fa-building"></i>Propiedades</a></li>
+                        <li class="nav-item mx-2"><a class="nav-link fs-5 d-flex gap-2 align-items-center" href="Login.aspx"><i class="fas fa-circle-user"></i>Ingresá</a></li>
+                        
+                        <% } 
+                        else { %>
+
+                        <li class="nav-item mx-2"><a class="nav-link fs-5 d-flex gap-2 align-items-center" href="Salir.aspx"><i class="fas fa-right-from-bracket"></i>Salir</a></li>
                         <li class="nav-item mx-2"><a class="nav-link fs-5 d-flex gap-2 align-items-center" href="ResultadosBusqueda.aspx"><i class="fas fa-building"></i>Propiedades</a></li>
                         <li class="nav-item mx-2"><a class="nav-link fs-5 d-flex gap-2 align-items-center" href="Favoritos.aspx"><i class="fas fa-heart"></i>Favoritos</a></li>
-                        <li class="nav-item mx-2"><a class="nav-link fs-5 d-flex gap-2 align-items-center" href="PublicacionesUsuarios.aspx"><i class="fas fa-list-alt"></i>Mis Publicaciones</a></li>
-                        <li class="nav-item mx-2"><a class="nav-link fs-5 d-flex gap-2 align-items-center" href="PublicarInmueble.aspx"><i class="fas fa-plus-circle"></i>Crear Publicacion</a></li>
-                        <%-- luego mostrar favoritos dinamicamente, si user esta logeado --%>
-                        <li class="nav-item mx-2"><a class="nav-link fs-5 d-flex gap-2 align-items-center" href="Login.aspx"><i class="fas fa-circle-user"></i>Ingresá</a></li>
+                             <% if (Convert.ToInt32(Session["IdRol"]) != 1 ) { %>
+                                <li class="nav-item mx-2"><a class="nav-link fs-5 d-flex gap-2 align-items-center" href="PublicacionesUsuarios.aspx"><i class="fas fa-list-alt"></i>Mis Publicaciones</a></li>
+                                <li class="nav-item mx-2"><a class="nav-link fs-5 d-flex gap-2 align-items-center" href="PublicarInmueble.aspx"><i class="fas fa-plus-circle"></i>Crear Publicacion</a></li>
+                             <% } %> 
+                        <% } %>
+
                     </ul>
                 </div>
             </div>

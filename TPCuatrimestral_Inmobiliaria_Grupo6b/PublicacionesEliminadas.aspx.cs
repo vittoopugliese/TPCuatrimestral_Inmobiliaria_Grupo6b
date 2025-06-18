@@ -16,6 +16,12 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if(!(Seguridad.EsPropietario(Session["usuario"])))
+            {
+                Session.Add("error", "No tiene permisos para acceder a esta sección.");
+                Response.Redirect("Error.aspx");
+            }
+
             if (!IsPostBack)
             {
                 propiedadesNegocio = new PropiedadNegocio();
