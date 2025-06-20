@@ -159,8 +159,9 @@
         </div>
 
         <hr />
-        <h2 id="tituloPropiedad" style="margin-top: 15px" runat="server"></h2>
+        <h2 id="tituloPropiedad" style="margin: 15px 0px 15px 0px" runat="server"></h2>
         <p id="descripcionPropiedad" class="card-text" runat="server"></p>
+        <hr />
     </div>
 
 

@@ -15,156 +15,417 @@
                     <div class="col">
 
                         <div>
-                            <label for="texttitulo" class="form-label" style="margin-top: 15px">Título</label>
-                            <input type="text" class="form-control" id="texttitulo" placeholder="Ingrese título su publicación..." runat="server">
+                            <label for="texttitulo" class="form-label">Título</label>
+                            <asp:TextBox ID="texttitulo" runat="server"
+                                CssClass="form-control"
+                                placeholder="Ingrese título de su publicación..."
+                                MaxLength="100">
+                            </asp:TextBox>
+                            <asp:RequiredFieldValidator ErrorMessage="El título es requerido" ControlToValidate="texttitulo" runat="server"></asp:RequiredFieldValidator>
                         </div>
 
                         <div>
-                            <label for="selectTipoOperacion" class="form-label" style="margin-top: 15px">Tipo de Operación</label>
-                            <select id="selectTipoOperacion" class="form-select" runat="server">
-                                <option selected disabled value="">Seleccione el tipo Operación...</option>
-                                <option>Venta</option>
-                                <option>Alquiler</option>
-                                <option>Temporada</option>
-                            </select>
+                            <label for="selectTipoOperacion" class="form-label">Tipo de Operación</label>
+                            <asp:DropDownList ID="ddlTipoOperacion" runat="server" CssClass="form-select">
+                                <asp:ListItem Text="Seleccione el tipo Operación..." Value="" Selected="True" />
+                                <asp:ListItem Text="Venta" Value="Venta" />
+                                <asp:ListItem Text="Alquiler" Value="Alquiler" />
+                                <asp:ListItem Text="Temporada" Value="Temporada" />
+                            </asp:DropDownList>
+                            <asp:RequiredFieldValidator ID="rfvTipoOperacion" runat="server"
+                                ControlToValidate="ddlTipoOperacion"
+                                InitialValue=""
+                                ErrorMessage="Debe seleccionar un tipo de operación"
+                                Display="Dynamic"
+                                CssClass="text-danger">
+                            </asp:RequiredFieldValidator>
+                        </div>
+
+                        <div>
+                            <label for="selectTipoPropiedad" class="form-label">Tipo de Propiedad</label>
+                            <asp:DropDownList ID="selectTipoPropiedad" runat="server" CssClass="form-select">
+                                <asp:ListItem Text="Seleccione el tipo Propiedad..." Value="" Selected="True" />
+                                <asp:ListItem Text="Casa" Value="Casa" />
+                                <asp:ListItem Text="Departamento" Value="Departamento" />
+                                <asp:ListItem Text="PH" Value="PH" />
+                                <asp:ListItem Text="Local" Value="Local" />
+                                <asp:ListItem Text="Quinta" Value="Quinta" />
+                            </asp:DropDownList>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
+                                ControlToValidate="selectTipoPropiedad"
+                                InitialValue=""
+                                ErrorMessage="Debe seleccionar un tipo de propiedad"
+                                Display="Dynamic"
+                                CssClass="text-danger">
+                            </asp:RequiredFieldValidator>
                         </div>
 
 
                         <div>
-                            <label for="selectTipoPropiedad" class="form-label" style="margin-top: 15px">Tipo de Propiedad</label>
-                            <select id="selectTipoPropiedad" class="form-select" runat="server">
-                                <option selected disabled value="">Seleccione el tipo Propiedad...</option>
-                                <option>Casa</option>
-                                <option>Departamento</option>
-                                <option>PH</option>
-                                <option>Local</option>
-                            </select>
+                            <label for="inputDireccion" class="form-label">Dirección</label>
+                            <asp:TextBox ID="inputDireccion" runat="server"
+                                CssClass="form-control"
+                                placeholder="Ingrese dirección..."
+                                MaxLength="100">
+                            </asp:TextBox>
+                            <asp:RequiredFieldValidator ErrorMessage="La dirección es requerida" ControlToValidate="inputDireccion" runat="server"></asp:RequiredFieldValidator>
                         </div>
 
+
                         <div>
-                            <label for="inputDireccion" class="form-label" style="margin-top: 15px">Dirección</label>
-                            <input type="text" class="form-control" id="inputdireccion" placeholder="Ingrese dirección..." runat="server">
+                            <label for="inputLocalidad" class="form-label">Localidad</label>
+                            <asp:TextBox ID="inputLocalidad" runat="server"
+                                CssClass="form-control"
+                                placeholder="Ingresá Localidad..."
+                                MaxLength="100">
+                            </asp:TextBox>
+                            <asp:RequiredFieldValidator ErrorMessage="La Localidad es requerida" ControlToValidate="inputLocalidad" runat="server"></asp:RequiredFieldValidator>
                         </div>
-                        <div>
-                            <label for="inputLocalidad" class="form-label" style="margin-top: 15px">Localidad</label>
-                            <input type="text" class="form-control" id="inputlocalidad" placeholder="Ingresá Localidad..." runat="server">
-                        </div>
+
                         <div>
 
                             <div class="form-group">
                             </div>
 
-                            <label for="selectProvincia" class="form-label" style="margin-top: 15px">Provincia</label>
+                            <label for="selectProvincia" class="form-label">Provincia</label>
 
 
-                            <asp:DropDownList ID="selectProvincia" runat="server" CssClass="form-control"></asp:DropDownList>
-
-                            <%--                            <select id="selectProvincia" class="form-select" runat="server">
-                                <option selected disabled value="">Seleccione Provincia...</option>
-                                <option>Córdoba</option>
-                                <option>Mendoza</option>
-                                <option>San Luis</option>
-                                <option>San Juan</option>
-                            </select>--%>
+                            <asp:DropDownList ID="selectProvincia" runat="server" CssClass="form-control">
+                                <asp:ListItem Text="Seleccione la Provincia..." Value="" Selected="True" />
+                            </asp:DropDownList>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server"
+                                ControlToValidate="selectProvincia"
+                                InitialValue=""
+                                ErrorMessage="Debe seleccionar una provincia"
+                                Display="Dynamic"
+                                CssClass="text-danger">
+                            </asp:RequiredFieldValidator>
                         </div>
 
                         <div>
-                            <label for="txtcantAmbientes" class="form-label" style="margin-top: 15px">Cantidad de Ambientes</label>
+                            <label for="txtcantAmbientes" class="form-label">Cantidad de Ambientes</label>
                             <asp:TextBox ID="txtcantAmbientes" runat="server" CssClass="form-control"
                                 placeholder="Ingrese cantidad de ambientes..." TextMode="Number" step="1"></asp:TextBox>
+
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server"
+                                ControlToValidate="txtcantAmbientes"
+                                ErrorMessage="Debe completar la cantidad de ambientes"
+                                Display="Dynamic"
+                                CssClass="text-danger">
+                            </asp:RequiredFieldValidator>
+
+                            <asp:CompareValidator ID="CompareValidator6" runat="server"
+                                ControlToValidate="txtcantAmbientes"
+                                Operator="DataTypeCheck"
+                                Type="Currency"
+                                ErrorMessage="Debe ser un valor numérico válido"
+                                Display="Dynamic"
+                                CssClass="text-danger">
+                            </asp:CompareValidator>
+
+                            <asp:RangeValidator ID="RangeValidator6" runat="server"
+                                ControlToValidate="txtcantAmbientes"
+                                Type="Currency"
+                                MinimumValue="0"
+                                MaximumValue="999999999"
+                                ErrorMessage="El valor debe ser mayor a 0 "
+                                Display="Dynamic"
+                                CssClass="text-danger">
+                            </asp:RangeValidator>
                         </div>
 
                         <div>
-                            <label for="textanosAntiguedad" class="form-label" style="margin-top: 15px">Años de antiguedad</label>
+                            <label for="textanosAntiguedad" class="form-label">Años de antiguedad</label>
                             <asp:TextBox ID="textanosAntiguedad" runat="server" CssClass="form-control"
                                 placeholder="Ingrese cant. de años de antiguedad de la propiedad..." TextMode="Number" step="1"></asp:TextBox>
-                        </div>
 
-                        <div>
-                            <label for="SupTotal" class="form-label" style="margin-top: 15px">Superficie Total (Mts2)</label>
-                            <asp:TextBox ID="SupTotal" runat="server" CssClass="form-control"
-                                placeholder="Ingrese Mts2 totales de la Propiedad..." TextMode="Number" step="1"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server"
+                                ControlToValidate="textanosAntiguedad"
+                                ErrorMessage="Debe completar los años de antiguedad"
+                                Display="Dynamic"
+                                CssClass="text-danger">
+                            </asp:RequiredFieldValidator>
+
+                            <asp:CompareValidator ID="CompareValidator7" runat="server"
+                                ControlToValidate="textanosAntiguedad"
+                                Operator="DataTypeCheck"
+                                Type="Currency"
+                                ErrorMessage="Debe ser un valor numérico válido"
+                                Display="Dynamic"
+                                CssClass="text-danger">
+                            </asp:CompareValidator>
+
+                            <asp:RangeValidator ID="RangeValidator7" runat="server"
+                                ControlToValidate="textanosAntiguedad"
+                                Type="Currency"
+                                MinimumValue="0"
+                                MaximumValue="999999999"
+                                ErrorMessage="El valor debe ser mayor a 0 "
+                                Display="Dynamic"
+                                CssClass="text-danger">
+                            </asp:RangeValidator>
                         </div>
 
                     </div>
 
                     <div class="col">
+
                         <div>
-                            <label for="selectTipoMoneda" class="form-label" style="margin-top: 15px">Tipo de Moneda</label>
-                            <select id="selectTipoMoneda" class="form-select" runat="server">
-                                <option selected disabled value="">Seleccione el tipo Moneda...</option>
-                                <option>US$</option>
-                                <option>$</option>
-                            </select>
+                            <label for="selectTipoMoneda" class="form-label">Tipo de Moneda</label>
+                            <asp:DropDownList ID="selectTipoMoneda" runat="server" CssClass="form-select">
+                                <asp:ListItem Text="Seleccione el tipo Moneda..." Value="" Selected="True" />
+                                <asp:ListItem Text="US$" Value="US$" />
+                                <asp:ListItem Text="$" Value="$" />
+                            </asp:DropDownList>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
+                                ControlToValidate="selectTipoMoneda"
+                                InitialValue=""
+                                ErrorMessage="Debe seleccionar un tipo de Moneda"
+                                Display="Dynamic"
+                                CssClass="text-danger">
+                            </asp:RequiredFieldValidator>
                         </div>
 
                         <div>
-                            <label for="txtPrecio" class="form-label" style="margin-top: 15px">Precio</label>
-                            <input type="text" class="form-control" id="txtPrecio" placeholder="Ingrese Precio..." runat="server">
-                        </div>
+                            <label for="txtPrecio" class="form-label">Precio</label>
 
-                        <div>
-                            <label for="txtExpensas" class="form-label" style="margin-top: 15px">Expensas</label>
-                            <input type="text" class="form-control" id="txtExpensas" placeholder="Ingrese Expensas..." runat="server">
-                        </div>
-
-                        <%--                        <div>
-                            <label for="inputPrecio" class="form-label" style="margin-top: 15px">Precio</label>
                             <asp:TextBox ID="txtPrecio" runat="server" CssClass="form-control"
-                                placeholder="Ingrese precio de la propiedad, ej: $250.000" TextMode="Number" step="1"></asp:TextBox>
-                        </div>--%>
+                                placeholder="Ingrese Precio..." TextMode="Number" step="0.01" runat="server"></asp:TextBox>
+
+
+                            <asp:RequiredFieldValidator ID="rfvPrecio" runat="server"
+                                ControlToValidate="txtPrecio"
+                                ErrorMessage="El precio es requerido"
+                                Display="Dynamic"
+                                CssClass="text-danger">
+                            </asp:RequiredFieldValidator>
+
+                            <asp:CompareValidator ID="cvPrecio" runat="server"
+                                ControlToValidate="txtPrecio"
+                                Operator="DataTypeCheck"
+                                Type="Currency"
+                                ErrorMessage="Debe ser un valor monetario válido"
+                                Display="Dynamic"
+                                CssClass="text-danger">
+                            </asp:CompareValidator>
+
+                            <asp:RangeValidator ID="rvPrecio" runat="server"
+                                ControlToValidate="txtPrecio"
+                                Type="Currency"
+                                MinimumValue="0"
+                                MaximumValue="999999999"
+                                ErrorMessage="El precio debe ser mayor a 0"
+                                Display="Dynamic"
+                                CssClass="text-danger">
+                            </asp:RangeValidator>
+                        </div>
+
 
                         <div>
-                            <label for="txtTipoDueno" class="form-label" style="margin-top: 15px">Tipo de Propietario</label>
-                            <select id="txtTipoDueno" class="form-select" runat="server">
-                                <option selected disabled value="">Seleccione el Tipo de Propietario...</option>
-                                <option>Inmobiliaria</option>
-                                <option>Dueño Directo</option>
-                                <option>Gestor</option>
-                            </select>
+                            <label for="txtExpensas" class="form-label">Expensas</label>
+
+                            <asp:TextBox ID="txtExpensas" runat="server" CssClass="form-control"
+                                placeholder="Ingrese Expensas..." TextMode="Number" step="0.01" runat="server"></asp:TextBox>
+
+
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server"
+                                ControlToValidate="txtExpensas"
+                                ErrorMessage="Las expensas son requeridas"
+                                Display="Dynamic"
+                                CssClass="text-danger">
+                            </asp:RequiredFieldValidator>
+
+                            <asp:CompareValidator ID="CompareValidator1" runat="server"
+                                ControlToValidate="txtExpensas"
+                                Operator="DataTypeCheck"
+                                Type="Currency"
+                                ErrorMessage="Debe ser un valor monetario válido"
+                                Display="Dynamic"
+                                CssClass="text-danger">
+                            </asp:CompareValidator>
+
+                            <asp:RangeValidator ID="RangeValidator1" runat="server"
+                                ControlToValidate="txtExpensas"
+                                Type="Currency"
+                                MinimumValue="0"
+                                MaximumValue="999999999"
+                                ErrorMessage="Las expensas deben ser mayor a 0 "
+                                Display="Dynamic"
+                                CssClass="text-danger">
+                            </asp:RangeValidator>
                         </div>
 
                         <div>
-                            <label for="inputEmail" class="form-label" style="margin-top: 15px">e-mail</label>
-                            <input type="email" class="form-control" id="inputEmail" placeholder="Ingrese su e-mail..." runat="server">
-                        </div>
-
-                        <%--                        <div>
-                            <label for="Whatsapp" class="form-label" style="margin-top: 15px">Whatsapp</label>
-                            <asp:TextBox ID="txtWhatsapp" runat="server" CssClass="form-control" placeholder="Ingrese su número de whastapp..." TextMode="number" step="1"></asp:TextBox>
-                        </div>--%>
-
-                        <div>
-                            <label for="txtWhatsapp" class="form-label" style="margin-top: 15px">Whatsapp</label>
-                            <input type="text" class="form-control" id="txtWhatsapp" placeholder="Ingrese Whatsapp.." runat="server">
-                        </div>
-
-                        <div>
-                            <label for="txtCantBanos" class="form-label" style="margin-top: 15px">Baños</label>
+                            <label for="txtCantBanos" class="form-label">Baños</label>
                             <asp:TextBox ID="txtCantBanos" runat="server" CssClass="form-control"
                                 placeholder="Ingrese la cantidad de baños..." TextMode="Number" step="1"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server"
+                                ControlToValidate="txtCantBanos"
+                                ErrorMessage="Debe completar la cantidad de baños"
+                                Display="Dynamic"
+                                CssClass="text-danger">
+                            </asp:RequiredFieldValidator>
+
+                            <asp:CompareValidator ID="CompareValidator2" runat="server"
+                                ControlToValidate="txtCantBanos"
+                                Operator="DataTypeCheck"
+                                Type="Currency"
+                                ErrorMessage="Debe ser un valor numérico válido"
+                                Display="Dynamic"
+                                CssClass="text-danger">
+                            </asp:CompareValidator>
+
+                            <asp:RangeValidator ID="RangeValidator2" runat="server"
+                                ControlToValidate="txtCantBanos"
+                                Type="Currency"
+                                MinimumValue="0"
+                                MaximumValue="999999999"
+                                ErrorMessage="La cantidad de baños debe ser mayor a 0 "
+                                Display="Dynamic"
+                                CssClass="text-danger">
+                            </asp:RangeValidator>
                         </div>
 
                         <div>
-                            <label for="inputCantDormitorios" class="form-label" style="margin-top: 15px">Dormitorios</label>
+                            <label for="inputCantDormitorios" class="form-label">Dormitorios</label>
                             <asp:TextBox ID="inputCantDormitorios" runat="server" CssClass="form-control"
                                 placeholder="Ingrese la cantidad de Dormitorios..." TextMode="Number" step="1"></asp:TextBox>
+
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server"
+                                ControlToValidate="inputCantDormitorios"
+                                ErrorMessage="Debe completar la cantidad de dormitorios"
+                                Display="Dynamic"
+                                CssClass="text-danger">
+                            </asp:RequiredFieldValidator>
+
+                            <asp:CompareValidator ID="CompareValidator3" runat="server"
+                                ControlToValidate="inputCantDormitorios"
+                                Operator="DataTypeCheck"
+                                Type="Currency"
+                                ErrorMessage="Debe ser un valor numérico válido"
+                                Display="Dynamic"
+                                CssClass="text-danger">
+                            </asp:CompareValidator>
+
+                            <asp:RangeValidator ID="RangeValidator3" runat="server"
+                                ControlToValidate="inputCantDormitorios"
+                                Type="Currency"
+                                MinimumValue="0"
+                                MaximumValue="999999999"
+                                ErrorMessage="La cantidad de dormitorios debe ser mayor a 0 "
+                                Display="Dynamic"
+                                CssClass="text-danger">
+                            </asp:RangeValidator>
                         </div>
 
                         <div>
-                            <label for="SupCubierta" class="form-label" style="margin-top: 15px">Superficie Cubierta (Mts2)</label>
+                            <label for="SupCubierta" class="form-label">Superficie Cubierta (Mts2)</label>
                             <asp:TextBox ID="SupCubierta" runat="server" CssClass="form-control"
                                 placeholder="Ingrese Mts2 de la Superficie cubierta..." TextMode="Number" step="1"></asp:TextBox>
+
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server"
+                                ControlToValidate="SupCubierta"
+                                ErrorMessage="Debe completar la superficie cubierta"
+                                Display="Dynamic"
+                                CssClass="text-danger">
+                            </asp:RequiredFieldValidator>
+
+                            <asp:CompareValidator ID="CompareValidator4" runat="server"
+                                ControlToValidate="SupCubierta"
+                                Operator="DataTypeCheck"
+                                Type="Currency"
+                                ErrorMessage="Debe ser un valor numérico válido"
+                                Display="Dynamic"
+                                CssClass="text-danger">
+                            </asp:CompareValidator>
+
+                            <asp:RangeValidator ID="RangeValidator4" runat="server"
+                                ControlToValidate="SupCubierta"
+                                Type="Currency"
+                                MinimumValue="0"
+                                MaximumValue="999999999"
+                                ErrorMessage="El valor debe ser mayor a 0 "
+                                Display="Dynamic"
+                                CssClass="text-danger">
+                            </asp:RangeValidator>
                         </div>
 
+                        <div>
+                            <label for="SupTotal" class="form-label">Superficie Total (Mts2)</label>
+                            <asp:TextBox ID="SupTotal" runat="server" CssClass="form-control"
+                                placeholder="Ingrese Mts2 totales de la Propiedad..." TextMode="Number" step="1"></asp:TextBox>
+
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server"
+                                ControlToValidate="SupTotal"
+                                ErrorMessage="Debe completar la superficie total"
+                                Display="Dynamic"
+                                CssClass="text-danger">
+                            </asp:RequiredFieldValidator>
+
+                            <asp:CompareValidator ID="CompareValidator5" runat="server"
+                                ControlToValidate="SupTotal"
+                                Operator="DataTypeCheck"
+                                Type="Currency"
+                                ErrorMessage="Debe ser un valor numérico válido"
+                                Display="Dynamic"
+                                CssClass="text-danger">
+                            </asp:CompareValidator>
+
+                            <asp:RangeValidator ID="RangeValidator5" runat="server"
+                                ControlToValidate="SupTotal"
+                                Type="Currency"
+                                MinimumValue="0"
+                                MaximumValue="999999999"
+                                ErrorMessage="El valor debe ser mayor a 0 "
+                                Display="Dynamic"
+                                CssClass="text-danger">
+                            </asp:RangeValidator>
+                        </div>
+
+                        <div>
+                            <label for="txtWhatsapp" class="form-label">Whatsapp</label>
+
+                            <asp:TextBox ID="txtWhatsapp" runat="server"
+                                CssClass="form-control"
+                                placeholder="Ingrese el número de whatsapp..."
+                                MaxLength="100">
+                            </asp:TextBox>
+                            <asp:RequiredFieldValidator ErrorMessage="El whatsapp es requerido" ControlToValidate="txtWhatsapp" runat="server"></asp:RequiredFieldValidator>
+
+                        </div>
+
+                        <div>
+
+                            <label for="inputEmail" class="form-label">e-mail</label>
+                            <asp:TextBox ID="inputEmail" runat="server"
+                                CssClass="form-control"
+                                placeholder="Ingrese su e-mail..."
+                                TextMode="Email"
+                                MaxLength="100">
+                            </asp:TextBox>
+                            <asp:RequiredFieldValidator ID="rfvEmail" runat="server"
+                                ControlToValidate="inputEmail"
+                                ErrorMessage="El email es requerido"
+                                Display="Dynamic"
+                                CssClass="text-danger">
+                            </asp:RequiredFieldValidator>
+                            <!-- Validador de formato de email -->
+                            <asp:RegularExpressionValidator ID="revEmail" runat="server"
+                                ControlToValidate="inputEmail"
+                                ValidationExpression="^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$"
+                                ErrorMessage="Ingrese un email válido (ej: usuario@dominio.com)"
+                                Display="Dynamic"
+                                CssClass="text-danger">
+                            </asp:RegularExpressionValidator>
+                        </div>
                     </div>
 
-                    <div class="row" style="margin-top: 35px">
+                    <div class="row">
                         <div class="col">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="" id="inputBalcon" runat="server">
                                 <label class="form-check-label" for="balc">
-                                    Posee Balcón?
+                                    Balcón
                                
                                 </label>
                             </div>
@@ -173,7 +434,7 @@
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="" id="inputPatio" runat="server">
                                 <label class="form-check-label" for="patioo">
-                                    Posee Patio?
+                                    Patio
                                
                                 </label>
                             </div>
@@ -182,7 +443,7 @@
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="" id="inputCochera" runat="server">
                                 <label class="form-check-label" for="coche">
-                                    Posee Cochera?
+                                    Cochera
                                
                                 </label>
                             </div>
@@ -192,7 +453,7 @@
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="" id="inputCredito" runat="server">
                                 <label class="form-check-label" for="inputCredito">
-                                    Apto Crédito?
+                                    Crédito
                                
                                 </label>
                             </div>
@@ -200,15 +461,25 @@
 
                     </div>
 
-                    <label for="txtDescripcion" class="form-label" style="margin-top: 20px">Descripción</label>
-                    <textarea class="form-control" id="txtDescripcion" runat="server" placeholder="Ingrese la descripción de la propiedad..." rows="4"></textarea>
+                    <div class="form-group">
+                        <label for="txtDescripcion" class="form-label">Descripción</label>
+                        <asp:TextBox ID="txtDescripcion" runat="server"
+                            CssClass="form-control"
+                            TextMode="MultiLine"
+                            Rows="4"
+                            placeholder="Ingrese la descripción de la propiedad..."
+                            MaxLength="1000">
+                        </asp:TextBox>
 
+                        <asp:RequiredFieldValidator ErrorMessage="La descripción es requerida" ControlToValidate="txtDescripcion" runat="server"></asp:RequiredFieldValidator>
+
+                    </div>
 
                     <div class="row align-items-start">
                         <div class="col-1"></div>
                         <div class="col-10">
                             <div>
-                                <label type="text" class="form-label" style="margin-top: 15px">Adjuntar Imágenes</label>
+                                <label type="text" class="form-label">Adjuntar Imágenes</label>
                                 <div class="input-group">
                                     <asp:FileUpload ID="agregarImagen" CssClass="form-control btn btn-dark" runat="server" AllowMultiple="true" />
 

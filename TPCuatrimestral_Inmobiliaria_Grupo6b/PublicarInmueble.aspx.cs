@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.UI;
 using Dominio;
 using Negocio;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace TPCuatrimestral_Inmobiliaria_Grupo6b
 {
@@ -13,7 +14,7 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
             if (!IsPostBack)
             {
 
@@ -32,7 +33,63 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
 
         protected void btnGuardarPublicacion_Click(object sender, EventArgs e)
         {
+            //Validación de campos obligatorios
+            if (string.IsNullOrEmpty(texttitulo.Text.Trim()) ||
+                string.IsNullOrEmpty(inputDireccion.Text.Trim()) ||
+                string.IsNullOrEmpty(inputLocalidad.Text.Trim()) ||
+                selectProvincia.SelectedValue == "" ||
+                string.IsNullOrEmpty(txtcantAmbientes.Text) ||
+                string.IsNullOrEmpty(textanosAntiguedad.Text) ||
+                string.IsNullOrEmpty(SupTotal.Text) ||
+                selectTipoPropiedad.SelectedValue == "" ||
+                ddlTipoOperacion.SelectedValue == "" ||
+                string.IsNullOrEmpty(txtPrecio.Text.Trim()) ||
+                string.IsNullOrEmpty(txtExpensas.Text.Trim()) ||
+                string.IsNullOrEmpty(inputEmail.Text) ||
+                string.IsNullOrEmpty(txtWhatsapp.Text) ||
+                string.IsNullOrEmpty(txtCantBanos.Text) ||
+                string.IsNullOrEmpty(inputCantDormitorios.Text) ||
+                string.IsNullOrEmpty(SupCubierta.Text) ||
+                selectTipoMoneda.SelectedValue == "" ||
+                string.IsNullOrEmpty(txtDescripcion.Text.Trim()))
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "alert",
+                    "alert('Por favor complete todos los campos');", true);
+                return;
+            }
 
+            //Validación para email
+            var mailAddress = new System.Net.Mail.MailAddress(inputEmail.Text);
+            if (mailAddress.Address != inputEmail.Text)
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "alert",
+                    "alert('El email ingresado no es válido.');", true);
+                return;
+            }
+
+            //validación para valores enteros positivos
+            if (SafeConvertToInt(txtcantAmbientes.Text) <= 0 ||
+               SafeConvertToInt(textanosAntiguedad.Text) < 0 ||
+               SafeConvertToDecimal(SupTotal.Text) <= 0 ||
+               SafeConvertToDecimal(txtPrecio.Text) <= 0 ||
+               SafeConvertToInt(txtCantBanos.Text) < 0 ||
+               SafeConvertToInt(inputCantDormitorios.Text) < 0 ||
+               SafeConvertToDecimal(SupCubierta.Text) <= 0)
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "alert",
+                    "alert('Por favor ingrese valores válidos para los campos numéricos (deben ser positivos).');", true);
+                return;
+            }
+
+            // 5. Validación de imágenes
+            if (agregarImagen.PostedFiles.Count == 0)
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "alert",
+                    "alert('Debe subir al menos una imagen.');", true);
+                return;
+            }
+
+            PropiedadNegocio propiedadNegocio = new PropiedadNegocio();
             try
             {
 
@@ -47,33 +104,33 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                 Session["IdUsuario"] = 2; // Simulamos un usuario logueado para pruebas, eliminar en producción
 
                 // Mapeamos todos los campos del formulario
-                propiedad.Titulo = texttitulo.Value;
-                propiedad.Direccion = inputdireccion.Value;
-                propiedad.Localidad = inputlocalidad.Value;
+                propiedad.Titulo = texttitulo.Text;
+                propiedad.Direccion = inputDireccion.Text;
+                propiedad.Localidad = inputLocalidad.Text;
                 propiedad.IdProvincia = Convert.ToInt32(selectProvincia.SelectedValue);
                 propiedad.IdUsuario = 2;
                 propiedad.Ambientes = SafeConvertToInt(txtcantAmbientes.Text);
                 propiedad.AnosAntiguedad = SafeConvertToInt(textanosAntiguedad.Text);
                 propiedad.Sup_m2_Total = SafeConvertToDecimal(SupTotal.Text);
-                propiedad.Tipo = selectTipoPropiedad.Value;
-                propiedad.TipoOperacion = selectTipoOperacion.Value;
-                propiedad.Precio = SafeConvertToDecimal(txtPrecio.Value);
-                propiedad.Expensas = SafeConvertToDecimal(txtExpensas.Value);
-                propiedad.TipoDueno = txtTipoDueno.Value;
-                propiedad.Email = inputEmail.Value;
-                propiedad.WhatsApp = CleanPhoneNumber(txtWhatsapp.Value);
+                propiedad.Tipo = selectTipoPropiedad.Text;
+                propiedad.TipoOperacion = ddlTipoOperacion.Text;
+                propiedad.Precio = SafeConvertToDecimal(txtPrecio.Text);
+                propiedad.Expensas = SafeConvertToDecimal(txtExpensas.Text);
+                propiedad.Email = inputEmail.Text;
+                propiedad.WhatsApp = CleanPhoneNumber(txtWhatsapp.Text);
                 propiedad.Baños = SafeConvertToInt(txtCantBanos.Text);
                 propiedad.Dormitorios = SafeConvertToInt(inputCantDormitorios.Text);
                 propiedad.Sup_m2_Cubierto = SafeConvertToDecimal(SupCubierta.Text);
-                propiedad.Descripcion = txtDescripcion.Value;
+                propiedad.Descripcion = txtDescripcion.Text;
                 propiedad.ConBalcon = inputBalcon.Checked;
                 propiedad.ConPatio = inputPatio.Checked;
                 propiedad.Cochera = inputCochera.Checked;
                 propiedad.AptoCredito = inputCredito.Checked;
-                propiedad.Moneda = selectTipoMoneda.Value;
+                propiedad.Moneda = selectTipoMoneda.Text;
                 propiedad.FechaPublicacion = DateTime.Now;
+
+
                 //// Primero guardamos la propiedad para obtener su ID
-                PropiedadNegocio propiedadNegocio = new PropiedadNegocio();
                 //if (Session["IdUsuario"] != null)
                 //{
                 //    propiedad.IdUsuario = Convert.ToInt32(Session["IdUsuario"]);
@@ -83,9 +140,10 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                 //    propiedad.IdUsuario = 2; // O lanzar una excepción si el usuario no está logueado
                 //    throw new Exception("Usuario no logueado.");
                 //}
-                propiedadNegocio.agregar(propiedad);
 
                 // Ahora procesamos las imágenes con el ID correcto
+                propiedadNegocio.agregar(propiedad);
+
                 string ruta = Server.MapPath("./Images/");
                 List<string> nombresArchivos = new List<string>();
 
