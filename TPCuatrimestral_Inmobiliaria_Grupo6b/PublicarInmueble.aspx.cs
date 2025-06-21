@@ -17,6 +17,17 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
 
             if (!IsPostBack)
             {
+                // Verificar sesión primero
+                if (Session["usuario"] == null)
+                {
+                    Response.Redirect("Login.aspx", false);
+                    return;
+                }
+
+                // Cargar datos del usuario
+                Usuario usuario = (Usuario)Session["usuario"];
+
+                inputEmail.Text = usuario.Email; // Autocompletar email
 
                 // Cargar provincias si no están cargadas
                 if (selectProvincia.Items.Count <= 1)
@@ -33,6 +44,16 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
 
         protected void btnGuardarPublicacion_Click(object sender, EventArgs e)
         {
+
+            // Verificar sesión
+            if (Session["usuario"] == null)
+            {
+                Response.Redirect("Login.aspx", false);
+                return;
+            }
+
+            Usuario usuario = (Usuario)Session["usuario"];
+
             //Validación de campos obligatorios
             if (string.IsNullOrEmpty(texttitulo.Text.Trim()) ||
                 string.IsNullOrEmpty(inputDireccion.Text.Trim()) ||
@@ -93,22 +114,15 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
             try
             {
 
-                //if (Session["IdUsuario"] == null)
-                //{
-                //    Response.Redirect("Login.aspx"); // Redirigir al login si no hay sesión
-                //    return;
-                //}
-                // Primero creamos y llenamos el objeto propiedad
                 Propiedad propiedad = new Propiedad();
-
-                Session["IdUsuario"] = 2; // Simulamos un usuario logueado para pruebas, eliminar en producción
+                propiedad.IdUsuario = usuario.IdUsuario;
+                Session["IdUsuario"] = usuario.IdUsuario;
 
                 // Mapeamos todos los campos del formulario
                 propiedad.Titulo = texttitulo.Text;
                 propiedad.Direccion = inputDireccion.Text;
                 propiedad.Localidad = inputLocalidad.Text;
                 propiedad.IdProvincia = Convert.ToInt32(selectProvincia.SelectedValue);
-                propiedad.IdUsuario = 2;
                 propiedad.Ambientes = SafeConvertToInt(txtcantAmbientes.Text);
                 propiedad.AnosAntiguedad = SafeConvertToInt(textanosAntiguedad.Text);
                 propiedad.Sup_m2_Total = SafeConvertToDecimal(SupTotal.Text);
@@ -129,21 +143,9 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                 propiedad.Moneda = selectTipoMoneda.Text;
                 propiedad.FechaPublicacion = DateTime.Now;
 
-
-                //// Primero guardamos la propiedad para obtener su ID
-                //if (Session["IdUsuario"] != null)
-                //{
-                //    propiedad.IdUsuario = Convert.ToInt32(Session["IdUsuario"]);
-                //}
-                //else
-                //{
-                //    propiedad.IdUsuario = 2; // O lanzar una excepción si el usuario no está logueado
-                //    throw new Exception("Usuario no logueado.");
-                //}
-
-                // Ahora procesamos las imágenes con el ID correcto
                 propiedadNegocio.agregar(propiedad);
 
+                // Ahora procesamos las imágenes con el ID correcto
                 string ruta = Server.MapPath("./Images/");
                 List<string> nombresArchivos = new List<string>();
 

@@ -75,7 +75,6 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
         {
             //// Título
 
-
             direccionPropiedad.InnerHtml = $"<span class='fa-solid fa-location-dot' style='margin-right: 10px'></span>{propiedad.Direccion}, {propiedad.Localidad}";
 
             if (propiedad.Baños == 0)

@@ -24,6 +24,7 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
             try
             {
                 usuario = new Usuario(TextBoxCorreo.Text, TextBoxContra.Text);
+
                 if (UsuarioNegocio.Loguear(usuario))
                 {
                     Session.Add("usuario", usuario);

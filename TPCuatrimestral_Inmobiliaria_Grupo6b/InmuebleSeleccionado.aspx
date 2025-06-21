@@ -8,6 +8,7 @@
         <div class="card shadow-lg" style="margin-top: 25px; font-size: 20px">
             <div class="card-body">
 
+                <p class="card-text" id="labelUsuario" runat="server"><span class="fa-solid fa-location-dot" style="margin-right: 10px"></span></p>
                 <p class="card-text" id="direccionPropiedad" runat="server"><span class="fa-solid fa-location-dot" style="margin-right: 10px"></span></p>
                 <div class="row">
                     <div class="col-8">
