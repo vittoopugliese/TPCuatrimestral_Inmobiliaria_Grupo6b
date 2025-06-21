@@ -8,7 +8,6 @@
         <div class="card shadow-lg" style="margin-top: 25px; font-size: 20px">
             <div class="card-body">
 
-                <p class="card-text" id="labelUsuario" runat="server"><span class="fa-solid fa-location-dot" style="margin-right: 10px"></span></p>
                 <p class="card-text" id="direccionPropiedad" runat="server"><span class="fa-solid fa-location-dot" style="margin-right: 10px"></span></p>
                 <div class="row">
                     <div class="col-8">
@@ -64,22 +63,18 @@
 
                         <div class="card">
                             <div class="card-body">
-
                                 <label for="inputEmail4" class="form-label">CONTACTAR AL PROPIETARIO</label>
-                                <input type="text" class="form-control" id="nombreyapellido" placeholder="Nombre y Apellido" style="margin-top: 10px">
-                                <input type="tel" class="form-control" id="telefono" runat="server" placeholder="Teléfono" style="margin-top: 10px">
-                                <input type="text" class="form-control" id="asunto" placeholder="Asunto" style="margin-top: 10px">
-                                <input type="email" class="form-control" id="email" placeholder="Email" runat="server" style="margin-top: 10px">
-                                <textarea class="form-control" id="mensajeContactar" runat="server" placeholder="Mensaje..." rows="3" style="margin-top: 10px"></textarea>
+                                <asp:TextBox runat="server" ID="txtNombreApellido" CssClass="form-control" placeholder="Nombre y Apellido" Style="margin-top: 10px"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="txtTelefono" CssClass="form-control" placeholder="Teléfono" Style="margin-top: 10px"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="txtAsunto" CssClass="form-control" placeholder="Asunto" Style="margin-top: 10px"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="txtEmail" TextMode="Email" CssClass="form-control" placeholder="Email" Style="margin-top: 10px"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="txtMensaje" TextMode="MultiLine" Rows="3" CssClass="form-control" placeholder="Mensaje..." Style="margin-top: 10px"></asp:TextBox>
                                 <div class="form-check form-switch">
                                     <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" runat="server" style="margin-top: 15px">
                                     <label class="form-check-label" for="flexSwitchCheckDefault" style="margin-top: 10px">Recibir copia por email</label>
                                 </div>
                                 <asp:Button Text="Contactar" CssClass="btn btn-dark" ID="btnContactar" runat="server" Style="width: 100%; margin-top: 10px" OnClick="btnContactar_Click" />
-
-                                <asp:Button Text="Enviar Whastapp" CssClass="btn btn-success" ID="botonWp" runat="server" Style="width: 100%; margin-top: 10px" OnClick="botonWp_Click" />
-
-
+                                <asp:Button Text="Enviar WhatsApp" CssClass="btn btn-success" ID="botonWp" runat="server" Style="width: 100%; margin-top: 10px" OnClick="botonWp_Click" />
                             </div>
                         </div>
 
@@ -104,7 +99,7 @@
         <div class="row">
             <div class="col-4">
                 <h2 id="precioCompleto" runat="server" style="margin-top: 15px"></h2>
-                <p id="expensasPropiedad" runat="server"></p>      
+                <p id="expensasPropiedad" runat="server"></p>
             </div>
 
             <div id="creditoPropiedad" class="col-4" style="margin-top: 20px; font-size: 20px" runat="server">
@@ -163,6 +158,24 @@
         <h2 id="tituloPropiedad" style="margin: 15px 0px 15px 0px" runat="server"></h2>
         <p id="descripcionPropiedad" class="card-text" runat="server"></p>
         <hr />
+
+        <div class="form-group">
+
+            <h3>Preguntas al anunciante</h3>
+            <div class="row">
+                <div class="col-8">
+
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Hazle una pregunta al anunciante..." aria-label="Recipient's username" aria-describedby="button-addon2">
+                        <button class="btn btn-dark" type="button" id="btnEnviarConsulta" OnClick="btnEnviarConsulta_Click">Button</button>
+                    </div>
+
+                </div>
+         
+            </div>
+
+        </div>
+
     </div>
 
 

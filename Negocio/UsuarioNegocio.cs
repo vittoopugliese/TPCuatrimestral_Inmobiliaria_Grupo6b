@@ -72,7 +72,7 @@ namespace Negocio
 
             try
             {
-                bd.setearConsulta("SELECT IdUsuario, Email, Contrasena, IdRol FROM Usuario WHERE Email = @Email AND Contrasena = @Contrasena");
+                bd.setearConsulta("SELECT IdUsuario, Email, Contrasena, IdRol, Nombre, Apellido, Telefono FROM Usuario WHERE Email = @Email AND Contrasena = @Contrasena");
                 bd.setearParametro("@Email", usuario.Email);
                 bd.setearParametro("@Contrasena", usuario.Contrasena);
                 bd.ejecutarLectura();
@@ -83,6 +83,9 @@ namespace Negocio
                     usuario.Email = (string)bd.Lector["Email"];
                     usuario.IdRol = (int)bd.Lector["IdRol"];
                     usuario.Contrasena = (string)bd.Lector["Contrasena"];
+                    usuario.Nombre = bd.Lector["Nombre"].ToString();
+                    usuario.Apellido = bd.Lector["Apellido"].ToString();
+                    usuario.Telefono = bd.Lector["Telefono"].ToString();
                     return true;
                 }
                 return false;
@@ -105,7 +108,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("SELECT IdUsuario, Email, Contrasena, IdRol FROM Usuario WHERE Email = @email");
+                datos.setearConsulta("SELECT IdUsuario, Email, Contrasena, IdRol, Nombre, Apellido, Telefono FROM Usuario WHERE Email = @email");
                 datos.setearParametro("@email", email);
                 datos.ejecutarLectura();
 
@@ -116,6 +119,9 @@ namespace Negocio
                     usuario.Email = (string)datos.Lector["Email"];
                     usuario.Contrasena = (string)datos.Lector["Contrasena"];
                     usuario.IdRol = (int)datos.Lector["IdRol"];
+                    usuario.Nombre = datos.Lector["Nombre"].ToString();
+                    usuario.Apellido = datos.Lector["Apellido"].ToString();
+                    usuario.Telefono = datos.Lector["Telefono"].ToString();
                 }
             }
             catch (Exception ex)

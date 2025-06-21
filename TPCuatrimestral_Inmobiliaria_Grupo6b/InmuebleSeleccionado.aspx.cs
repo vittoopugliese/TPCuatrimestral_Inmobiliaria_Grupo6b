@@ -17,6 +17,16 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
         {
             if (!IsPostBack)
             {
+
+                if (Session["usuario"] != null)
+                {
+                    Usuario usuario = (Usuario)Session["usuario"];
+                    txtNombreApellido.Text = $"{usuario.Nombre} {usuario.Apellido}";
+                    txtTelefono.Text = usuario.Telefono;
+                    txtEmail.Text = usuario.Email;
+
+                }
+
                 if (Request.QueryString["id"] != null && int.TryParse(Request.QueryString["id"], out int idPropiedad))
                 {
                     CargarPropiedad(idPropiedad);
@@ -28,15 +38,15 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                         "alert('No se ha especificado una propiedad válida.'); window.location.href='Default.aspx';", true);
                 }
                 string script = @"
-                 document.addEventListener('DOMContentLoaded', function() {
-                var myCarousel = document.querySelector('#carouselExampleControls');
-                var carousel = new bootstrap.Carousel(myCarousel, {
-                    interval: false
+                     document.addEventListener('DOMContentLoaded', function() {
+                    var myCarousel = document.querySelector('#carouselExampleControls');
+                    var carousel = new bootstrap.Carousel(myCarousel, {
+                        interval: false
                 });
 
                 setTimeout(function() {
-                    carousel.cycle();
-                }, 5000);
+                        carousel.cycle();
+                    }, 5000);
                  });";
 
                 ScriptManager.RegisterStartupScript(this, GetType(), "initCarousel", script, true);
@@ -182,8 +192,21 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                 emailPropietario.InnerText = propiedad.Email;
             }
 
+            // Mostrar información del propietario
             nombrePropietario.InnerText = $"{propiedad.TipoDueno}";
+            whatsappPropietario.InnerText = $"{propiedad.WhatsApp}";
 
+            if (emailPropietario != null)
+            {
+                emailPropietario.HRef = $"mailto:{propiedad.Email}?subject=Consulta sobre {propiedad.Tipo} en {propiedad.Direccion}";
+                emailPropietario.InnerHtml = $"<i class='fa-solid fa-envelope' style='margin-right: 10px'></i>{propiedad.Email}";
+            }
+
+            // Establecer asunto por defecto (esto puede quedarse aquí)
+            txtAsunto.Text = $"Consulta sobre {propiedad.Tipo} en {propiedad.Direccion}";
+
+            // Mensaje predefinido (esto puede quedarse aquí)
+            txtMensaje.Text = $"Hola! Estoy interesado/a en la propiedad ubicada en {propiedad.Direccion}. Por favor, envíeme más información.\nSaludos cordiales!";
         }
 
         private void CargarImagenes(int idPropiedad)
@@ -265,9 +288,29 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
 
         protected void botonWp_Click(object sender, EventArgs e)
         {
-            string whatsappUrl = "https://wa.me/521234567890";
-            string script = $"window.open('{whatsappUrl}', '_blank');";
-            ClientScript.RegisterStartupScript(this.GetType(), "openWhatsApp", script, true);
+
+            try
+            {
+                // Obtener los datos del formulario
+                string nombre = txtNombreApellido.Text;
+                string telefono = txtTelefono.Text;
+                string email = txtEmail.Text;
+                string asunto = txtAsunto.Text;
+                string mensaje = txtMensaje.Text;
+                //bool recibirCopia = chkRecibirCopia.Checked;
+                string whatsappUrl = "https://wa.me/521234567890";
+                string script = $"window.open('{whatsappUrl}', '_blank');";
+                ClientScript.RegisterStartupScript(this.GetType(), "openWhatsApp", script, true);
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "showError",
+                 $"Swal.fire('Error', 'No se pudo enviar el mensaje: {ex.Message}', 'error');", true);
+            }
+        }
+        protected void btnEnviarConsulta_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

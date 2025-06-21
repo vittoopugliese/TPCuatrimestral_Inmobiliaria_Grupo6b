@@ -15,15 +15,6 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
     {
 
         /// <summary>
-        /// Control labelUsuario.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl labelUsuario;
-
-        /// <summary>
         /// Control direccionPropiedad.
         /// </summary>
         /// <remarks>
@@ -96,31 +87,49 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl balconPropiedad;
 
         /// <summary>
-        /// Control telefono.
+        /// Control txtNombreApellido.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl telefono;
+        protected global::System.Web.UI.WebControls.TextBox txtNombreApellido;
 
         /// <summary>
-        /// Control email.
+        /// Control txtTelefono.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl email;
+        protected global::System.Web.UI.WebControls.TextBox txtTelefono;
 
         /// <summary>
-        /// Control mensajeContactar.
+        /// Control txtAsunto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea mensajeContactar;
+        protected global::System.Web.UI.WebControls.TextBox txtAsunto;
+
+        /// <summary>
+        /// Control txtEmail.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtEmail;
+
+        /// <summary>
+        /// Control txtMensaje.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtMensaje;
 
         /// <summary>
         /// Control flexSwitchCheckDefault.
