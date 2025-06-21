@@ -74,5 +74,10 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
 
             return false;
         }
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+            // codigo para enlazar buscado con "ResultadosBusqueda.aspx"
+        }
     }
 }

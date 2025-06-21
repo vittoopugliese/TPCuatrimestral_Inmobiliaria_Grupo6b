@@ -25,6 +25,10 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                 TextBoxCorreo.Text = Session["Email"].ToString();
                 TextBoxContra.Text = Session["Contrasena"].ToString();
             }
+            else
+            {
+                Response.Redirect("Login.aspx");
+            }
 
 
         }

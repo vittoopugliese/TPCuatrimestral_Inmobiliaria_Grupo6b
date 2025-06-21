@@ -112,6 +112,7 @@
         </div>
     </form>
 
+    <% if (Session["usuario"] == null) { %>
         <script>
             document.addEventListener("keydown", function (event) {
                 if (event.key === "Escape") {
@@ -119,6 +120,17 @@
                 }
             });
         </script>
+    <% }
+     else { %>
+            <script>
+                document.addEventListener("keydown", function (event) {
+                    if (event.key === "Escape") {
+                        location.replace("Default.aspx");
+                    }
+                });
+            </script>
+
+    <% } %>
 
 </body>
 </html>

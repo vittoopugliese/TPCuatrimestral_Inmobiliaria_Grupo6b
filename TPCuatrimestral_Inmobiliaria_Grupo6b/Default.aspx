@@ -123,7 +123,7 @@
                     </asp:DropDownList>
                 </div>
                 <div class="col-md-2">
-                    <asp:Button ID="btnBuscar" runat="server" Text="Buscar" CssClass="btn btn-seteado w-100" />
+                    <asp:Button ID="btnBuscar" runat="server" Text="Buscar" CssClass="btn btn-seteado w-100" OnClick="btnBuscar_Click" />
                 </div>
             </div>
 
