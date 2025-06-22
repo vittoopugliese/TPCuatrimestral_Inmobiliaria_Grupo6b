@@ -73,6 +73,12 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                     propiedadNegocio.eliminarPropiedadPorId(idPropiedad);
                     CargarDatos();
                 }
+                if (e.CommandName == "destacar")
+                {
+                    int idPropiedad = Convert.ToInt32(e.CommandArgument);
+                    propiedadNegocio.destacarPropiedadPorId(idPropiedad);
+                    CargarDatos();
+                }
             }
             catch (Exception ex)
             {

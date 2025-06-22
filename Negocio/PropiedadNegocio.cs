@@ -415,5 +415,43 @@ namespace Negocio
 
             return propiedad;
         }
+
+        public bool destacarPropiedadPorId(int IdPropiedad)
+        {
+            try
+            { // traigo el valor si esta destacada o no, y guardo el contrario
+                db.setearConsulta("SELECT Destacada FROM PROPIEDAD WHERE IdPropiedad = @Id");
+                db.agregarParametro("@Id", IdPropiedad);
+                db.ejecutarLectura();
+
+                if (db.Lector.Read())
+                {
+                    bool destacadaActual = db.Lector["Destacada"] != DBNull.Value && Convert.ToBoolean(db.Lector["Destacada"]);
+
+                    db.cerrarConexion();
+
+                    db.setearConsulta("UPDATE PROPIEDAD SET Destacada = @NuevoDestacada WHERE IdPropiedad = @Id");
+                    db.agregarParametro("@NuevoDestacada", !destacadaActual);
+                    db.agregarParametro("@Id", IdPropiedad);
+                    db.ejecutarAccion();
+
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al modificar estado de destacada", ex);
+            }
+            finally
+            {
+                db.cerrarConexion();
+            }
+        }
+
+
     }
 }
