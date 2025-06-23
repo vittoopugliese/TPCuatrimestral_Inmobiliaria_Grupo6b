@@ -48,6 +48,8 @@ namespace Negocio
         public int insertarNuevo(Usuario nuevo)
         {
             BaseDeDatos db = new BaseDeDatos();
+
+
             try
             {
                 db.setearProcedimiento("SP_RegistrarUsuario");

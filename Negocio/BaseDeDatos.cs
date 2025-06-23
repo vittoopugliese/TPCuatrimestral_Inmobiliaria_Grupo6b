@@ -21,8 +21,8 @@ namespace Negocio
             try
             {
                 // ACA deben cambiar su nombre de Server, el que les dice en SQL Server Management Studio... tambien en App.config con el mismo string
-                string connectionString = "Server=DESKTOP-SMALGP3;Initial Catalog=Inmobiliaria_TPC;Integrated Security=True;";
-                // string connectionString = "Server=.\\SQLEXPRESS;Initial Catalog=Inmobiliaria_TPC;Integrated Security=True;";
+                //string connectionString = "Server=DESKTOP-SMALGP3;Initial Catalog=Inmobiliaria_TPC;Integrated Security=True;";
+                string connectionString = "Server=.\\SQLEXPRESS;Initial Catalog=Inmobiliaria_TPC;Integrated Security=True;";
                 conexion = new SqlConnection(connectionString);
                 comando = new SqlCommand();
                 comando.Connection = conexion;

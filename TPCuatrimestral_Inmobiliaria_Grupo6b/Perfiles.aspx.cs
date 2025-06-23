@@ -23,7 +23,8 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
             if (Session["Email"] != null)
             {
                 TextBoxCorreo.Text = Session["Email"].ToString();
-                TextBoxContra.Text = Session["Contrasena"].ToString();
+                TextBoxContra.Attributes["value"] = Session["Contrasena"].ToString();
+                DropDownListRol.SelectedValue = Session["IdRol"].ToString();
             }
             else
             {
@@ -74,7 +75,14 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                 usuario.Telefono = TextBoxTelefono.Text;
                 usuario.Direccion = TextBoxDireccion.Text;
                 usuario.Localidad = TextBoxLocalidad.Text;
-                usuario.IdProvincia = Convert.ToInt32(DropDownListProvincia.SelectedValue);
+                if (!string.IsNullOrWhiteSpace(DropDownListProvincia.SelectedValue) && DropDownListProvincia.SelectedValue != "-1")
+                {
+                    usuario.IdProvincia = Convert.ToInt32(DropDownListProvincia.SelectedValue);
+                }
+                else
+                {
+                    usuario.IdProvincia = 24;
+                }
                 usuario.IdRol = Convert.ToInt32(DropDownListRol.SelectedValue);
                 negocio.ActualizarPerfil(usuario);
                 Response.Redirect("Default.aspx");

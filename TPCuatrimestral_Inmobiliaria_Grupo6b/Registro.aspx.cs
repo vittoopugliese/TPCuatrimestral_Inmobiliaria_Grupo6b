@@ -28,19 +28,28 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                 usuario.Contrasena = TextBoxContra.Text;
                 int id = UsuarioNegocio.insertarNuevo(usuario);
 
+                if (id == 0) {
+                    LabelMensaje.Text = @"
+                    <div class='alert alert-danger alert-dismissible fade show' role='alert'>
+                        El correo ingresado ya está registrado.
+                        <a href='Login.aspx' class='btn btn-link'>Login</a>
+                        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                    </div>";
+                    LabelMensaje.Visible = true;
+                    return;
+                }
                 emailService.armarCorreoRegistro(usuario.Email);
                 emailService.enviarCorreo();
+
                 LabelMensaje.Text = @"
                 <div class='alert alert-success alert-dismissible fade show' role='alert'>
                     ¡Registro exitoso! Por favor, revisá tu correo para confirmar tu registro.
                     <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close' onclick=""window.location.href='Default.aspx';""></button>
                 </div>";
                 LabelMensaje.Visible = true;
-
             }
             catch (Exception ex)
             {
-
                 Session.Add("error", ex.ToString());
             }
 

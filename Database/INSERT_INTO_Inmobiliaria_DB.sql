@@ -30,7 +30,8 @@ INSERT INTO Provincia (Nombre) VALUES
 ('Santa Fe'),
 ('Santiago del Estero'),
 ('Tierra del Fuego'),
-('Tucumán');
+('Tucumán'),
+('No definido');
 
 select * from Imagenes;
 

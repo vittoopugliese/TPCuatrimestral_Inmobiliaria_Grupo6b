@@ -58,11 +58,22 @@
                             </div>
 
                             <%--Se debe autocompletar el siguiente campo--%>
-                            <div class="col-12 col-md-6 mb-2">
-                                <label class="text-dark form-label" for="contrasenaLabel">Contraseña</label>
-                                <asp:TextBox ID="TextBoxContra" runat="server" CssClass="form-control" placeholder="Alfanúmerico todo minúscula"></asp:TextBox>
+                        <div class="col-12 col-md-6 mb-2">
+                            <label class="text-dark form-label" for="TextBoxContra">Contraseña</label>
+                            <div class="input-group">
+                                <asp:TextBox ID="TextBoxContra" runat="server" TextMode="Password" CssClass="form-control"></asp:TextBox>
+                                <button type="button" class="btn btn-outline-secondary" onclick="mostrarPassword()" id="mostrarBtn">Ver</button>
                             </div>
                         </div>
+                        <asp:RegularExpressionValidator 
+                            ID="revPassword" 
+                            runat="server"
+                            ControlToValidate="TextBoxContra"
+                            ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[^\s]{8,}$"
+                            ErrorMessage="Requiere 8 caracteres, una mayúscula, una minúscula y un número"
+                            Display="Dynamic"
+                            CssClass="text-danger">
+                        </asp:RegularExpressionValidator>
                         
                         <div class="row mb-2">
                             <div class="col-12 col-md-6 mb-2">
@@ -73,6 +84,7 @@
                                 <label class="text-dark form-label" for="apellidoLabel">Apellido</label>
                                 <asp:TextBox ID="TextBoxApellido" runat="server" CssClass="form-control" placeholder="Ingrese su apellido"></asp:TextBox>
                             </div>
+
                         </div>
 
                         <div class="row mb-2">
@@ -112,6 +124,8 @@
         </div>
     </form>
 
+    <%--Validacion para que si el usuario no esta logueado lo redireccione al login; en caso de estarlo, a Default--%>
+
     <% if (Session["usuario"] == null) { %>
         <script>
             document.addEventListener("keydown", function (event) {
@@ -131,6 +145,23 @@
             </script>
 
     <% } %>
+
+    <%--Script para mostrar/ocultar la contraseña--%>
+
+    <script>
+        function mostrarPassword() {
+            var passwordField = document.getElementById('<%= TextBoxContra.ClientID %>');
+            var toggleBtn = document.getElementById('mostrarBtn');
+
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                toggleBtn.innerHTML = '***';
+            } else {
+                passwordField.type = 'password';
+                toggleBtn.innerHTML = 'Ver';
+            }
+        }
+    </script>
 
 </body>
 </html>

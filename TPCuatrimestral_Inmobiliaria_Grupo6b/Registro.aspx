@@ -56,6 +56,15 @@
                             <label class="text-dark form-label" for="contraLabel">Contraseña</label>
                             <asp:TextBox ID="TextBoxContra" runat="server" CssClass="form-control" placeholder="Ingrese una contraseña" TextMode="Password"></asp:TextBox>
                         </div>
+                        <asp:RegularExpressionValidator 
+                            ID="revPassword" 
+                            runat="server"
+                            ControlToValidate="TextBoxContra"
+                            ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[^\s]{8,}$"
+                            ErrorMessage="Requiere 8 caracteres, una mayúscula, una minúscula y un número"
+                            Display="Dynamic"
+                            CssClass="text-danger">
+                        </asp:RegularExpressionValidator>
                   
                              <asp:Button ID="ButtonRegistrar" runat="server" Text="Registrar" CssClass="btn btn-primary w-100" BackColor="#121212" OnClick="ButtonRegistrar_Click" />
                     </div>
