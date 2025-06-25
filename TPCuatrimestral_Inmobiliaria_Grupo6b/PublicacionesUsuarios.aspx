@@ -179,21 +179,10 @@
 
                                         <div class="d-flex flex-row align-items-center gap-4 mt-3">
                                             <asp:HyperLink NavigateUrl='<%# "InmuebleSeleccionado.aspx?id=" + Eval("IdPropiedad") %>'
-                                                Text='<i class="fas fa-house"></i> Ver'
-                                                runat="server"
-                                                CssClass="text-decoration-none text-dark" />
+                                                Text='<i class="fas fa-house"></i> Ver' runat="server" CssClass="text-decoration-none text-dark" />
 
-                                            <asp:LinkButton CssClass="hide-icon"
-                                                ID="lnkAlternarVisibilidad" runat="server"
-                                                OnCommand="lnkOpcionesPublicacion_Command"
-                                                CommandName="alternarVisibilidad"
-                                                CommandArgument='<%# Eval("IdPropiedad") %>'
-                                                ToolTip='<%# Eval("Visible").ToString() == "True" ? "Ocultar propiedad" : "Mostrar propiedad" %>'>
-                                                <p style="cursor:pointer;margin:0px;">
-                                                    <i class='fas <%# Eval("Visible").ToString() == "True" ? "fa-eye" : "fa-eye-slash" %>'></i>
-                                                    <%# Eval("Visible").ToString() == "True" ? "Ocultar" : "Mostrar" %>
-                                                </p>
-                                            </asp:LinkButton>
+                                            <asp:HyperLink NavigateUrl='<%# "PublicarInmueble.aspx?id=" + Eval("IdPropiedad") %>'
+                                                Text='<i class="fas fa-pencil"></i> Editar' runat="server" CssClass="text-decoration-none text-dark" />
 
                                             <asp:LinkButton CssClass="hide-icon"
                                                 ID="lnkDestacar" runat="server"
@@ -202,9 +191,30 @@
                                                 CommandArgument='<%# Eval("IdPropiedad") %>'
                                                 ToolTip='<%# Eval("Destacada").ToString() == "True" ? "No destacar" : "Destacar" %>'>
                                                 <p style="cursor:pointer;margin:0px;color:goldenrod;">
-                                                    <i class='fas <%# Eval("Destacada").ToString() == "True" ? "fa-star" : "fa-star-o" %>'></i>
+                                                    <i class='fas fa-star'></i>
                                                     <%# Eval("Destacada").ToString() == "True" ? "Quitar destacado" : "Destacar" %>
                                                 </p>
+                                            </asp:LinkButton>
+
+                                            <asp:LinkButton CssClass="hide-icon"
+                                                ID="lnkAlternarVisibilidad" runat="server"
+                                                OnCommand="lnkOpcionesPublicacion_Command"
+                                                CommandName="alternarVisibilidad"
+                                                CommandArgument='<%# Eval("IdPropiedad") %>'
+                                                ToolTip='<%# Eval("Visible").ToString() == "True" ? "Ocultar propiedad" : "Mostrar propiedad" %>'>
+                                                <p style="cursor:pointer;margin:0px;color:forestgreen;">
+                                                    <i class='fas <%# Eval("Visible").ToString() == "True" ? "fa-eye" : "fa-eye-slash" %>'></i>
+                                                    <%# Eval("Visible").ToString() == "True" ? "Ocultar" : "Mostrar" %>
+                                                </p>
+                                            </asp:LinkButton>
+
+                                            <asp:LinkButton CssClass="hide-icon"
+                                                ID="lnkEliminar" runat="server"
+                                                OnCommand="lnkOpcionesPublicacion_Command"
+                                                CommandName="eliminar"
+                                                CommandArgument='<%# Eval("IdPropiedad") %>'
+                                                ToolTip='<%# Eval("Destacada").ToString() == "True" ? "No destacar" : "Destacar" %>'>
+                                                <p style="cursor:pointer;margin:0px;color:red;"><i class='fas fa-trash'></i> Eliminar</p>
                                             </asp:LinkButton>
                                         </div>
                                     </div>
