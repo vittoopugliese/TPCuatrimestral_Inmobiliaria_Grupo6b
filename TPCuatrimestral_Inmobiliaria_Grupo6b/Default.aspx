@@ -114,7 +114,8 @@
 
             <div class="row g-2 justify-content-center mt-4">
                 <div class="col-md-4">
-                    <asp:TextBox ID="txtUbicacion" runat="server" CssClass="form-control" Placeholder="Ingresa la ubicacion " />
+                    <asp:TextBox ID="txtProvincia" runat="server" CssClass="form-control" Placeholder="Provincia donde desea buscar" />
+                    <asp:Label ID="LabelMensaje" runat="server" Text="" Visible="false" CssClass="alert alert-dismissible"></asp:Label>
                 </div>
                 <div class="col-md-2">
                     <asp:DropDownList ID="ddlTipo" runat="server" CssClass="form-select">

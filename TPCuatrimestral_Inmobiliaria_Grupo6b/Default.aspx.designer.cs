@@ -15,13 +15,22 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
     {
 
         /// <summary>
-        /// txtUbicacion control.
+        /// txtProvincia control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUbicacion;
+        protected global::System.Web.UI.WebControls.TextBox txtProvincia;
+
+        /// <summary>
+        /// LabelMensaje control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelMensaje;
 
         /// <summary>
         /// ddlTipo control.

@@ -86,7 +86,24 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
 
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
-            // codigo para enlazar buscado con "ResultadosBusqueda.aspx"
+            string provincia = txtProvincia.Text.Trim();
+            string tipo = ddlTipo.SelectedValue;
+
+            if (string.IsNullOrEmpty(provincia))
+            {
+                LabelMensaje.Text = @"
+                    <div class='alert alert-danger alert-dismissible fade show' role='alert'>
+                        Por favor ingrese una provincia.
+                        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                    </div>";
+                LabelMensaje.Visible = true;
+                return;
+            }
+
+            Session["Provincia"] = provincia;
+            Session["Tipo"] = tipo;
+            Response.Redirect("ResultadosBusqueda.aspx");
+
         }
     }
 }

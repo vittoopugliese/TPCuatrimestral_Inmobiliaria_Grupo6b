@@ -2,9 +2,9 @@ USE Inmobiliaria_TPC
 GO
 
 INSERT INTO Rol (Descripcion) VALUES 
-('Inquilino'),
-('Inmobiliaria'),
-('Dueño Directo');
+('Usuario'),
+('Admin'),
+('Anunciante');
 
 
 INSERT INTO Provincia (Nombre) VALUES
@@ -33,20 +33,6 @@ INSERT INTO Provincia (Nombre) VALUES
 ('Tucumán'),
 ('No definido');
 
-select * from Imagenes;
-
-
-SELECT * FROM Usuario;
-
-
---INQUILINO
-INSERT INTO Usuario (Email,Nombre,Contrasena,IdRol) VALUES ('inquilino@testing.com','Nahuel','1234',1);
-
---INMOBILIARIA
-INSERT INTO Usuario (Email,Nombre,Contrasena,IdRol) VALUES ('inmobiliaria@testing.com','Vito','1234',2);
-
---DUEÑO DIRECTO
-INSERT INTO Usuario (Email,Nombre,Contrasena,IdRol) VALUES ('dueno@testing.com','Alex','1234',3);
 
 -- UPDATE Usuario SET IdRol =1 WHERE Email = 'test@testing.com';
 -- DELETE FROM Usuario WHERE Email = 'dueno@testing.com';

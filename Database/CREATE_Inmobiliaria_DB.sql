@@ -82,6 +82,8 @@ CREATE TABLE Propiedad (
     AptoCredito BIT DEFAULT 0,
     Reservada BIT DEFAULT 0,
     IdProvincia INT,
+	Cochera BIT,
+	Destacada BIT DEFAULT 0,
     
     FOREIGN KEY (IdUsuario) REFERENCES Usuario(IdUsuario),
     FOREIGN KEY (IdProvincia) REFERENCES Provincia(IdProvincia)
