@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Dominio;
 
@@ -78,10 +79,23 @@ namespace Negocio
             }
         }
 
-        public List<string> ObtenerImagenes(int idPropiedad)
+        public List<string> ObtenerImagenes(int idPropiedad, string rutaFisicaImages)
         {
             List<string> imagenes = new List<string>();
-            // Implementar la lógica para obtener las imágenes relacionadas con la propiedad
+
+            try
+            {
+                var archivos = Directory.GetFiles(rutaFisicaImages, $"{idPropiedad}-*.*");
+                foreach (var archivo in archivos)
+                {
+                    imagenes.Add(Path.GetFileName(archivo));
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener imágenes de la propiedad: " + ex.Message, ex);
+            }
+
             return imagenes;
         }
 
@@ -148,14 +162,106 @@ namespace Negocio
             return propiedades;
         }
 
-        public void ActualizarImagenPrincipal(int idPropiedad, string imagenUrl)
+        public bool Actualizar(Propiedad propiedad)
         {
             try
             {
+                db.setearConsulta(@"UPDATE PROPIEDAD SET 
+                    Titulo = @Titulo, 
+                    Direccion = @Direccion, 
+                    Precio = @Precio, 
+                    Moneda = @Moneda, 
+                    Expensas = @Expensas, 
+                    Descripcion = @Descripcion, 
+                    Tipo = @Tipo, 
+                    TipoOperacion = @TipoOperacion, 
+                    Localidad = @Localidad, 
+                    TipoDueno = @TipoDueno, 
+                    Email = @Email, 
+                    WhatsApp = @WhatsApp, 
+                    Ambientes = @Ambientes, 
+                    Sup_m2_Cubierto = @Sup_m2_Cubierto, 
+                    Sup_m2_Total = @Sup_m2_Total, 
+                    Dormitorios = @Dormitorios, 
+                    [Baños] = @Baños, 
+                    ConPatio = @ConPatio, 
+                    ConBalcon = @ConBalcon, 
+                    AnosAntiguedad = @AnosAntiguedad, 
+                    AptoCredito = @AptoCredito, 
+                    Cochera = @Cochera, 
+                    IdProvincia = @IdProvincia, 
+                    Ubicacion = @Ubicacion,
+                    FechaModificacion = GETDATE()
+                    WHERE IdPropiedad = @IdPropiedad");
+
+                db.agregarParametro("@IdPropiedad", propiedad.IdPropiedad);
+                db.agregarParametro("@Titulo", !string.IsNullOrEmpty(propiedad.Titulo) ? propiedad.Titulo : (object)DBNull.Value);
+                db.agregarParametro("@Direccion", !string.IsNullOrEmpty(propiedad.Direccion) ? propiedad.Direccion : (object)DBNull.Value);
+                db.agregarParametro("@Precio", propiedad.Precio);
+                db.agregarParametro("@Expensas", propiedad.Expensas);
+                db.agregarParametro("@Moneda", !string.IsNullOrEmpty(propiedad.Moneda) ? propiedad.Moneda : "$");
+                db.agregarParametro("@Descripcion", !string.IsNullOrEmpty(propiedad.Descripcion) ? propiedad.Descripcion : (object)DBNull.Value);
+                db.agregarParametro("@Tipo", !string.IsNullOrEmpty(propiedad.Tipo) ? propiedad.Tipo : (object)DBNull.Value);
+                db.agregarParametro("@TipoOperacion", !string.IsNullOrEmpty(propiedad.TipoOperacion) ? propiedad.TipoOperacion : (object)DBNull.Value);
+                db.agregarParametro("@Localidad", !string.IsNullOrEmpty(propiedad.Localidad) ? propiedad.Localidad : (object)DBNull.Value);
+                db.agregarParametro("@Ubicacion", !string.IsNullOrEmpty(propiedad.Ubicacion) ? propiedad.Ubicacion : (object)DBNull.Value);
+                db.agregarParametro("@TipoDueno", !string.IsNullOrEmpty(propiedad.TipoDueno) ? propiedad.TipoDueno : (object)DBNull.Value);
+                db.agregarParametro("@Email", !string.IsNullOrEmpty(propiedad.Email) ? propiedad.Email : (object)DBNull.Value);
+                db.agregarParametro("@WhatsApp", !string.IsNullOrEmpty(propiedad.WhatsApp) ? propiedad.WhatsApp : (object)DBNull.Value);
+                db.agregarParametro("@Ambientes", propiedad.Ambientes > 0 ? (object)propiedad.Ambientes : DBNull.Value);
+                db.agregarParametro("@Sup_m2_Cubierto", propiedad.Sup_m2_Cubierto > 0 ? (object)propiedad.Sup_m2_Cubierto : DBNull.Value);
+                db.agregarParametro("@Sup_m2_Total", propiedad.Sup_m2_Total > 0 ? (object)propiedad.Sup_m2_Total : DBNull.Value);
+                db.agregarParametro("@Dormitorios", propiedad.Dormitorios > 0 ? (object)propiedad.Dormitorios : DBNull.Value);
+                db.agregarParametro("@Baños", propiedad.Baños > 0 ? (object)propiedad.Baños : DBNull.Value);
+                db.agregarParametro("@ConPatio", propiedad.ConPatio);
+                db.agregarParametro("@ConBalcon", propiedad.ConBalcon);
+                db.agregarParametro("@AnosAntiguedad", propiedad.AnosAntiguedad > 0 ? (object)propiedad.AnosAntiguedad : DBNull.Value);
+                db.agregarParametro("@AptoCredito", propiedad.AptoCredito);
+                db.agregarParametro("@Cochera", propiedad.Cochera);
+                db.agregarParametro("@IdProvincia", propiedad.IdProvincia > 0 ? (object)propiedad.IdProvincia : DBNull.Value);
+
+                db.ejecutarAccion();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al actualizar propiedad: " + ex.Message, ex);
+            }
+            finally
+            {
+                db.cerrarConexion();
+            }
+        }
+
+        public void ActualizarImagenPrincipal(int idPropiedad, string rutaFisicaImages, string nombreArchivo = null)
+        {
+            try
+            {
+                // Si no se proporciona un nombre de archivo específico, buscar el primero que coincida
+                if (string.IsNullOrEmpty(nombreArchivo))
+                {
+                    var archivos = Directory.GetFiles(rutaFisicaImages, $"{idPropiedad}-*.*")
+                                          .OrderBy(f => f)
+                                          .ToList();
+
+                    if (archivos.Any())
+                    {
+                        nombreArchivo = Path.GetFileName(archivos.First());
+                    }
+                    else
+                    {
+                        nombreArchivo = "default.jpg";
+                    }
+                }
+
                 db.setearConsulta("UPDATE Propiedad SET ImagenUrl = @ImagenUrl WHERE IdPropiedad = @IdPropiedad");
-                db.agregarParametro("@ImagenUrl", imagenUrl);
+                db.agregarParametro("@ImagenUrl", nombreArchivo);
                 db.agregarParametro("@IdPropiedad", idPropiedad);
                 db.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al actualizar imagen principal: " + ex.Message, ex);
             }
             finally
             {

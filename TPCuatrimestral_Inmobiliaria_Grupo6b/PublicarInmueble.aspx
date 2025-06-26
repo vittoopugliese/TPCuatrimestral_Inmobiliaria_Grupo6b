@@ -475,6 +475,25 @@
 
                     </div>
 
+                    <div class="row mt-3">
+                        <h5>Imágenes actuales</h5>
+                        <asp:Repeater ID="rptImagenes" runat="server">
+                            <ItemTemplate>
+                                <div class="col-md-3 mb-3">
+                                    <div class="card">
+                                        <img src='<%# "~/Images/" + Container.DataItem %>' runat="server" class="card-img-top" style="height: 150px; object-fit: cover;" />
+                                        <div class="card-body text-center">
+                                            <asp:LinkButton runat="server" CssClass="btn btn-danger btn-sm"
+                                                CommandArgument='<%# Container.DataItem %>'
+                                                OnCommand="EliminarImagen_Command"
+                                                Text="Eliminar" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </ItemTemplate>
+                        </asp:Repeater>
+                    </div>
+
                     <div class="row align-items-start">
                         <div class="col-1"></div>
                         <div class="col-10">
