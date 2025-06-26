@@ -22,7 +22,6 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
             {
                 propiedadesNegocio = new PropiedadNegocio();
                 propiedades = propiedadesNegocio.listarPublicacionesDelUsuario();
-                // no hace falta revisar las imagenes de la carpeta ya que solo se muestra la minatura
                 CargarDatos();
             }
         }
@@ -41,6 +40,7 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
 
             if (propiedades != null && propiedades.Count > 0)
             {
+                foreach (var propiedad in propiedades) propiedad.ImagenUrl = ObtenerPrimeraImagen(propiedad.IdPropiedad);
                 rptPropiedades.DataSource = propiedades;
                 rptPropiedades.DataBind();
                 lblPublicacionesActivas.Text = propiedades.Count.ToString();
@@ -53,6 +53,15 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                 rptPropiedades.DataBind();
                 lblPublicacionesActivas.Text = "0";
             }
+
+        }
+
+        private string ObtenerPrimeraImagen(int idPropiedad)
+        {
+            string rutaImagenes = Server.MapPath("./Images/");
+            var primeraImagen = Directory.GetFiles(rutaImagenes, $"{idPropiedad}-*.jpeg").OrderBy(f => f).FirstOrDefault();
+            if (primeraImagen != null) return "./Images/" + Path.GetFileName(primeraImagen);
+            return "./Images/default.jpg";
         }
 
         protected void lnkOpcionesPublicacion_Command(object sender, CommandEventArgs e)
