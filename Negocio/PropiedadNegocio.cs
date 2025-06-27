@@ -106,8 +106,6 @@ namespace Negocio
             propiedad.IdPropiedad = db.Lector["IdPropiedad"] != DBNull.Value ? (int)db.Lector["IdPropiedad"] : 0;
             propiedad.Descripcion = db.Lector["Descripcion"] != DBNull.Value ? db.Lector["Descripcion"].ToString() : "";
             propiedad.Ambientes = db.Lector["Ambientes"] != DBNull.Value ? (int)db.Lector["Ambientes"] : 0;
-            propiedad.Sup_m2_Total = db.Lector["Sup_m2_Total"] != DBNull.Value ? Convert.ToDecimal(db.Lector["Sup_m2_Total"]) : 0;
-            propiedad.Sup_m2_Cubierto = db.Lector["Sup_m2_Cubierto"] != DBNull.Value ? Convert.ToDecimal(db.Lector["Sup_m2_Cubierto"]) : 0;
             propiedad.Dormitorios = db.Lector["Dormitorios"] != DBNull.Value ? (int)db.Lector["Dormitorios"] : 0;
             propiedad.Baños = db.Lector["Baños"] != DBNull.Value ? (int)db.Lector["Baños"] : 0;
             propiedad.ConPatio = db.Lector["ConPatio"] != DBNull.Value ? Convert.ToBoolean(db.Lector["ConPatio"]) : false;
@@ -125,6 +123,8 @@ namespace Negocio
             propiedad.Ubicacion = db.Lector["Ubicacion"] != DBNull.Value ? db.Lector["Ubicacion"].ToString() : "";
             propiedad.Precio = db.Lector["Precio"] != DBNull.Value ? Convert.ToDecimal(db.Lector["Precio"]) : 0;
             propiedad.Expensas = db.Lector["Expensas"] != DBNull.Value ? Convert.ToDecimal(db.Lector["Expensas"]) : 0;
+            propiedad.Sup_m2_Total = db.Lector["Sup_m2_Total"] != DBNull.Value ? Convert.ToDecimal(db.Lector["Sup_m2_Total"]) : 0;
+            propiedad.Sup_m2_Cubierto = db.Lector["Sup_m2_Cubierto"] != DBNull.Value ? Convert.ToDecimal(db.Lector["Sup_m2_Cubierto"]) : 0;
             propiedad.Moneda = db.Lector["Moneda"] != DBNull.Value ? db.Lector["Moneda"].ToString() : "$";
             propiedad.TipoOperacion = db.Lector["TipoOperacion"] != DBNull.Value ? db.Lector["TipoOperacion"].ToString() : "";
             propiedad.ImagenUrl = db.Lector["ImagenUrl"] != DBNull.Value ? db.Lector["ImagenUrl"].ToString() : "default.jpg";

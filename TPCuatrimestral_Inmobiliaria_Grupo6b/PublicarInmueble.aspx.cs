@@ -60,12 +60,12 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                     txtcantAmbientes.Text = propiedad.Ambientes.ToString();
                     textanosAntiguedad.Text = propiedad.AnosAntiguedad.ToString();
                     selectTipoMoneda.SelectedValue = propiedad.Moneda;
-                    txtPrecio.Text = propiedad.Precio.ToString();
-                    txtExpensas.Text = propiedad.Expensas.ToString();
                     txtCantBanos.Text = propiedad.Baños.ToString();
                     inputCantDormitorios.Text = propiedad.Dormitorios.ToString();
-                    SupCubierta.Text = propiedad.Sup_m2_Cubierto.ToString();
-                    SupTotal.Text = propiedad.Sup_m2_Total.ToString();
+                    txtPrecio.Text = propiedad.Precio.ToString(System.Globalization.CultureInfo.InvariantCulture);
+                    txtExpensas.Text = propiedad.Expensas.ToString(System.Globalization.CultureInfo.InvariantCulture);
+                    SupCubierta.Text = propiedad.Sup_m2_Cubierto.ToString(System.Globalization.CultureInfo.InvariantCulture);
+                    SupTotal.Text = propiedad.Sup_m2_Total.ToString(System.Globalization.CultureInfo.InvariantCulture);
                     txtWhatsapp.Text = propiedad.WhatsApp;
                     inputEmail.Text = propiedad.Email;
                     txtDescripcion.Text = propiedad.Descripcion;

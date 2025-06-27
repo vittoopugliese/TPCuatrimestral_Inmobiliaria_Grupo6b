@@ -158,10 +158,10 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
             }
 
             //Superficie Total
-            superficieTot.InnerText = $"{propiedad.Sup_m2_Total} Mts2";
+            superficieTot.InnerText = $"Sup. Total {propiedad.Sup_m2_Total} Mts2";
 
             //Superficie Cubierta
-            superCub.InnerText = $"{propiedad.Sup_m2_Cubierto} Mts2";
+            superCub.InnerText = $"Sup. Cubierta {propiedad.Sup_m2_Cubierto} Mts2";
 
             //bool patio
             if (!propiedad.ConPatio)

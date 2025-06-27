@@ -64,7 +64,7 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
 
                 BindearPropiedades(propiedades);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 CargarPropiedades();
             }

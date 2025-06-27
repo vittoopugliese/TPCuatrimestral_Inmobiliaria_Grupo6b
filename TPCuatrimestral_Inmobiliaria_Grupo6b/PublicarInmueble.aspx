@@ -190,7 +190,7 @@
                             <label for="txtPrecio" class="form-label">Precio</label>
 
                             <asp:TextBox ID="txtPrecio" runat="server" CssClass="form-control"
-                                placeholder="Ingrese Precio..." TextMode="Number" step="0.01" runat="server"></asp:TextBox>
+                                placeholder="Ingrese Precio..." TextMode="Number" step="0.01"></asp:TextBox>
 
 
                             <asp:RequiredFieldValidator ID="rfvPrecio" runat="server"
@@ -225,7 +225,7 @@
                             <label for="txtExpensas" class="form-label">Expensas</label>
 
                             <asp:TextBox ID="txtExpensas" runat="server" CssClass="form-control"
-                                placeholder="Ingrese Expensas..." TextMode="Number" step="0.01" runat="server"></asp:TextBox>
+                                placeholder="Ingrese Expensas..." TextMode="Number" step="0.01"></asp:TextBox>
 
 
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server"
