@@ -33,6 +33,15 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl carouselInner;
 
         /// <summary>
+        /// Control txtTitulo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtTitulo;
+
+        /// <summary>
         /// Control banoPropiedad.
         /// </summary>
         /// <remarks>
@@ -283,5 +292,32 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl descripcionPropiedad;
+
+        /// <summary>
+        /// Control txtMensajeConsulta.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtMensajeConsulta;
+
+        /// <summary>
+        /// Control btnEnviarConsulta.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnEnviarConsulta;
+
+        /// <summary>
+        /// Control contenedorMensajes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl contenedorMensajes;
     }
 }

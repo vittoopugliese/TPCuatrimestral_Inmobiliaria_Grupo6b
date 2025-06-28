@@ -310,7 +310,80 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
         }
         protected void btnEnviarConsulta_Click(object sender, EventArgs e)
         {
+            try
+            {
+                // 1. Validar sesión de usuario
+                if (Session["usuario"] == null)
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showError",
+                        "Swal.fire('Error', 'Debe iniciar sesión para enviar mensajes.', 'error');", true);
+                    return;
+                }
 
+                // 2. Validar ID de propiedad
+                if (!int.TryParse(Request.QueryString["id"], out int idPropiedad))
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showError",
+                        "Swal.fire('Error', 'Propiedad no válida.', 'error');", true);
+                    return;
+                }
+
+                // 3. Verificar que la propiedad existe
+                PropiedadNegocio propiedadNegocio = new PropiedadNegocio();
+                Propiedad propiedad = propiedadNegocio.ObtenerPorId(idPropiedad);
+
+                if (propiedad == null)
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showError",
+                        "Swal.fire('Error', 'La propiedad especificada no existe.', 'error');", true);
+                    return;
+                }
+
+                // 4. Validar mensaje no vacío
+                if (string.IsNullOrWhiteSpace(txtMensajeConsulta.Text))
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showError",
+                        "Swal.fire('Error', 'El mensaje no puede estar vacío.', 'error');", true);
+                    return;
+                }
+
+                // 5. Obtener usuario actual
+                Usuario usuarioActual = (Usuario)Session["usuario"];
+
+                // 6. Crear y configurar el mensaje
+                Mensajes nuevoMensaje = new Mensajes
+                {
+                    IdUsuario = usuarioActual.IdUsuario,
+                    NombreUsuario = $"{usuarioActual.Nombre} {usuarioActual.Apellido}",
+                    IdPropiedad = idPropiedad,
+                    Mensaje = txtMensajeConsulta.Text.Trim(),
+                    FechaDePublicacion = DateTime.Now
+                };
+
+                // 7. Enviar el mensaje
+                MensajeNegocio mensajeNegocio = new MensajeNegocio();
+                mensajeNegocio.agregarMensaje(nuevoMensaje);
+
+                // 8. Actualizar la visualización
+                txtMensajeConsulta.Text = string.Empty;
+                mensajeNegocio.CargarMensajes(idPropiedad); // Cambio importante: Usar el método local en lugar del de negocio
+
+                // 9. Mostrar confirmación
+                ScriptManager.RegisterStartupScript(this, GetType(), "showSuccess",
+                    "Swal.fire('Éxito', 'Mensaje enviado correctamente.', 'success');", true);
+            }
+            catch (Exception ex)
+            {
+                string errorMessage = ex.InnerException != null ?
+                    ex.InnerException.Message : ex.Message;
+
+                ScriptManager.RegisterStartupScript(this, GetType(), "showError",
+                    $@"Swal.fire({{
+                title: 'Error',
+                html: 'No se pudo enviar el mensaje:<br/><strong>{HttpUtility.JavaScriptStringEncode(errorMessage)}</strong>',
+                icon: 'error'
+            }});", true);
+            }
         }
     }
 }

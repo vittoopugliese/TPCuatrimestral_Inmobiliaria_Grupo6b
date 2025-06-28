@@ -101,3 +101,12 @@ CREATE TABLE Favorito (
 	IdPropiedad INT,
 	IdUsuario INT
 );
+
+Create Table Mensajes (
+	IdMensaje bigint primary key not null identity (1, 1),
+	IdPropiedad int foreign key references Propiedad(IdPropiedad),
+  IdUsuario int foreign key references Usuario(IdUsuario),
+	Mensaje Varchar(255) not null,
+  NombreUsuario Varchar(100) not null,
+	FechaDePublicacion datetime NOT NULL DEFAULT GETDATE()
+)

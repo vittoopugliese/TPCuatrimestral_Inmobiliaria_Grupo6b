@@ -26,6 +26,10 @@
                         </div>
 
                         <div class="row" style="margin-top: 25px; display: flex; justify-content: center; align-items: center; font-size: 20px">
+                            <h4 class="card-text" id="txtTitulo" runat="server"></h4>
+                        </div>
+
+                        <div class="row" style="margin-top: 25px; display: flex; justify-content: center; align-items: center; font-size: 20px">
 
                             <div class="col">
                                 <div style="position: absolute; bottom: 0; width: calc(100% - 30px); margin-left: 40px">
@@ -160,23 +164,27 @@
         <hr />
 
         <div class="form-group">
-
             <h3>Preguntas al anunciante</h3>
             <div class="row">
-                <div class="col-8">
-
+                <div class="col-12 col-md-8">
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Hazle una pregunta al anunciante..." aria-label="Recipient's username" aria-describedby="button-addon2">
-                        <button class="btn btn-dark" type="button" id="btnEnviarConsulta" OnClick="btnEnviarConsulta_Click">Button</button>
+                        <asp:TextBox runat="server" ID="txtMensajeConsulta" CssClass="form-control"
+                            placeholder="Hazle una pregunta al anunciante..." TextMode="MultiLine" Rows="3"></asp:TextBox>
+                        <div class="input-group-append">
+                            <asp:Button runat="server" ID="btnEnviarConsulta" CssClass="btn btn-primary"
+                                Text="Enviar" OnClick="btnEnviarConsulta_Click" />
+                        </div>
                     </div>
 
+                    <!-- Contenedor para mensajes -->
+                    <div id="contenedorMensajes" runat="server" class="mensajes-container">
+                        <!-- Los mensajes se cargarán aquí dinámicamente -->
+                    </div>
                 </div>
-         
             </div>
-
         </div>
-
     </div>
+
 
 
 
