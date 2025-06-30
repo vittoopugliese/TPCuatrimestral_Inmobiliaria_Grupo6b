@@ -105,8 +105,19 @@ CREATE TABLE Favorito (
 Create Table Mensajes (
 	IdMensaje bigint primary key not null identity (1, 1),
 	IdPropiedad int foreign key references Propiedad(IdPropiedad),
-  IdUsuario int foreign key references Usuario(IdUsuario),
+	IdUsuario int foreign key references Usuario(IdUsuario),
 	Mensaje Varchar(255) not null,
-  NombreUsuario Varchar(100) not null,
+	NombreUsuario Varchar(100) not null,
 	FechaDePublicacion datetime NOT NULL DEFAULT GETDATE()
 )
+
+Create Table RevisionPublicaciones (
+    IdRevision INT IDENTITY PRIMARY KEY,
+    IdPropiedad INT NOT NULL,
+    IdUsuario INT NOT NULL,
+    FechaAccion DATETIME NOT NULL,
+    TipoAccion VARCHAR(10) NOT NULL, -- 'INSERT' o 'UPDATE'
+    EstadoRevision VARCHAR(20) DEFAULT 'Pendiente',
+    ObservacionesAdmin VARCHAR(MAX) NULL
+)
+

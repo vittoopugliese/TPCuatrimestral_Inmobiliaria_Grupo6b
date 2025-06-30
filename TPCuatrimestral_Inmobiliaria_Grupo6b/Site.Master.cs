@@ -12,7 +12,7 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!(Page is Login || Page is _Default))
+            if (!(Page is Login || Page is _Default || Page is ResultadosBusqueda || Page is InmuebleSeleccionado))
             {
                 if (!Seguridad.sesionIniciada(Session["usuario"]))
                 {
