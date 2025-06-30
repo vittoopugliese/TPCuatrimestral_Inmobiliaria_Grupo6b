@@ -15,12 +15,17 @@ namespace Negocio
             BaseDeDatos datos = new BaseDeDatos();
             try
             {
-                datos.setearConsulta(@"SELECT M.IdMensaje, M.IdPropiedad, M.IdUsuario, 
-                                    M.Mensaje, M.FechaDePublicacion, U.Nombre AS NombreUsuario
-                             FROM MENSAJES M
-                             INNER JOIN USUARIOS U ON U.IdUsuario = M.IdUsuario
-                             WHERE M.IdPropiedad = @IdPropiedad
-                             ORDER BY M.FechaDePublicacion DESC");
+                datos.setearConsulta(@"SELECT 
+                               
+                             IdMensaje,
+                             IdPropiedad,
+                             IdUsuario,
+                             Mensaje,
+                             FechaDePublicacion,
+                             NombreUsuario
+                             FROM Mensajes
+                             WHERE IdPropiedad = @IdPropiedad
+                             ORDER BY FechaDePublicacion DESC");
 
                 datos.agregarParametro("@IdPropiedad", idPropiedad);
                 datos.ejecutarLectura();
@@ -58,17 +63,16 @@ namespace Negocio
             }
         }
 
-        public void agregarMensaje(Mensajes nuevoMensaje)
+        public int agregarMensaje(Mensajes nuevoMensaje)
         {
             BaseDeDatos datos = new BaseDeDatos();
             try
             {
-
-                // 2. Insertar el mensaje
                 datos.setearConsulta(@"INSERT INTO Mensajes 
-                            (IdPropiedad, IdUsuario, NombreUsuario, Mensaje, FechaDePublicacion) 
-                            VALUES 
-                            (@IdPropiedad, @IdUsuario, @NombreUsuario, @Mensaje, @FechaDePublicacion)");
+                    (IdPropiedad, IdUsuario, NombreUsuario, Mensaje, FechaDePublicacion) 
+                    OUTPUT INSERTED.IdMensaje
+                    VALUES 
+                    (@IdPropiedad, @IdUsuario, @NombreUsuario, @Mensaje, @FechaDePublicacion)");
 
                 datos.agregarParametro("@IdPropiedad", nuevoMensaje.IdPropiedad);
                 datos.agregarParametro("@IdUsuario", nuevoMensaje.IdUsuario);
@@ -76,7 +80,7 @@ namespace Negocio
                 datos.agregarParametro("@Mensaje", nuevoMensaje.Mensaje);
                 datos.agregarParametro("@FechaDePublicacion", nuevoMensaje.FechaDePublicacion);
 
-                datos.ejecutarAccion();
+                return datos.ejecutarAccionScalar();
             }
             catch (Exception ex)
             {
@@ -93,12 +97,38 @@ namespace Negocio
             BaseDeDatos datos = new BaseDeDatos();
             try
             {
+                // Verificar primero si el mensaje existe
+                datos.setearConsulta("SELECT COUNT(*) FROM Mensajes WHERE IdMensaje = @IdMensaje");
+                datos.agregarParametro("@IdMensaje", idMensaje);
+                datos.ejecutarLectura();
+
+                if (datos.Lector.Read() && (int)datos.Lector[0] == 0)
+                {
+                    throw new Exception($"No existe un mensaje con ID {idMensaje}");
+                }
+
+                datos.cerrarConexion();
+
+                // Eliminar el mensaje
                 datos.setearConsulta("DELETE FROM Mensajes WHERE IdMensaje = @IdMensaje");
                 datos.agregarParametro("@IdMensaje", idMensaje);
+
+                // Ejecutar sin esperar retorno
                 datos.ejecutarAccion();
+
+                // Verificación opcional con nueva consulta
+                datos.setearConsulta("SELECT COUNT(*) FROM Mensajes WHERE IdMensaje = @IdMensaje");
+                datos.agregarParametro("@IdMensaje", idMensaje);
+                datos.ejecutarLectura();
+
+                if (datos.Lector.Read() && (int)datos.Lector[0] > 0)
+                {
+                    throw new Exception("El mensaje no fue eliminado correctamente");
+                }
             }
             catch (Exception ex)
             {
+                System.Diagnostics.Debug.WriteLine($"Error en eliminarMensaje: {ex.ToString()}");
                 throw new Exception("Error al eliminar el mensaje: " + ex.Message, ex);
             }
             finally
@@ -107,46 +137,6 @@ namespace Negocio
             }
         }
 
-        public Mensajes CargarMensajes(int idMensaje)
-        {
-            BaseDeDatos datos = new BaseDeDatos();
-            try
-            {
-                datos.setearConsulta(@"SELECT M.IdMensaje, M.IdPropiedad, M.IdUsuario, 
-                             M.NombreUsuario, M.Mensaje, M.FechaDePublicacion
-                             FROM Mensajes M
-                             WHERE M.IdMensaje = @IdMensaje");
-
-                datos.agregarParametro("@IdMensaje", idMensaje);
-                datos.ejecutarLectura();
-
-                if (datos.Lector.Read())
-                {
-                    Mensajes mensaje = new Mensajes
-                    {
-                        IdMensaje = (int)datos.Lector["IdMensaje"],
-                        IdPropiedad = (int)datos.Lector["IdPropiedad"],
-                        IdUsuario = (int)datos.Lector["IdUsuario"],
-                        NombreUsuario = datos.Lector["NombreUsuario"].ToString(),
-                        Mensaje = datos.Lector["Mensaje"].ToString(),
-                        FechaDePublicacion = (DateTime)datos.Lector["FechaDePublicacion"]
-                    };
-                    return mensaje;
-                }
-                else
-                {
-                    throw new Exception("No se encontró el mensaje con el ID especificado");
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al cargar el mensaje: " + ex.Message, ex);
-            }
-            finally
-            {
-                datos.cerrarConexion();
-            }
-        }
 
 
     }

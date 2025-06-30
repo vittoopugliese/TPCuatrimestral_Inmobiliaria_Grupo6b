@@ -107,16 +107,21 @@ namespace Negocio
 
         public int ejecutarAccionScalar()
         {
-            comando.Connection = conexion;
             try
             {
-                conexion.Open();
-                return int.Parse(comando.ExecuteScalar().ToString());
+                if (conexion.State != ConnectionState.Open)
+                    conexion.Open();
 
+                object result = comando.ExecuteScalar();
+                if (result != null && result != DBNull.Value)
+                {
+                    return Convert.ToInt32(result);
+                }
+                return 0;
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new Exception("Error al ejecutar acción escalar: " + ex.Message, ex);
             }
         }
     }

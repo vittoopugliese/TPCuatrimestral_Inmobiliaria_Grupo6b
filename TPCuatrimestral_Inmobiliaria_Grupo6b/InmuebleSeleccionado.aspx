@@ -5,7 +5,7 @@
 
     <div class="container" style="margin-top: 15px">
 
-        <div class="card shadow-lg" style="margin-top: 25px; font-size: 20px">
+        <div class="card shadow-lg" style="margin-top: 45px; font-size: 20px">
             <div class="card-body">
 
                 <p class="card-text" id="direccionPropiedad" runat="server"><span class="fa-solid fa-location-dot" style="margin-right: 10px"></span></p>
@@ -169,16 +169,41 @@
                 <div class="col-12 col-md-8">
                     <div class="input-group mb-3">
                         <asp:TextBox runat="server" ID="txtMensajeConsulta" CssClass="form-control"
-                            placeholder="Hazle una pregunta al anunciante..." TextMode="MultiLine" Rows="3"></asp:TextBox>
+                            placeholder="Hazle una pregunta al anunciante..."></asp:TextBox>
                         <div class="input-group-append">
                             <asp:Button runat="server" ID="btnEnviarConsulta" CssClass="btn btn-primary"
                                 Text="Enviar" OnClick="btnEnviarConsulta_Click" />
                         </div>
                     </div>
 
-                    <!-- Contenedor para mensajes -->
                     <div id="contenedorMensajes" runat="server" class="mensajes-container">
-                        <!-- Los mensajes se cargarán aquí dinámicamente -->
+                        <asp:Repeater ID="rptMensajes" runat="server" OnItemCommand="rptMensajes_ItemCommand">
+                            <ItemTemplate>
+                                <div class="card" style="margin-top: 17px">
+                                    <div class="card-body">
+                                        <h6><%# Eval("Mensaje") %></h6>
+                                        <div class="row">
+                                            <div class="col-11">
+                                                <p>
+                                                    <%# Eval("NombreUsuario") %>
+                                                    <span style="margin-left: 20px">
+                                                        <%# ((DateTime)Eval("FechaDePublicacion")).ToString("dd/MM/yyyy HH:mm") %>
+                                                    </span>
+                                                </p>
+                                            </div>
+                                            <div class="col-1">
+                                                <asp:LinkButton ID="btnEliminarMensaje" runat="server"
+                                                    CommandName="Eliminar"
+                                                    CommandArgument='<%# Eval("IdMensaje") %>'
+                                                    CssClass="text-decoration-none">
+                                                        <i class="fa-solid fa-xmark" style="width: 10px; color: red;"></i>
+                                                </asp:LinkButton>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ItemTemplate>
+                        </asp:Repeater>
                     </div>
                 </div>
             </div>

@@ -13,43 +13,39 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
 {
     public partial class InmuebleSeleccionado : System.Web.UI.Page
     {
+
+        private List<Mensajes> _mensajesLista = new List<Mensajes>();
+        public List<Mensajes> MensajesLista
+        {
+            get { return _mensajesLista; }
+            set { _mensajesLista = value; }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (Request.QueryString["id"] != null && int.TryParse(Request.QueryString["id"], out int idPropiedad))
             {
+                CargarPropiedad(idPropiedad);
 
-                if (Session["usuario"] != null)
+                MensajeNegocio mensajeNegocio = new MensajeNegocio();
+                MensajesLista = mensajeNegocio.listar(idPropiedad);
+
+                if (!IsPostBack)
                 {
-                    Usuario usuario = (Usuario)Session["usuario"];
-                    txtNombreApellido.Text = $"{usuario.Nombre} {usuario.Apellido}";
-                    txtTelefono.Text = usuario.Telefono;
-                    txtEmail.Text = usuario.Email;
-
+                    rptMensajes.DataSource = MensajesLista;
+                    rptMensajes.DataBind();
                 }
 
-                if (Request.QueryString["id"] != null && int.TryParse(Request.QueryString["id"], out int idPropiedad))
-                {
-                    CargarPropiedad(idPropiedad);
-                }
-                else
-                {
-                    // Mejor manejo de error que simplemente redirigir
-                    ScriptManager.RegisterStartupScript(this, GetType(), "showError",
-                        "alert('No se ha especificado una propiedad válida.'); window.location.href='Default.aspx';", true);
-                }
-                string script = @"
-                     document.addEventListener('DOMContentLoaded', function() {
-                    var myCarousel = document.querySelector('#carouselExampleControls');
-                    var carousel = new bootstrap.Carousel(myCarousel, {
-                        interval: false
-                });
+                CargarImagenes(idPropiedad);
+            }
 
-                setTimeout(function() {
-                        carousel.cycle();
-                    }, 5000);
-                 });";
+            if (!IsPostBack && Session["usuario"] != null)
+            {
+                Usuario usuario = (Usuario)Session["usuario"];
+                txtNombreApellido.Text = $"{usuario.Nombre} {usuario.Apellido}";
+                txtTelefono.Text = usuario.Telefono;
+                txtEmail.Text = usuario.Email;
 
-                ScriptManager.RegisterStartupScript(this, GetType(), "initCarousel", script, true);
             }
         }
 
@@ -84,9 +80,12 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
         private void CargarDatosPropiedad(Propiedad propiedad)
         {
             //// Título
+            txtTitulo.InnerHtml = $"<h4>{propiedad.Titulo}</h4>";
+
 
             direccionPropiedad.InnerHtml = $"<span class='fa-solid fa-location-dot' style='margin-right: 10px'></span>{propiedad.Direccion}, {propiedad.Localidad}";
 
+            //baño
             if (propiedad.Baños == 0)
             {
                 banoPropiedad.InnerText = " Sin baño";
@@ -101,6 +100,7 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
 
             }
 
+            //cochera
             if (propiedad.Cochera)
             {
                 cocheraPropiedad.InnerHtml = "Cochera";
@@ -110,7 +110,7 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                 colCochera.Visible = false;
             }
 
-
+            //dormitorios
             if (propiedad.Dormitorios == 0)
             {
                 dormitoriosPropiedad.InnerText = " Sin dormitorios";
@@ -125,6 +125,7 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
 
             }
 
+            //balcon
             if (propiedad.ConBalcon)
             {
                 balconPropiedad.InnerHtml = "Balcón";
@@ -140,7 +141,6 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
             }
 
             // Precio
-
             precioCompleto.InnerText = $"{propiedad.Moneda} {propiedad.Precio}";
             expensasPropiedad.InnerText = $"Expensas: {propiedad.Moneda} {propiedad.Expensas} ";
 
@@ -213,6 +213,9 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
         {
             try
             {
+                // Limpiar el carrousel antes de agregar nuevas imágenes
+                carouselInner.Controls.Clear();
+
                 string rutaImagenes = "/Images/";
                 string rutaFisica = Server.MapPath(rutaImagenes);
 
@@ -221,10 +224,9 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                     Directory.CreateDirectory(rutaFisica);
                 }
 
-                // Modificar el patrón de búsqueda para incluir el GUID
                 var imagenes = Directory.GetFiles(rutaFisica, $"{idPropiedad}-*.jpeg")
                                       .Select(Path.GetFileName)
-                                      .OrderBy(f => f)  // Ordenar para consistencia
+                                      .OrderBy(f => f)
                                       .ToList();
 
                 if (imagenes.Any())
@@ -236,7 +238,6 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                         divItem.Attributes["class"] = first ? "carousel-item active" : "carousel-item";
                         first = false;
 
-                        // Asegurarse de que la ruta sea correcta
                         string rutaCompleta = $"{rutaImagenes}{imagen}";
 
                         Image img = new Image();
@@ -244,8 +245,8 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                         img.Width = Unit.Percentage(100);
                         img.CssClass = "rounded";
                         img.AlternateText = "Imagen de la propiedad";
-                        img.Style["max-height"] = "500px"; // Ajustar altura máxima
-                        img.Style["object-fit"] = "cover"; // Mantener proporciones
+                        img.Style["max-height"] = "500px";
+                        img.Style["object-fit"] = "cover";
 
                         divItem.Controls.Add(img);
                         carouselInner.Controls.Add(divItem);
@@ -253,7 +254,6 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                 }
                 else
                 {
-                    // Imagen por defecto
                     HtmlGenericControl divItem = new HtmlGenericControl("div");
                     divItem.Attributes["class"] = "carousel-item active";
 
@@ -271,10 +271,7 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
             }
             catch (Exception ex)
             {
-                // Registrar error más detallado
-                System.Diagnostics.Debug.WriteLine($"Error al cargar imágenes para propiedad {idPropiedad}: {ex.ToString()}");
-
-                // Mostrar mensaje al usuario
+                System.Diagnostics.Debug.WriteLine($"Error al cargar imágenes para propiedad {idPropiedad}: {ex}");
                 ScriptManager.RegisterStartupScript(this, GetType(), "showImageError",
                     $"console.error('Error al cargar imágenes: {ex.Message}');", true);
             }
@@ -366,7 +363,11 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
 
                 // 8. Actualizar la visualización
                 txtMensajeConsulta.Text = string.Empty;
-                mensajeNegocio.CargarMensajes(idPropiedad); // Cambio importante: Usar el método local en lugar del de negocio
+
+                // Actualizar la lista de mensajes y el Repeater
+                MensajesLista = mensajeNegocio.listar(idPropiedad);
+                rptMensajes.DataSource = MensajesLista;
+                rptMensajes.DataBind();
 
                 // 9. Mostrar confirmación
                 ScriptManager.RegisterStartupScript(this, GetType(), "showSuccess",
@@ -383,6 +384,34 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                 html: 'No se pudo enviar el mensaje:<br/><strong>{HttpUtility.JavaScriptStringEncode(errorMessage)}</strong>',
                 icon: 'error'
             }});", true);
+            }
+        }
+
+        protected void rptMensajes_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            if (e.CommandName == "Eliminar")
+            {
+                try
+                {
+                    int idMensaje = Convert.ToInt32(e.CommandArgument);
+                    int idPropiedad = Convert.ToInt32(Request.QueryString["id"]);
+
+                    MensajeNegocio mensajeNegocio = new MensajeNegocio();
+                    mensajeNegocio.eliminarMensaje(idMensaje);
+
+                    // Actualizar la lista y el repeater
+                    MensajesLista = mensajeNegocio.listar(idPropiedad);
+                    rptMensajes.DataSource = MensajesLista;
+                    rptMensajes.DataBind();
+
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showSuccess",
+                        "Swal.fire('Éxito', 'Mensaje eliminado correctamente.', 'success');", true);
+                }
+                catch (Exception ex)
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showError",
+                        $"Swal.fire('Error', 'No se pudo eliminar el mensaje: {HttpUtility.JavaScriptStringEncode(ex.Message)}', 'error');", true);
+                }
             }
         }
     }
