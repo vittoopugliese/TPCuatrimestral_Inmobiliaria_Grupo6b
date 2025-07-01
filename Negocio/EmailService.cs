@@ -64,6 +64,45 @@ namespace Negocio
                           "<p>Saludos,</p>" +
                           "<p>Equipo de InmoLibre </p>";
         }
+
+        public void armarCorreoContactar(string nombreYapellido, string telefono, string asunto,
+                                string emailCliente, string mensaje, string emailDestino,
+                                bool enviarCopia)
+        {
+            email = new MailMessage();
+            email.From = new MailAddress("noresponder@inmolibre.com");
+
+            // Email al propietario/inmobiliaria
+            email.To.Add(emailDestino);
+
+            // Si está marcado enviar copia, agregamos al cliente como CC
+            if (enviarCopia)
+            {
+                email.CC.Add(emailCliente);
+            }
+
+            email.Subject = asunto;
+            email.IsBodyHtml = true;
+
+            email.Body = $@"
+        <h1>Consulta desde InmoLibre</h1>
+        <p>Has recibido una nueva consulta sobre una propiedad:</p>
+        
+        <h3>Datos del interesado:</h3>
+        <ul>
+            <li><strong>Nombre:</strong> {nombreYapellido}</li>
+            <li><strong>Teléfono:</strong> {telefono}</li>
+            <li><strong>Email:</strong> {emailCliente}</li>
+        </ul>
+        
+        <h3>Mensaje:</h3>
+        <p>{mensaje.Replace("\n", "<br/>")}</p>
+        
+        <hr/>
+        <p>Por favor, responde a esta consulta lo antes posible.</p>
+        <p>Saludos,</p>
+        <p>Equipo de InmoLibre</p>";
+        }
     }
 }
 

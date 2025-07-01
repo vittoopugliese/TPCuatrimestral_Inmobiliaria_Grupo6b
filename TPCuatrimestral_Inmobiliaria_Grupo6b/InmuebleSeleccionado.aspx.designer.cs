@@ -141,13 +141,13 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
         protected global::System.Web.UI.WebControls.TextBox txtMensaje;
 
         /// <summary>
-        /// Control flexSwitchCheckDefault.
+        /// Control checkRecibirCopia.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox flexSwitchCheckDefault;
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox checkRecibirCopia;
 
         /// <summary>
         /// Control btnContactar.
@@ -184,15 +184,6 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl whatsappPropietario;
-
-        /// <summary>
-        /// Control emailPropietario.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor emailPropietario;
 
         /// <summary>
         /// Control precioCompleto.

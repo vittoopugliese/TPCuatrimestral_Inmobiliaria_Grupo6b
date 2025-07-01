@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
@@ -69,6 +70,8 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                     ScriptManager.RegisterStartupScript(this, GetType(), "showError",
                         "alert('La propiedad solicitada no existe.'); window.location.href='Default.aspx';", true);
                 }
+
+
             }
             catch (Exception ex)
             {
@@ -185,28 +188,18 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                 botonWp.OnClientClick = $"window.open('https://wa.me/{propiedad.WhatsApp}', '_blank'); return false;";
             }
 
-            var emailPropietario = FindControl("emailPropietario") as HtmlAnchor;
-            if (emailPropietario != null)
-            {
-                emailPropietario.HRef = $"mailto:{propiedad.Email}";
-                emailPropietario.InnerText = propiedad.Email;
-            }
-
             // Mostrar información del propietario
             nombrePropietario.InnerText = $"{propiedad.TipoDueno}";
             whatsappPropietario.InnerText = $"{propiedad.WhatsApp}";
 
-            if (emailPropietario != null)
-            {
-                emailPropietario.HRef = $"mailto:{propiedad.Email}?subject=Consulta sobre {propiedad.Tipo} en {propiedad.Direccion}";
-                emailPropietario.InnerHtml = $"<i class='fa-solid fa-envelope' style='margin-right: 10px'></i>{propiedad.Email}";
-            }
 
             // Establecer asunto por defecto (esto puede quedarse aquí)
             txtAsunto.Text = $"Consulta sobre {propiedad.Tipo} en {propiedad.Direccion}";
 
             // Mensaje predefinido (esto puede quedarse aquí)
-            txtMensaje.Text = $"Hola! Estoy interesado/a en la propiedad ubicada en {propiedad.Direccion}. Por favor, envíeme más información.\nSaludos cordiales!";
+            txtMensaje.Text = $"Estoy interesado/a en la propiedad ubicada en {propiedad.Direccion}. Por favor, envíeme más información.\nSaludos cordiales!";
+
+
         }
 
         private void CargarImagenes(int idPropiedad)
@@ -277,32 +270,140 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
             }
         }
 
+        
+
         protected void btnContactar_Click(object sender, EventArgs e)
         {
-            string script = "alert('¡Mensaje enviado correctamente!');";
-            ClientScript.RegisterStartupScript(this.GetType(), "alert", script, true);
+            try
+            {
+                // 1. Validar ID de propiedad
+                if (!int.TryParse(Request.QueryString["id"], out int idPropiedad))
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showError",
+                        "Swal.fire('Error', 'Propiedad no válida.', 'error');", true);
+                    return;
+                }
+
+                // 2. Obtener la propiedad y el usuario propietario
+                PropiedadNegocio propiedadNegocio = new PropiedadNegocio();
+                Propiedad propiedad = propiedadNegocio.ObtenerPorId(idPropiedad);
+
+                if (propiedad == null)
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showError",
+                        "Swal.fire('Error', 'La propiedad especificada no existe.', 'error');", true);
+                    return;
+                }
+
+                // 3. Obtener el estado del checkbox
+                bool recibirCopia = checkRecibirCopia.Checked;
+
+                // 4. Enviar el correo
+                EmailService emailservice = new EmailService();
+                emailservice.armarCorreoContactar(
+                    txtNombreApellido.Text,
+                    txtTelefono.Text,
+                    txtAsunto.Text,
+                    txtEmail.Text, // Email del cliente
+                    txtMensaje.Text,
+                    propiedad.Email, // Email del propietario
+                    recibirCopia
+                );
+
+                emailservice.enviarCorreo();
+
+                ScriptManager.RegisterStartupScript(this, GetType(), "showSuccess",
+                    "Swal.fire('Éxito', 'Mensaje enviado correctamente" +
+                    (recibirCopia ? " (se envió copia a tu email)" : "") +
+                    "', 'success');", true);
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "showError",
+                    $"Swal.fire('Error', 'No se pudo enviar el mensaje: {HttpUtility.JavaScriptStringEncode(ex.Message)}', 'error');", true);
+            }
         }
 
         protected void botonWp_Click(object sender, EventArgs e)
         {
-
             try
             {
-                // Obtener los datos del formulario
+                // 1. Obtener ID de propiedad
+                if (!int.TryParse(Request.QueryString["id"], out int idPropiedad))
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showError",
+                        "Swal.fire('Error', 'Propiedad no válida.', 'error');", true);
+                    return;
+                }
+
+                // 2. Obtener datos de la propiedad
+                PropiedadNegocio propiedadNegocio = new PropiedadNegocio();
+                Propiedad propiedad = propiedadNegocio.ObtenerPorId(idPropiedad);
+
+                if (propiedad == null || string.IsNullOrEmpty(propiedad.WhatsApp))
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showError",
+                        "Swal.fire('Error', 'No hay número de WhatsApp asociado.', 'error');", true);
+                    return;
+                }
+
+                // 3. Formatear número de WhatsApp correctamente
+                string numeroWhatsApp = FormatWhatsAppNumber(propiedad.WhatsApp);
+
+                if (string.IsNullOrEmpty(numeroWhatsApp))
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showError",
+                        "Swal.fire('Error', 'Número de WhatsApp no válido.', 'error');", true);
+                    return;
+                }
+
+                // 4. Obtener datos del formulario
                 string nombre = txtNombreApellido.Text;
                 string telefono = txtTelefono.Text;
-                string email = txtEmail.Text;
-                string asunto = txtAsunto.Text;
                 string mensaje = txtMensaje.Text;
-                //bool recibirCopia = chkRecibirCopia.Checked;
-                string whatsappUrl = "https://wa.me/521234567890";
+
+                // 5. Crear mensaje para WhatsApp
+                string mensajeCodificado = WebUtility.UrlEncode(
+                    $"Hola! Soy {nombre}.\n" +
+                    $"{mensaje}");
+
+                // 6. Crear URL de WhatsApp
+                string whatsappUrl = $"https://wa.me/{numeroWhatsApp}?text={mensajeCodificado}";
+
+                // 7. Abrir WhatsApp
                 string script = $"window.open('{whatsappUrl}', '_blank');";
                 ClientScript.RegisterStartupScript(this.GetType(), "openWhatsApp", script, true);
             }
             catch (Exception ex)
             {
                 ScriptManager.RegisterStartupScript(this, GetType(), "showError",
-                 $"Swal.fire('Error', 'No se pudo enviar el mensaje: {ex.Message}', 'error');", true);
+                    $"Swal.fire('Error', 'Error al abrir WhatsApp: {HttpUtility.JavaScriptStringEncode(ex.Message)}', 'error');", true);
+            }
+        }
+
+        private string FormatWhatsAppNumber(string rawNumber)
+        {
+            try
+            {
+                // Eliminar todo excepto dígitos
+                string digitsOnly = new string(rawNumber.Where(char.IsDigit).ToArray());
+
+                // Si empieza con 0, reemplazar por código de país (ej: 54 para Argentina)
+                if (digitsOnly.StartsWith("0") && digitsOnly.Length > 1)
+                {
+                    digitsOnly = "54" + digitsOnly.Substring(1);
+                }
+                // Si no tiene código de país, agregar (asumiendo Argentina)
+                else if (!digitsOnly.StartsWith("911") && !digitsOnly.StartsWith("54") && digitsOnly.Length == 10)
+                {
+                    digitsOnly = "54" + digitsOnly;
+                }
+
+                return digitsOnly;
+            }
+            catch
+            {
+                return string.Empty;
             }
         }
         protected void btnEnviarConsulta_Click(object sender, EventArgs e)

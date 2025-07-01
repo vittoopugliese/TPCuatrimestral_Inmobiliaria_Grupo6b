@@ -74,8 +74,8 @@
                                 <asp:TextBox runat="server" ID="txtEmail" TextMode="Email" CssClass="form-control" placeholder="Email" Style="margin-top: 10px"></asp:TextBox>
                                 <asp:TextBox runat="server" ID="txtMensaje" TextMode="MultiLine" Rows="3" CssClass="form-control" placeholder="Mensaje..." Style="margin-top: 10px"></asp:TextBox>
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" runat="server" style="margin-top: 15px">
-                                    <label class="form-check-label" for="flexSwitchCheckDefault" style="margin-top: 10px">Recibir copia por email</label>
+                                    <input class="form-check-input" type="checkbox" id="checkRecibirCopia" runat="server" style="margin-top: 15px">
+                                    <label class="form-check-label" for="checkRecibirCopia" style="margin-top: 10px">Recibir copia por email</label>
                                 </div>
                                 <asp:Button Text="Contactar" CssClass="btn btn-dark" ID="btnContactar" runat="server" Style="width: 100%; margin-top: 10px" OnClick="btnContactar_Click" />
                                 <asp:Button Text="Enviar WhatsApp" CssClass="btn btn-success" ID="botonWp" runat="server" Style="width: 100%; margin-top: 10px" OnClick="botonWp_Click" />
@@ -86,12 +86,7 @@
                             <div class="card-body">
                                 <p id="nombrePropietario" runat="server"></p>
                                 <p><i class="fa-brands fa-whatsapp" style="margin-right: 10px"></i><span id="whatsappPropietario" runat="server"></span></p>
-                                <a href="#" id="emailPropietario" runat="server" style="text-decoration: none; color: inherit;">
-                                    <p style="margin: 0; display: inline-block;">
-                                        <i class="fa-solid fa-envelope" style="margin-right: 10px"></i>Enviar e-mail
-                                    </p>
-                                </a>
-
+                                        
                             </div>
                         </div>
                     </div>
