@@ -34,22 +34,23 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                     Session["contrasena"] = usuario.Contrasena;
                     Session["IdUsuario"] = usuario.IdUsuario;
 
-
-                    if (Session["urlGuardada"] != null)
-                    {
-                        string urlGuardada = Session["urlGuardada"].ToString();
-                        Session.Remove("urlGuardada"); // Limpiar la URL guardada
-                        Response.Redirect(urlGuardada, false); // Redirigir a la URL guardada
-                    }
-                    else
-                    {
-                        LabelMensaje.Text = @"
+                    // Esto que comento a continuacion era util si queria guardar la url donde el usuario intentaba
+                    // ingresar antes de loguearse, pero lo termine desestiamando. Idea basica pero util.
+                    //if (Session["urlGuardada"] != null)
+                    //{
+                    //    string urlGuardada = Session["urlGuardada"].ToString();
+                    //    Session.Remove("urlGuardada"); // Limpiar la URL guardada
+                    //    Response.Redirect(urlGuardada, false); // Redirigir a la URL guardada
+                    //}
+                    //else
+                    //{
+                    LabelMensaje.Text = @"
                         <div class='alert alert-success alert-dismissible fade show' role='alert'>
                             ¡Login exitoso!
                             <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close' onclick=""window.location.href='Default.aspx';""></button>
                         </div>";
-                        LabelMensaje.Visible = true;
-                    }
+                    LabelMensaje.Visible = true;
+                    //}
                 }
                 else
                 {

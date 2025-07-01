@@ -22,7 +22,7 @@ namespace Negocio
         public static bool EsPropietario(Object user)
         {
             Usuario usuario = user != null ? (Usuario)user : null;
-            return usuario != null && (usuario.IdRol == 2 || usuario.IdRol == 3); // 2 = Inmobiliaria, 3 = Dueño Directo
+            return usuario != null && (usuario.IdRol == 2 || usuario.IdRol == 3); // 2 = admin, 3 = propietario
         }
     }
 }

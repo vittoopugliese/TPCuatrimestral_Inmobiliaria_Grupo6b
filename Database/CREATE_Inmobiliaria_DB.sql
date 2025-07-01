@@ -22,13 +22,10 @@ CREATE TABLE Rol (
     Descripcion NVARCHAR(100) NOT NULL
 );
 
-
 CREATE TABLE TipoOperacion (
     IdTipoOperacion INT IDENTITY(1,1) PRIMARY KEY,
     Descripcion NVARCHAR(100) NOT NULL
 );
-
-DROP TABLE Usuarios
 
 CREATE TABLE Usuario (
     IdUsuario INT PRIMARY KEY IDENTITY(1,1),
@@ -44,10 +41,6 @@ CREATE TABLE Usuario (
     FOREIGN KEY (IdProvincia) REFERENCES Provincia(IdProvincia),
     FOREIGN KEY (IdRol) REFERENCES Rol(IdRol)
 );
-
-DROP TABLE Usuario;
-
-
 
 CREATE TABLE Propiedad (
     IdPropiedad INT PRIMARY KEY IDENTITY(1,1),
@@ -89,7 +82,7 @@ CREATE TABLE Propiedad (
     FOREIGN KEY (IdProvincia) REFERENCES Provincia(IdProvincia)
 );
 
-CREATE TABLE Imagen (
+CREATE TABLE Imagenes (
     IdImagen INT PRIMARY KEY,
     IdPropiedad INT,
     UrlImagen NVARCHAR(255),
@@ -102,7 +95,7 @@ CREATE TABLE Favorito (
 	IdUsuario INT
 );
 
-Create Table Mensajes (
+Create Table Mensaje (
 	IdMensaje int primary key not null identity (1, 1),
 	IdPropiedad int foreign key references Propiedad(IdPropiedad),
   IdUsuario int foreign key references Usuario(IdUsuario),
@@ -111,7 +104,7 @@ Create Table Mensajes (
 	FechaDePublicacion datetime NOT NULL DEFAULT GETDATE()
 )
 
-Create Table RevisionPublicaciones (
+Create Table RevisionPublicacion (
     IdRevision INT IDENTITY PRIMARY KEY,
     IdPropiedad INT NOT NULL,
     IdUsuario INT NOT NULL,

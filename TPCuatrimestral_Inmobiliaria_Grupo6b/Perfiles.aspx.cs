@@ -38,13 +38,19 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
         {
             ProvinciaNegocio negocio = new ProvinciaNegocio();
             List<KeyValuePair<int, string>> provincias = negocio.ObtenerProvincias();
-
             DropDownListProvincia.Items.Clear();
-            DropDownListProvincia.Items.Add(new ListItem("Selecciona una provincia", ""));
 
+            ListItem itemIndicador = new ListItem("Selecciona", "");
+            itemIndicador.Attributes.Add("disabled", "disabled");
+            itemIndicador.Selected = false;
+            DropDownListProvincia.Items.Add(itemIndicador);
+            
             foreach (var provincia in provincias)
             {
-                DropDownListProvincia.Items.Add(new ListItem(provincia.Value, provincia.Key.ToString()));
+                if (provincia.Key != 24)
+                {
+                    DropDownListProvincia.Items.Add(new ListItem(provincia.Value, provincia.Key.ToString()));
+                }
             }
         }
 
@@ -52,13 +58,18 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
         {
             RolNegocio negocio = new RolNegocio();
             List<KeyValuePair<int, string>> roles = negocio.ObtenerRoles();
-
             DropDownListRol.Items.Clear();
-            DropDownListRol.Items.Add(new ListItem("Selecciona un rol", ""));
+
+            ListItem itemIndicador = new ListItem("Selecciona", "");
+            itemIndicador.Attributes.Add("disabled", "disabled");
+            DropDownListRol.Items.Add(itemIndicador);
 
             foreach (var rol in roles)
             {
-                DropDownListRol.Items.Add(new ListItem(rol.Value, rol.Key.ToString()));
+                if (rol.Key != 2)
+                {
+                    DropDownListRol.Items.Add(new ListItem(rol.Value, rol.Key.ToString()));
+                }   
             }
         }
 
