@@ -24,7 +24,7 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
             {
                 TextBoxCorreo.Text = Session["Email"].ToString();
                 TextBoxContra.Attributes["value"] = Session["Contrasena"].ToString();
-                DropDownListRol.SelectedValue = Session["IdRol"].ToString();
+                //DropDownListRol.SelectedValue = Session["IdRol"].ToString();
             }
             else
             {

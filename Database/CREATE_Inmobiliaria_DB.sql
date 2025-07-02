@@ -1,8 +1,5 @@
-
 CREATE DATABASE Inmobiliaria_TPC
 GO
-
-DROP DATABASE Inmobiliaria_TPC;
 
 USE Inmobiliaria_TPC
 GO
@@ -77,7 +74,6 @@ CREATE TABLE Propiedad (
     IdProvincia INT,
 	Cochera BIT,
 	Destacada BIT DEFAULT 0,
-    
     FOREIGN KEY (IdUsuario) REFERENCES Usuario(IdUsuario),
     FOREIGN KEY (IdProvincia) REFERENCES Provincia(IdProvincia)
 );
@@ -102,7 +98,7 @@ Create Table Mensaje (
 	Mensaje Varchar(255) not null,
   NombreUsuario Varchar(100) not null,
 	FechaDePublicacion datetime NOT NULL DEFAULT GETDATE()
-)
+);
 
 Create Table RevisionPublicacion (
     IdRevision INT IDENTITY PRIMARY KEY,
@@ -112,5 +108,4 @@ Create Table RevisionPublicacion (
     TipoAccion VARCHAR(10) NOT NULL, -- 'INSERT' o 'UPDATE'
     EstadoRevision VARCHAR(20) DEFAULT 'Pendiente',
     ObservacionesAdmin VARCHAR(MAX) NULL
-)
-
+);

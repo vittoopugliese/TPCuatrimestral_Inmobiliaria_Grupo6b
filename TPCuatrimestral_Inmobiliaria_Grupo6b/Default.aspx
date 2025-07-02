@@ -141,14 +141,17 @@
                         <ItemTemplate>
                             <div class="property-card" onclick="window.location.href='InmuebleSeleccionado.aspx?id=<%# Eval("IdPropiedad") %>';">
                                 <div class="row g-0">
-                                    <div style="position: relative;">
-                                        <img src='<%# Eval("ImagenUrl") %>' class="property-image" alt="Propiedad" />
-                                        <asp:LinkButton ID="btnFavorito" runat="server" CommandName="AlternarFavorito" CommandArgument='<%# Eval("IdPropiedad") %>' 
-                                            CssClass='<%# "heart-icon " + (EsFavorito(Eval("IdPropiedad")) ? "favorito" : "no-favorito") %>'
-                                            OnClientClick="event.stopPropagation(); return true;">
-                                            <i class="fas fa-heart"></i>
-                                        </asp:LinkButton>
-                                    </div>
+                                    <% if (Session["IdRol"] != null) { %>		
+                                        <div style="position: relative;">
+                                            <img src='<%# Eval("ImagenUrl") %>' class="property-image" alt="Propiedad" />
+                                            <asp:LinkButton ID="btnFavorito" runat="server" CommandName="AlternarFavorito" CommandArgument='<%# Eval("IdPropiedad") %>' 
+                                                CssClass='<%# "heart-icon " + (EsFavorito(Eval("IdPropiedad")) ? "favorito" : "no-favorito") %>'
+                                                OnClientClick="event.stopPropagation(); return true;">
+                                                <i class="fas fa-heart"></i>
+                                            </asp:LinkButton>
+                                        </div>
+                                    <% } %>
+
                                 
                                     <div class="col-md-8">
                                         <div class="card-body p-3">
@@ -186,6 +189,13 @@
             </div>
         </div>
     </div>
+
+        <asp:Panel ID="pnlSinDestacadas" runat="server" Visible="false" CssClass="text-center py-5">
+            <div class="alert alert-warning px-5">
+                <h3>No se encontraron propiedades</h3>
+                <p class="fs-5">No hay propiedades destacadas</p>
+            </div>
+        </asp:Panel>
 
     <div class="py-3">
       <h2 class="mb-5 mt-2 text-center">🎖 Propiedades Más Vistas 🏡</h2>
@@ -243,4 +253,11 @@
           </div>
       </div>
   </div>
+
+                <asp:Panel ID="pnlSinVistas" runat="server" Visible="false" CssClass="text-center py-5">
+                    <div class="alert alert-warning px-5">
+                        <h3>No se encontraron propiedades</h3>
+                        <p class="fs-5">No hay propiedades mas vistas</p>
+                    </div>
+                </asp:Panel>
 </asp:Content>

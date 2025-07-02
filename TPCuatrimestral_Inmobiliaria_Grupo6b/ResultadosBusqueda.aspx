@@ -206,6 +206,7 @@
                     <ItemTemplate>
                         <div class="property-card" onclick="navegarAPropiedad(<%# Eval("IdPropiedad") %>);">
                             <div class="row g-0">
+                            <% if (Session["IdRol"] != null) { %>		
                                 <div style="position: relative;">
                                   <img src='<%# Eval("ImagenUrl") %>' class="property-image" alt="Propiedad" />
                                        <asp:LinkButton ID="btnFavorito" runat="server" CommandName="AlternarFavorito" CommandArgument='<%# Eval("IdPropiedad") %>' 
@@ -214,6 +215,7 @@
                                            <i class="fas fa-heart"></i>
                                        </asp:LinkButton>
                                 </div>
+			                <% } %>
                                 
                                 <div class="col-md-8">
                                     <div class="card-body p-4">
