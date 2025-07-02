@@ -206,16 +206,18 @@
                       <ItemTemplate>
                           <div class="property-card" onclick="window.location.href='InmuebleSeleccionado.aspx?id=<%# Eval("IdPropiedad") %>';">
                               <div class="row g-0">
-                                <div style="position: relative;">
-                                    <img src='<%# Eval("ImagenUrl") %>' class="property-image" alt="Propiedad" />
-                                        <asp:LinkButton ID="btnFavorito" runat="server" 
-                                            CommandName="AlternarFavorito" 
-                                            CommandArgument='<%# Eval("IdPropiedad") %>' 
-                                            CssClass='<%# "heart-icon " + (EsFavorito(Eval("IdPropiedad")) ? "favorito" : "no-favorito") %>'
-                                            OnClientClick="event.stopPropagation(); return true;">
-                                            <i class="fas fa-heart"></i>
-                                        </asp:LinkButton>
-                                </div>
+                                <% if (Session["IdRol"] != null) { %>
+                                    <div style="position: relative;">
+                                        <img src='<%# Eval("ImagenUrl") %>' class="property-image" alt="Propiedad" />
+                                            <asp:LinkButton ID="btnFavorito" runat="server" 
+                                                CommandName="AlternarFavorito" 
+                                                CommandArgument='<%# Eval("IdPropiedad") %>' 
+                                                CssClass='<%# "heart-icon " + (EsFavorito(Eval("IdPropiedad")) ? "favorito" : "no-favorito") %>'
+                                                OnClientClick="event.stopPropagation(); return true;">
+                                                <i class="fas fa-heart"></i>
+                                            </asp:LinkButton>
+                                    </div>
+                                 <% } %>
                               
                                   <div class="col-md-8">
                                       <div class="card-body p-3">

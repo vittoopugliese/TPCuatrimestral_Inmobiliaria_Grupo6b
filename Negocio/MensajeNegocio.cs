@@ -23,7 +23,7 @@ namespace Negocio
                              Mensaje,
                              FechaDePublicacion,
                              NombreUsuario
-                             FROM Mensajes
+                             FROM Mensaje
                              WHERE IdPropiedad = @IdPropiedad
                              ORDER BY FechaDePublicacion DESC");
 
@@ -68,7 +68,7 @@ namespace Negocio
             BaseDeDatos datos = new BaseDeDatos();
             try
             {
-                datos.setearConsulta(@"INSERT INTO Mensajes 
+                datos.setearConsulta(@"INSERT INTO Mensaje 
                     (IdPropiedad, IdUsuario, NombreUsuario, Mensaje, FechaDePublicacion) 
                     OUTPUT INSERTED.IdMensaje
                     VALUES 
@@ -98,7 +98,7 @@ namespace Negocio
             try
             {
                 // Verificar primero si el mensaje existe
-                datos.setearConsulta("SELECT COUNT(*) FROM Mensajes WHERE IdMensaje = @IdMensaje");
+                datos.setearConsulta("SELECT COUNT(*) FROM Mensaje WHERE IdMensaje = @IdMensaje");
                 datos.agregarParametro("@IdMensaje", idMensaje);
                 datos.ejecutarLectura();
 
@@ -110,14 +110,14 @@ namespace Negocio
                 datos.cerrarConexion();
 
                 // Eliminar el mensaje
-                datos.setearConsulta("DELETE FROM Mensajes WHERE IdMensaje = @IdMensaje");
+                datos.setearConsulta("DELETE FROM Mensaje WHERE IdMensaje = @IdMensaje");
                 datos.agregarParametro("@IdMensaje", idMensaje);
 
                 // Ejecutar sin esperar retorno
                 datos.ejecutarAccion();
 
                 // Verificación opcional con nueva consulta
-                datos.setearConsulta("SELECT COUNT(*) FROM Mensajes WHERE IdMensaje = @IdMensaje");
+                datos.setearConsulta("SELECT COUNT(*) FROM Mensaje WHERE IdMensaje = @IdMensaje");
                 datos.agregarParametro("@IdMensaje", idMensaje);
                 datos.ejecutarLectura();
 
