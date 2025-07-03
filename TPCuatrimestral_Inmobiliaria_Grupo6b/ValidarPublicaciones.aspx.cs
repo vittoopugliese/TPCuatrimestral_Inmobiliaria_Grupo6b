@@ -20,9 +20,8 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
 
         private void CargarRevisiones()
         {
-            // Acá deberías usar tu capa de negocio para traer los datos
-            var negocio = new AdminNegocio(); // asumido
-            GridRevisiones.DataSource = negocio.ListarRevisionesPendientes(); // método que ejecuta la consulta SQL
+            var negocio = new AdminNegocio();
+            GridRevisiones.DataSource = negocio.ListarRevisionesPendientes();
             GridRevisiones.DataBind();
         }
 
@@ -89,8 +88,12 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
             }
             else
             {
-                // Podés mostrar un mensaje si querés que sea obligatorio
-                ScriptManager.RegisterStartupScript(this, GetType(), "alerta", "alert('Por favor, escribí una observación.');", true);
+                LabelMensaje.Text = @"
+                    <div class='alert alert-danger alert-dismissible fade show' role='alert'>
+                        Rechazo cancelado
+                        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close' onclick=""window.location.href='Registro.aspx';""></button>
+                    </div>";
+                LabelMensaje.Visible = true;
             }
         }
     }

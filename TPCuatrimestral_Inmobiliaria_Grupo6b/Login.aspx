@@ -34,15 +34,17 @@
         <div class="d-flex justify-content-center align-items-center" style="min-height: 100vh; padding: 15px;">
             <div align="center" class="container bg-light boxshadow col-12 col-sm-8 col-md-6 col-lg-4 col-xl-3" style="border-radius: 15px; padding: 0; max-width: 400px;">
                 <div>
-                        <div class="text-white rounded-top d-flex align-items-center justify-content-center" style="padding: 15px; background-color: #121212;">
-                            <h2 class="mb-0">Login</h2>
-                        </div>
+                    <div class="position-relative text-white rounded-top d-flex justify-content-center align-items-center" style="padding: 15px; background-color: #121212;">
+                        <h2 class="mb-0">Login</h2>
+                        <button type="button" class="btn-close btn-close-white position-absolute" aria-label="Cerrar" onclick="cerrarVentana()" style="top: 10px; right: 10px; filter: invert(1);"></button>
+                    </div>
+
                     
                     <div class="px-4 py-4">
                         <div class="form-group mb-3">
 
                              
-                                <asp:Label ID="LabelMensaje" runat="server" Text="" Visible="false" CssClass="alert alert-dismissible"></asp:Label>
+                            <asp:Label ID="LabelMensaje" runat="server" Text="" Visible="false" CssClass="alert alert-dismissible"></asp:Label>
                            
 
                             <label class="text-dark form-label" for="emailLabel">Correo Electronico</label>
@@ -80,13 +82,12 @@
         </div>
     </form>
 
-        <script>
-            document.addEventListener("keydown", function (event) {
-                if (event.key === "Escape") {
-                    location.replace("Default.aspx");
-                }
-            });
-        </script>
+    <script type="text/javascript">
+        function cerrarVentana() {
+            window.location.href = "Default.aspx";
+        }
+    </script>
+
 
 </body>
 </html>

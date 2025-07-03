@@ -37,9 +37,12 @@
                 <asp:Label ID="LabelMensaje" runat="server" Text="" Visible="false" CssClass="alert"></asp:Label>
 
                 <div>
-                        <div class="text-white rounded-top d-flex align-items-center justify-content-center" style="padding: 15px; background-color: #121212;">
-                            <h2 class="mb-0">Recuperar contraseña</h2>
-                        </div>
+
+                    <div class="position-relative text-white rounded-top d-flex justify-content-center align-items-center" style="padding: 15px; background-color: #121212;">
+                        <h2 class="mb-0">Recuperar contraseña</h2>
+                        <button type="button" class="btn-close btn-close-white position-absolute" aria-label="Cerrar" onclick="cerrarVentana()" style="top: 10px; right: 10px; filter: invert(1);"></button>
+                    </div>
+
                     
                     <div class="px-4 py-4">
                         <div class="form-group mb-3">
@@ -59,12 +62,10 @@
         </div>
     </form>
 
-        <script>
-            document.addEventListener("keydown", function (event) {
-                if (event.key === "Escape") {
-                    location.replace("Login.aspx"); // Ajusta la ruta según corresponda
-                }
-            });
+        <script type="text/javascript">
+            function cerrarVentana() {
+                window.location.href = "Login.aspx";
+            }
         </script>
 
 </body>

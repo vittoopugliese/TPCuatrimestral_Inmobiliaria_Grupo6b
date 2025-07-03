@@ -5,6 +5,8 @@
         <div class="container mt-4">
             <h2 class="mb-4">Revisiones Pendientes</h2>
 
+            <asp:Label ID="LabelMensaje" runat="server" Text="" Visible="false" CssClass="alert alert-dismissible"></asp:Label>
+
             <asp:GridView ID="GridRevisiones" runat="server" AutoGenerateColumns="False"
                 CssClass="table table-striped"
                 OnRowCommand="GridRevisiones_RowCommand"

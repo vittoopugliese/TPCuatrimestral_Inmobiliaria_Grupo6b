@@ -39,8 +39,10 @@
                 <asp:Label ID="LabelMensaje" runat="server" Text="" Visible="false" CssClass="alert alert-danger"></asp:Label>
 
                 <div>
-                    <div class="text-white d-flex align-items-center justify-content-center" style="border-top-left-radius: 15px; border-top-right-radius: 15px; padding: 10px; margin: 0; background-color: #121212;">
-                        <h5 class="mb-0">Mi Perfil</h5>
+
+                    <div class="position-relative text-white rounded-top d-flex justify-content-center align-items-center" style="padding: 15px; background-color: #121212;">
+                        <h2 class="mb-0">Mi Perfil</h2>
+                        <button type="button" class="btn-close btn-close-white position-absolute" aria-label="Cerrar" onclick="cerrarVentana()" style="top: 10px; right: 10px; filter: invert(1);"></button>
                     </div>
                     
                     <div class="px-3 px-md-4 py-2">
@@ -136,13 +138,11 @@
         </script>
     <% }
      else { %>
-            <script>
-                document.addEventListener("keydown", function (event) {
-                    if (event.key === "Escape") {
-                        location.replace("Default.aspx");
-                    }
-                });
-            </script>
+            <script type="text/javascript">
+                function cerrarVentana() {
+                    window.location.href = "Default.aspx";
+                }
+            </script>   
 
     <% } %>
 

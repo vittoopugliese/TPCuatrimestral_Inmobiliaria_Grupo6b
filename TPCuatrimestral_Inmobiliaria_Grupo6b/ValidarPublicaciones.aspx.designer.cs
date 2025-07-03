@@ -15,6 +15,15 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
     {
 
         /// <summary>
+        /// LabelMensaje control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelMensaje;
+
+        /// <summary>
         /// GridRevisiones control.
         /// </summary>
         /// <remarks>
