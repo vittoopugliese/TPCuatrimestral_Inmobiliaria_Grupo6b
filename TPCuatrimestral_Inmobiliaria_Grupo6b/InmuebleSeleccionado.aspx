@@ -77,7 +77,7 @@
                                     <input class="form-check-input" type="checkbox" id="checkRecibirCopia" runat="server" style="margin-top: 15px">
                                     <label class="form-check-label" for="checkRecibirCopia" style="margin-top: 10px">Recibir copia por email</label>
                                 </div>
-                                <asp:Button Text="Contactar" CssClass="btn btn-dark" ID="btnContactar" runat="server" Style="width: 100%; margin-top: 10px" OnClick="btnContactar_Click" />
+                                <asp:Button Text="Enviar e-mail" CssClass="btn btn-dark" ID="btnContactar" runat="server" Style="width: 100%; margin-top: 10px" OnClick="btnContactar_Click" />
                                 <asp:Button Text="Enviar WhatsApp" CssClass="btn btn-success" ID="botonWp" runat="server" Style="width: 100%; margin-top: 10px" OnClick="botonWp_Click" />
                             </div>
                         </div>
@@ -176,7 +176,7 @@
                             <ItemTemplate>
                                 <div class="card" style="margin-top: 17px">
                                     <div class="card-body">
-                                        <h6><%# Eval("Mensaje") %></h6>
+                                        <h6><%# Eval("Mensaj") %></h6>
                                         <div class="row">
                                             <div class="col-11">
                                                 <p>

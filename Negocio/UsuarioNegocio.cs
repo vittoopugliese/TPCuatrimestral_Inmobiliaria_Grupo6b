@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -165,5 +166,53 @@ namespace Negocio
                 db.cerrarConexion();
             }
         }
+
+        private Usuario MapearUsuario(SqlDataReader lector)
+        {
+            Usuario usuario = new Usuario();
+
+            usuario.IdUsuario = lector["IdUsuario"] != DBNull.Value ? (int)lector["IdUsuario"] : 0;
+            usuario.Nombre = lector["Nombre"] != DBNull.Value ? lector["Nombre"].ToString() : "";
+            usuario.Apellido = lector["Apellido"] != DBNull.Value ? lector["Apellido"].ToString() : "";
+            usuario.Email = lector["Email"] != DBNull.Value ? lector["Email"].ToString() : "";
+            usuario.Contrasena = lector["Contrasena"] != DBNull.Value ? lector["Contrasena"].ToString() : "";
+            usuario.Telefono = lector["Telefono"] != DBNull.Value ? lector["Telefono"].ToString() : "";
+            usuario.Direccion = lector["Direccion"] != DBNull.Value ? lector["Direccion"].ToString() : "";
+            usuario.Localidad = lector["Localidad"] != DBNull.Value ? lector["Localidad"].ToString() : "";
+            usuario.IdProvincia = lector["IdProvincia"] != DBNull.Value ? (int)lector["IdProvincia"] : 0;
+            usuario.IdRol = lector["IdRol"] != DBNull.Value ? (int)lector["IdRol"] : 0;
+
+            return usuario;
+        }
+
+        public Usuario ObtenerPorId(int id)
+        {
+            BaseDeDatos db = new BaseDeDatos();
+            Usuario usuario = new Usuario();
+
+            try
+            {
+                db.setearConsulta("SELECT * FROM Usuario WHERE IdUsuario = @IdUsuario");
+                db.setearParametro("@IdUsuario", id);
+                db.ejecutarLectura();
+
+                if (db.Lector.Read())
+                {
+                    usuario = MapearUsuario(db.Lector); // Pasamos el lector activo
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener usuario por ID", ex);
+            }
+            finally
+            {
+                db.cerrarConexion();
+            }
+
+            return usuario;
+        }
+
+
     }
 }

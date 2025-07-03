@@ -15,8 +15,8 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
     public partial class InmuebleSeleccionado : System.Web.UI.Page
     {
 
-        private List<Mensajes> _mensajesLista = new List<Mensajes>();
-        public List<Mensajes> MensajesLista
+        private List<Mensaje> _mensajesLista = new List<Mensaje>();
+        public List<Mensaje> MensajesLista
         {
             get { return _mensajesLista; }
             set { _mensajesLista = value; }
@@ -189,7 +189,10 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
             }
 
             // Mostrar información del propietario
-            nombrePropietario.InnerText = $"{propiedad.TipoDueno}";
+            int idUsuario = propiedad.IdUsuario;
+            UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
+            Usuario usuario = usuarioNegocio.ObtenerPorId(idUsuario);
+            nombrePropietario.InnerText = $"{propiedad.TipoDueno} {usuario.Nombre} {usuario.Apellido}";
             whatsappPropietario.InnerText = $"{propiedad.WhatsApp}";
 
 
@@ -449,12 +452,12 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                 Usuario usuarioActual = (Usuario)Session["usuario"];
 
                 // 6. Crear y configurar el mensaje
-                Mensajes nuevoMensaje = new Mensajes
+                Mensaje nuevoMensaje = new Mensaje
                 {
                     IdUsuario = usuarioActual.IdUsuario,
                     NombreUsuario = $"{usuarioActual.Nombre} {usuarioActual.Apellido}",
                     IdPropiedad = idPropiedad,
-                    Mensaje = txtMensajeConsulta.Text.Trim(),
+                    Mensaj = txtMensajeConsulta.Text.Trim(),
                     FechaDePublicacion = DateTime.Now
                 };
 
@@ -494,13 +497,55 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
             {
                 try
                 {
+                    // 1. Obtener IDs básicos
                     int idMensaje = Convert.ToInt32(e.CommandArgument);
                     int idPropiedad = Convert.ToInt32(Request.QueryString["id"]);
 
+                    // 2. Obtener usuario de sesión
+                    Usuario usuarioSesion = (Usuario)Session["usuario"];
+                    if (usuarioSesion == null)
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showError",
+                            "Swal.fire('Error', 'Debes iniciar sesión para realizar esta acción.', 'error');", true);
+                        return;
+                    }
+
+                    // 3. Obtener el mensaje completo de la base de datos
                     MensajeNegocio mensajeNegocio = new MensajeNegocio();
+                    Mensaje mensaje = mensajeNegocio.ObtenerMensajePorId(idMensaje);
+
+                    if (mensaje == null)
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showError",
+                            "Swal.fire('Error', 'El mensaje no existe o ya fue eliminado.', 'error');", true);
+                        return;
+                    }
+
+                    // 4. Verificar que el usuario de sesión es el creador del mensaje
+                    if (usuarioSesion.IdUsuario != mensaje.IdUsuario)
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showError",
+                            "Swal.fire('Error', 'No tienes permiso para borrar este mensaje.', 'error');", true);
+                        return;
+                    }
+
+                    // 5. Verificar que es el último mensaje del usuario 
+                    var ultimoMensaje = mensajeNegocio.listar(idPropiedad)
+                        .Where(m => m.IdUsuario == usuarioSesion.IdUsuario)
+                        .OrderByDescending(m => m.FechaDePublicacion)
+                        .FirstOrDefault();
+
+                    if (ultimoMensaje == null || ultimoMensaje.IdMensaje != idMensaje)
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showError",
+                            "Swal.fire('Error', 'Solo puedes borrar tu último mensaje.', 'error');", true);
+                        return;
+                    }
+
+                    // 6. Si pasó todas las validaciones, borrar el mensaje
                     mensajeNegocio.eliminarMensaje(idMensaje);
 
-                    // Actualizar la lista y el repeater
+                    // 7. Actualizar la lista y el repeater
                     MensajesLista = mensajeNegocio.listar(idPropiedad);
                     rptMensajes.DataSource = MensajesLista;
                     rptMensajes.DataBind();

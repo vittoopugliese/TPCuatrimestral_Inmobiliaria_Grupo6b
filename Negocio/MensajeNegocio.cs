@@ -9,9 +9,9 @@ namespace Negocio
 {
     public class MensajeNegocio
     {
-        public List<Mensajes> listar(int idPropiedad)
+        public List<Mensaje> listar(int idPropiedad)
         {
-            List<Mensajes> lista = new List<Mensajes>();
+            List<Mensaje> lista = new List<Mensaje>();
             BaseDeDatos datos = new BaseDeDatos();
             try
             {
@@ -32,11 +32,11 @@ namespace Negocio
 
                 while (datos.Lector.Read())
                 {
-                    Mensajes mensaje = new Mensajes();
+                    Mensaje mensaje = new Mensaje();
                     mensaje.IdMensaje = (int)datos.Lector["IdMensaje"];
                     mensaje.IdPropiedad = (int)datos.Lector["IdPropiedad"];
                     mensaje.IdUsuario = (int)datos.Lector["IdUsuario"];
-                    mensaje.Mensaje = (string)datos.Lector["Mensaje"];
+                    mensaje.Mensaj = (string)datos.Lector["Mensaje"];
                     mensaje.FechaDePublicacion = (DateTime)datos.Lector["FechaDePublicacion"];
 
                     // Asignamos el nombre del usuario
@@ -63,7 +63,7 @@ namespace Negocio
             }
         }
 
-        public int agregarMensaje(Mensajes nuevoMensaje)
+        public int agregarMensaje(Mensaje nuevoMensaje)
         {
             BaseDeDatos datos = new BaseDeDatos();
             try
@@ -77,7 +77,7 @@ namespace Negocio
                 datos.agregarParametro("@IdPropiedad", nuevoMensaje.IdPropiedad);
                 datos.agregarParametro("@IdUsuario", nuevoMensaje.IdUsuario);
                 datos.agregarParametro("@NombreUsuario", nuevoMensaje.NombreUsuario);
-                datos.agregarParametro("@Mensaje", nuevoMensaje.Mensaje);
+                datos.agregarParametro("@Mensaje", nuevoMensaje.Mensaj);
                 datos.agregarParametro("@FechaDePublicacion", nuevoMensaje.FechaDePublicacion);
 
                 return datos.ejecutarAccionScalar();
@@ -137,7 +137,47 @@ namespace Negocio
             }
         }
 
+        public Mensaje ObtenerMensajePorId(int idMensaje)
+        {
+            BaseDeDatos datos = new BaseDeDatos();
+            try
+            {
+                datos.setearConsulta(@"SELECT 
+                            IdMensaje,
+                            IdPropiedad,
+                            IdUsuario,
+                            Mensaje,
+                            FechaDePublicacion,
+                            NombreUsuario
+                            FROM Mensaje
+                            WHERE IdMensaje = @IdMensaje");
 
+                datos.agregarParametro("@IdMensaje", idMensaje);
+                datos.ejecutarLectura();
+
+                if (datos.Lector.Read())
+                {
+                    Mensaje mensaje = new Mensaje();
+                    mensaje.IdMensaje = (int)datos.Lector["IdMensaje"];
+                    mensaje.IdPropiedad = (int)datos.Lector["IdPropiedad"];
+                    mensaje.IdUsuario = (int)datos.Lector["IdUsuario"];
+                    mensaje.Mensaj = (string)datos.Lector["Mensaje"];
+                    mensaje.FechaDePublicacion = (DateTime)datos.Lector["FechaDePublicacion"];
+                    mensaje.NombreUsuario = datos.Lector["NombreUsuario"].ToString();
+
+                    return mensaje;
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener mensaje por ID", ex);
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
 
     }
 }
