@@ -51,6 +51,7 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
         protected global::System.Web.UI.WebControls.Label lblPublicacionesActivas;
 
         /// <summary>
+<<<<<<< refs/remotes/origin/main
         /// lblNombreUsuario control.
         /// </summary>
         /// <remarks>
@@ -61,6 +62,9 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
 
         /// <summary>
         /// lblEmailUsuario control.
+=======
+        /// Control lblEmailUsuario.
+>>>>>>> email de usuario en publicaciones usuario con una foto de usuario, luego cambiar a enlace de perfil
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
@@ -69,6 +73,7 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
         protected global::System.Web.UI.WebControls.Label lblEmailUsuario;
 
         /// <summary>
+<<<<<<< refs/remotes/origin/main
         /// lblFechaRegistro control.
         /// </summary>
         /// <remarks>
@@ -79,6 +84,9 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
 
         /// <summary>
         /// rptPropiedades control.
+=======
+        /// Control rptPropiedades.
+>>>>>>> email de usuario en publicaciones usuario con una foto de usuario, luego cambiar a enlace de perfil
         /// </summary>
         /// <remarks>
         /// Auto-generated field.

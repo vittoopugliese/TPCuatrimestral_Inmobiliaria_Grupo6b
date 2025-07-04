@@ -227,7 +227,7 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                 AptoCredito = inputCredito.Checked,
                 Moneda = selectTipoMoneda.Text,
                 FechaPublicacion = DateTime.Now,
-                ImagenUrl = "default.jpg" // Valor por defecto, se actualizará después
+                ImagenUrl = "default.jpg"
             };
         }
 

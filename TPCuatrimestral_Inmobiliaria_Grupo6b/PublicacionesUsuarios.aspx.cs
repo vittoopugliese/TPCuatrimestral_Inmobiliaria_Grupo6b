@@ -107,9 +107,7 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
 
         private void CargarDatos()
         {
-            lblNombreUsuario.Text = "Usuario Registrado";
-            lblEmailUsuario.Text = "buenusuario@gmail.com";
-            lblFechaRegistro.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            if (Session["usuario"] != null) lblEmailUsuario.Text = Session["Email"].ToString();
 
             if (propiedadesNegocio == null)
             {

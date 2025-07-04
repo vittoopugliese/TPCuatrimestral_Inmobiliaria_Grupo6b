@@ -93,6 +93,15 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             transition: 150ms all ease-in-out;
             user-select: none;
+            display:flex;
+            flex-direction: row;
+            align-items: center;    
+            gap: 32px;
+        }
+
+        .account-info-card img{
+            width: 70px;
+            border-radius: 100px;
         }
 
         .stats-card:hover {
@@ -191,12 +200,8 @@
 
             <div class="col-md-6 mb-3">
                 <div class="account-info-card">
-                    <p class="mb-1"><strong>Usuario:</strong>
-                        <asp:Label ID="lblNombreUsuario" runat="server" Text="Juan Pérez" /></p>
-                    <p class="mb-1"><strong>Email:</strong>
-                        <asp:Label ID="lblEmailUsuario" runat="server" Text="juan.perez@email.com" /></p>
-                    <p class="mb-0"><strong>Fecha registro:</strong>
-                        <asp:Label ID="lblFechaRegistro" runat="server" Text="15/03/2024" /></p>
+                    <img src="https://i.pinimg.com/236x/08/35/0c/08350cafa4fabb8a6a1be2d9f18f2d88.jpg" />
+                    <p class="mb-1 fs-4"><strong>Logeado desde </strong> <asp:Label ID="lblEmailUsuario" runat="server" Text="juan.perez@email.com" /></p>
                 </div>
             </div>
         </div>

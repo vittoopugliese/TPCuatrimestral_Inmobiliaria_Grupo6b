@@ -82,13 +82,9 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
 
         private void CargarDatosPropiedad(Propiedad propiedad)
         {
-            //// Título
             txtTitulo.InnerHtml = $"<h4>{propiedad.Titulo}</h4>";
-
-
             direccionPropiedad.InnerHtml = $"<span class='fa-solid fa-location-dot' style='margin-right: 10px'></span>{propiedad.Direccion}, {propiedad.Localidad}";
 
-            //baño
             if (propiedad.Baños == 0)
             {
                 banoPropiedad.InnerText = " Sin baño";
@@ -103,7 +99,6 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
 
             }
 
-            //cochera
             if (propiedad.Cochera)
             {
                 cocheraPropiedad.InnerHtml = "Cochera";
@@ -113,7 +108,6 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                 colCochera.Visible = false;
             }
 
-            //dormitorios
             if (propiedad.Dormitorios == 0)
             {
                 dormitoriosPropiedad.InnerText = " Sin dormitorios";
@@ -128,7 +122,6 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
 
             }
 
-            //balcon
             if (propiedad.ConBalcon)
             {
                 balconPropiedad.InnerHtml = "Balcón";
@@ -137,20 +130,17 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
             {
                 colBalcon.Visible = false;
             }
-            //bool credito
+
             if (!propiedad.AptoCredito)
             {
                 creditoPropiedad.Visible = false;
             }
 
-            // Precio
             precioCompleto.InnerText = $"{propiedad.Moneda} {propiedad.Precio}";
             expensasPropiedad.InnerText = $"Expensas: {propiedad.Moneda} {propiedad.Expensas} ";
 
-            // Fecha publicación
             fechaPublicacionPropiedad.InnerText = $"Publicado el {propiedad.FechaPublicacion.ToString("dd/MM/yyyy")}";
 
-            //Cant. Ambientes
             if (propiedad.Ambientes == 1)
             {
                 cantAmbientes.InnerText = $"{propiedad.Ambientes} Ambiente";
@@ -160,35 +150,27 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                 cantAmbientes.InnerText = $"{propiedad.Ambientes} Ambientes";
             }
 
-            //Superficie Total
             superficieTot.InnerText = $"Sup. Total {propiedad.Sup_m2_Total} Mts2";
 
-            //Superficie Cubierta
             superCub.InnerText = $"Sup. Cubierta {propiedad.Sup_m2_Cubierto} Mts2";
 
-            //bool patio
             if (!propiedad.ConPatio)
             {
                 divPatio.Visible = false;
             }
 
-            //Años de antiguedad
             antigue.InnerText = $"{propiedad.AnosAntiguedad} Años de antiguedad";
-
-            // Descripción
             tituloPropiedad.InnerText = $"{propiedad.Tipo} en {propiedad.TipoOperacion} en {propiedad.Localidad}";
             descripcionPropiedad.InnerText = $"{propiedad.Descripcion}";
 
             whatsappPropietario.InnerText = $"{propiedad.WhatsApp}";
 
-            // Configurar botón de WhatsApp
             var botonWp = FindControl("botonWp") as Button;
             if (botonWp != null)
             {
                 botonWp.OnClientClick = $"window.open('https://wa.me/{propiedad.WhatsApp}', '_blank'); return false;";
             }
 
-            // Mostrar información del propietario
             int idUsuario = propiedad.IdUsuario;
             UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
             Usuario usuario = usuarioNegocio.ObtenerPorId(idUsuario);
@@ -196,20 +178,14 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
             whatsappPropietario.InnerText = $"{propiedad.WhatsApp}";
 
 
-            // Establecer asunto por defecto (esto puede quedarse aquí)
             txtAsunto.Text = $"Consulta sobre {propiedad.Tipo} en {propiedad.Direccion}";
-
-            // Mensaje predefinido (esto puede quedarse aquí)
             txtMensaje.Text = $"Estoy interesado/a en la propiedad ubicada en {propiedad.Direccion}. Por favor, envíeme más información.\nSaludos cordiales!";
-
-
         }
 
         private void CargarImagenes(int idPropiedad)
         {
             try
             {
-                // Limpiar el carrousel antes de agregar nuevas imágenes
                 carouselInner.Controls.Clear();
 
                 string rutaImagenes = "/Images/";
@@ -279,7 +255,6 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
         {
             try
             {
-                // 1. Validar ID de propiedad
                 if (!int.TryParse(Request.QueryString["id"], out int idPropiedad))
                 {
                     ScriptManager.RegisterStartupScript(this, GetType(), "showError",
@@ -287,7 +262,6 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                     return;
                 }
 
-                // 2. Obtener la propiedad y el usuario propietario
                 PropiedadNegocio propiedadNegocio = new PropiedadNegocio();
                 Propiedad propiedad = propiedadNegocio.ObtenerPorId(idPropiedad);
 
@@ -298,18 +272,16 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                     return;
                 }
 
-                // 3. Obtener el estado del checkbox
                 bool recibirCopia = checkRecibirCopia.Checked;
 
-                // 4. Enviar el correo
                 EmailService emailservice = new EmailService();
                 emailservice.armarCorreoContactar(
                     txtNombreApellido.Text,
                     txtTelefono.Text,
                     txtAsunto.Text,
-                    txtEmail.Text, // Email del cliente
+                    txtEmail.Text,
                     txtMensaje.Text,
-                    propiedad.Email, // Email del propietario
+                    propiedad.Email,
                     recibirCopia
                 );
 
@@ -331,7 +303,6 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
         {
             try
             {
-                // 1. Obtener ID de propiedad
                 if (!int.TryParse(Request.QueryString["id"], out int idPropiedad))
                 {
                     ScriptManager.RegisterStartupScript(this, GetType(), "showError",
@@ -339,7 +310,6 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                     return;
                 }
 
-                // 2. Obtener datos de la propiedad
                 PropiedadNegocio propiedadNegocio = new PropiedadNegocio();
                 Propiedad propiedad = propiedadNegocio.ObtenerPorId(idPropiedad);
 
@@ -350,7 +320,6 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                     return;
                 }
 
-                // 3. Formatear número de WhatsApp correctamente
                 string numeroWhatsApp = FormatWhatsAppNumber(propiedad.WhatsApp);
 
                 if (string.IsNullOrEmpty(numeroWhatsApp))
@@ -360,20 +329,16 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                     return;
                 }
 
-                // 4. Obtener datos del formulario
                 string nombre = txtNombreApellido.Text;
                 string telefono = txtTelefono.Text;
                 string mensaje = txtMensaje.Text;
 
-                // 5. Crear mensaje para WhatsApp
                 string mensajeCodificado = WebUtility.UrlEncode(
                     $"Hola! Soy {nombre}.\n" +
                     $"{mensaje}");
 
-                // 6. Crear URL de WhatsApp
                 string whatsappUrl = $"https://wa.me/{numeroWhatsApp}?text={mensajeCodificado}";
 
-                // 7. Abrir WhatsApp
                 string script = $"window.open('{whatsappUrl}', '_blank');";
                 ClientScript.RegisterStartupScript(this.GetType(), "openWhatsApp", script, true);
             }
@@ -413,45 +378,35 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
         {
             try
             {
-                // 1. Validar sesión de usuario
                 if (Session["usuario"] == null)
                 {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "showError",
-                        "Swal.fire('Error', 'Debe iniciar sesión para enviar mensajes.', 'error');", true);
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showError","Swal.fire('Error', 'Debe iniciar sesión para enviar mensajes.', 'error');", true);
                     return;
                 }
 
-                // 2. Validar ID de propiedad
                 if (!int.TryParse(Request.QueryString["id"], out int idPropiedad))
                 {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "showError",
-                        "Swal.fire('Error', 'Propiedad no válida.', 'error');", true);
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showError","Swal.fire('Error', 'Propiedad no válida.', 'error');", true);
                     return;
                 }
 
-                // 3. Verificar que la propiedad existe
                 PropiedadNegocio propiedadNegocio = new PropiedadNegocio();
                 Propiedad propiedad = propiedadNegocio.ObtenerPorId(idPropiedad);
 
                 if (propiedad == null)
                 {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "showError",
-                        "Swal.fire('Error', 'La propiedad especificada no existe.', 'error');", true);
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showError", "Swal.fire('Error', 'La propiedad especificada no existe.', 'error');", true);
                     return;
                 }
 
-                // 4. Validar mensaje no vacío
                 if (string.IsNullOrWhiteSpace(txtMensajeConsulta.Text))
                 {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "showError",
-                        "Swal.fire('Error', 'El mensaje no puede estar vacío.', 'error');", true);
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showError", "Swal.fire('Error', 'El mensaje no puede estar vacío.', 'error');", true);
                     return;
                 }
 
-                // 5. Obtener usuario actual
                 Usuario usuarioActual = (Usuario)Session["usuario"];
 
-                // 6. Crear y configurar el mensaje
                 Mensaje nuevoMensaje = new Mensaje
                 {
                     IdUsuario = usuarioActual.IdUsuario,
@@ -461,19 +416,15 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                     FechaDePublicacion = DateTime.Now
                 };
 
-                // 7. Enviar el mensaje
                 MensajeNegocio mensajeNegocio = new MensajeNegocio();
                 mensajeNegocio.agregarMensaje(nuevoMensaje);
 
-                // 8. Actualizar la visualización
                 txtMensajeConsulta.Text = string.Empty;
 
-                // Actualizar la lista de mensajes y el Repeater
                 MensajesLista = mensajeNegocio.listar(idPropiedad);
                 rptMensajes.DataSource = MensajesLista;
                 rptMensajes.DataBind();
 
-                // 9. Mostrar confirmación
                 ScriptManager.RegisterStartupScript(this, GetType(), "showSuccess",
                     "Swal.fire('Éxito', 'Mensaje enviado correctamente.', 'success');", true);
             }
@@ -484,10 +435,10 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
 
                 ScriptManager.RegisterStartupScript(this, GetType(), "showError",
                     $@"Swal.fire({{
-                title: 'Error',
-                html: 'No se pudo enviar el mensaje:<br/><strong>{HttpUtility.JavaScriptStringEncode(errorMessage)}</strong>',
-                icon: 'error'
-            }});", true);
+                        title: 'Error',
+                        html: 'No se pudo enviar el mensaje:<br/><strong>{HttpUtility.JavaScriptStringEncode(errorMessage)}</strong>',
+                        icon: 'error'
+                    }});", true);
             }
         }
 
@@ -497,20 +448,16 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
             {
                 try
                 {
-                    // 1. Obtener IDs básicos
                     int idMensaje = Convert.ToInt32(e.CommandArgument);
                     int idPropiedad = Convert.ToInt32(Request.QueryString["id"]);
 
-                    // 2. Obtener usuario de sesión
                     Usuario usuarioSesion = (Usuario)Session["usuario"];
                     if (usuarioSesion == null)
                     {
-                        ScriptManager.RegisterStartupScript(this, GetType(), "showError",
-                            "Swal.fire('Error', 'Debes iniciar sesión para realizar esta acción.', 'error');", true);
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showError", "Swal.fire('Error', 'Inicia sesión primero.', 'error');", true);
                         return;
                     }
 
-                    // 3. Obtener el mensaje completo de la base de datos
                     MensajeNegocio mensajeNegocio = new MensajeNegocio();
                     Mensaje mensaje = mensajeNegocio.ObtenerMensajePorId(idMensaje);
 
@@ -521,42 +468,31 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                         return;
                     }
 
-                    // 4. Verificar que el usuario de sesión es el creador del mensaje
                     if (usuarioSesion.IdUsuario != mensaje.IdUsuario)
                     {
-                        ScriptManager.RegisterStartupScript(this, GetType(), "showError",
-                            "Swal.fire('Error', 'No tienes permiso para borrar este mensaje.', 'error');", true);
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showError", "Swal.fire('Error', 'No tenes permiso para borrar.', 'error');", true);
                         return;
                     }
 
-                    // 5. Verificar que es el último mensaje del usuario 
-                    var ultimoMensaje = mensajeNegocio.listar(idPropiedad)
-                        .Where(m => m.IdUsuario == usuarioSesion.IdUsuario)
-                        .OrderByDescending(m => m.FechaDePublicacion)
-                        .FirstOrDefault();
+                    var ultimoMensaje = mensajeNegocio.listar(idPropiedad).Where(m => m.IdUsuario == usuarioSesion.IdUsuario).OrderByDescending(m => m.FechaDePublicacion).FirstOrDefault();
 
                     if (ultimoMensaje == null || ultimoMensaje.IdMensaje != idMensaje)
                     {
-                        ScriptManager.RegisterStartupScript(this, GetType(), "showError",
-                            "Swal.fire('Error', 'Solo puedes borrar tu último mensaje.', 'error');", true);
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showError", "Swal.fire('Error', 'Solo podess borrar tu último mensaje.', 'error');", true);
                         return;
                     }
 
-                    // 6. Si pasó todas las validaciones, borrar el mensaje
                     mensajeNegocio.eliminarMensaje(idMensaje);
 
-                    // 7. Actualizar la lista y el repeater
                     MensajesLista = mensajeNegocio.listar(idPropiedad);
                     rptMensajes.DataSource = MensajesLista;
                     rptMensajes.DataBind();
 
-                    ScriptManager.RegisterStartupScript(this, GetType(), "showSuccess",
-                        "Swal.fire('Éxito', 'Mensaje eliminado correctamente.', 'success');", true);
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showSuccess", "Swal.fire('Éxito', 'Mensaje eliminado correctamente.', 'success');", true);
                 }
                 catch (Exception ex)
                 {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "showError",
-                        $"Swal.fire('Error', 'No se pudo eliminar el mensaje: {HttpUtility.JavaScriptStringEncode(ex.Message)}', 'error');", true);
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showError", $"Swal.fire('Error', 'No se pudo eliminar el mensaje: {HttpUtility.JavaScriptStringEncode(ex.Message)}', 'error');", true);
                 }
             }
         }
