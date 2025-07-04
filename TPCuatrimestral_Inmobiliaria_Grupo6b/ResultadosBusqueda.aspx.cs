@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -75,6 +76,7 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
         {
             propiedadesNegocio = new PropiedadNegocio();
             propiedades = propiedadesNegocio.listar();
+            foreach (var propiedad in propiedades) propiedad.ImagenUrl = ObtenerPrimeraImagen(propiedad.IdPropiedad);
             idsPropiedadesFavoritas = propiedadesNegocio.obtenerIdPropiedadesEnFavoritos(Session["IdUsuario"] as int?);
             BindearPropiedades(propiedades);
         }
@@ -95,6 +97,14 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                 rptPropiedades.DataBind();
                 lblResultadosCount.Text = "0";
             }
+        }
+
+        private string ObtenerPrimeraImagen(int idPropiedad)
+        {
+            string rutaImagenes = Server.MapPath("./Images/");
+            var primeraImagen = Directory.GetFiles(rutaImagenes, $"{idPropiedad}-*.jpeg").OrderBy(f => f).FirstOrDefault();
+            if (primeraImagen != null) return "./Images/" + Path.GetFileName(primeraImagen);
+            return "./Images/default.jpg";
         }
 
 

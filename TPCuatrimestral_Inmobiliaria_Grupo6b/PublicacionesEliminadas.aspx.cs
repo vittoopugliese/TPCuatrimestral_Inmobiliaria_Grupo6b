@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -26,9 +27,18 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
             {
                 propiedadesNegocio = new PropiedadNegocio();
                 propiedades = propiedadesNegocio.listarEliminadas();
+                foreach (var propiedad in propiedades) propiedad.ImagenUrl = ObtenerPrimeraImagen(propiedad.IdPropiedad);
                 // no hace falta revisar las imagenes de la carpeta ya que solo se muestra la minatura
                 CargarDatos();
             }
+        }
+
+        private string ObtenerPrimeraImagen(int idPropiedad)
+        {
+            string rutaImagenes = Server.MapPath("./Images/");
+            var primeraImagen = Directory.GetFiles(rutaImagenes, $"{idPropiedad}-*.jpeg").OrderBy(f => f).FirstOrDefault();
+            if (primeraImagen != null) return "./Images/" + Path.GetFileName(primeraImagen);
+            return "./Images/default.jpg";
         }
 
         private void CargarDatos()
