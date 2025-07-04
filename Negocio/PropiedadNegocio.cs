@@ -558,6 +558,50 @@ namespace Negocio
             }
         }
 
+        public List<Propiedad> ObtenerPropiedadesEliminadas(int idUsuario)
+        {
+            List<Propiedad> propiedades = new List<Propiedad>();
+            BaseDeDatos datos = new BaseDeDatos();
+            try
+            {
+                string consulta = @"
+                SELECT p.IdPropiedad, p.Titulo, p.Direccion, p.Localidad, p.TipoOperacion, p.Tipo, p.Precio, p.Moneda,
+                       rv.ObservacionesAdmin, rv.FechaAccion
+                FROM Propiedad p
+                INNER JOIN RevisionPublicaciones rv ON p.IdPropiedad = rv.IdPropiedad
+                WHERE p.IdUsuario = @idUsuario AND p.Eliminada = 1 AND rv.EstadoRevision = 'Rechazado'
+                ORDER BY rv.FechaAccion DESC";
+
+                datos.setearConsulta(consulta);
+                datos.setearParametro("@idUsuario", idUsuario);
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Propiedad propiedad = new Propiedad();
+                    propiedad.IdPropiedad = (int)datos.Lector["IdPropiedad"];
+                    propiedad.Titulo = datos.Lector["Titulo"].ToString();
+                    propiedad.Direccion = datos.Lector["Direccion"].ToString();
+                    propiedad.Localidad = datos.Lector["Localidad"].ToString();
+                    propiedad.TipoOperacion = datos.Lector["TipoOperacion"].ToString();
+                    propiedad.Tipo = datos.Lector["Tipo"].ToString();
+                    propiedad.Precio = (decimal)datos.Lector["Precio"];
+                    propiedad.Moneda = datos.Lector["Moneda"].ToString();
+                    propiedad.Descripcion = datos.Lector["ObservacionesAdmin"].ToString();
+                    propiedades.Add(propiedad);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener propiedades eliminadas: " + ex.Message);
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+            return propiedades;
+        }
+
 
     }
 }

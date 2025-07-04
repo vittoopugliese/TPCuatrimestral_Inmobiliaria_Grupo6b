@@ -106,6 +106,15 @@ namespace Negocio
                 datos.setearParametro("@idRevision", idRevision);
                 datos.setearParametro("@observaciones", observaciones);
                 datos.ejecutarAccion();
+
+                string consultaActualizarPropiedad = @"
+                UPDATE Propiedad
+                SET Eliminada = 1 
+                WHERE IdPropiedad = (SELECT IdPropiedad FROM RevisionPublicaciones WHERE IdRevision = @idRevision)";
+                datos.setearConsulta(consultaActualizarPropiedad);
+                datos.setearParametro("@idRevision", idRevision);
+                datos.ejecutarAccion();
+
             }
             catch (Exception ex)
             {

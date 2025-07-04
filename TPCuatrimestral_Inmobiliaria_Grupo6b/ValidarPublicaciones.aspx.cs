@@ -82,7 +82,7 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                 AdminNegocio adminNegocio = new AdminNegocio();
                 adminNegocio.RechazarRevision(idRevision, observacion);
 
-                CargarRevisiones(); // refresca la grilla
+                CargarRevisiones();
                 PanelRechazo.Visible = false;
                 txtObservacion.Text = "";
             }

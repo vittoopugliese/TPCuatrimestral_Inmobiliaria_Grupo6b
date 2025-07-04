@@ -1,5 +1,7 @@
 <%@ Page Title="Mis Publicaciones" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="PublicacionesUsuarios.aspx.cs" Inherits="TPCuatrimestral_Inmobiliaria_Grupo6b.PublicacionesUsuarios" %>
 
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <style>
@@ -111,6 +113,56 @@
             color: black;
         }
     </style>
+
+    <asp:Panel ID="pnlNotificaciones" runat="server" Visible="false" CssClass="container mt-3">
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <h5 class="alert-heading">
+                <i class="fas fa-exclamation-triangle"></i> Propiedades Rechazadas
+            </h5>
+            <p>Las siguientes propiedades han sido rechazadas por el administrador:</p>
+        
+            <asp:Repeater ID="rptPropiedadesEliminadas" runat="server">
+                <ItemTemplate>
+                    <div class="border rounded p-3 mb-3 bg-light">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h6 class="mb-2">
+                                    <strong><%# Eval("Titulo") %></strong>
+                                    <span class="badge bg-secondary ms-2"><%# Eval("TipoOperacion") %></span>
+                                </h6>
+                                <p class="mb-1">
+                                    <i class="fas fa-map-marker-alt"></i> <%# Eval("Direccion") %>, <%# Eval("Localidad") %>
+                                </p>
+                                <p class="mb-1">
+                                    <i class="fas fa-tag"></i> <%# Eval("Tipo") %> - 
+                                    <i class="fas fa-dollar-sign"></i> <%# Eval("Precio") %> <%# Eval("Moneda") %>
+                                </p>
+                                <div class="alert alert-danger alert-sm mt-2 mb-0">
+                                    <strong>Motivo del rechazo:</strong> <%# Eval("Descripcion") %>
+                                </div>
+                            </div>
+                            <div class="col-md-4 text-end">
+                                <asp:Button ID="btnCerrarNotificacion" runat="server" 
+                                    Text="Cerrar" 
+                                    CssClass="btn btn-sm btn-outline-danger"
+                                    CommandName="CerrarNotificacion"
+                                    CommandArgument='<%# Eval("IdPropiedad") %>'
+                                    OnCommand="btnCerrarNotificacion_Command" />
+                            </div>
+                        </div>
+                    </div>
+                </ItemTemplate>
+            </asp:Repeater>
+        
+            <hr>
+            <div class="text-end">
+                <asp:Button ID="btnCerrarTodasNotificaciones" runat="server" 
+                    Text="Cerrar todas las notificaciones" 
+                    CssClass="btn btn-sm btn-danger"
+                    OnClick="btnCerrarTodasNotificaciones_Click" />
+            </div>
+        </div>
+    </asp:Panel>
 
     <div class="container mt-5 mb-5">
 

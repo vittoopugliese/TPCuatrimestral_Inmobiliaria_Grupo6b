@@ -23,6 +23,85 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                 propiedadesNegocio = new PropiedadNegocio();
                 propiedades = propiedadesNegocio.listarPublicacionesDelUsuario();
                 CargarDatos();
+                CargarNotificacionesEliminadas();
+            }
+        }
+
+        private void CargarNotificacionesEliminadas()
+        {
+            try
+            {
+                if (Session["IdUsuario"] != null)
+                {
+                    int idUsuario = (int)Session["IdUsuario"];
+
+                    // Obtener las propiedades eliminadas que no han sido "cerradas"
+                    List<int> notificacionesCerradas = ObtenerNotificacionesCerradas();
+
+                    PropiedadNegocio propiedadNegocio = new PropiedadNegocio();
+                    List<Propiedad> propiedadesEliminadas = propiedadNegocio.ObtenerPropiedadesEliminadas(idUsuario);
+
+                    var propiedadesAMostrar = propiedadesEliminadas.Where(p => !notificacionesCerradas.Contains(p.IdPropiedad)).ToList();
+
+                    if (propiedadesAMostrar.Count > 0)
+                    {
+                        rptPropiedadesEliminadas.DataSource = propiedadesAMostrar;
+                        rptPropiedadesEliminadas.DataBind();
+                        pnlNotificaciones.Visible = true;
+                    }
+                    else
+                    {
+                        pnlNotificaciones.Visible = false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                pnlNotificaciones.Visible = false;
+            }
+        }
+        
+        //notif cerradas de la sesion del usuario
+        private List<int> ObtenerNotificacionesCerradas()
+        {
+            if (Session["NotificacionesCerradas"] == null)
+            {
+                Session["NotificacionesCerradas"] = new List<int>();
+            }
+            return (List<int>)Session["NotificacionesCerradas"];
+        }
+
+        private void AgregarNotificacionCerrada(int idPropiedad)
+        {
+            List<int> notificacionesCerradas = ObtenerNotificacionesCerradas();
+            if (!notificacionesCerradas.Contains(idPropiedad))
+            {
+                notificacionesCerradas.Add(idPropiedad);
+                Session["NotificacionesCerradas"] = notificacionesCerradas;
+            }
+        }
+
+        protected void btnCerrarNotificacion_Command(object sender, CommandEventArgs e)
+        {
+            int idPropiedad = Convert.ToInt32(e.CommandArgument);
+            AgregarNotificacionCerrada(idPropiedad);
+            CargarNotificacionesEliminadas(); 
+        }
+
+        protected void btnCerrarTodasNotificaciones_Click(object sender, EventArgs e)
+        {
+            if (Session["IdUsuario"] != null)
+            {
+                int idUsuario = (int)Session["IdUsuario"];
+                PropiedadNegocio propiedadNegocio = new PropiedadNegocio();
+                List<Propiedad> propiedadesEliminadas = propiedadNegocio.ObtenerPropiedadesEliminadas(idUsuario);
+
+                foreach (var propiedad in propiedadesEliminadas)
+                {
+                    AgregarNotificacionCerrada(propiedad.IdPropiedad);
+                }
+
+                CargarNotificacionesEliminadas(); 
             }
         }
 
