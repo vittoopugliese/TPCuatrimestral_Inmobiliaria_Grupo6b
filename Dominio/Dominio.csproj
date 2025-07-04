@@ -41,7 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClaseDominioEjemplo.cs" />
     <Compile Include="Favorito.cs" />
     <Compile Include="Imagenes.cs" />
     <Compile Include="Mensaje.cs" />

@@ -21,7 +21,7 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
             if (!IsPostBack)
             {
                 propiedadesNegocio = new PropiedadNegocio();
-                propiedades = propiedadesNegocio.listarPublicacionesDelUsuario();
+                propiedades = propiedadesNegocio.listarPublicacionesDelUsuario((int)Session["IdUsuario"]);
                 CargarDatos();
                 CargarNotificacionesEliminadas();
             }
@@ -112,7 +112,7 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
             if (propiedadesNegocio == null)
             {
                 propiedadesNegocio = new PropiedadNegocio();
-                propiedades = propiedadesNegocio.listarPublicacionesDelUsuario();
+                propiedades = propiedadesNegocio.listarPublicacionesDelUsuario((int)Session["IdUsuario"]);
             }
 
             if (propiedades != null && propiedades.Count > 0)

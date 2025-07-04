@@ -43,11 +43,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdminNegocio.cs" />
-    <Compile Include="ClaseDominioEjemploNegocio.cs" />
     <Compile Include="BaseDeDatos.cs" />
     <Compile Include="EmailService.cs" />
     <Compile Include="ImagenNegocio.cs" />
-    <Compile Include="LoginNegocio.cs" />
     <Compile Include="MensajeNegocio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropiedadNegocio.cs" />

@@ -26,7 +26,7 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                 //pnlSinDestacadas.Visible = false;
                 //pnlSinVistas.Visible = false;
 
-                idsPropiedadesFavoritas = propiedadesNegocio.obtenerIdPropiedadesEnFavoritos();
+                idsPropiedadesFavoritas = propiedadesNegocio.obtenerIdPropiedadesEnFavoritos(Session["IdUsuario"] as int?);
 
                 propiedadesDestacadas = propiedadesNegocio.listarDestacadas();
                 foreach (var propiedad in propiedadesDestacadas) propiedad.ImagenUrl = ObtenerPrimeraImagen(propiedad.IdPropiedad);
@@ -79,7 +79,7 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                 if (idsPropiedadesFavoritas == null)
                 {
                     propiedadesNegocio = propiedadesNegocio ?? new PropiedadNegocio();
-                    idsPropiedadesFavoritas = propiedadesNegocio.obtenerIdPropiedadesEnFavoritos();
+                    idsPropiedadesFavoritas = propiedadesNegocio.obtenerIdPropiedadesEnFavoritos(Session["IdUsuario"] as int?);
                 }
 
                 return idsPropiedadesFavoritas != null && idsPropiedadesFavoritas.Contains(id);

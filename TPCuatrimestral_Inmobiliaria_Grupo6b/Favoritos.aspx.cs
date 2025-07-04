@@ -21,7 +21,7 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
         private void CargarPropiedades()
         {
             propiedadNegocio = new PropiedadNegocio();
-            propiedades = propiedadNegocio.listarFavoritas();
+            propiedades = propiedadNegocio.listarFavoritas((int)Session["IdUsuario"]);
 
             if (propiedades != null && propiedades.Count > 0)
             {

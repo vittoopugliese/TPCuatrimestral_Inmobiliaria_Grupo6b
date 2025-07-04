@@ -60,7 +60,7 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                 // busqueda con filtros
                 propiedadesNegocio = new PropiedadNegocio();
                 propiedades = propiedadesNegocio.buscarConFiltros(idProvincia, tipoOperacionBD, null, null, null);
-                idsPropiedadesFavoritas = propiedadesNegocio.obtenerIdPropiedadesEnFavoritos();
+                idsPropiedadesFavoritas = propiedadesNegocio.obtenerIdPropiedadesEnFavoritos(Session["IdUsuario"] as int?);
 
                 BindearPropiedades(propiedades);
             }
@@ -75,7 +75,7 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
         {
             propiedadesNegocio = new PropiedadNegocio();
             propiedades = propiedadesNegocio.listar();
-            idsPropiedadesFavoritas = propiedadesNegocio.obtenerIdPropiedadesEnFavoritos();
+            idsPropiedadesFavoritas = propiedadesNegocio.obtenerIdPropiedadesEnFavoritos(Session["IdUsuario"] as int?);
             BindearPropiedades(propiedades);
         }
 
@@ -138,7 +138,7 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                 // realizo la busqueda y bindeo el array de propiedades
                 propiedadesNegocio = new PropiedadNegocio();
                 propiedades = propiedadesNegocio.buscarConFiltros(idProvincia, tipoOperacion, tipoInmueble, precioMin, precioMax);
-                idsPropiedadesFavoritas = propiedadesNegocio.obtenerIdPropiedadesEnFavoritos();
+                idsPropiedadesFavoritas = propiedadesNegocio.obtenerIdPropiedadesEnFavoritos(Session["IdUsuario"] as int?);
                 BindearPropiedades(propiedades);
             }
             catch (Exception ex)
@@ -185,7 +185,7 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
                 if (idsPropiedadesFavoritas == null)
                 {
                     propiedadesNegocio = propiedadesNegocio ?? new PropiedadNegocio();
-                    idsPropiedadesFavoritas = propiedadesNegocio.obtenerIdPropiedadesEnFavoritos();
+                    idsPropiedadesFavoritas = propiedadesNegocio.obtenerIdPropiedadesEnFavoritos(Session["IdUsuario"] as int?);
                 }
 
                 return idsPropiedadesFavoritas != null && idsPropiedadesFavoritas.Contains(id);

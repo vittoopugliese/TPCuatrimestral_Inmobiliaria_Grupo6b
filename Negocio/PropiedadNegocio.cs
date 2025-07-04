@@ -274,9 +274,10 @@ namespace Negocio
             return ObtenerPropiedadesSegunConsultasYMapearlas("SELECT * FROM PROPIEDAD WHERE Visible = 1 AND Eliminada = 0");
         }
 
-        public List<Propiedad> listarPublicacionesDelUsuario()
+        public List<Propiedad> listarPublicacionesDelUsuario(int IdUsuario)
         {
-            return ObtenerPropiedadesSegunConsultasYMapearlas("SELECT * FROM PROPIEDAD WHERE Eliminada = 0"); // muestro las NO visibles y las ELIMINADAS del usuario. TODO: agregar parametro USERID en listados // espeando a que se termine de crear el login completo
+            string consulta = "SELECT * FROM PROPIEDAD WHERE Eliminada = 0 AND IdUsuario = " + IdUsuario;
+            return ObtenerPropiedadesSegunConsultasYMapearlas(consulta); // muestro las NO visibles y las ELIMINADAS del usuario. TODO: agregar parametro USERID en listados // espeando a que se termine de crear el login completo
         }
 
         public List<Propiedad> listarEliminadas()
@@ -297,16 +298,16 @@ namespace Negocio
             return ObtenerPropiedadesSegunConsultasYMapearlas("SELECT * FROM PROPIEDAD WHERE Precio > 150000 AND Visible = 1 AND Eliminada = 0");
         }
 
-        public List<int> obtenerIdPropiedadesEnFavoritos()
+        public List<int> obtenerIdPropiedadesEnFavoritos(int? IdUsuario)
         {
-            int IdUsuario = 1; // REMPLAZAR por clase helper,  metodo de obtener user
             List<int> idsPropiedadesFavoritas = new List<int>();
+
+            if (!IdUsuario.HasValue || IdUsuario.Value <= 0) return idsPropiedadesFavoritas;
 
             string consultaFavoritos = "SELECT IdPropiedad FROM FAVORITO WHERE IdUsuario = " + IdUsuario;
             db.setearConsulta(consultaFavoritos);
 
             db.ejecutarLectura();
-            // quizas podriamos combinar estas dos request en una sola
             while (db.Lector.Read()) idsPropiedadesFavoritas.Add((int)db.Lector["IdPropiedad"]);
 
             db.cerrarConexion();
@@ -314,13 +315,13 @@ namespace Negocio
             return idsPropiedadesFavoritas;
         }
 
-        public List<Propiedad> listarFavoritas()
+        public List<Propiedad> listarFavoritas(int IdUsuario)
         {
             try
             {
-                List<int> idsPropiedadesFavoritas = obtenerIdPropiedadesEnFavoritos();
+                List<int> idsPropiedadesFavoritas = obtenerIdPropiedadesEnFavoritos(IdUsuario);
 
-                if (idsPropiedadesFavoritas.Count == 0) return new List<Propiedad>();
+                if (idsPropiedadesFavoritas.Count == 0 || IdUsuario == 0) return new List<Propiedad>();
 
                 string idsString = string.Join(",", idsPropiedadesFavoritas);
                 string consultaPropiedades = $"SELECT * FROM PROPIEDAD WHERE IdPropiedad IN ({idsString}) AND Visible = 1 AND Eliminada = 0";
