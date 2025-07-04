@@ -100,7 +100,7 @@ Create Table Mensaje (
 	FechaDePublicacion datetime NOT NULL DEFAULT GETDATE()
 );
 
-Create Table RevisionPublicacion (
+Create Table RevisionPublicaciones (
     IdRevision INT IDENTITY PRIMARY KEY,
     IdPropiedad INT NOT NULL,
     IdUsuario INT NOT NULL,

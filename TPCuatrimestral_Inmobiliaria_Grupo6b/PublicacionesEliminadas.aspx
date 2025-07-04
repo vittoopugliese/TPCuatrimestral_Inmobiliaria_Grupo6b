@@ -92,9 +92,9 @@
                                 <b class="fs-4 mb-2">$<%# Eval("Precio") %></b>
                                 <p class="mb-0 small"><strong>Publicado:</strong> <%# Eval("FechaPublicacion", "{0:dd/MM/yyyy}") %></p>
 
-                                <asp:LinkButton CssClass="hide-icon" ID="lnkDesEliminar" runat="server" OnCommand="lnkOpcionesPublicacion_Command" CommandName="deseliminar" CommandArgument='<%# Eval("IdPropiedad") %>'>
+<%--                                <asp:LinkButton CssClass="hide-icon" ID="lnkDesEliminar" runat="server" OnCommand="lnkOpcionesPublicacion_Command" CommandName="deseliminar" CommandArgument='<%# Eval("IdPropiedad") %>'>
                                     <p style="cursor:pointer;margin:0px;"><i class='fas fa-trash' style="color:lawngreen;"></i>Re-activar publicacion</p>
-                                </asp:LinkButton>
+                                </asp:LinkButton>--%>
 
                             </div>
                         </div>
