@@ -174,7 +174,7 @@ namespace TPCuatrimestral_Inmobiliaria_Grupo6b
             int idUsuario = propiedad.IdUsuario;
             UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
             Usuario usuario = usuarioNegocio.ObtenerPorId(idUsuario);
-            nombrePropietario.InnerText = $"{propiedad.TipoDueno} {usuario.Nombre} {usuario.Apellido}";
+            nombrePropietario.InnerText = $"Anunciante {usuario.Nombre} {usuario.Apellido}";
             whatsappPropietario.InnerText = $"{propiedad.WhatsApp}";
 
 

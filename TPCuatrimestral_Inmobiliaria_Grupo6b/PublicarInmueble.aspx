@@ -521,7 +521,9 @@
                         <div class="col"></div>
 
                         <div class="col">
-                            <asp:Button Text="Volver" CssClass="btn btn-dark" ID="btnVolver" runat="server" OnClick="btnVolver_Click" Style="margin-top: 35px; width: 300px;" />
+                            <asp:Button Text="Volver" CssClass="btn btn-dark" ID="btnVolver" runat="server"
+                                OnClick="btnVolver_Click" CausesValidation="false"
+                                Style="margin-top: 35px; width: 300px;" />
                         </div>
                         <div class="col"></div>
 
